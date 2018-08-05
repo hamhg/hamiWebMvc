@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<haed th:fragment="head">
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Metis</title>
+
+    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="author" content="">
+
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="/resources/img/metis-tile.png" th:content="@{/img/metis-tile.png}" />
+
+    <script type="text/javascript" src="../../../lib/require/require.js" th:src="@{/lib/require/require.js}"></script>
+    <script type="text/javascript" src="../../../js/main.js" th:src="@{/js/main.js}"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../../resources/lib/bootstrap/css/bootstrap.css" th:href="@{/lib/bootstrap/css/bootstrap.css}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../../resources/lib/font-awesome/css/font-awesome.css" th:href="@{/lib/font-awesome/css/font-awesome.css}">
+
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="../../../resources/css/main.css" th:href="@{/css/main.css}">
+
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="../../../resources/lib/metismenu/metisMenu.css" th:href="@{/lib/metismenu/metisMenu.css}">
+
+    <!-- onoffcanvas stylesheet -->
+    <link rel="stylesheet" href="../../../resources/lib/onoffcanvas/onoffcanvas.css" th:href="@{/lib/onoffcanvas/onoffcanvas.css}">
+
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="../../../resources/lib/animate.css/animate.css" th:href="@{/lib/animate.css/animate.css}">
+
+    <!--For Development Only. Not required -->
+    <script>
+        less = {
+            env: "development",
+            relativeUrls: false,
+            rootpath: "/"
+        };
+    </script>
+    <link rel="stylesheet" href="../../../resources/css/style-switcher.css" th:href="@{/css/style-switcher.css}">
+    <link rel="stylesheet/less" type="text/css" href="../../../resources/less/theme.less" th:href="@{/resources/less/theme.less}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
+</haed>
+</html>

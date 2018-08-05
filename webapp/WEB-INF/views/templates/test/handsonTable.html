@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<head>
+    <title>Metis</title>
+    <link rel="stylesheet" media="screen" href="/libs/handsontable/handsontable.full.css" th:href="@{/libs/handsontable/handsontable.full.css}">
+</head>
+<body class="  ">
+<program th:id="${programId}">
+<div class="tab-pane">
+    <div class="row">
+        <ol class="breadcrumb page-breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">HandsonTable</li>
+        </ol>
+    </div>
+    <div id="content" class="page-header">
+        <div class="row">
+            <div class="col-md-4 text-xs-center text-md-left text-nowrap">
+                <h1><i class="page-header-icon ion-ios-paper-outline"></i>HandsonTable</h1>
+            </div>
+
+            <hr class="page-wide-block visible-xs visible-sm">
+
+            <div class="col-xs-12 width-md-auto width-lg-auto width-xl-auto pull-md-right">
+                <a href="#" class="btn btn-primary btn-block"><span class="btn-label-icon left ion-plus-round"></span>Create project</a>
+            </div>
+
+            <!-- Spacer -->
+            <div class="m-b-2 visible-xs visible-sm clearfix"></div>
+
+            <form action="" class="page-header-form col-xs-12 col-md-4 pull-md-right">
+                <div class="input-group">
+                    <span class="input-group-addon b-a-0 font-size-16"><i class="ion-search"></i></span>
+                    <input type="text" placeholder="Search..." class="form-control p-l-0 b-a-0">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="page-block m-b-1"></div>
+    <div class="page-body">
+        <button type="button" class="btn btn-primary">Load</button>
+        <button type="button" class="btn btn-success">Save</button>
+        <div class="page-block m-b-1"></div>
+        <div th:id="'ht1_'+${programId}"></div><br/><br/>
+        <div th:id="'ht2_'+${programId}"></div><br/><br/>
+        <div th:id="'ht3_'+${programId}"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var data = [
+            ["", "Ford", "Tesla", "Toyota", "Honda"],
+            ["2017", 10, 11, 12, 13],
+            ["2018", 20, 11, 14, 13],
+            ["2019", 30, 15, 12, 13]
+        ];
+
+        var container = document.getElementById('ht1_[[${programId}]]');
+        var hot = Handsontable(container, {
+            data: data,
+            rowHeaders: true,
+            colHeaders: true,
+            filters: true,
+            dropdownMenu: true
+        });
+    });
+
+    require(['jquery', "Handsontable"], function($, Handsontable) {
+        $(document).ready(function () {
+            var data = [
+                ['', 'Maserati', 'Mazda', 'Mercedes', 'Mini', 'Mitsubishi'],
+                ['2009', 0, 2941, 4303, 354, 5814],
+                ['2010', 3, 2905, 2867, 412, 5284],
+                ['2011', 4, 2517, 4822, 552, 6127],
+                ['2012', 2, 2422, 5399, 776, 4151]
+            ];
+            var config = {
+                data: data,
+                minSpareRows: 1,
+                colHeaders: true,
+                contextMenu: true
+            };
+            var container = document.getElementById('ht2_[[${programId}]]');
+            var hot = new Handsontable(container, config);
+         });
+    });
+
+</script>
+</program>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="jdbc/hamiDB" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@192.168.56.101:1521:xe"
+              username="hami" password="hami1234" maxTotal="20" maxIdle="10"
+              validationQuery="select 1 from dual"
+              maxWaitMillis="-1"/>
+</Context>

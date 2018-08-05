@@ -1,0 +1,1066 @@
+2017-07-28 21:59:57,335 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 21:59:57,666 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 21:59:58,392 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.445s)
+2017-07-28 21:59:58,436 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.030s)
+2017-07-28 21:59:58,516 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 21:59:58,556 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 21:59:58,559 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 21:59:58,582 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 21:59:58,647 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-28 22:01:33,933 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:01:34,415 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 22:01:34,979 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.215s)
+2017-07-28 22:01:35,015 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.023s)
+2017-07-28 22:01:35,046 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 22:01:35,084 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 22:01:35,087 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 22:01:35,104 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 22:01:35,181 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-28 22:05:21,646 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:05:21,977 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 22:05:22,378 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.098s)
+2017-07-28 22:05:22,424 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.032s)
+2017-07-28 22:05:22,455 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 22:05:22,492 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 22:05:22,495 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 22:05:22,514 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 22:05:22,567 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-28 22:06:24,406 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:06:24,735 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 22:06:25,127 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.113s)
+2017-07-28 22:06:25,172 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.031s)
+2017-07-28 22:06:25,209 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 22:06:25,288 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 22:06:25,292 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 22:06:25,360 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 22:06:25,545 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-28 22:08:51,323 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:08:51,643 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 22:08:52,074 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.118s)
+2017-07-28 22:08:52,115 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.026s)
+2017-07-28 22:08:52,151 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 22:08:52,193 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 22:08:52,196 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 22:08:52,225 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 22:08:52,323 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-28 22:14:12,933 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:15:25,894 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:15:26,344 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 22:15:26,921 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.156s)
+2017-07-28 22:15:26,985 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.044s)
+2017-07-28 22:15:27,026 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 22:15:27,081 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 22:15:27,085 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 22:15:27,111 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 22:15:27,250 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-28 22:16:29,425 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-28 22:16:29,839 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-28 22:16:30,535 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.151s)
+2017-07-28 22:16:30,604 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.049s)
+2017-07-28 22:16:30,647 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-28 22:16:30,698 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-28 22:16:30,702 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-28 22:16:30,731 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-28 22:16:30,868 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 2 migrations to schema "HAMI" (execution time 00:00.222s).
+2017-07-29 14:52:21,644 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 14:52:31,958 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 14:52:32,337 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.095s)
+2017-07-29 14:52:32,382 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.025s)
+2017-07-29 14:52:37,416 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 14:52:37,455 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 14:52:37,458 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-29 14:52:37,478 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-29 14:52:37,594 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 2 migrations to schema "HAMI" (execution time 00:00.179s).
+2017-07-29 15:06:18,541 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 15:06:28,806 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 15:06:29,263 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.194s)
+2017-07-29 15:06:29,314 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.036s)
+2017-07-29 15:06:34,352 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 15:06:34,391 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 15:06:34,393 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-29 15:06:34,413 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-29 15:06:34,504 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 2 migrations to schema "HAMI" (execution time 00:00.153s).
+2017-07-29 15:09:33,808 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 15:09:44,075 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 15:09:44,446 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.116s)
+2017-07-29 15:09:44,493 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.033s)
+2017-07-29 15:09:49,531 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 15:09:49,566 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 15:09:49,568 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-29 15:09:49,588 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-29 15:09:49,642 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 2 - create tables failed! Please restore backups and roll back database and code!
+2017-07-29 15:12:29,428 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 15:12:39,712 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 15:12:40,066 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.104s)
+2017-07-29 15:12:40,105 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.025s)
+2017-07-29 15:12:45,142 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 15:12:45,179 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 15:12:45,182 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1 - initialise database
+2017-07-29 15:12:45,202 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 2 - create tables
+2017-07-29 15:12:45,291 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 2 migrations to schema "HAMI" (execution time 00:00.150s).
+2017-07-29 16:06:22,021 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 16:06:32,360 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 16:06:32,778 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.141s)
+2017-07-29 16:06:32,823 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.027s)
+2017-07-29 16:06:37,866 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 16:06:37,912 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 16:06:37,915 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 16:06:37,939 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 16:06:38,132 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 16:06:38,149 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.284s).
+2017-07-29 16:23:14,115 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 16:23:24,443 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 16:23:24,866 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.158s)
+2017-07-29 16:23:24,909 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.025s)
+2017-07-29 16:23:29,953 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 16:23:29,993 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 16:23:29,996 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 16:23:30,019 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 16:23:30,188 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 16:23:30,202 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.250s).
+2017-07-29 16:24:24,454 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 16:24:34,741 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 16:24:35,212 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.216s)
+2017-07-29 16:24:35,253 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.027s)
+2017-07-29 16:24:40,288 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 16:24:40,325 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 16:24:40,328 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 16:24:40,352 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 16:24:40,500 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 16:24:40,515 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.229s).
+2017-07-29 16:25:43,013 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 16:25:53,282 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 16:25:53,732 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.199s)
+2017-07-29 16:25:53,771 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.025s)
+2017-07-29 16:25:58,805 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 16:25:58,842 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 16:25:58,845 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 16:25:58,868 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 16:25:59,016 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 16:25:59,032 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.227s).
+2017-07-29 16:57:24,904 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 16:57:35,177 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 16:57:35,638 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.204s)
+2017-07-29 16:57:35,679 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.028s)
+2017-07-29 16:57:40,717 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 16:57:40,755 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 16:57:40,758 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 16:57:40,786 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 16:57:40,847 ERROR main  org.flywaydb.core.internal.command.DbMigrate - Migration of schema "HAMI" to version 1.1 - create test failed! Please restore backups and roll back database and code!
+2017-07-29 16:58:45,185 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 16:58:55,459 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 16:58:55,809 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.100s)
+2017-07-29 16:58:55,848 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.025s)
+2017-07-29 16:59:00,883 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 16:59:00,921 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 16:59:00,924 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 16:59:00,952 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 16:59:01,045 WARN main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - DB: Warning: 경고와 함께 실행이 완료됨 (SQL State: 99999 - Error Code: 17110)
+2017-07-29 16:59:01,137 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 16:59:01,154 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.271s).
+2017-07-29 17:17:49,067 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 17:17:59,368 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 17:18:00,021 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.329s)
+2017-07-29 17:18:00,068 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.032s)
+2017-07-29 17:18:05,103 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 17:18:05,163 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 17:18:05,167 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 17:18:05,225 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 17:18:05,367 WARN main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - DB: Warning: 경고와 함께 실행이 완료됨 (SQL State: 99999 - Error Code: 17110)
+2017-07-29 17:18:05,478 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 17:18:05,499 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.397s).
+2017-07-29 19:59:35,006 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-29 19:59:45,334 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-29 19:59:46,316 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.626s)
+2017-07-29 19:59:46,371 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.037s)
+2017-07-29 19:59:51,478 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-29 19:59:51,523 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-29 19:59:51,526 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-29 19:59:51,558 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-29 19:59:51,675 WARN main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - DB: Warning: 경고와 함께 실행이 완료됨 (SQL State: 99999 - Error Code: 17110)
+2017-07-29 19:59:51,799 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-29 19:59:51,817 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.340s).
+2017-07-30 17:41:54,376 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-30 17:42:48,844 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-30 17:45:41,320 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-30 17:47:06,782 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-30 17:50:06,817 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-30 17:50:17,144 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-30 17:50:17,374 DEBUG main  org.flywaydb.core.Flyway - DDL Transactions Supported: false
+2017-07-30 17:50:17,377 DEBUG main  org.flywaydb.core.Flyway - Schema: HAMI
+2017-07-30 17:50:17,389 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - Spring Jdbc available: true
+2017-07-30 17:50:17,391 DEBUG main  org.flywaydb.core.internal.callback.SqlScriptFlywayCallback - Scanning for SQL callbacks ...
+2017-07-30 17:50:17,391 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: '', Suffix: '.sql')
+2017-07-30 17:50:17,391 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Determining location urls for classpath:db/migration using ClassLoader sun.misc.Launcher$AppClassLoader@18b4aac2 ...
+2017-07-30 17:50:17,392 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 17:50:17,392 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 17:50:17,394 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/
+2017-07-30 17:50:17,394 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning for resources in path: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration (db/migration)
+2017-07-30 17:50:17,403 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.0__initialise_database.sql
+2017-07-30 17:50:17,403 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.1__create_test.sql
+2017-07-30 17:50:17,403 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.2__insert_test.sql
+2017-07-30 17:50:17,472 DEBUG main  org.flywaydb.core.internal.command.DbClean - Cleaning schema "HAMI" ...
+2017-07-30 17:50:17,926 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.451s)
+2017-07-30 17:50:17,929 DEBUG main  org.flywaydb.core.Flyway - DDL Transactions Supported: false
+2017-07-30 17:50:17,929 DEBUG main  org.flywaydb.core.Flyway - Schema: HAMI
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - Spring Jdbc available: true
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.callback.SqlScriptFlywayCallback - Scanning for SQL callbacks ...
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: '', Suffix: '.sql')
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Determining location urls for classpath:db/migration using ClassLoader sun.misc.Launcher$AppClassLoader@18b4aac2 ...
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/
+2017-07-30 17:50:17,930 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning for resources in path: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration (db/migration)
+2017-07-30 17:50:17,937 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.0__initialise_database.sql
+2017-07-30 17:50:17,937 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.1__create_test.sql
+2017-07-30 17:50:17,937 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.2__insert_test.sql
+2017-07-30 17:50:17,947 DEBUG main  org.flywaydb.core.internal.command.DbValidate - Validating migrations ...
+2017-07-30 17:50:17,949 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: 'V', Suffix: '.sql')
+2017-07-30 17:50:17,949 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 17:50:17,949 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 17:50:17,953 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.0__initialise_database.sql
+2017-07-30 17:50:17,954 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.1__create_test.sql
+2017-07-30 17:50:17,954 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.2__insert_test.sql
+2017-07-30 17:50:17,959 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: 'R', Suffix: '.sql')
+2017-07-30 17:50:17,959 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 17:50:17,959 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 17:50:17,963 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.0__initialise_database.sql (filename: V1.0__initialise_database.sql)
+2017-07-30 17:50:17,964 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.1__create_test.sql (filename: V1.1__create_test.sql)
+2017-07-30 17:50:17,964 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.2__insert_test.sql (filename: V1.2__insert_test.sql)
+2017-07-30 17:50:17,965 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classes at 'classpath:db/migration' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+2017-07-30 17:50:17,965 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 17:50:17,965 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 17:50:17,969 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.0__initialise_database.sql (filename: V1.0__initialise_database.sql)
+2017-07-30 17:50:17,969 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.1__create_test.sql (filename: V1.1__create_test.sql)
+2017-07-30 17:50:17,969 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.2__insert_test.sql (filename: V1.2__insert_test.sql)
+2017-07-30 17:50:17,969 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classes at 'classpath:db/migration' (Implementing: 'org.flywaydb.core.api.migration.spring.SpringJdbcMigration')
+2017-07-30 17:50:17,969 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 17:50:17,970 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 17:50:17,973 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.0__initialise_database.sql (filename: V1.0__initialise_database.sql)
+2017-07-30 17:50:17,974 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.1__create_test.sql (filename: V1.1__create_test.sql)
+2017-07-30 17:50:17,974 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.2__insert_test.sql (filename: V1.2__insert_test.sql)
+2017-07-30 17:50:17,978 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.030s)
+2017-07-30 17:50:17,982 DEBUG main  org.flywaydb.core.internal.command.DbSchemas - Schema "HAMI" already exists. Skipping schema creation.
+2017-07-30 17:50:23,021 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-30 17:50:23,032 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "HAMI"."schema_version" (
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR2(50),
+    "description" VARCHAR2(200) NOT NULL,
+    "type" VARCHAR2(20) NOT NULL,
+    "script" VARCHAR2(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR2(100) NOT NULL,
+    "installed_on" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "execution_time" INT NOT NULL,
+    "success" NUMBER(1) NOT NULL
+)
+2017-07-30 17:50:23,032 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 29: ALTER TABLE "HAMI"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("installed_rank")
+2017-07-30 17:50:23,032 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 31: CREATE INDEX "HAMI"."schema_version_s_idx" ON "HAMI"."schema_version" ("success")
+2017-07-30 17:50:23,032 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "HAMI"."schema_version" (
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR2(50),
+    "description" VARCHAR2(200) NOT NULL,
+    "type" VARCHAR2(20) NOT NULL,
+    "script" VARCHAR2(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR2(100) NOT NULL,
+    "installed_on" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "execution_time" INT NOT NULL,
+    "success" NUMBER(1) NOT NULL
+)
+2017-07-30 17:50:23,048 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,048 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "HAMI"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("installed_rank")
+2017-07-30 17:50:23,054 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,054 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "HAMI"."schema_version_s_idx" ON "HAMI"."schema_version" ("success")
+2017-07-30 17:50:23,059 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,059 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Metadata table "HAMI"."schema_version" created.
+2017-07-30 17:50:23,060 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 17:50:23,062 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 17:50:23,067 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-30 17:50:23,070 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-30 17:50:23,070 DEBUG main  org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "HAMI" to version 1.0 - initialise database
+2017-07-30 17:50:23,075 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - MetaData table "HAMI"."schema_version" successfully updated to reflect changes
+2017-07-30 17:50:23,078 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 17:50:23,079 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 17:50:23,083 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 2: CREATE TABLE PERSISTENT_LOGINS (
+  USERNAME    VARCHAR2(100) NOT NULL,
+  SERIES      VARCHAR2(50) NOT NULL,
+  TOKEN       VARCHAR2(50),
+  LAST_USED   TIMESTAMP WITH TIME ZONE
+)
+2017-07-30 17:50:23,085 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 9: COMMENT ON TABLE PERSISTENT_LOGINS IS '리멤버미'
+2017-07-30 17:50:23,085 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 11: COMMENT ON COLUMN PERSISTENT_LOGINS.USERNAME IS '계정명'
+2017-07-30 17:50:23,085 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 13: COMMENT ON COLUMN PERSISTENT_LOGINS.SERIES IS '로그인 ID'
+2017-07-30 17:50:23,086 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 15: COMMENT ON COLUMN PERSISTENT_LOGINS.TOKEN IS '쿠키 KEY'
+2017-07-30 17:50:23,086 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 17: COMMENT ON COLUMN PERSISTENT_LOGINS.LAST_USED IS '최종접속일'
+2017-07-30 17:50:23,086 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 19: ALTER TABLE PERSISTENT_LOGINS ADD CONSTRAINT PERSISTENT_LOGINS_PK PRIMARY KEY ( SERIES )
+2017-07-30 17:50:23,087 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 22: CREATE TABLE USER_ROLES (
+  USER_ROLE_ID   NUMBER NOT NULL,
+  USERNAME       VARCHAR2(100) NOT NULL,
+  ROLE           VARCHAR2(20) NOT NULL
+)
+2017-07-30 17:50:23,087 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 28: COMMENT ON TABLE USER_ROLES IS '권한관리'
+2017-07-30 17:50:23,087 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 30: COMMENT ON COLUMN USER_ROLES.USER_ROLE_ID IS '권한ID'
+2017-07-30 17:50:23,087 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 32: COMMENT ON COLUMN USER_ROLES.USERNAME IS '계정명'
+2017-07-30 17:50:23,087 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 34: COMMENT ON COLUMN USER_ROLES.ROLE IS '권한'
+2017-07-30 17:50:23,088 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 36: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_PK PRIMARY KEY ( USER_ROLE_ID, USERNAME )
+2017-07-30 17:50:23,089 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 39: CREATE OR REPLACE TRIGGER T_USER_ROLES_ID
+BEFORE INSERT ON USER_ROLES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(USER_ROLE_ID)+1,1)
+    INTO   :NEW.USER_ROLE_ID
+    FROM   USER_ROLES;
+  END;
+
+2017-07-30 17:50:23,090 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 50: CREATE TABLE USERS (
+  USERNAME   VARCHAR2(100) NOT NULL,
+  PASSWORD   VARCHAR2(200) NOT NULL,
+  ENABLED    VARCHAR2(1) DEFAULT '1' NOT NULL CHECK (ENABLED IN ('0', '1'))
+)
+2017-07-30 17:50:23,090 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 56: COMMENT ON TABLE USERS IS '유저정보'
+2017-07-30 17:50:23,090 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 58: COMMENT ON COLUMN USERS.USERNAME IS '계정명'
+2017-07-30 17:50:23,090 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 60: COMMENT ON COLUMN USERS.PASSWORD IS '비밀번호'
+2017-07-30 17:50:23,090 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 62: COMMENT ON COLUMN USERS.ENABLED IS '계정상태'
+2017-07-30 17:50:23,091 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 64: ALTER TABLE USERS ADD CONSTRAINT USERS_PK PRIMARY KEY ( USERNAME )
+2017-07-30 17:50:23,091 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 66: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_USERS_FK FOREIGN KEY ( USERNAME )
+REFERENCES USERS ( USERNAME )
+2017-07-30 17:50:23,092 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 70: CREATE TABLE GROUPS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  GROUP_NAME VARCHAR2(50) NOT NULL
+)
+2017-07-30 17:50:23,092 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 75: CREATE OR REPLACE TRIGGER T_GROUPS_ID
+BEFORE INSERT ON GROUPS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUPS;
+  END;
+
+2017-07-30 17:50:23,093 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 84: CREATE TABLE GROUP_AUTHORITIES (
+  GROUP_ID NUMBER(15) NOT NULL,
+  AUTHORITY VARCHAR2(50) NOT NULL,
+  CONSTRAINT FK_GROUP_AUTHORITIES_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 17:50:23,093 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 90: CREATE OR REPLACE TRIGGER T_GROUP_AUTHORITIES_ID
+BEFORE INSERT ON GROUP_AUTHORITIES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_AUTHORITIES;
+  END;
+
+2017-07-30 17:50:23,094 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 99: CREATE TABLE GROUP_MEMBERS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  USERNAME VARCHAR2(50) NOT NULL,
+  GROUP_ID NUMBER(38) NOT NULL,
+  CONSTRAINT FK_GROUP_MEMBERS_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 17:50:23,094 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 106: CREATE OR REPLACE TRIGGER T_GROUP_MEMBERS_ID
+BEFORE INSERT ON GROUP_MEMBERS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_MEMBERS;
+  END;
+
+2017-07-30 17:50:23,095 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 115: CREATE TABLE ACL_SID (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  PRINCIPAL NUMBER(1) NOT NULL CHECK (PRINCIPAL IN (0, 1)),
+  SID VARCHAR2(100) NOT NULL,
+  CONSTRAINT UNIQUE_ACL_SID UNIQUE (SID, PRINCIPAL)
+)
+2017-07-30 17:50:23,095 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 122: CREATE OR REPLACE TRIGGER T_ACL_SID_ID
+BEFORE INSERT ON ACL_SID
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_SID;
+  END;
+
+2017-07-30 17:50:23,096 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 131: CREATE TABLE ACL_CLASS (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  CLASS VARCHAR2(100) NOT NULL,
+  CONSTRAINT UK_ACL_CLASS UNIQUE (CLASS)
+)
+2017-07-30 17:50:23,096 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 137: CREATE OR REPLACE TRIGGER T_ACL_CLASS_ID
+BEFORE INSERT ON ACL_CLASS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_CLASS;
+  END;
+
+2017-07-30 17:50:23,097 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 146: CREATE TABLE ACL_OBJECT_IDENTITY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  OBJECT_ID_CLASS NUMBER(38) NOT NULL,
+  OBJECT_ID_IDENTITY NUMBER(38) NOT NULL,
+  PARENT_OBJECT NUMBER(38),
+  OWNER_SID NUMBER(38),
+  ENTRIES_INHERITING NUMBER(1) NOT NULL CHECK (ENTRIES_INHERITING IN (0, 1)),
+  CONSTRAINT UK_ACL_OBJECT_IDENTITY UNIQUE (OBJECT_ID_CLASS, OBJECT_ID_IDENTITY),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_PARENT FOREIGN KEY (PARENT_OBJECT) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_CLASS FOREIGN KEY (OBJECT_ID_CLASS) REFERENCES ACL_CLASS (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_OWNER FOREIGN KEY (OWNER_SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 17:50:23,098 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 159: CREATE OR REPLACE TRIGGER T_ACL_OBJECT_IDENTITY_ID
+BEFORE INSERT ON ACL_OBJECT_IDENTITY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_OBJECT_IDENTITY;
+  END;
+
+2017-07-30 17:50:23,099 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 168: CREATE TABLE ACL_ENTRY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  ACL_OBJECT_IDENTITY NUMBER(38) NOT NULL,
+  ACE_ORDER INTEGER NOT NULL,
+  SID NUMBER(38) NOT NULL,
+  MASK INTEGER NOT NULL,
+  GRANTING NUMBER(1) NOT NULL CHECK (GRANTING IN (0, 1)),
+  AUDIT_SUCCESS NUMBER(1) NOT NULL CHECK (AUDIT_SUCCESS IN (0, 1)),
+  AUDIT_FAILURE NUMBER(1) NOT NULL CHECK (AUDIT_FAILURE IN (0, 1)),
+  CONSTRAINT UNIQUE_ACL_ENTRY UNIQUE (ACL_OBJECT_IDENTITY, ACE_ORDER),
+  CONSTRAINT FK_ACL_ENTRY_OBJECT FOREIGN KEY (ACL_OBJECT_IDENTITY) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_ENTRY_ACL FOREIGN KEY (SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 17:50:23,099 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 182: CREATE OR REPLACE TRIGGER T_ACL_ENTRY_ID
+BEFORE INSERT ON ACL_ENTRY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_ENTRY;
+  END;
+
+2017-07-30 17:50:23,099 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-30 17:50:23,099 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PERSISTENT_LOGINS (
+  USERNAME    VARCHAR2(100) NOT NULL,
+  SERIES      VARCHAR2(50) NOT NULL,
+  TOKEN       VARCHAR2(50),
+  LAST_USED   TIMESTAMP WITH TIME ZONE
+)
+2017-07-30 17:50:23,108 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,109 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON TABLE PERSISTENT_LOGINS IS '리멤버미'
+2017-07-30 17:50:23,111 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,111 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.USERNAME IS '계정명'
+2017-07-30 17:50:23,113 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,113 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.SERIES IS '로그인 ID'
+2017-07-30 17:50:23,115 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,115 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.TOKEN IS '쿠키 KEY'
+2017-07-30 17:50:23,117 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,117 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.LAST_USED IS '최종접속일'
+2017-07-30 17:50:23,119 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,119 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE PERSISTENT_LOGINS ADD CONSTRAINT PERSISTENT_LOGINS_PK PRIMARY KEY ( SERIES )
+2017-07-30 17:50:23,127 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,127 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE USER_ROLES (
+  USER_ROLE_ID   NUMBER NOT NULL,
+  USERNAME       VARCHAR2(100) NOT NULL,
+  ROLE           VARCHAR2(20) NOT NULL
+)
+2017-07-30 17:50:23,132 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,132 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON TABLE USER_ROLES IS '권한관리'
+2017-07-30 17:50:23,134 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,134 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USER_ROLES.USER_ROLE_ID IS '권한ID'
+2017-07-30 17:50:23,136 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,136 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USER_ROLES.USERNAME IS '계정명'
+2017-07-30 17:50:23,138 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,138 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USER_ROLES.ROLE IS '권한'
+2017-07-30 17:50:23,140 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,140 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_PK PRIMARY KEY ( USER_ROLE_ID, USERNAME )
+2017-07-30 17:50:23,145 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,145 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_USER_ROLES_ID
+BEFORE INSERT ON USER_ROLES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(USER_ROLE_ID)+1,1)
+    INTO   :NEW.USER_ROLE_ID
+    FROM   USER_ROLES;
+  END;
+
+2017-07-30 17:50:23,154 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,154 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE USERS (
+  USERNAME   VARCHAR2(100) NOT NULL,
+  PASSWORD   VARCHAR2(200) NOT NULL,
+  ENABLED    VARCHAR2(1) DEFAULT '1' NOT NULL CHECK (ENABLED IN ('0', '1'))
+)
+2017-07-30 17:50:23,161 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,161 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON TABLE USERS IS '유저정보'
+2017-07-30 17:50:23,163 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,163 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USERS.USERNAME IS '계정명'
+2017-07-30 17:50:23,165 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,165 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USERS.PASSWORD IS '비밀번호'
+2017-07-30 17:50:23,166 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,166 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USERS.ENABLED IS '계정상태'
+2017-07-30 17:50:23,168 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,168 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE USERS ADD CONSTRAINT USERS_PK PRIMARY KEY ( USERNAME )
+2017-07-30 17:50:23,173 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,173 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_USERS_FK FOREIGN KEY ( USERNAME )
+REFERENCES USERS ( USERNAME )
+2017-07-30 17:50:23,179 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,179 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE GROUPS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  GROUP_NAME VARCHAR2(50) NOT NULL
+)
+2017-07-30 17:50:23,186 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,186 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_GROUPS_ID
+BEFORE INSERT ON GROUPS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUPS;
+  END;
+
+2017-07-30 17:50:23,191 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,191 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE GROUP_AUTHORITIES (
+  GROUP_ID NUMBER(15) NOT NULL,
+  AUTHORITY VARCHAR2(50) NOT NULL,
+  CONSTRAINT FK_GROUP_AUTHORITIES_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 17:50:23,197 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,197 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_GROUP_AUTHORITIES_ID
+BEFORE INSERT ON GROUP_AUTHORITIES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_AUTHORITIES;
+  END;
+
+2017-07-30 17:50:23,202 WARN main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - DB: Warning: 경고와 함께 실행이 완료됨 (SQL State: 99999 - Error Code: 17110)
+2017-07-30 17:50:23,203 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,203 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE GROUP_MEMBERS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  USERNAME VARCHAR2(50) NOT NULL,
+  GROUP_ID NUMBER(38) NOT NULL,
+  CONSTRAINT FK_GROUP_MEMBERS_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 17:50:23,212 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,212 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_GROUP_MEMBERS_ID
+BEFORE INSERT ON GROUP_MEMBERS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_MEMBERS;
+  END;
+
+2017-07-30 17:50:23,217 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,217 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_SID (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  PRINCIPAL NUMBER(1) NOT NULL CHECK (PRINCIPAL IN (0, 1)),
+  SID VARCHAR2(100) NOT NULL,
+  CONSTRAINT UNIQUE_ACL_SID UNIQUE (SID, PRINCIPAL)
+)
+2017-07-30 17:50:23,227 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,228 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_SID_ID
+BEFORE INSERT ON ACL_SID
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_SID;
+  END;
+
+2017-07-30 17:50:23,234 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,234 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_CLASS (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  CLASS VARCHAR2(100) NOT NULL,
+  CONSTRAINT UK_ACL_CLASS UNIQUE (CLASS)
+)
+2017-07-30 17:50:23,261 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,262 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_CLASS_ID
+BEFORE INSERT ON ACL_CLASS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_CLASS;
+  END;
+
+2017-07-30 17:50:23,267 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,267 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_OBJECT_IDENTITY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  OBJECT_ID_CLASS NUMBER(38) NOT NULL,
+  OBJECT_ID_IDENTITY NUMBER(38) NOT NULL,
+  PARENT_OBJECT NUMBER(38),
+  OWNER_SID NUMBER(38),
+  ENTRIES_INHERITING NUMBER(1) NOT NULL CHECK (ENTRIES_INHERITING IN (0, 1)),
+  CONSTRAINT UK_ACL_OBJECT_IDENTITY UNIQUE (OBJECT_ID_CLASS, OBJECT_ID_IDENTITY),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_PARENT FOREIGN KEY (PARENT_OBJECT) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_CLASS FOREIGN KEY (OBJECT_ID_CLASS) REFERENCES ACL_CLASS (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_OWNER FOREIGN KEY (OWNER_SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 17:50:23,281 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,281 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_OBJECT_IDENTITY_ID
+BEFORE INSERT ON ACL_OBJECT_IDENTITY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_OBJECT_IDENTITY;
+  END;
+
+2017-07-30 17:50:23,286 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,287 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_ENTRY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  ACL_OBJECT_IDENTITY NUMBER(38) NOT NULL,
+  ACE_ORDER INTEGER NOT NULL,
+  SID NUMBER(38) NOT NULL,
+  MASK INTEGER NOT NULL,
+  GRANTING NUMBER(1) NOT NULL CHECK (GRANTING IN (0, 1)),
+  AUDIT_SUCCESS NUMBER(1) NOT NULL CHECK (AUDIT_SUCCESS IN (0, 1)),
+  AUDIT_FAILURE NUMBER(1) NOT NULL CHECK (AUDIT_FAILURE IN (0, 1)),
+  CONSTRAINT UNIQUE_ACL_ENTRY UNIQUE (ACL_OBJECT_IDENTITY, ACE_ORDER),
+  CONSTRAINT FK_ACL_ENTRY_OBJECT FOREIGN KEY (ACL_OBJECT_IDENTITY) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_ENTRY_ACL FOREIGN KEY (SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 17:50:23,302 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,302 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_ENTRY_ID
+BEFORE INSERT ON ACL_ENTRY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_ENTRY;
+  END;
+
+2017-07-30 17:50:23,308 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 17:50:23,308 DEBUG main  org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "HAMI" to version 1.1 - create test
+2017-07-30 17:50:23,310 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - MetaData table "HAMI"."schema_version" successfully updated to reflect changes
+2017-07-30 17:50:23,312 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 17:50:23,313 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 17:50:23,318 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 2: INSERT INTO users(username,password) VALUES ('hami','1234')
+2017-07-30 17:50:23,319 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 5: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_USER')
+2017-07-30 17:50:23,319 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 6: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_ADMIN')
+2017-07-30 17:50:23,319 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-30 17:50:23,319 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO users(username,password) VALUES ('hami','1234')
+2017-07-30 17:50:23,322 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 1
+2017-07-30 17:50:23,323 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_USER')
+2017-07-30 17:50:23,325 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 1
+2017-07-30 17:50:23,325 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_ADMIN')
+2017-07-30 17:50:23,326 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 1
+2017-07-30 17:50:23,326 DEBUG main  org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "HAMI" to version 1.2 - insert test
+2017-07-30 17:50:23,329 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - MetaData table "HAMI"."schema_version" successfully updated to reflect changes
+2017-07-30 17:50:23,331 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 17:50:23,332 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 17:50:23,337 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.316s).
+2017-07-30 19:17:40,218 INFO main  org.flywaydb.core.internal.util.VersionPrinter - Flyway 4.2.0 by Boxfuse
+2017-07-30 19:17:50,504 INFO main  org.flywaydb.core.internal.dbsupport.DbSupportFactory - Database: jdbc:oracle:thin:@192.168.56.101:1521/XE (Oracle 11.2)
+2017-07-30 19:17:50,718 DEBUG main  org.flywaydb.core.Flyway - DDL Transactions Supported: false
+2017-07-30 19:17:50,720 DEBUG main  org.flywaydb.core.Flyway - Schema: HAMI
+2017-07-30 19:17:50,727 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - Spring Jdbc available: true
+2017-07-30 19:17:50,728 DEBUG main  org.flywaydb.core.internal.callback.SqlScriptFlywayCallback - Scanning for SQL callbacks ...
+2017-07-30 19:17:50,728 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: '', Suffix: '.sql')
+2017-07-30 19:17:50,728 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Determining location urls for classpath:db/migration using ClassLoader sun.misc.Launcher$AppClassLoader@18b4aac2 ...
+2017-07-30 19:17:50,729 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 19:17:50,729 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 19:17:50,730 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/
+2017-07-30 19:17:50,731 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning for resources in path: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration (db/migration)
+2017-07-30 19:17:50,741 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.0__initialise_database.sql
+2017-07-30 19:17:50,741 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.1__create_test.sql
+2017-07-30 19:17:50,742 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.2__insert_test.sql
+2017-07-30 19:17:50,763 DEBUG main  org.flywaydb.core.internal.command.DbClean - Cleaning schema "HAMI" ...
+2017-07-30 19:17:51,078 INFO main  org.flywaydb.core.internal.command.DbClean - Successfully cleaned schema "HAMI" (execution time 00:00.313s)
+2017-07-30 19:17:51,081 DEBUG main  org.flywaydb.core.Flyway - DDL Transactions Supported: false
+2017-07-30 19:17:51,082 DEBUG main  org.flywaydb.core.Flyway - Schema: HAMI
+2017-07-30 19:17:51,082 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - Spring Jdbc available: true
+2017-07-30 19:17:51,082 DEBUG main  org.flywaydb.core.internal.callback.SqlScriptFlywayCallback - Scanning for SQL callbacks ...
+2017-07-30 19:17:51,082 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: '', Suffix: '.sql')
+2017-07-30 19:17:51,082 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Determining location urls for classpath:db/migration using ClassLoader sun.misc.Launcher$AppClassLoader@18b4aac2 ...
+2017-07-30 19:17:51,082 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 19:17:51,083 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 19:17:51,083 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning starting at classpath root in filesystem: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/
+2017-07-30 19:17:51,083 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.FileSystemClassPathLocationScanner - Scanning for resources in path: /Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration (db/migration)
+2017-07-30 19:17:51,091 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.0__initialise_database.sql
+2017-07-30 19:17:51,091 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.1__create_test.sql
+2017-07-30 19:17:51,091 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.2__insert_test.sql
+2017-07-30 19:17:51,096 DEBUG main  org.flywaydb.core.internal.command.DbValidate - Validating migrations ...
+2017-07-30 19:17:51,099 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: 'V', Suffix: '.sql')
+2017-07-30 19:17:51,100 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 19:17:51,100 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 19:17:51,107 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.0__initialise_database.sql
+2017-07-30 19:17:51,107 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.1__create_test.sql
+2017-07-30 19:17:51,107 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Found resource: db/migration/V1.2__insert_test.sql
+2017-07-30 19:17:51,114 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classpath resources at 'classpath:db/migration' (Prefix: 'R', Suffix: '.sql')
+2017-07-30 19:17:51,114 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 19:17:51,114 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 19:17:51,120 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.0__initialise_database.sql (filename: V1.0__initialise_database.sql)
+2017-07-30 19:17:51,120 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.1__create_test.sql (filename: V1.1__create_test.sql)
+2017-07-30 19:17:51,120 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.2__insert_test.sql (filename: V1.2__insert_test.sql)
+2017-07-30 19:17:51,121 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classes at 'classpath:db/migration' (Implementing: 'org.flywaydb.core.api.migration.jdbc.JdbcMigration')
+2017-07-30 19:17:51,122 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 19:17:51,122 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 19:17:51,127 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.0__initialise_database.sql (filename: V1.0__initialise_database.sql)
+2017-07-30 19:17:51,127 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.1__create_test.sql (filename: V1.1__create_test.sql)
+2017-07-30 19:17:51,127 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.2__insert_test.sql (filename: V1.2__insert_test.sql)
+2017-07-30 19:17:51,128 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning for classes at 'classpath:db/migration' (Implementing: 'org.flywaydb.core.api.migration.spring.SpringJdbcMigration')
+2017-07-30 19:17:51,128 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Scanning URL: file:/Users/hami_mac/DevWorks/IdeaProjects/hamiWebMvc/out/production/resources/db/migration
+2017-07-30 19:17:51,128 DEBUG main  org.flywaydb.core.internal.util.FeatureDetector - JBoss VFS v2 available: false
+2017-07-30 19:17:51,134 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.0__initialise_database.sql (filename: V1.0__initialise_database.sql)
+2017-07-30 19:17:51,134 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.1__create_test.sql (filename: V1.1__create_test.sql)
+2017-07-30 19:17:51,134 DEBUG main  org.flywaydb.core.internal.util.scanner.classpath.ClassPathScanner - Filtering out resource: db/migration/V1.2__insert_test.sql (filename: V1.2__insert_test.sql)
+2017-07-30 19:17:51,139 INFO main  org.flywaydb.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.041s)
+2017-07-30 19:17:51,144 DEBUG main  org.flywaydb.core.internal.command.DbSchemas - Schema "HAMI" already exists. Skipping schema creation.
+2017-07-30 19:17:56,184 INFO main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Creating Metadata table: "HAMI"."schema_version"
+2017-07-30 19:17:56,192 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 17: CREATE TABLE "HAMI"."schema_version" (
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR2(50),
+    "description" VARCHAR2(200) NOT NULL,
+    "type" VARCHAR2(20) NOT NULL,
+    "script" VARCHAR2(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR2(100) NOT NULL,
+    "installed_on" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "execution_time" INT NOT NULL,
+    "success" NUMBER(1) NOT NULL
+)
+2017-07-30 19:17:56,193 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 29: ALTER TABLE "HAMI"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("installed_rank")
+2017-07-30 19:17:56,193 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 31: CREATE INDEX "HAMI"."schema_version_s_idx" ON "HAMI"."schema_version" ("success")
+2017-07-30 19:17:56,193 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE "HAMI"."schema_version" (
+    "installed_rank" INT NOT NULL,
+    "version" VARCHAR2(50),
+    "description" VARCHAR2(200) NOT NULL,
+    "type" VARCHAR2(20) NOT NULL,
+    "script" VARCHAR2(1000) NOT NULL,
+    "checksum" INT,
+    "installed_by" VARCHAR2(100) NOT NULL,
+    "installed_on" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "execution_time" INT NOT NULL,
+    "success" NUMBER(1) NOT NULL
+)
+2017-07-30 19:17:56,204 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,205 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE "HAMI"."schema_version" ADD CONSTRAINT "schema_version_pk" PRIMARY KEY ("installed_rank")
+2017-07-30 19:17:56,211 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,211 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE INDEX "HAMI"."schema_version_s_idx" ON "HAMI"."schema_version" ("success")
+2017-07-30 19:17:56,217 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,217 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - Metadata table "HAMI"."schema_version" created.
+2017-07-30 19:17:56,219 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 19:17:56,220 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 19:17:56,225 INFO main  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "HAMI": << Empty Schema >>
+2017-07-30 19:17:56,228 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.0 - initialise database
+2017-07-30 19:17:56,228 DEBUG main  org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "HAMI" to version 1.0 - initialise database
+2017-07-30 19:17:56,234 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - MetaData table "HAMI"."schema_version" successfully updated to reflect changes
+2017-07-30 19:17:56,236 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 19:17:56,237 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 19:17:56,241 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 2: CREATE TABLE PERSISTENT_LOGINS (
+  USERNAME    VARCHAR2(100) NOT NULL,
+  SERIES      VARCHAR2(50) NOT NULL,
+  TOKEN       VARCHAR2(50),
+  LAST_USED   TIMESTAMP WITH TIME ZONE
+)
+2017-07-30 19:17:56,243 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 9: COMMENT ON TABLE PERSISTENT_LOGINS IS '리멤버미'
+2017-07-30 19:17:56,244 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 11: COMMENT ON COLUMN PERSISTENT_LOGINS.USERNAME IS '계정명'
+2017-07-30 19:17:56,244 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 13: COMMENT ON COLUMN PERSISTENT_LOGINS.SERIES IS '로그인 ID'
+2017-07-30 19:17:56,244 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 15: COMMENT ON COLUMN PERSISTENT_LOGINS.TOKEN IS '쿠키 KEY'
+2017-07-30 19:17:56,244 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 17: COMMENT ON COLUMN PERSISTENT_LOGINS.LAST_USED IS '최종접속일'
+2017-07-30 19:17:56,244 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 19: ALTER TABLE PERSISTENT_LOGINS ADD CONSTRAINT PERSISTENT_LOGINS_PK PRIMARY KEY ( SERIES )
+2017-07-30 19:17:56,245 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 22: CREATE TABLE USER_ROLES (
+  USER_ROLE_ID   NUMBER NOT NULL,
+  USERNAME       VARCHAR2(100) NOT NULL,
+  ROLE           VARCHAR2(20) NOT NULL
+)
+2017-07-30 19:17:56,245 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 28: COMMENT ON TABLE USER_ROLES IS '권한관리'
+2017-07-30 19:17:56,245 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 30: COMMENT ON COLUMN USER_ROLES.USER_ROLE_ID IS '권한ID'
+2017-07-30 19:17:56,245 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 32: COMMENT ON COLUMN USER_ROLES.USERNAME IS '계정명'
+2017-07-30 19:17:56,246 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 34: COMMENT ON COLUMN USER_ROLES.ROLE IS '권한'
+2017-07-30 19:17:56,246 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 36: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_PK PRIMARY KEY ( USER_ROLE_ID, USERNAME )
+2017-07-30 19:17:56,246 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 39: CREATE OR REPLACE TRIGGER T_USER_ROLES_ID
+BEFORE INSERT ON USER_ROLES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(USER_ROLE_ID)+1,1)
+    INTO   :NEW.USER_ROLE_ID
+    FROM   USER_ROLES;
+  END;
+
+2017-07-30 19:17:56,247 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 50: CREATE TABLE USERS (
+  USERNAME   VARCHAR2(100) NOT NULL,
+  PASSWORD   VARCHAR2(200) NOT NULL,
+  ENABLED    VARCHAR2(1) DEFAULT '1' NOT NULL CHECK (ENABLED IN ('0', '1'))
+)
+2017-07-30 19:17:56,247 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 56: COMMENT ON TABLE USERS IS '유저정보'
+2017-07-30 19:17:56,247 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 58: COMMENT ON COLUMN USERS.USERNAME IS '계정명'
+2017-07-30 19:17:56,247 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 60: COMMENT ON COLUMN USERS.PASSWORD IS '비밀번호'
+2017-07-30 19:17:56,248 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 62: COMMENT ON COLUMN USERS.ENABLED IS '계정상태'
+2017-07-30 19:17:56,248 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 64: ALTER TABLE USERS ADD CONSTRAINT USERS_PK PRIMARY KEY ( USERNAME )
+2017-07-30 19:17:56,248 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 66: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_USERS_FK FOREIGN KEY ( USERNAME )
+REFERENCES USERS ( USERNAME )
+2017-07-30 19:17:56,249 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 70: CREATE TABLE GROUPS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  GROUP_NAME VARCHAR2(50) NOT NULL
+)
+2017-07-30 19:17:56,249 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 75: CREATE OR REPLACE TRIGGER T_GROUPS_ID
+BEFORE INSERT ON GROUPS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUPS;
+  END;
+
+2017-07-30 19:17:56,250 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 84: CREATE TABLE GROUP_AUTHORITIES (
+  GROUP_ID NUMBER(15) NOT NULL,
+  AUTHORITY VARCHAR2(50) NOT NULL,
+  CONSTRAINT FK_GROUP_AUTHORITIES_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 19:17:56,250 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 90: CREATE OR REPLACE TRIGGER T_GROUP_AUTHORITIES_ID
+BEFORE INSERT ON GROUP_AUTHORITIES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_AUTHORITIES;
+  END;
+
+2017-07-30 19:17:56,251 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 99: CREATE TABLE GROUP_MEMBERS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  USERNAME VARCHAR2(50) NOT NULL,
+  GROUP_ID NUMBER(38) NOT NULL,
+  CONSTRAINT FK_GROUP_MEMBERS_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 19:17:56,252 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 106: CREATE OR REPLACE TRIGGER T_GROUP_MEMBERS_ID
+BEFORE INSERT ON GROUP_MEMBERS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_MEMBERS;
+  END;
+
+2017-07-30 19:17:56,253 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 115: CREATE TABLE ACL_SID (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  PRINCIPAL NUMBER(1) NOT NULL CHECK (PRINCIPAL IN (0, 1)),
+  SID VARCHAR2(100) NOT NULL,
+  CONSTRAINT UNIQUE_ACL_SID UNIQUE (SID, PRINCIPAL)
+)
+2017-07-30 19:17:56,254 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 122: CREATE OR REPLACE TRIGGER T_ACL_SID_ID
+BEFORE INSERT ON ACL_SID
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_SID;
+  END;
+
+2017-07-30 19:17:56,254 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 131: CREATE TABLE ACL_CLASS (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  CLASS VARCHAR2(100) NOT NULL,
+  CONSTRAINT UK_ACL_CLASS UNIQUE (CLASS)
+)
+2017-07-30 19:17:56,255 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 137: CREATE OR REPLACE TRIGGER T_ACL_CLASS_ID
+BEFORE INSERT ON ACL_CLASS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_CLASS;
+  END;
+
+2017-07-30 19:17:56,256 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 146: CREATE TABLE ACL_OBJECT_IDENTITY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  OBJECT_ID_CLASS NUMBER(38) NOT NULL,
+  OBJECT_ID_IDENTITY NUMBER(38) NOT NULL,
+  PARENT_OBJECT NUMBER(38),
+  OWNER_SID NUMBER(38),
+  ENTRIES_INHERITING NUMBER(1) NOT NULL CHECK (ENTRIES_INHERITING IN (0, 1)),
+  CONSTRAINT UK_ACL_OBJECT_IDENTITY UNIQUE (OBJECT_ID_CLASS, OBJECT_ID_IDENTITY),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_PARENT FOREIGN KEY (PARENT_OBJECT) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_CLASS FOREIGN KEY (OBJECT_ID_CLASS) REFERENCES ACL_CLASS (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_OWNER FOREIGN KEY (OWNER_SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 19:17:56,256 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 159: CREATE OR REPLACE TRIGGER T_ACL_OBJECT_IDENTITY_ID
+BEFORE INSERT ON ACL_OBJECT_IDENTITY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_OBJECT_IDENTITY;
+  END;
+
+2017-07-30 19:17:56,258 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 168: CREATE TABLE ACL_ENTRY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  ACL_OBJECT_IDENTITY NUMBER(38) NOT NULL,
+  ACE_ORDER INTEGER NOT NULL,
+  SID NUMBER(38) NOT NULL,
+  MASK INTEGER NOT NULL,
+  GRANTING NUMBER(1) NOT NULL CHECK (GRANTING IN (0, 1)),
+  AUDIT_SUCCESS NUMBER(1) NOT NULL CHECK (AUDIT_SUCCESS IN (0, 1)),
+  AUDIT_FAILURE NUMBER(1) NOT NULL CHECK (AUDIT_FAILURE IN (0, 1)),
+  CONSTRAINT UNIQUE_ACL_ENTRY UNIQUE (ACL_OBJECT_IDENTITY, ACE_ORDER),
+  CONSTRAINT FK_ACL_ENTRY_OBJECT FOREIGN KEY (ACL_OBJECT_IDENTITY) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_ENTRY_ACL FOREIGN KEY (SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 19:17:56,258 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 182: CREATE OR REPLACE TRIGGER T_ACL_ENTRY_ID
+BEFORE INSERT ON ACL_ENTRY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_ENTRY;
+  END;
+
+2017-07-30 19:17:56,258 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.1 - create test
+2017-07-30 19:17:56,258 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE PERSISTENT_LOGINS (
+  USERNAME    VARCHAR2(100) NOT NULL,
+  SERIES      VARCHAR2(50) NOT NULL,
+  TOKEN       VARCHAR2(50),
+  LAST_USED   TIMESTAMP WITH TIME ZONE
+)
+2017-07-30 19:17:56,267 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,268 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON TABLE PERSISTENT_LOGINS IS '리멤버미'
+2017-07-30 19:17:56,270 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,270 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.USERNAME IS '계정명'
+2017-07-30 19:17:56,272 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,272 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.SERIES IS '로그인 ID'
+2017-07-30 19:17:56,274 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,274 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.TOKEN IS '쿠키 KEY'
+2017-07-30 19:17:56,276 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,276 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN PERSISTENT_LOGINS.LAST_USED IS '최종접속일'
+2017-07-30 19:17:56,278 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,278 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE PERSISTENT_LOGINS ADD CONSTRAINT PERSISTENT_LOGINS_PK PRIMARY KEY ( SERIES )
+2017-07-30 19:17:56,286 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,286 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE USER_ROLES (
+  USER_ROLE_ID   NUMBER NOT NULL,
+  USERNAME       VARCHAR2(100) NOT NULL,
+  ROLE           VARCHAR2(20) NOT NULL
+)
+2017-07-30 19:17:56,293 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,293 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON TABLE USER_ROLES IS '권한관리'
+2017-07-30 19:17:56,295 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,295 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USER_ROLES.USER_ROLE_ID IS '권한ID'
+2017-07-30 19:17:56,297 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,297 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USER_ROLES.USERNAME IS '계정명'
+2017-07-30 19:17:56,299 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,299 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USER_ROLES.ROLE IS '권한'
+2017-07-30 19:17:56,300 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,301 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_PK PRIMARY KEY ( USER_ROLE_ID, USERNAME )
+2017-07-30 19:17:56,306 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,306 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_USER_ROLES_ID
+BEFORE INSERT ON USER_ROLES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(USER_ROLE_ID)+1,1)
+    INTO   :NEW.USER_ROLE_ID
+    FROM   USER_ROLES;
+  END;
+
+2017-07-30 19:17:56,314 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,314 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE USERS (
+  USERNAME   VARCHAR2(100) NOT NULL,
+  PASSWORD   VARCHAR2(200) NOT NULL,
+  ENABLED    VARCHAR2(1) DEFAULT '1' NOT NULL CHECK (ENABLED IN ('0', '1'))
+)
+2017-07-30 19:17:56,319 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,320 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON TABLE USERS IS '유저정보'
+2017-07-30 19:17:56,321 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,321 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USERS.USERNAME IS '계정명'
+2017-07-30 19:17:56,323 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,323 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USERS.PASSWORD IS '비밀번호'
+2017-07-30 19:17:56,324 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,325 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: COMMENT ON COLUMN USERS.ENABLED IS '계정상태'
+2017-07-30 19:17:56,326 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,326 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE USERS ADD CONSTRAINT USERS_PK PRIMARY KEY ( USERNAME )
+2017-07-30 19:17:56,332 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,332 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: ALTER TABLE USER_ROLES ADD CONSTRAINT USER_ROLES_USERS_FK FOREIGN KEY ( USERNAME )
+REFERENCES USERS ( USERNAME )
+2017-07-30 19:17:56,337 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,338 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE GROUPS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  GROUP_NAME VARCHAR2(50) NOT NULL
+)
+2017-07-30 19:17:56,344 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,345 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_GROUPS_ID
+BEFORE INSERT ON GROUPS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUPS;
+  END;
+
+2017-07-30 19:17:56,350 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,350 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE GROUP_AUTHORITIES (
+  GROUP_ID NUMBER(15) NOT NULL,
+  AUTHORITY VARCHAR2(50) NOT NULL,
+  CONSTRAINT FK_GROUP_AUTHORITIES_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 19:17:56,355 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,355 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_GROUP_AUTHORITIES_ID
+BEFORE INSERT ON GROUP_AUTHORITIES
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_AUTHORITIES;
+  END;
+
+2017-07-30 19:17:56,360 WARN main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - DB: Warning: 경고와 함께 실행이 완료됨 (SQL State: 99999 - Error Code: 17110)
+2017-07-30 19:17:56,360 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,360 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE GROUP_MEMBERS (
+  ID NUMBER(15) NOT NULL PRIMARY KEY,
+  USERNAME VARCHAR2(50) NOT NULL,
+  GROUP_ID NUMBER(38) NOT NULL,
+  CONSTRAINT FK_GROUP_MEMBERS_GROUP FOREIGN KEY (GROUP_ID) REFERENCES GROUPS (ID)
+)
+2017-07-30 19:17:56,368 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,368 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_GROUP_MEMBERS_ID
+BEFORE INSERT ON GROUP_MEMBERS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM GROUP_MEMBERS;
+  END;
+
+2017-07-30 19:17:56,374 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,374 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_SID (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  PRINCIPAL NUMBER(1) NOT NULL CHECK (PRINCIPAL IN (0, 1)),
+  SID VARCHAR2(100) NOT NULL,
+  CONSTRAINT UNIQUE_ACL_SID UNIQUE (SID, PRINCIPAL)
+)
+2017-07-30 19:17:56,383 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,383 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_SID_ID
+BEFORE INSERT ON ACL_SID
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_SID;
+  END;
+
+2017-07-30 19:17:56,388 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,389 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_CLASS (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  CLASS VARCHAR2(100) NOT NULL,
+  CONSTRAINT UK_ACL_CLASS UNIQUE (CLASS)
+)
+2017-07-30 19:17:56,398 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,398 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_CLASS_ID
+BEFORE INSERT ON ACL_CLASS
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_CLASS;
+  END;
+
+2017-07-30 19:17:56,403 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,404 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_OBJECT_IDENTITY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  OBJECT_ID_CLASS NUMBER(38) NOT NULL,
+  OBJECT_ID_IDENTITY NUMBER(38) NOT NULL,
+  PARENT_OBJECT NUMBER(38),
+  OWNER_SID NUMBER(38),
+  ENTRIES_INHERITING NUMBER(1) NOT NULL CHECK (ENTRIES_INHERITING IN (0, 1)),
+  CONSTRAINT UK_ACL_OBJECT_IDENTITY UNIQUE (OBJECT_ID_CLASS, OBJECT_ID_IDENTITY),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_PARENT FOREIGN KEY (PARENT_OBJECT) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_CLASS FOREIGN KEY (OBJECT_ID_CLASS) REFERENCES ACL_CLASS (ID),
+  CONSTRAINT FK_ACL_OBJECT_IDENTITY_OWNER FOREIGN KEY (OWNER_SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 19:17:56,417 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,417 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_OBJECT_IDENTITY_ID
+BEFORE INSERT ON ACL_OBJECT_IDENTITY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_OBJECT_IDENTITY;
+  END;
+
+2017-07-30 19:17:56,423 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,423 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE TABLE ACL_ENTRY (
+  ID NUMBER(38) NOT NULL PRIMARY KEY,
+  ACL_OBJECT_IDENTITY NUMBER(38) NOT NULL,
+  ACE_ORDER INTEGER NOT NULL,
+  SID NUMBER(38) NOT NULL,
+  MASK INTEGER NOT NULL,
+  GRANTING NUMBER(1) NOT NULL CHECK (GRANTING IN (0, 1)),
+  AUDIT_SUCCESS NUMBER(1) NOT NULL CHECK (AUDIT_SUCCESS IN (0, 1)),
+  AUDIT_FAILURE NUMBER(1) NOT NULL CHECK (AUDIT_FAILURE IN (0, 1)),
+  CONSTRAINT UNIQUE_ACL_ENTRY UNIQUE (ACL_OBJECT_IDENTITY, ACE_ORDER),
+  CONSTRAINT FK_ACL_ENTRY_OBJECT FOREIGN KEY (ACL_OBJECT_IDENTITY) REFERENCES ACL_OBJECT_IDENTITY (ID),
+  CONSTRAINT FK_ACL_ENTRY_ACL FOREIGN KEY (SID) REFERENCES ACL_SID (ID)
+)
+2017-07-30 19:17:56,441 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,441 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: CREATE OR REPLACE TRIGGER T_ACL_ENTRY_ID
+BEFORE INSERT ON ACL_ENTRY
+FOR EACH ROW
+  BEGIN
+    SELECT NVL(MAX(ID)+1,1) INTO :NEW.ID FROM ACL_ENTRY;
+  END;
+
+2017-07-30 19:17:56,448 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 0
+2017-07-30 19:17:56,448 DEBUG main  org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "HAMI" to version 1.1 - create test
+2017-07-30 19:17:56,451 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - MetaData table "HAMI"."schema_version" successfully updated to reflect changes
+2017-07-30 19:17:56,453 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 19:17:56,454 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 19:17:56,459 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 2: INSERT INTO users(username,password) VALUES ('hami','1234')
+2017-07-30 19:17:56,459 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 5: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_USER')
+2017-07-30 19:17:56,459 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Found statement at line 6: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_ADMIN')
+2017-07-30 19:17:56,459 INFO main  org.flywaydb.core.internal.command.DbMigrate - Migrating schema "HAMI" to version 1.2 - insert test
+2017-07-30 19:17:56,459 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO users(username,password) VALUES ('hami','1234')
+2017-07-30 19:17:56,464 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 1
+2017-07-30 19:17:56,464 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_USER')
+2017-07-30 19:17:56,467 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 1
+2017-07-30 19:17:56,467 DEBUG main  org.flywaydb.core.internal.dbsupport.SqlScript - Executing SQL: INSERT INTO user_roles (username, role) VALUES ('hami', 'ROLE_ADMIN')
+2017-07-30 19:17:56,469 DEBUG main  org.flywaydb.core.internal.dbsupport.JdbcTemplate - Update Count: 1
+2017-07-30 19:17:56,469 DEBUG main  org.flywaydb.core.internal.command.DbMigrate - Successfully completed migration of schema "HAMI" to version 1.2 - insert test
+2017-07-30 19:17:56,471 DEBUG main  org.flywaydb.core.internal.metadatatable.MetaDataTableImpl - MetaData table "HAMI"."schema_version" successfully updated to reflect changes
+2017-07-30 19:17:56,474 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Locking table "HAMI"."schema_version"...
+2017-07-30 19:17:56,474 DEBUG main  org.flywaydb.core.internal.dbsupport.Table - Lock acquired for table "HAMI"."schema_version"
+2017-07-30 19:17:56,479 INFO main  org.flywaydb.core.internal.command.DbMigrate - Successfully applied 3 migrations to schema "HAMI" (execution time 00:00.295s).

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="scripts">
+    <!-- ScreenFull -->
+    <script src="../vendors/screenfull/screenfull.js" th:src="@{/libs/screenfull/screenfull.js}"></script>
+    <script>
+        // -------------------------------------------------------------------------
+        // Initialize DEMO sidebar
+        require(['jquery', 'demo', 'px/plugins/px-sidebar'], function($, pxDemo) {
+            pxDemo.initializeDemoSidebar();
+
+            $('#px-demo-sidebar').pxSidebar();
+            pxDemo.initializeDemo();
+        });
+    </script>
+
+    <script type="text/javascript">
+        // -------------------------------------------------------------------------
+        // Initialize DEMO
+        require(['jquery', 'px/pixeladmin', 'px/plugins/px-nav', 'px/plugins/px-navbar', 'px/plugins/px-footer', 'px/extensions/perfect-scrollbar.jquery'], function($) {
+            var file = String(document.location).split('/').pop();
+
+            // Remove unnecessary file parts
+            file = file.replace(/(\.html).*/i, '$1');
+
+            if (!/.html$/i.test(file)) {
+                file = 'index.html';
+            }
+
+            // Activate current nav item
+            $('body > .px-nav')
+                .find('.px-nav-item > a[href="' + file + '"]')
+                .parent()
+                .addClass('active');
+
+            $('body > .px-nav').pxNav();
+            $('body > .px-footer').pxFooter();
+
+            $('#navbar-notifications').perfectScrollbar();
+            $('#navbar-messages').perfectScrollbar();
+        });
+    </script>
+
+    <script>
+        // -------------------------------------------------------------------------
+        // Initialize tabs
+        require(['px/bootstrap/tab']);
+    </script>
+
+    <script>
+        // -------------------------------------------------------------------------
+        // Initialize uploads chart
+        require(['demo', 'px-libs/morris'], function(pxDemo, Morris) {
+            var data = [
+                { day: '2014-03-10', v: pxDemo.getRandomData(20, 5) },
+                { day: '2014-03-11', v: pxDemo.getRandomData(20, 5) },
+                { day: '2014-03-12', v: pxDemo.getRandomData(20, 5) },
+                { day: '2014-03-13', v: pxDemo.getRandomData(20, 5) },
+                { day: '2014-03-14', v: pxDemo.getRandomData(20, 5) },
+                { day: '2014-03-15', v: pxDemo.getRandomData(20, 5) },
+                { day: '2014-03-16', v: pxDemo.getRandomData(20, 5) }
+            ];
+
+            new Morris.Line({
+                element: 'hero-graph',
+                data: data,
+                xkey: 'day',
+                ykeys: ['v'],
+                labels: ['Value'],
+                lineColors: ['#fff'],
+                lineWidth: 2,
+                pointSize: 4,
+                gridLineColor: 'rgba(255,255,255,.5)',
+                resize: true,
+                gridTextColor: '#fff',
+                xLabels: "day",
+                xLabelFormat: function(d) {
+                    return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov', 'Dec'][d.getMonth()] + ' ' + d.getDate();
+                },
+            });
+        });
+
+        // -------------------------------------------------------------------------
+        // Initialize easy pie charts
+        require(['jquery', 'demo', 'jquery.easy-pie-chart/jquery.easypiechart'], function($, pxDemo) {
+            var colors = pxDemo.getRandomColors();
+
+            var config = {
+                animate: 2000,
+                scaleColor: false,
+                lineWidth: 4,
+                lineCap: 'square',
+                size: 90,
+                trackColor: 'rgba(0, 0, 0, .09)',
+                onStep: function(_from, _to, currentValue) {
+                    var value = $(this.el).attr('data-max-value') * currentValue / 100;
+
+                    $(this.el)
+                        .find('> span')
+                        .text(Math.round(value) + $(this.el).attr('data-suffix'));
+                },
+            }
+
+            var data = [
+                pxDemo.getRandomData(1000, 1),
+                pxDemo.getRandomData(100, 1),
+                pxDemo.getRandomData(64, 1),
+            ];
+
+            $('#easy-pie-chart-1')
+                .attr('data-percent', (data[0] / 1000) * 100)
+                .attr('data-max-value', 1000)
+                .easyPieChart($.extend({}, config, { barColor: colors[0] }));
+
+            $('#easy-pie-chart-2')
+                .attr('data-percent', (data[1] / 100) * 100)
+                .attr('data-max-value', 100)
+                .easyPieChart($.extend({}, config, { barColor: colors[1] }));
+
+            $('#easy-pie-chart-3')
+                .attr('data-percent', (data[2] / 64) * 100)
+                .attr('data-max-value', 64)
+                .easyPieChart($.extend({}, config, { barColor: colors[2] }));
+        });
+
+        // -------------------------------------------------------------------------
+        // Initialize retweets graph
+        require(['jquery', 'demo', 'px/plugins/px-sparkline'], function($, pxDemo) {
+            var data = [
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+            ];
+
+            $("#sparkline-1").pxSparkline(data, {
+                type: 'line',
+                width: '100%',
+                height: '42px',
+                fillColor: '',
+                lineColor: '#fff',
+                lineWidth: 2,
+                spotColor: '#ffffff',
+                minSpotColor: '#ffffff',
+                maxSpotColor: '#ffffff',
+                highlightSpotColor: '#ffffff',
+                highlightLineColor: '#ffffff',
+                spotRadius: 4,
+            });
+        });
+
+        // -------------------------------------------------------------------------
+        // Initialize Monthly visitor statistics graph
+        require(['jquery', 'demo', 'px/plugins/px-sparkline'], function($, pxDemo) {
+            var data = [
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+                pxDemo.getRandomData(300, 100),
+            ];
+
+            $("#sparkline-2").pxSparkline(data, {
+                type: 'bar',
+                height: '42px',
+                width: '100%',
+                barSpacing: 2,
+                zeroAxis: false,
+                barColor: '#ffffff',
+            });
+        });
+
+        // -------------------------------------------------------------------------
+        // Initialize scrollbars
+        require(['jquery', 'px/extensions/perfect-scrollbar.jquery'], function($) {
+            $('#support-tickets').perfectScrollbar();
+            $('#comments').perfectScrollbar();
+            $('#threads').perfectScrollbar();
+        });
+
+        // -------------------------------------------------------------------------
+        // Initialize Tab Resize Plugin
+        require(['jquery', 'px/plugins/px-tab-resize'], function($) {
+            $('#tab-resize-tabs').pxTabResize();
+            $('#tab-resize-pills').pxTabResize();
+        });
+
+        require(['jquery', 'px-libs/toastr'], function ($, toastr) {
+            $("#test li").each(function(){
+                var tabNm = $(this).find('a').html();
+                $(this).find('a').on("click", function () {
+
+                    if(tabCheck(tabNm)) return;
+                    var tabId = "pid_"+new Date().getTime();
+                    var tabHtml = '<li nm="'+tabNm+'"><a href="#'+tabId+'" data-toggle="tab">'+tabNm+'<button type="button" class="close" onclick="tabClose(this)" tab="'+tabId+'" style="margin:-2px -5px 0px 10px" aria-label="Close">×</button></a></li>';
+                    var paneHtml = '<div class="tab-pane" id="'+tabId+'"></div>';
+
+                    $('#biz-pane').append(paneHtml);
+                    $('#top-tab > ul').append(tabHtml).find('a').trigger('click');
+
+                    if($(this).attr('type')=='JSP'){
+                        $("#"+tabId).load("/testJsp/"+$(this).attr('id'));
+                    } else {
+                        $("#"+tabId).load("/test/"+$(this).attr('id'));
+                    }
+                    $('.px-nav-content .px-nav-item').each(function(i, el){
+                        $(el).removeClass('active');
+                    });
+                    $(this).parent().addClass('active');
+                 });
+            });
+
+            function tabCheck(nm) {
+                var flag = false;
+                $('#top-tab > ul li').each(function () {
+                    var tabNm = $(this).attr('nm');
+                    if (tabNm == nm) {
+                        $(this).find('a').trigger('click');
+                        flag = true;
+                    }
+                });
+                if (!flag && $('#top-tab > ul li').not('.dropdown').size() > 5) {
+                    var msg = '메뉴는 최대 5개까지 열수 있습니다. <br/>사용하지 않는 탭을 닫아주세요!';
+                    var title = '';
+                    toastr['info'](msg, title, {
+                        positionClass: 'toast-top-center'
+                    });
+                    flag = true;
+                }
+                return flag;
+            }
+
+            $('#screenfull').click(function () {
+                screenfull.toggle($('html')[0]);
+            });
+        });
+
+        function tabClose(el) {
+            var $el = $(el);
+            var $bizWrap = $('#' + $el.attr('tab'));
+            var isActive = $el.closest('li').hasClass('active');
+            var idx = $el.closest('li').index();
+            var $preLi = $(el).closest('ul').find('li').eq(idx - 1);
+            $bizWrap.remove();
+            $el.closest('li').remove();
+            if (isActive) {
+                $preLi.find('a').trigger('click');
+            }
+        }
+    </script>
+</th:block>
+</body>
+</html>

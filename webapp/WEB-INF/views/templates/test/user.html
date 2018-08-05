@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<head>
+    <title>Metis</title>
+
+    <style>
+        /* Example shared styles */
+        .Example h1 { font:30px Arial; padding:5px 0px 5px 0px; margin:0px; text-align:center; }
+        .Example h2 { font:15px Arial; padding:0px; margin:0px 0px 10px 0px; text-align:center; color:#757575; }
+        .Example h3,.Example h4 { display:inline-block; font:bold 15px Arial; padding:0px 5px 0px 5px; border-radius:2px; color:black; margin:2px; font-style:normal; color:#333; }
+        .Example h3 { background:#EE9; border:1px solid #DD8; }
+        .Example h4 { background:#BDE; border:1px solid #ACD; }
+        .Example a { text-decoration:underline; }
+        .Example li { padding-bottom:8px; }
+        .Example ul { margin:6px 0px 0px 20px; font:13px Arial; }
+        .Example .Desc { margin:0px 5px 10px 5px; padding:10px; border:1px solid #dfdfdf; }
+        .Example .Desc > ul { margin-left:0px; padding:0px 0px 0px 15px; clear:both; }
+        .Example .Desc b { color:#0585B9; }
+        .Example .Path { font:normal 12px Arial; color:#0585B9; }
+        .Example .Path b { color:#D73938; }
+        .Example .Path u { text-decoration:none; color:black; font-weight:bold; padding:0px 2px 0px 2px; }
+        .Example .Path i { color:black; font-style:normal; font-weight:bold; }
+        .Example .Xml { margin-bottom:6px; font-size:12px; color:#757575; }
+        .Example .Border { margin:0px 5px 15px 5px; }
+        .Example .Main { }
+        .Example .Highlight { color:#0585B9; padding-bottom:5px; }
+    </style>
+</head>
+<body class="  ">
+<program th:id="${programId}">
+<div class="tab-pane">
+    <div class="row">
+        <ol class="breadcrumb page-breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">사용자관리</li>
+        </ol>
+    </div>
+    <div id="content" class="page-header">
+        <div class="row">
+            <div class="col-md-4 text-xs-center text-md-left text-nowrap">
+                <h1><i class="page-header-icon ion-ios-paper-outline"></i>사용자관리</h1>
+            </div>
+
+            <hr class="page-wide-block visible-xs visible-sm">
+
+            <div class="col-xs-12 width-md-auto width-lg-auto width-xl-auto pull-md-right">
+                <a href="#" class="btn btn-primary btn-block"><span class="btn-label-icon left ion-plus-round"></span>Create project</a>
+            </div>
+
+            <!-- Spacer -->
+            <div class="m-b-2 visible-xs visible-sm clearfix"></div>
+
+            <form action="" class="page-header-form col-xs-12 col-md-4 pull-md-right">
+                <div class="input-group">
+                    <span class="input-group-addon b-a-0 font-size-16"><i class="ion-search"></i></span>
+                    <input type="text" placeholder="Search..." class="form-control p-l-0 b-a-0">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="ExampleContent" class="Example ExampleContent">
+    <div th:id="'tg_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
+        <script> TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/conf/User.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tg_[[${programId}]]"); </script>
+    </div>
+</div>
+<script>
+    // -----------------------------------------------------------------------------------------
+    // Shows the year 2005 only
+    Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
+
+    // -----------------------------------------------------------------------------------------
+    // Custom event for searching
+    // Searches in orders with specified items
+    Grids.OnRowSearch = function(G,row,col,found,F,type){
+        if(type || G.SearchDefs!="") return found; // Only for "in orders with items" and default call
+        if(row.Def.Name=="Data") return -1;        // Only for orders
+        for(var r=row.firstChild;r;r=r.nextSibling) {
+            var found = F(r,col,1);                 // calls F(r,col,type=1)
+            if(!(found<=0)) return found;
+        }
+        return 0;
+    }
+    // -----------------------------------------------------------------------------------------
+    // Creates popup right click menu to manipulate the row
+    Grids.OnGetMenu = function(G,row,col){
+        if(row.Fixed) return null;
+        var I = [], M = {Items:I};
+        I[I.length] = {Name:"Del",Text:row.Deleted?"Undelete row":"Delete row"};
+        I[I.length] = {Name:"Sel",Text:row.Selected?"Deselect row":"Select row"};
+        I[I.length] = {Name:"Cpy",Text:"Copy row"};
+        if(row.firstChild) I[I.length] = {Name:"CpyTree",Text:"Copy row tree"};
+        I[I.length] = {Name:"Add",Text:"Add new row"};
+        if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
+        if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
+        return M;
+    }
+    // -----------------------------------------------------------------------------------------
+    // Called after selecting item in the popup right click menu
+    Grids.OnContextMenu = function(G,row,col,N){
+        switch(N){
+            case "Del" : G.DeleteRow(row); break;
+            case "Sel" : G.SelectRow(row); break;
+            case "Cpy" : G.CopyRow(row,null,row); break;
+            case "CpyTree" : G.CopyRows([row],null,row,1); break;
+            case "Add" : G.AddRow(null,row,1); break;
+            case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
+            case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
+        }
+    }
+    // -----------------------------------------------------------------------------------------
+    // Called when NoVScroll / NoHScroll is set automatically due small window size, disables the checkbox for manual change of NoVScroll / NoHScroll
+    Grids.OnLimitScroll = function(G,clr,noh,nov){
+        G.SetAttribute(G.Rows.Group,"Win","CanEdit",clr,1);
+        var tip = clr?"Disable grid scrollbars and use page scrollbars":"Used page scrollbars because browser window is too small to show this example with its own scrollbars";
+        G.SetAttribute(G.Rows.Group,"Win","Tip",tip,1);
+        G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
+    }
+    // -----------------------------------------------------------------------------------------
+
+</script>
+</program>
+</body>
+</html>

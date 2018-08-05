@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Statement version='1'>
+
+<sql id='search01'><![CDATA[
+SELECT T1.USERNAME,
+       T1.PASSWORD,
+       T1.ENABLED
+  FROM USERS T1
+ WHERE 1=1
+ <#if USERNAME?has_content>
+   AND T1.USERNAME = :USERNAME
+ </#if>
+]]></sql>
+
+</Statement>

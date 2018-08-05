@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<head>
+    <title>Metis</title>
+</head>
+<body class="  ">
+<program th:id="${programId}">
+<div class="bg-dark dk" id="wrap">
+    <div id="content" class="tab-pane">
+        <div class="row">
+            <ol class="breadcrumb page-breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Jet Table</li>
+            </ol>
+        </div>
+        <div id="content" class="page-header">
+            <div class="row">
+                <div class="col-md-4 text-xs-center text-md-left text-nowrap">
+                    <h1><i class="page-header-icon ion-ios-paper-outline"></i>Jet Table </h1>
+                </div>
+
+                <hr class="page-wide-block visible-xs visible-sm">
+
+                <div class="col-xs-12 width-md-auto width-lg-auto width-xl-auto pull-md-right">
+                    <a href="#" class="btn btn-primary btn-block"><span class="btn-label-icon left ion-plus-round"></span>Create project</a>
+                </div>
+
+                <!-- Spacer -->
+                <div class="m-b-2 visible-xs visible-sm clearfix"></div>
+
+                <form action="" class="page-header-form col-xs-12 col-md-4 pull-md-right">
+                    <div class="input-group">
+                        <span class="input-group-addon b-a-0 font-size-16"><i class="ion-search"></i></span>
+                        <input type="text" placeholder="Search..." class="form-control p-l-0 b-a-0">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <h3>Search Form</h3>
+        <!-- #Jet -->
+        <div id="sampleDemo" style="" class="demo-padding demo-container">
+            <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                <oj-table id="table" aria-label="Departments Table"
+                          data='[[datasource]]'
+                          edit-mode='rowEdit'
+                          columns='[{"headerText": "Department Id",
+                                               "headerStyle": "min-width: 8em; max-width: 8em; width: 8em",
+                                               "headerClassName": "oj-helper-text-align-end",
+                                               "style": "min-width: 8em; max-width: 8em; width: 8em",
+                                               "className": "oj-helper-text-align-end oj-read-only",
+                                               "sortProperty": "DepartmentId"},
+                                              {"headerText": "Department Name",
+                                               "headerStyle": "min-width: 8em; max-width: 8em; width: 8em",
+                                               "style": "min-width: 8em; max-width: 8em; width: 8em",
+                                               "sortProperty": "DepartmentName"},
+                                              {"headerText": "Location Id",
+                                               "headerStyle": "min-width: 12em; max-width: 12em; width: 12em",
+                                               "headerClassName": "oj-helper-text-align-end",
+                                               "style": "min-width: 12em; max-width: 12em; width: 12em",
+                                               "className": "oj-helper-text-align-end",
+                                               "sortProperty": "LocationId"}]'
+                          row-renderer='[[rowRenderer]]'>
+                </oj-table>
+                <br>
+                <br>
+                To edit a row, double click on it or press Enter. Press Esc to return to readonly. F2 toggles between editable and readonly.
+                <br>
+                <br>
+                <b>Edited Row Data</b>
+                <br>
+                <br>
+                <textarea id="rowDataDump" style="height: 200px; width: 300px; box-sizing: border-box;"></textarea>
+                <script type="text/html" id="rowTemplate">
+                    <tr>
+                        <td data-bind="text: DepartmentId">
+                        </td>
+                        <td data-bind="text: DepartmentName">
+                        </td>
+                        <td data-bind="text: LocationId">
+                        </td>
+                    </tr>
+                </script>
+                <script type="text/html" id="editRowTemplate">
+                    <tr>
+                        <td data-bind="text: DepartmentId">
+                        </td>
+                        <td>
+                            <oj-input-text id="it2" value='{{DepartmentName}}' data-oj-context>
+                            </oj-input-text>
+                        </td>
+                        <td>
+                            <oj-input-text id="it3" value='{{LocationId}}' data-oj-context>
+                            </oj-input-text>
+                        </td>
+                    </tr>
+                </script>
+
+
+            </div>
+        </div>
+        <!-- /#Jet -->
+    </div>
+</div>
+<script type="text/javascript">
+    require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/ojmodel',
+            'ojs/ojtable', 'ojs/ojdatacollection-utils', 'ojs/ojinputtext', 'ojs/ojvalidation-datetime',
+            'ojs/ojvalidation-number', 'ojs/ojcollectiontabledatasource'],
+        function(oj, ko, $)
+        {
+            function viewModel()
+            {
+                var self = this;
+
+                self.DeptCol = ko.observable();
+                self.datasource = ko.observable();
+
+                self.serviceURL = 'http://mockrest/stable/rest/Departments';
+                self.parseDept = function(response) {
+                    return {DepartmentId: response['DepartmentId'],
+                        DepartmentName: response['DepartmentName'],
+                        LocationId: response['LocationId'],
+                        ManagerId: response['ManagerId']};
+                };
+                self.Department = oj.Model.extend({
+                    urlRoot: self.serviceURL,
+                    parse: self.parseDept,
+                    idAttribute: 'DepartmentId'
+                });
+
+                self.myDept = new self.Department();
+                self.DeptCollection = oj.Collection.extend({
+                    url: self.serviceURL + "?limit=50",
+                    model: self.myDept
+                });
+
+                self.DeptCol(new self.DeptCollection());
+                var data = {
+                    "Departments" : [ {
+                        "DepartmentId" : 10,
+                        "DepartmentName" : "Administration",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/10"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/10"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/10/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 20,
+                        "DepartmentName" : "Marketing",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/20"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/20"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/20/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 30,
+                        "DepartmentName" : "Transportation",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/30"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/30"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/30/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 40,
+                        "DepartmentName" : "Shipping",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/40"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/40"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/40/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 50,
+                        "DepartmentName" : "Human Resources",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/50"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/50"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/50/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 60,
+                        "DepartmentName" : "Operations",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/60"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/60"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/60/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 70,
+                        "DepartmentName" : "Inventory",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/70"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/70"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/70/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 80,
+                        "DepartmentName" : "Sales",
+                        "ManagerId" : 145,
+                        "LocationId" : 2500,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/80"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/80"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/80/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 100,
+                        "DepartmentName" : "Finance",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/100"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/100"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/100/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 110,
+                        "DepartmentName" : "Documentation",
+                        "ManagerId" : null,
+                        "LocationId" : null,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/110"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/110"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/110/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 130,
+                        "DepartmentName" : "Billing",
+                        "ManagerId" : null,
+                        "LocationId" : 1700,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/130"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/130"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/130/Employees"
+                            }
+                        }
+                    }, {
+                        "DepartmentId" : 140,
+                        "DepartmentName" : "Control And Credit",
+                        "ManagerId" : null,
+                        "LocationId" : 1700,
+                        "version" : "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A657870000000017704000000017372001B6F7261636C652E6A626F2E646F6D61696E2E4E756C6C56616C75655899C1C58DAABEEB02000149000A6D53514C54797065496478700000000C78",
+                        "links" : {
+                            "self" : {
+                                "rel" : "self",
+                                "href" : "http://mockrest/stable/rest/Departments/140"
+                            },
+                            "canonical" : {
+                                "rel" : "canonical",
+                                "href" : "http://mockrest/stable/rest/Departments/140"
+                            },
+                            "Employees" : {
+                                "rel" : "child",
+                                "href" : "http://mockrest/stable/rest/Departments/140/Employees"
+                            }
+                        }
+                    }],
+                    "links" : {
+                        "self" : {
+                            "rel" : "self",
+                            "href" : "http://mockrest/stable/rest/Departments"
+                        }
+                    },
+                    "_contextInfo" : {
+                        "limit" : 25,
+                        "offset" : 0
+                    }
+                };
+                self.datasource(new oj.CollectionTableDataSource(JSON.parse(data)));
+
+                // function to determine which renderer to use for
+                // rendering depending on mode
+                self._editRowRenderer = oj.KnockoutTemplateUtils.getRenderer('editRowTemplate', true);
+                self._navRowRenderer = oj.KnockoutTemplateUtils.getRenderer('rowTemplate', true);
+                self.rowRenderer = function(context)
+                {
+                    var mode = context['rowContext']['mode'];
+
+                    if (mode === 'edit')
+                    {
+                        self._editRowRenderer(context);
+                    }
+                    else if (mode === 'navigation')
+                    {
+                        self._navRowRenderer(context);
+                    }
+                };
+
+                //// NUMBER AND DATE CONVERTER ////
+                var numberConverterFactory = oj.Validation.converterFactory("number");
+                this.numberConverter = numberConverterFactory.createConverter();
+
+                var dateConverterFactory = oj.Validation.converterFactory("datetime");
+                this.dateConverter = dateConverterFactory.createConverter();
+                var self = this;
+                this.beforeRowEditEndListener = function(event)
+                {
+                    var data = event.detail;
+                    var rowIdx = data.rowContext.status.rowIndex;
+                    self.datasource().at(rowIdx).then(function(rowObj)
+                    {
+                        $('#rowDataDump').val(JSON.stringify(rowObj['data']));
+                    });
+                    if (oj.DataCollectionEditUtils.basicHandleRowEditEnd(event, data) === false) {
+                        event.preventDefault();
+                    }
+                }
+            }
+            var vm = new viewModel;
+
+            $(document).ready
+            (
+                function()
+                {
+                    var table = $('#[[${programId}]] #table');
+                    ko.applyBindings(vm, table);
+                    table.addEventListener('ojBeforeRowEditEnd', vm.beforeRowEditEndListener);
+                }
+            );
+        });
+
+</script>
+</program>
+</body>
+</html>

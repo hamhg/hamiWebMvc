@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<head>
+    <div th:replace="com/inc/head.html :: head">
+        <!-- @head -->
+    </div>
+    <title>Metis</title>
+</head>
+<body class="  ">
+<div class="bg-dark dk" id="wrap">
+    <div id="top" th:replace="com/inc/top.html :: top">
+        <!-- @top -->
+    </div>
+    <div id="left" th:replace="com/inc/left.html :: left">
+        <!-- @menu -->
+    </div>
+    <div id="content" class="starter-template">
+        <div class="outer">
+            <div class="inner bg-light lter">
+                <h1>Search Form</h1>
+                <br>
+                <div id="Item">
+                    <table class="table">
+                        <tr>
+                            <th>Id</th>
+                            <th>email</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>{{ Items.id }}</td>
+                            <td>{{ Items.email }}</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="ItemList">
+                    <table class="table">
+                        <tr>
+                            <th>Id</th>
+                            <th>email</th>
+                            <th></th>
+                        </tr>
+                        <tr v-for="Item in ItemLists">
+                            <td>{{ Item.id }}</td>
+                            <td>{{ Item.email }}</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <form class="form-horizontal" id="search-form">
+                    <div class="form-group form-group-lg">
+                        <label class="col-sm-2 control-label">Id</label>
+                        <div class="col-sm-10">
+                            <input type=text class="form-control" id="username" v-model="schNm">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button @click="search01" id="bth-search" class="btn btn-primary btn-lg" >Search</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <a href="/file/excelDown">ExcelDown</a>
+                        </div>
+                    </div>
+                    <input type="hidden" id="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false
+     th:replace="com/inc/right.html :: right">
+    <!-- @right -->
+</div>
+<footer class="Footer bg-dark dker" th:replace="com/inc/footer.html :: footer">
+    <!-- @footer -->
+</footer>
+<div th:replace="com/inc/scripts.html :: scripts">
+    <!-- @scripts -->
+</div>
+<script type="text/javascript">
+    require(["jquery", "Vue", "Axios"], function ($, Vue, axios) {
+
+        $(document).ready(function ($) {
+
+            $("#search-form").submit(function (event) {
+
+                //button click event
+                $('#bth-search').trigger('click');
+
+            });
+
+        });
+
+        Vue.prototype.$http = axios;
+
+        var test0 = new Vue({
+            el: '#ItemList',
+            data: {
+                ItemLists:[]
+            },
+            mounted(){
+                this.$http.get('/customers').then(response => this.ItemLists = response.data);
+            }
+        });
+
+        var test1 = new Vue({
+            el: '#Item',
+            data: {
+                schNm:'',
+                Items:[]
+            },
+            methods: {
+                search01: function(event){
+                    this.$http.get('/customers/'+this.schNm).then(response => this.Items = response.data)
+                    .catch(
+                        function (messages) {
+                            console.log('[ ===== Error ===== ]\n'+messages);
+                        }
+                    );
+                    this.schNm = '';
+                    // Prevent the form from submitting via the browser.
+                    event.preventDefault();
+                }
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>
