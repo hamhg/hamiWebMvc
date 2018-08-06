@@ -58,7 +58,7 @@ public class FlyWayMigrate {
 
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@192.168.56.101:1521/XE");
+        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XE");
         dataSource.setUsername("hami");
         dataSource.setPassword("hami1234");
 

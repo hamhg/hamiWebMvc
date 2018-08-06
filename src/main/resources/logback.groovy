@@ -42,10 +42,11 @@ logger("org.springframework.security", OFF)
 logger("org.apache.commons.dbcp2", OFF)
 
 logger("jdbc.sqltiming", DEBUG)
+logger("jdbc.sqlonly", OFF)
 logger("jdbc.resultsettable", DEBUG)
 logger("jdbc.sql", OFF)
-logger("jdbc.sqlonly", OFF)
 logger("jdbc.audit", OFF)
 
 logger("com.hami.sys", DEBUG)
 logger("com.hami.biz", DEBUG)
+logger("com.hami.biz.common.controller.CommonController", DEBUG)
