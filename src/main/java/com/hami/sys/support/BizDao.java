@@ -117,7 +117,7 @@ public class BizDao extends DaoSupport {
     }
 
     private Map setCommonParams(Map bindParams) {
-        log.debug("[BizDAO.setCommonParams] Start");
+        //log.debug("[BizDAO.setCommonParams] Start");
         Map commonBindParams = new HashMap();
         Locale currentLocale = new Locale("KOREAN", "KOREA");
         Calendar calendar = Calendar.getInstance(currentLocale);
@@ -171,7 +171,7 @@ public class BizDao extends DaoSupport {
             commonBindParams.put("HEADER_MASK_AUTH", maskAuth);
         }
         log.debug(" * CommonParams : "+commonBindParams.toString());
-        log.debug("[BizDAO.setCommonParams] End");
+        //log.debug("[BizDAO.setCommonParams] End");
         return commonBindParams;
     }
 }

@@ -23,20 +23,4 @@ public @Data class ServiceMethod {
         this.method = method;
         this.descriptor = descriptor;
     }
-
-    public Object getBeanObject() {
-        return beanObject;
-    }
-
-    public void setBeanObject(Object beanObject) {
-        this.beanObject = beanObject;
-    }
-
-    public Method getMethod() {
-        return method;
-    }
-
-    public void setMethod(Method method) {
-        this.method = method;
-    }
 }
