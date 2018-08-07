@@ -1,10 +1,13 @@
 package com.hami.biz.config;
 
 import com.hami.sys.common.interceptor.RequestInterceptor;
+import com.hami.sys.jdbc.audit.interceptor.DataSourceInterceptor;
 import com.hami.sys.Resolver.ExcelViewResolver;
 import com.hami.sys.Resolver.JsonViewResolver;
 import com.hami.sys.Resolver.PdfViewResolver;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
+
+import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
@@ -137,12 +140,12 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
         List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
 
-        InternalResourceViewResolver vr1 = new InternalResourceViewResolver();
-        vr1.setPrefix("/WEB-INF/views/jsp/");
-        vr1.setContentType("text/html; cherset=UTF-8");
+        InternalResourceViewResolver vr01 = new InternalResourceViewResolver();
+        vr01.setPrefix("/WEB-INF/views/jsp/");
+        vr01.setContentType("text/html; cherset=UTF-8");
         //vr1.setSuffix("*.jsp");
-        vr1.setViewClass(JstlView.class);
-        resolvers.add(vr1);
+        vr01.setViewClass(JstlView.class);
+        resolvers.add(vr01);
 
         resolvers.add(jsonViewResolver());
         resolvers.add(new ExcelViewResolver());

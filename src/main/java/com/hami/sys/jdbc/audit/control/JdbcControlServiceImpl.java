@@ -1,5 +1,7 @@
 package com.hami.sys.jdbc.audit.control;
 
+import org.springframework.stereotype.Service;
+
 import lombok.Data;
 
 /**
@@ -11,6 +13,7 @@ import lombok.Data;
  *
  * @author HHG
  */
+@Service("jdbc.control")
 public @Data class JdbcControlServiceImpl implements JdbcControlService {
 
     private int fetchSize;

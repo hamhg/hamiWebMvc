@@ -31,8 +31,8 @@ public class CallableStatementWrapper extends PreparedStatementWrapper implement
     public CallableStatementWrapper(CallableStatement ps, String sql) {
         super(ps, sql);
         callableStatement = ps;
-        if (ApplicationContextHolder.containsBean("hone.jdbc.control")) {
-            JdbcControlService jdbcControl = (JdbcControlService) ApplicationContextHolder.getBean("hone.jdbc.control", JdbcControlService.class);
+        if (ApplicationContextHolder.containsBean("jdbc.control")) {
+            JdbcControlService jdbcControl = (JdbcControlService) ApplicationContextHolder.getBean("jdbc.control", JdbcControlService.class);
             try {
                 callableStatement.setFetchSize(jdbcControl.getFetchSize());
                 callableStatement.setQueryTimeout(jdbcControl.getQueryTimeout());

@@ -25,8 +25,8 @@ public class StatementWrapper extends AbstractStatement implements Statement {
     public StatementWrapper(Statement statement) {
         super((String) null);
         this.statement = statement;
-        if (ApplicationContextHolder.containsBean("hone.jdbc.control")) {
-            JdbcControlService jdbcControl = (JdbcControlService) ApplicationContextHolder.getBean("hone.jdbc.control", JdbcControlService.class);
+        if (ApplicationContextHolder.containsBean("jdbc.control")) {
+            JdbcControlService jdbcControl = (JdbcControlService) ApplicationContextHolder.getBean("jdbc.control", JdbcControlService.class);
 
             try {
                 this.statement.setFetchSize(jdbcControl.getFetchSize());
@@ -35,7 +35,6 @@ public class StatementWrapper extends AbstractStatement implements Statement {
                 log.warn("Failed to set jdbc control properties");
             }
         }
-
     }
 
     public ResultSet executeQuery(String sql) throws SQLException {
