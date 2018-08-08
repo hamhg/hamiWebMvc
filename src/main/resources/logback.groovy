@@ -18,14 +18,14 @@ if (hostname =~ /pixie|orion/) {
 if (consoleAppender) {
     appender("CONSOLE", ConsoleAppender) {
         encoder(PatternLayoutEncoder) {
-            pattern = "%d{HH:mm:ss.SSS} [%thread] %-5level %-40logger{36} [%-20.-20M %4L, %-4.-9X{username}] - %msg%n"
+            pattern = "[%d{HH:mm:ss.SSS}][%thread] %-5level %-40logger{36} [%-20.-20M %4L, %-4.-9X{username}] - %msg%n"
         }
     }
 }
 
 appender("ROLLING", RollingFileAppender) {
     encoder(PatternLayoutEncoder) {
-        Pattern = "%d{HH:mm:ss.SSS} [%thread] %-5level %-40logger{36} [%-20.-20M %4L, %-4.-9X{username}] - %msg%n"
+        Pattern = "[%d{yyyy.MM.dd HH:mm:ss.SSS}][%thread] %-5level %-40logger{36} [%-20.-20M %4L, %-4.-9X{username}] - %msg%n"
     }
     rollingPolicy(TimeBasedRollingPolicy) {
         FileNamePattern = "${WEBAPP_DIR}/logs/log-%d{yyyy-MM-dd}.zip"
@@ -44,7 +44,7 @@ logger("org.apache.commons.dbcp2", OFF)
 logger("jdbc.sqltiming", DEBUG)
 logger("jdbc.sqlonly", OFF)
 logger("jdbc.resultsettable", DEBUG)
-logger("jdbc.sql", OFF)
+logger("jdbc.sql", DEBUG)
 logger("jdbc.audit", OFF)
 
 logger("com.hami.sys", DEBUG)

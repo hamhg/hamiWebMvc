@@ -1,7 +1,8 @@
 package com.hami.biz.common.dao;
 
+import com.hami.sys.exception.BizException;
 import com.hami.sys.support.BizDao;
-import com.hami.biz.exception.BizException;
+
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;

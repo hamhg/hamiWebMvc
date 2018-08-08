@@ -73,6 +73,8 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     compileOnly 'org.projectlombok:lombok:1.16.18'
+    
+    runtime files('D:/workspace/hamiCore/build/libs') // 디렉토리 자체를 클래스패스에 추가
 
     testCompile "org.springframework:spring-test:$springVersion"
     providedCompile 'javax.websocket:javax.websocket-api:1.1'

@@ -1,8 +1,9 @@
 package com.hami.biz.common.service;
 
 import com.hami.sys.annotation.BizAnnotation;
+import com.hami.sys.exception.BizException;
 import com.hami.sys.support.BizService;
-import com.hami.biz.exception.BizException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hami.biz.common.dao.CommonCodeDao;

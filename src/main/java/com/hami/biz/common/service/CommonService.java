@@ -1,9 +1,9 @@
 package com.hami.biz.common.service;
 
-import com.hami.biz.exception.BizException;
-
 import java.sql.SQLException;
 import java.util.Map;
+
+import com.hami.sys.exception.BizException;
 
 /**
  * <pre>
