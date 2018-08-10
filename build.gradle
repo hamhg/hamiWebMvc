@@ -1,5 +1,5 @@
 group 'com.hami'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin: 'base'
 apply plugin: 'eclipse-wtp'
@@ -21,6 +21,16 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF8'
 
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if (it.requested.group == 'org.springframework') {
+                it.useVersion '4.2.3.RELEASE'
+            }
+        }
+    }
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -31,6 +41,7 @@ buildscript {
         classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.0'
         classpath (group: 'org.gradle.api.plugins', name: 'gradle-cargo-plugin', version: '0.6.1')
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.1'
+        classpath 'io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE'
     }
 }
 
