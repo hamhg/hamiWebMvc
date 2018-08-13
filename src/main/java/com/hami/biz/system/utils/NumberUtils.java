@@ -1,6 +1,8 @@
-package com.hami.sys.util;
+package com.hami.biz.system.utils;
 
 import java.text.DecimalFormat;
+
+import com.hami.sys.util.StringUtils;
 
 /**
  * <pre>

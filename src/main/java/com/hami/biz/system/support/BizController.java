@@ -1,4 +1,4 @@
-package com.hami.sys.support;
+package com.hami.biz.system.support;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hami.biz.common.model.CommonResponseBody;

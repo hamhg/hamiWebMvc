@@ -1,6 +1,5 @@
 package com.hami.biz.common.controller;
 
-import com.hami.sys.common.handler.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -9,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.hami.biz.system.handler.ResourceNotFoundException;
 
 import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.hami.sys.util;
+package com.hami.biz.system.utils;
 
 import org.springframework.web.multipart.MultipartRequest;
 

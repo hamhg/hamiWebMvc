@@ -1,4 +1,4 @@
-package com.hami.sys.common.interceptor;
+package com.hami.biz.system.interceptor;
 
 import com.hami.sys.util.StringUtils;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.hami.sys.util;
+package com.hami.biz.system.utils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -6,6 +6,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.hami.sys.util.StringUtils;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

@@ -1,4 +1,4 @@
-package com.hami.sys.common.handler;
+package com.hami.biz.system.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

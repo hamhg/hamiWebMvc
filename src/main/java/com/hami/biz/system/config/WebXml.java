@@ -1,8 +1,8 @@
 package com.hami.biz.system.config;
 
-import com.hami.sys.common.filter.CORSFilter;
 import com.hami.sys.config.DBConfigDev;
 import com.hami.sys.config.DBConfigPrd;
+import com.hami.biz.system.filter.CORSFilter;
 import com.hami.sys.annotation.BizAnnotationHandler;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

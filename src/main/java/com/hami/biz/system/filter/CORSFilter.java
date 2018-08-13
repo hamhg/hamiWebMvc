@@ -1,4 +1,4 @@
-package com.hami.sys.common.filter;
+package com.hami.biz.system.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

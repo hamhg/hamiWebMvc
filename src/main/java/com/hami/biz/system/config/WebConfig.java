@@ -1,9 +1,9 @@
 package com.hami.biz.system.config;
 
+import com.hami.biz.system.interceptor.RequestInterceptor;
 import com.hami.biz.system.resolver.ExcelViewResolver;
 import com.hami.biz.system.resolver.JsonViewResolver;
 import com.hami.biz.system.resolver.PdfViewResolver;
-import com.hami.sys.common.interceptor.RequestInterceptor;
 import com.hami.sys.jdbc.audit.interceptor.DataSourceInterceptor;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
