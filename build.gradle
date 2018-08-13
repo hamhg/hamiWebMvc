@@ -25,7 +25,7 @@ configurations.all {
     resolutionStrategy {
         eachDependency {
             if (it.requested.group == 'org.springframework') {
-                it.useVersion '4.2.3.RELEASE'
+                it.useVersion '4.3.13.RELEASE'
             }
         }
     }
@@ -85,7 +85,7 @@ dependencies {
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     compileOnly 'org.projectlombok:lombok:1.16.18'
     
-    runtime files('D:/workspace/hamiCore/build/libs') // 디렉토리 자체를 클래스패스에 추가
+    runtime files('D:/workspace/hamiCore/build/libs/hamiCore-1.0.jar')
 
     testCompile "org.springframework:spring-test:$springVersion"
     providedCompile 'javax.websocket:javax.websocket-api:1.1'
