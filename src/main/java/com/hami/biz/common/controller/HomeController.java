@@ -47,10 +47,6 @@ public class HomeController {
         return "index.html";
     }
 
-    // 403.html
-    @RequestMapping("/403")
-    public String err403() { return "/403.html"; }
-
     // Login form with error
     @RequestMapping("/login-error.html")
     public String loginError(Model model) {

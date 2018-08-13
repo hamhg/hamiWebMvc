@@ -23,12 +23,12 @@ import java.util.Map;
  *
  * @author HHG
  */
-public class BizMappingJacksonJsonView extends MappingJackson2JsonView {
+public class JsonView extends MappingJackson2JsonView {
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
     private ObjectMapper objectMapper;
     private JsonEncoding encoding;
 
-    public BizMappingJacksonJsonView() {
+    public JsonView() {
         objectMapper = new ObjectMapper();
         encoding = JsonEncoding.UTF8;
     }

@@ -33,18 +33,21 @@ appender("ROLLING", RollingFileAppender) {
     }
 }
 
-root(OFF, appenderList)
+root(DEBUG, appenderList)
 
 logger("org.thymeleaf", OFF)
+logger("org.springframework.beans.factory.support.DefaultListableBeanFactory", OFF)
 logger("org.springframework.biz.servlet.mvc.method.annotation.RequestMappingHandlerMapping", DEBUG)
-logger("org.springframework.jdbc.sys.JdbcTemplate", OFF)
+logger("org.springframework.jdbc", OFF)
 logger("org.springframework.security", OFF)
 logger("org.apache.commons.dbcp2", OFF)
 
 logger("jdbc.sqltiming", DEBUG)
-logger("jdbc.sqlonly", OFF)
 logger("jdbc.resultsettable", DEBUG)
-logger("jdbc.sql", DEBUG)
+logger("jdbc.connection", OFF)
+logger("jdbc.sql", OFF)
+logger("jdbc.sqlonly", OFF)
+logger("jdbc.resultset", OFF)
 logger("jdbc.audit", OFF)
 
 logger("com.hami.sys", DEBUG)

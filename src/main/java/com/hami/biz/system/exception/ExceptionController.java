@@ -1,18 +1,25 @@
-package com.hami.biz.common.controller;
+package com.hami.biz.system.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
-import com.hami.biz.system.handler.ResourceNotFoundException;
+import com.hami.biz.system.exception.handler.ResourceNotFoundException;
 
 import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <pre>
@@ -32,32 +39,34 @@ public class ExceptionController {
     public String handleNullPointerException(Exception e) {
 
         log.debug("A null pointer exception ocurred " + e);
-
         return "nullpointerExceptionPage";
     }
 
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleAllException(Exception e) {
 
         log.debug("A unknow Exception Ocurred: " + e);
-
         return "unknowExceptionPage";
     }
 
+    @ExceptionHandler(Throwable.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleException(final Throwable throwable, final Model model) {
+        log.error("Exception during execution of SpringSecurity application", throwable);
+        String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
+        model.addAttribute("errorMessage", errorMessage);
+        return "error";
+    }    
+    
     @ExceptionHandler(AccessDeniedException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public String handleAccessDeniedException() {
+    public String handleAccessDeniedException(Exception e) {
 
+    	log.debug("AccessDenied" + e);
         return "accessDeniedPage";
     }
-    @ExceptionHandler(ResourceNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleResourceNotFoundException() {
-
-        return "resourceNotFound";
-    }
-
+    
     /**
      * Convert a predefined exception to an HTTP Status code
      */

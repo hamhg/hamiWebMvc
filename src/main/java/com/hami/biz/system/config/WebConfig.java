@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -34,6 +35,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * <pre>
@@ -57,6 +59,14 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         configurer.enable();
     }
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/error_500").setViewName("com/exception/500.html");
+        registry.addViewController("/error_404").setViewName("com/exception/404.html");
+        registry.addViewController("/error_403").setViewName("com/exception/403.html");
+        registry.addViewController("/error_401").setViewName("com/exception/401.html");
+    }
+    
     //ResourceHandler
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -70,7 +80,6 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     }
 
     //s: DataSourceInterceptor Config
-    /*
     @Bean
     public DataSourceInterceptor dataSourceInterceptor(){
         return new DataSourceInterceptor();
@@ -82,7 +91,6 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         beanNameAutoProxyCreator.setInterceptorNames("dataSourceInterceptor");
         return beanNameAutoProxyCreator;
     }
-    */
     //e: DataSourceInterceptor Config
 
     //s: RequestInterceptor Config
@@ -149,7 +157,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         resolvers.add(vr01);
 
         resolvers.add(jsonViewResolver());
-        resolvers.add(new ExcelViewResolver());
+        resolvers.add(excelViewResolver());
         resolvers.add(pdfViewResolver());
 
         viewResolver.setViewResolvers(resolvers);
@@ -159,7 +167,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
     @Bean
     public ViewResolver excelViewResolver() {
-        return new JsonViewResolver();
+        return new ExcelViewResolver();
     }
 
     @Bean
@@ -189,5 +197,4 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         return new CommonsMultipartResolver();
     }
     */
-
 }

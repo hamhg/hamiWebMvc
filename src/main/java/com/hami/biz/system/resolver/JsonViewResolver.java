@@ -3,7 +3,7 @@ package com.hami.biz.system.resolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 
-import com.hami.biz.system.views.BizMappingJacksonJsonView;
+import com.hami.biz.system.views.JsonView;
 
 import java.util.Locale;
 
@@ -19,7 +19,7 @@ import java.util.Locale;
 public class JsonViewResolver implements ViewResolver {
     @Override
     public View resolveViewName(String viewName, Locale locale) throws Exception {
-        BizMappingJacksonJsonView view = new BizMappingJacksonJsonView();
+        JsonView view = new JsonView();
         view.setPrettyPrint(true);
         return view;
     }
