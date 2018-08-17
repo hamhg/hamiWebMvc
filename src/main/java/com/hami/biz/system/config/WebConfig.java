@@ -4,6 +4,7 @@ import com.hami.biz.system.interceptor.RequestInterceptor;
 import com.hami.biz.system.resolver.ExcelViewResolver;
 import com.hami.biz.system.resolver.JsonViewResolver;
 import com.hami.biz.system.resolver.PdfViewResolver;
+import com.hami.sys.jdbc.audit.interceptor.DataSourceBeanNameAutoProxyCreator;
 import com.hami.sys.jdbc.audit.interceptor.DataSourceInterceptor;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
@@ -86,7 +87,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     }
     @Bean
     public BeanNameAutoProxyCreator beanNameAutoProxyCreator(){
-        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
+        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new DataSourceBeanNameAutoProxyCreator();
         beanNameAutoProxyCreator.setBeanNames("dataSource");
         beanNameAutoProxyCreator.setInterceptorNames("dataSourceInterceptor");
         return beanNameAutoProxyCreator;

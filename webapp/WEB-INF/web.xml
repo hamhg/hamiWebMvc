@@ -29,4 +29,7 @@
 	    <param-name>logbackConfigLocation</param-name>
 	    <param-value>classpath:properties/${SRV_MODE}/logback.groovy</param-value>
 	</context-param>
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>	
 </web-app>
