@@ -1,4 +1,4 @@
-package com.hami.biz.system.user.service;
+package com.hami.biz.system.login.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -110,7 +110,7 @@ public class CustomUserDetailsManager extends JdbcDaoImpl implements UserDetails
             logger.info("No authentication manager set. Reauthentication of users when changing passwords will "
                     + "not be performed.");
         }
-
+        logger.info("============ CustomUserDetailsManager ==================");
         super.initDao();
     }
 

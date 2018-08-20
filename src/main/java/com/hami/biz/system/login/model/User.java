@@ -1,4 +1,4 @@
-package com.hami.biz.system.user.model;
+package com.hami.biz.system.login.model;
 
 import lombok.Data;
 

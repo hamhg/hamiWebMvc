@@ -18,7 +18,7 @@ if (hostname =~ /pixie|orion/) {
 if (consoleAppender) {
     appender("CONSOLE", ConsoleAppender) {
         encoder(PatternLayoutEncoder) {
-            pattern = "[%d{HH:mm:ss.SSS}][%thread] %-5level %-40logger{36} [%-20.-20M %4L, %-4.-9X{username}] - %msg%n"
+            pattern = "[%d{HH:mm:ss.SSS}][%thread][%-4.-9X{username},%4L] %-5level %logger{36}.%M - %msg%n"
         }
     }
 }
@@ -36,12 +36,17 @@ appender("ROLLING", RollingFileAppender) {
 root(DEBUG, appenderList)
 
 logger("org.thymeleaf", OFF)
-logger("org.springframework.beans.factory.support.DefaultListableBeanFactory", OFF)
-logger("org.springframework.biz.servlet.mvc.method.annotation.RequestMappingHandlerMapping", DEBUG)
+logger("org.springframework.core", OFF)
+logger("org.springframework.web", OFF)
+logger("org.springframework.context", OFF)
+logger("org.springframework.beans", OFF)
+logger("org.springframework.biz", OFF)
 logger("org.springframework.jdbc", OFF)
+logger("org.springframework.jndi", OFF)
 logger("org.springframework.security", OFF)
 logger("org.apache.commons.dbcp2", OFF)
 
+logger("log4jdbc.debug", OFF)
 logger("jdbc.sqltiming", DEBUG)
 logger("jdbc.resultsettable", DEBUG)
 logger("jdbc.connection", OFF)

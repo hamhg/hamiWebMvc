@@ -37,10 +37,10 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
         //파라미터 로그
         log.info("================================     START    ================================");
-        log.info(" * Referer URI \t:  " + request.getHeader("referer"));
+        log.debug(" * Referer URI \t:  " + request.getHeader("referer"));
         log.info(" * Request URI \t:  " + request.getRequestURI());
-        log.info(" * Methods     \t:  " + request.getMethod());
-        log.info(" * SessionId   \t:  " + request.getSession().getId());
+        log.debug(" * Methods     \t:  " + request.getMethod());
+        log.debug(" * SessionId   \t:  " + request.getSession().getId());
 
         String ip = request.getHeader("X-Forwarded-For");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
@@ -58,7 +58,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-        log.info(" * Client IP  \t:  " + ip);
+        log.debug(" * Client IP  \t:  " + ip);
 
         Enumeration<String> paramNames = request.getParameterNames();
         while (paramNames.hasMoreElements()) {
@@ -79,7 +79,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
         logModelMap(modelAndView);
 
-        log.info("================================     END      ================================");
+        log.debug("================================     END      ================================");
     }
 
     private void logModelMap(ModelAndView modelAndView) throws Exception {
