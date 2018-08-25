@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.hami.biz.system.login.service.CustomUserDetailsManager;
-import com.hami.biz.system.login.service.UserAuthService;
+import com.hami.biz.system.login.service.UserDetailsServiceImpl;
 
 import javax.sql.DataSource;
 
@@ -45,11 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/login.html","/403.html"
     };
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserAuthService();
-    };
-    
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
     	CustomUserDetailsManager userDetailsService = new CustomUserDetailsManager();
@@ -57,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //@formatter:off
         auth
-            .userDetailsService(userDetailsService)
+            .userDetailsService(new UserDetailsServiceImpl())
                 .passwordEncoder(new BCryptPasswordEncoder());
         //@formatter:on
     }

@@ -36,6 +36,7 @@ appender("ROLLING", RollingFileAppender) {
 root(DEBUG, appenderList)
 
 logger("org.thymeleaf", OFF)
+/*
 logger("org.springframework.core", OFF)
 logger("org.springframework.web", OFF)
 logger("org.springframework.context", OFF)
@@ -45,6 +46,7 @@ logger("org.springframework.jdbc", OFF)
 logger("org.springframework.jndi", OFF)
 logger("org.springframework.security", OFF)
 logger("org.apache.commons.dbcp2", OFF)
+*/
 
 logger("log4jdbc.debug", OFF)
 logger("jdbc.sqltiming", DEBUG)
