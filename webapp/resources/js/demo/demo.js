@@ -85,7 +85,7 @@
         offcanvas_nav: '0',
         rtl:           '0',
         footer:        'bottom',
-        theme:         THEMES[8],
+        theme:         THEMES[6],
       };
 
       var cookie = ';' + document.cookie + ';';
