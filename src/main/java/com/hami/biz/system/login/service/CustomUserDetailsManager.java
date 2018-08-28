@@ -1,5 +1,6 @@
 package com.hami.biz.system.login.service;
 
+import com.hami.sys.jdbc.sql.QueryLoader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContextException;
@@ -18,7 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserCache;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.cache.NullUserCache;
-import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.provisioning.GroupManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.util.Assert;
@@ -38,8 +38,11 @@ import java.util.List;
  *
  * @author HHG
  */
-public class CustomUserDetailsManager extends JdbcDaoImpl implements UserDetailsManager,
+public class CustomUserDetailsManager extends CustomUserDetailsService implements UserDetailsManager,
         GroupManager {
+
+    private QueryLoader queryLoader = QueryLoader.getInstance();
+
     // ~ Static fields/initializers
     // =====================================================================================
 
@@ -76,27 +79,29 @@ public class CustomUserDetailsManager extends JdbcDaoImpl implements UserDetails
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    private String createUserSql = DEF_CREATE_USER_SQL;
-    private String deleteUserSql = DEF_DELETE_USER_SQL;
-    private String updateUserSql = DEF_UPDATE_USER_SQL;
-    private String createAuthoritySql = DEF_INSERT_AUTHORITY_SQL;
-    private String deleteUserAuthoritiesSql = DEF_DELETE_USER_AUTHORITIES_SQL;
-    private String userExistsSql = DEF_USER_EXISTS_SQL;
-    private String changePasswordSql = DEF_CHANGE_PASSWORD_SQL;
+    String path = this.getClass().getResource("").getPath();
+    String filePath = path.replace("service", "dao") + "Auth.xml";
+    private String createUserSql = queryLoader.getElementWithPath(filePath,"DEF_CREATE_USER_SQL",null);
+    private String deleteUserSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_USER_SQL",null);
+    private String updateUserSql = queryLoader.getElementWithPath(filePath,"DEF_UPDATE_USER_SQL",null);
+    private String createAuthoritySql = queryLoader.getElementWithPath(filePath,"DEF_INSERT_AUTHORITY_SQL",null);
+    private String deleteUserAuthoritiesSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_USER_AUTHORITIES_SQL",null);
+    private String userExistsSql = queryLoader.getElementWithPath(filePath,"DEF_USER_EXISTS_SQL",null);
+    private String changePasswordSql = queryLoader.getElementWithPath(filePath,"DEF_CHANGE_PASSWORD_SQL",null);
 
-    private String findAllGroupsSql = DEF_FIND_GROUPS_SQL;
-    private String findUsersInGroupSql = DEF_FIND_USERS_IN_GROUP_SQL;
-    private String insertGroupSql = DEF_INSERT_GROUP_SQL;
-    private String findGroupIdSql = DEF_FIND_GROUP_ID_SQL;
-    private String insertGroupAuthoritySql = DEF_INSERT_GROUP_AUTHORITY_SQL;
-    private String deleteGroupSql = DEF_DELETE_GROUP_SQL;
-    private String deleteGroupAuthoritiesSql = DEF_DELETE_GROUP_AUTHORITIES_SQL;
-    private String deleteGroupMembersSql = DEF_DELETE_GROUP_MEMBERS_SQL;
-    private String renameGroupSql = DEF_RENAME_GROUP_SQL;
-    private String insertGroupMemberSql = DEF_INSERT_GROUP_MEMBER_SQL;
-    private String deleteGroupMemberSql = DEF_DELETE_GROUP_MEMBER_SQL;
-    private String groupAuthoritiesSql = DEF_GROUP_AUTHORITIES_QUERY_SQL;
-    private String deleteGroupAuthoritySql = DEF_DELETE_GROUP_AUTHORITY_SQL;
+    private String findAllGroupsSql = queryLoader.getElementWithPath(filePath,"DEF_FIND_GROUPS_SQL",null);
+    private String findUsersInGroupSql = queryLoader.getElementWithPath(filePath,"DEF_FIND_USERS_IN_GROUP_SQL",null);
+    private String insertGroupSql = queryLoader.getElementWithPath(filePath,"DEF_INSERT_GROUP_SQL",null);
+    private String findGroupIdSql = queryLoader.getElementWithPath(filePath,"DEF_FIND_GROUP_ID_SQL",null);
+    private String insertGroupAuthoritySql = queryLoader.getElementWithPath(filePath,"DEF_INSERT_GROUP_AUTHORITY_SQL",null);
+    private String deleteGroupSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_GROUP_SQL",null);
+    private String deleteGroupAuthoritiesSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_GROUP_AUTHORITIES_SQL",null);
+    private String deleteGroupMembersSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_GROUP_MEMBERS_SQL",null);
+    private String renameGroupSql = queryLoader.getElementWithPath(filePath,"DEF_RENAME_GROUP_SQL",null);
+    private String insertGroupMemberSql = queryLoader.getElementWithPath(filePath,"DEF_INSERT_GROUP_MEMBER_SQL",null);
+    private String deleteGroupMemberSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_GROUP_MEMBER_SQL",null);
+    private String groupAuthoritiesSql = queryLoader.getElementWithPath(filePath,"DEF_GROUP_AUTHORITIES_QUERY_SQL",null);
+    private String deleteGroupAuthoritySql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_GROUP_AUTHORITY_SQL",null);
 
     private AuthenticationManager authenticationManager;
 
