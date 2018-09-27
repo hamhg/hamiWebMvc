@@ -2,6 +2,7 @@ package com.hami.biz.common.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.hami.biz.common.model.CommonResponseBody;
 import com.hami.biz.system.support.BizController;
 import com.hami.sys.annotation.ServiceMethod;
 import com.hami.sys.exception.BizException;
@@ -32,15 +33,15 @@ public class CommonController extends BizController{
 
     @JsonView(JsonView.class)
     @PostMapping("/doExcute")
-    public ResponseEntity doExcute(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws JsonProcessingException {
+    public ResponseEntity<CommonResponseBody> doExcute(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws JsonProcessingException {
 
         if (isValidParam(paramMap)) {
             try {
                 if (paramMap.containsKey("SystemHeader")) {
-                    systemHeader 		= (Map)paramMap.get("SystemHeader");
-                    transactionHeader 	= (Map)paramMap.get("TransactionHeader");
-                    messageHeader 		= (Map)paramMap.get("MessageHeader");
-                    reqData 			= (Map)paramMap.get("ReqData");
+                    systemHeader 		= (Map<String, Object>)paramMap.get("SystemHeader");
+                    transactionHeader 	= (Map<String, Object>)paramMap.get("TransactionHeader");
+                    messageHeader 		= (Map<String, Object>)paramMap.get("MessageHeader");
+                    reqData 			= (Map<String, Object>)paramMap.get("ReqData");
 
                     systemHeader.put("TMSG_RQST_DTM", sdf.format(new Date()));	//요청전문 발생 시각
 
@@ -48,10 +49,10 @@ public class CommonController extends BizController{
                             +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(paramMap));
                 } else {
                     Map<String, Object> inMap = makeInData(paramMap);
-                    systemHeader 		= (Map)inMap.get("SystemHeader");
-                    transactionHeader 	= (Map)inMap.get("TransactionHeader");
-                    messageHeader 		= (Map)inMap.get("MessageHeader");
-                    reqData 			= (Map)inMap.get("ReqData");
+                    systemHeader 		= (Map<String, Object>)inMap.get("SystemHeader");
+                    transactionHeader 	= (Map<String, Object>)inMap.get("TransactionHeader");
+                    messageHeader 		= (Map<String, Object>)inMap.get("MessageHeader");
+                    reqData 			= (Map<String, Object>)inMap.get("ReqData");
 
                     systemHeader.put("TMSG_RQST_DTM", sdf.format(new Date()));	//요청전문 발생 시각
 
@@ -65,10 +66,10 @@ public class CommonController extends BizController{
                 ContextUtil.setMessageHeader(messageHeader);
 
                 if (paramMap.containsKey("etcMsg")) {
-                    Map<String, Object> etcMsg = (Map)paramMap.get("etcMsg");
+                    Map<String, Object> etcMsg = (Map<String, Object>)paramMap.get("etcMsg");
                     if(etcMsg.containsKey("MSG_CD")){
                         if(etcMsg.containsKey("MSG_ARGS")) {
-                            List mArg = (List) etcMsg.get("MSG_ARGS");
+                            List<?> mArg = (List<?>) etcMsg.get("MSG_ARGS");
                             String[] msgArgs = (String[]) mArg.toArray(new String[0]);
                             ContextUtil.addReturnMessage((String) etcMsg.get("MSG_CD"), msgArgs);
                         } else {
@@ -83,7 +84,7 @@ public class CommonController extends BizController{
                 String svcId = StringUtils.nvl((String)systemHeader.get("RECV_SVC_CD"));  //서비스코드(거레코드)
                 log.debug(" * Request Service ID : '{}'" , svcId);
 
-                Map serviceMethodMap = bizAnnotationHandler.getServiceMethodMap();
+                Map<?, ?> serviceMethodMap = bizAnnotationHandler.getServiceMethodMap();
                 Object refectionService = serviceMethodMap.get(svcId);
 
                 //서비스ID 가 있을 경우
@@ -171,7 +172,7 @@ public class CommonController extends BizController{
         log.debug("\n[[[[[ OUTPUT ]]]]]\n"
                    +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
 
-        return new ResponseEntity(result, result.getCode());
+        return new ResponseEntity<CommonResponseBody>(result, result.getCode());
     }
 
     private boolean isValidParam(Map<String, Object> paramMap) {
@@ -191,7 +192,7 @@ public class CommonController extends BizController{
         Map<String, Object> systemHeader 		= new HashMap<String, Object>();
         Map<String, Object> transactionHeader 	= new HashMap<String, Object>();
         Map<String, Object> messageHeader 		= new HashMap<String, Object>();
-        Map<String, Object> serviceInfo         = (Map)paramMap.get("serviceInfo");
+        Map<String, Object> serviceInfo         = (Map<String, Object>)paramMap.get("serviceInfo");
 
         String dtm = sdf.format(new Date());
 
@@ -238,8 +239,8 @@ public class CommonController extends BizController{
 //		String msgValue = "시스템 에러가 발생하였습니다.";
         String msgValue = "";
 
-        Map param = new HashMap();
-        Map resultList = new HashMap();
+        Map<String, Object> param = new HashMap<String, Object>();
+        Map<String, Object> resultList = new HashMap<String, Object>();
 
         param.put("MSG_CD", msgCode);
         param.put("LANG_CD", (String)ContextUtil.getSystemHeaderValue("LANG_CD"));
@@ -292,7 +293,7 @@ public class CommonController extends BizController{
      * SystemHeader 설정
      */
     private void makeSystemHeader(){
-        Map systemHeaderMap = (HashMap)ContextUtil.getSystemHeader();
+        Map<String, Object> systemHeaderMap = (HashMap<String, Object>)ContextUtil.getSystemHeader();
 //		systemHeaderMap.put("STD_TMSG_PRGR_NO", "");					//표준전문진행번호 : 문자12
         systemHeaderMap.put("TRMS_SYS_CD", "HPS");						//송신시스템코드 : 문자3
 //		systemHeaderMap.put("TRMS_ND_NO", "");							//송신노드번호 : 숫자8
@@ -314,12 +315,12 @@ public class CommonController extends BizController{
      */
     private void makeMessageHeader(String pcsResult, String msgCode, String msgValue){
 
-        Map messageHeaderMap = (HashMap)ContextUtil.getMessageHeader();
+        Map<String, Object> messageHeaderMap = (HashMap<String, Object>)ContextUtil.getMessageHeader();
 
         if ((Integer)messageHeaderMap.get("MSG_DATA_SUB_RPTT_CNT") == null || (Integer)messageHeaderMap.get("MSG_DATA_SUB_RPTT_CNT") == 0) {
 
-            List subMsg = new ArrayList();
-            Map msg = new HashMap();
+            List<Map<String, String>> subMsg = new ArrayList<Map<String, String>>();
+            Map<String, String> msg = new HashMap<String, String>();
             msg.put("MSG_CD", msgCode);
             msg.put("MSG_TXT", msgValue);
 
@@ -335,8 +336,8 @@ public class CommonController extends BizController{
             subMsg.add(msg);
             messageHeaderMap.put("MSG_DATA_SUB", subMsg);
         } else {
-            ((Map)((List)messageHeaderMap.get("MSG_DATA_SUB")).get(0)).put("MSG_CD", msgCode);
-            ((Map)((List)messageHeaderMap.get("MSG_DATA_SUB")).get(0)).put("MSG_TXT", msgValue);
+            ((Map<String, Object>)((List<?>)messageHeaderMap.get("MSG_DATA_SUB")).get(0)).put("MSG_CD", msgCode);
+            ((Map<String, Object>)((List<?>)messageHeaderMap.get("MSG_DATA_SUB")).get(0)).put("MSG_TXT", msgValue);
         }
 
         ContextUtil.setMessageHeader(messageHeaderMap);

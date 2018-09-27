@@ -21,7 +21,6 @@ import java.util.Map;
  *
  * @author HHG
  */
-@SuppressWarnings({"unchecked"})
 @Service
 public class CommonServiceImpl extends BizService implements CommonService{
 
@@ -31,9 +30,9 @@ public class CommonServiceImpl extends BizService implements CommonService{
     @Override
     @BizAnnotation(id="CommonService", description="공통서비스")
     public Map<String, Object> doExcute(Map<String, Object> paramMap) throws SQLException, BizException {
-        Map<String, Object> resultMap = new HashMap();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
 
-        resultMap.put("ds_result", commonCodeDao.search01((Map)paramMap.get("ds_search")));
+        resultMap.put("ds_result", commonCodeDao.search01((Map<?, ?>)paramMap.get("ds_search")));
 
         return resultMap;
     }

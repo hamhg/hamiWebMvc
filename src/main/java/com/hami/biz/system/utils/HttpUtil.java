@@ -124,7 +124,7 @@ public class HttpUtil {
      * 파라미터를 문자열로 반환한다.
      */
     public String makeParameters() throws UnsupportedEncodingException {
-        Enumeration enum1 = m_request.getParameterNames();
+        Enumeration<?> enum1 = m_request.getParameterNames();
         StringBuffer sb = new StringBuffer();
         String pName;
         String[] pValues;
@@ -245,7 +245,7 @@ public class HttpUtil {
         char NL = '\n';
         StringBuffer sb = new StringBuffer();
         HttpServletRequest request = m_request;
-        Enumeration headerNameEnum = request.getHeaderNames();
+        Enumeration<?> headerNameEnum = request.getHeaderNames();
         String headerName;
         while (headerNameEnum.hasMoreElements())
         {

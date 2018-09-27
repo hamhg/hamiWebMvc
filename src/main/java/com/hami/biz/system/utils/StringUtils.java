@@ -29,8 +29,8 @@ public class StringUtils extends com.hami.sys.util.StringUtils {
         }
         else
         {
-            ArrayList param_name_list = new ArrayList();
-            Enumeration param_name_enum = request.getParameterNames();
+            ArrayList<String> param_name_list = new ArrayList<String>();
+            Enumeration<?> param_name_enum = request.getParameterNames();
             String param_name;
             while (param_name_enum.hasMoreElements())
             {

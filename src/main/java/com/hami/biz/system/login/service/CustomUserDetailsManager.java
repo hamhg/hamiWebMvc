@@ -112,8 +112,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
     protected void initDao() throws ApplicationContextException {
         if (authenticationManager == null) {
-            logger.info("No authentication manager set. Reauthentication of users when changing passwords will "
-                    + "not be performed.");
+            logger.info("No authentication manager set. Reauthentication of users when changing passwords will not be performed.");
         }
         logger.info("============ CustomUserDetailsManager ==================");
         super.initDao();
@@ -182,9 +181,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
         if (currentUser == null) {
             // This would indicate bad coding somewhere
-            throw new AccessDeniedException(
-                    "Can't change password as no Authentication object found in context "
-                            + "for current user.");
+            throw new AccessDeniedException("Can't change password as no Authentication object found in context for current user.");
         }
 
         String userid = currentUser.getName();
@@ -192,8 +189,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
         // If an authentication manager has been set, re-authenticate the user with the
         // supplied password.
         if (authenticationManager != null) {
-            logger.debug("Reauthenticating user '" + userid
-                    + "' for password change request.");
+            logger.debug("Reauthenticating user '" + userid + "' for password change request.");
 
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     userid, oldPassword));
@@ -344,8 +340,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
     }
 
     public void removeGroupAuthority(String groupName, final GrantedAuthority authority) {
-        logger.debug("Removing authority '" + authority + "' from group '" + groupName
-                + "'");
+        logger.debug("Removing authority '" + authority + "' from group '" + groupName + "'");
         Assert.hasText(groupName,"groupName should have text");
         Assert.notNull(authority, "authority cannot be null");
 
@@ -504,8 +499,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
         for (GrantedAuthority authority : authorities) {
             Assert.notNull(authority, "Authorities list contains a null entry");
-            Assert.hasText(authority.getAuthority(),
-                    "getAuthority() method must return a non-empty string");
+            Assert.hasText(authority.getAuthority(), "getAuthority() method must return a non-empty string");
         }
     }
 }

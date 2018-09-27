@@ -21,7 +21,7 @@ public abstract class FileUtil {
     public static void deleteAllFile(MultipartRequest multi)
     {
         if (multi == null) return;
-        Enumeration enum1 = (Enumeration) multi.getFileNames();
+        Enumeration<?> enum1 = (Enumeration<?>) multi.getFileNames();
         String fileName;
         File file;
         while (enum1.hasMoreElements())

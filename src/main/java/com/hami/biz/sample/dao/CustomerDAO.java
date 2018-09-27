@@ -3,12 +3,11 @@ package com.hami.biz.sample.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hami.biz.sample.model.Customer;import org.springframework.stereotype.Repository;
 import com.hami.biz.sample.model.Customer;
+import org.springframework.stereotype.Repository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 /**
  * <pre>
@@ -26,7 +25,7 @@ public class CustomerDAO {
     // Dummy database. Initialize with some dummy values.
     private static List<Customer> customers;
     {
-        customers = new ArrayList();
+        customers = new ArrayList<Customer>();
         customers.add(new Customer(101, "John", "Doe", "djohn@gmail.com", "121-232-3435"));
         customers.add(new Customer(201, "Russ", "Smith", "sruss@gmail.com", "343-545-2345"));
         customers.add(new Customer(301, "Kate", "Williams", "kwilliams@gmail.com", "876-237-2987"));
@@ -38,7 +37,7 @@ public class CustomerDAO {
      *
      * @return list of customers
      */
-    public List list() {
+    public List<Customer> list() {
         return customers;
     }
 
