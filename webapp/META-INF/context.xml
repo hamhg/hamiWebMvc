@@ -1,0 +1,7 @@
+<Context>
+  <Resource name="jdbc/hamiDB" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="hami" password="hami1234" driverClassName="oracle.jdbc.OracleDriver"
+               url="jdbc:oracle:thin:@localhost:1521:orcl"/>
+               <!-- // tried both driver class names but all not work driverClassName="oracle.jdbc.driver.OracleDriver" -->
+</Context>
