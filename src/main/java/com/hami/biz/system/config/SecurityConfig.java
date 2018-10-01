@@ -10,14 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.hami.biz.system.login.service.CustomUserDetailsManager;
-import com.hami.biz.system.login.service.UserDetailsServiceImpl;
 
 import javax.sql.DataSource;
 
@@ -47,12 +45,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-    	CustomUserDetailsManager userDetailsService = new CustomUserDetailsManager();
+        CustomUserDetailsManager userDetailsService = new CustomUserDetailsManager();
         userDetailsService.setDataSource(dataSource);
 
         //@formatter:off
         auth
-            .userDetailsService(new UserDetailsServiceImpl())
+            .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
         //@formatter:on
     }
