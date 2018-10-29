@@ -29,7 +29,7 @@ public class FlyWayMigrate {
         flyway.setTarget(MigrationVersion.LATEST);
         flyway.migrate();
 
-        //Password encoding
+        //Test Password encoding
         if(true){
             String password;
             String userid;
@@ -43,6 +43,24 @@ public class FlyWayMigrate {
                     userid = String.valueOf(user.get("user_id"));
                     password = passwordEncoder.encode(String.valueOf(user.get("password")));
                     jdbcTemplate.update("UPDATE CMSY0900A SET PASSWORD = ? WHERE USER_ID = ?", password, userid);
+                }
+            }
+        }
+
+        //Fw Password encoding
+        if(true){
+            String password;
+            String userid;
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
+            List<Map<String, Object>> userLists = jdbcTemplate.queryForList("SELECT USER_ID, PASSWORD FROM TSYAU0001");
+            
+            if (!userLists.isEmpty()) {
+                for (Map user : userLists) {
+                    userid = String.valueOf(user.get("user_id"));
+                    password = passwordEncoder.encode(String.valueOf(user.get("password")));
+                    jdbcTemplate.update("UPDATE TSYAU0001 SET PASSWORD = ? WHERE USER_ID = ?", password, userid);
                 }
             }
         }
