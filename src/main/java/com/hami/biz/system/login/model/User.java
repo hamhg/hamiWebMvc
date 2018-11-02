@@ -9,7 +9,6 @@ import org.springframework.security.core.SpringSecurityCoreVersion;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import org.springframework.util.Assert;
 
 /**
@@ -27,9 +26,11 @@ public class User implements UserDetails, CredentialsContainer {
 
 	// ~ Instance fields
 	// ================================================================================================
+	private String ccd;
 	private String password;
 	private final String username;
 	private final Set<GrantedAuthority> authorities;
+	private final Map<String, Object> userInfo;
 	private final boolean accountNonExpired;
 	private final boolean accountNonLocked;
 	private final boolean credentialsNonExpired;
@@ -41,9 +42,9 @@ public class User implements UserDetails, CredentialsContainer {
 	/**
 	 * Calls the more complex constructor with all boolean arguments set to {@code true}.
 	 */
-	public User(String username, String password,
-				Collection<? extends GrantedAuthority> authorities) {
-		this(username, password, true, true, true, true, authorities);
+	public User(String ccd, String username, String password,
+				Collection<? extends GrantedAuthority> authorities, Map<String, Object> userInfo) {
+		this(ccd, username, password, true, true, true, true, authorities, userInfo);
 	}
 
 	/**
@@ -65,15 +66,16 @@ public class User implements UserDetails, CredentialsContainer {
 	 * @throws IllegalArgumentException if a <code>null</code> value was passed either as
 	 * a parameter or as an element in the <code>GrantedAuthority</code> collection
 	 */
-	public User(String username, String password, boolean enabled,
+	public User(String ccd, String username, String password, boolean enabled,
 				boolean accountNonExpired, boolean credentialsNonExpired,
-				boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+				boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, Map<String, Object> userInfo) {
 
 		if (((username == null) || "".equals(username)) || (password == null)) {
 			throw new IllegalArgumentException(
 					"Cannot pass null or empty values to constructor");
 		}
 
+		this.ccd = ccd;
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -81,6 +83,7 @@ public class User implements UserDetails, CredentialsContainer {
 		this.credentialsNonExpired = credentialsNonExpired;
 		this.accountNonLocked = accountNonLocked;
 		this.authorities = Collections.unmodifiableSet(sortAuthorities(authorities));
+		this.userInfo = userInfo;
 	}
 
 	// ~ Methods
@@ -90,12 +93,20 @@ public class User implements UserDetails, CredentialsContainer {
 		return authorities;
 	}
 
+	public String getCcd() {
+	    return ccd;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
 
 	public String getUsername() {
 		return username;
+	}
+
+	public Map<String, Object> getUserInfo() {
+	    return userInfo;
 	}
 
 	public boolean isEnabled() {
@@ -183,12 +194,12 @@ public class User implements UserDetails, CredentialsContainer {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString()).append(": ");
+		sb.append("CCd: ").append(this.ccd).append("; ");
 		sb.append("Username: ").append(this.username).append("; ");
 		sb.append("Password: [PROTECTED]; ");
 		sb.append("Enabled: ").append(this.enabled).append("; ");
 		sb.append("AccountNonExpired: ").append(this.accountNonExpired).append("; ");
-		sb.append("credentialsNonExpired: ").append(this.credentialsNonExpired)
-				.append("; ");
+		sb.append("credentialsNonExpired: ").append(this.credentialsNonExpired).append("; ");
 		sb.append("AccountNonLocked: ").append(this.accountNonLocked).append("; ");
 
 		if (!authorities.isEmpty()) {
@@ -220,9 +231,11 @@ public class User implements UserDetails, CredentialsContainer {
 	 * should provided. The remaining attributes have reasonable defaults.
 	 */
 	public static class UserBuilder {
+	    private String ccd;
 		private String username;
 		private String password;
 		private List<GrantedAuthority> authorities;
+		private Map<String, Object> userInfo;
 		private boolean accountExpired;
 		private boolean accountLocked;
 		private boolean credentialsExpired;
@@ -294,6 +307,20 @@ public class User implements UserDetails, CredentialsContainer {
 				authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
 			}
 			return authorities(authorities);
+		}
+		
+		/**
+		 * Populates the userInfo. This attribute is required.
+		 *
+		 * @param userInfo the userInfo for this user. Cannot be null, or contain
+		 * null values
+		 * @return the {@link UserBuilder} for method chaining (i.e. to populate
+		 * additional attributes for this user)
+		 * @see #roles(String...)
+		 */
+		public UserBuilder userInfo(Map<String, Object> userInfo) {
+		    this.userInfo = userInfo;
+		    return this;
 		}
 
 		/**
@@ -385,8 +412,8 @@ public class User implements UserDetails, CredentialsContainer {
 		}
 
 		public UserDetails build() {
-			return new User(username, password, !disabled, !accountExpired,
-					!credentialsExpired, !accountLocked, authorities);
+			return new User(ccd, username, password, !disabled, !accountExpired,
+					!credentialsExpired, !accountLocked, authorities, userInfo);
 		}
 	}
 }

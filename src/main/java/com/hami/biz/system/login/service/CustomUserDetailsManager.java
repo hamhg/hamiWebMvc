@@ -40,47 +40,19 @@ import java.util.List;
  */
 public class CustomUserDetailsManager extends CustomUserDetailsService implements UserDetailsManager,
         GroupManager {
-
-    private QueryLoader queryLoader = QueryLoader.getInstance();
-
+    
+    // =====================================================================================
     // ~ Static fields/initializers
     // =====================================================================================
 
-    // UserDetailsManager SQL
-    public static final String DEF_CREATE_USER_SQL = "insert into users (userid, password, enabled) values (?,?,?)";
-    public static final String DEF_DELETE_USER_SQL = "delete from users where userid = ?";
-    public static final String DEF_UPDATE_USER_SQL = "update users set password = ?, enabled = ? where userid = ?";
-    public static final String DEF_INSERT_AUTHORITY_SQL = "insert into authorities (userid, authority) values (?,?)";
-    public static final String DEF_DELETE_USER_AUTHORITIES_SQL = "delete from authorities where userid = ?";
-    public static final String DEF_USER_EXISTS_SQL = "select userid from users where userid = ?";
-    public static final String DEF_CHANGE_PASSWORD_SQL = "update users set password = ? where userid = ?";
-
-    // GroupManager SQL
-    public static final String DEF_FIND_GROUPS_SQL = "select group_name from groups";
-    public static final String DEF_FIND_USERS_IN_GROUP_SQL = "select userid from group_members gm, groups g "
-            + "where gm.group_id = g.id" + " and g.group_name = ?";
-    public static final String DEF_INSERT_GROUP_SQL = "insert into groups (group_name) values (?)";
-    public static final String DEF_FIND_GROUP_ID_SQL = "select id from groups where group_name = ?";
-    public static final String DEF_INSERT_GROUP_AUTHORITY_SQL = "insert into group_authorities (group_id, authority) values (?,?)";
-    public static final String DEF_DELETE_GROUP_SQL = "delete from groups where id = ?";
-    public static final String DEF_DELETE_GROUP_AUTHORITIES_SQL = "delete from group_authorities where group_id = ?";
-    public static final String DEF_DELETE_GROUP_MEMBERS_SQL = "delete from group_members where group_id = ?";
-    public static final String DEF_RENAME_GROUP_SQL = "update groups set group_name = ? where group_name = ?";
-    public static final String DEF_INSERT_GROUP_MEMBER_SQL = "insert into group_members (group_id, userid) values (?,?)";
-    public static final String DEF_DELETE_GROUP_MEMBER_SQL = "delete from group_members where group_id = ? and userid = ?";
-    public static final String DEF_GROUP_AUTHORITIES_QUERY_SQL = "select g.id, g.group_name, ga.authority "
-            + "from groups g, group_authorities ga "
-            + "where g.group_name = ? "
-            + "and g.id = ga.group_id ";
-    public static final String DEF_DELETE_GROUP_AUTHORITY_SQL = "delete from group_authorities where group_id = ? and authority = ?";
-
     // ~ Instance fields
     // ================================================================================================
-
+    private QueryLoader queryLoader = QueryLoader.getInstance();
     protected final Log logger = LogFactory.getLog(getClass());
 
     String path = this.getClass().getResource("").getPath();
     String filePath = path.replace("service", "dao") + "Auth.xml";
+    // UserDetailsManager SQL
     private String createUserSql = queryLoader.getElementWithPath(filePath,"DEF_CREATE_USER_SQL",null);
     private String deleteUserSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_USER_SQL",null);
     private String updateUserSql = queryLoader.getElementWithPath(filePath,"DEF_UPDATE_USER_SQL",null);
@@ -89,6 +61,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
     private String userExistsSql = queryLoader.getElementWithPath(filePath,"DEF_USER_EXISTS_SQL",null);
     private String changePasswordSql = queryLoader.getElementWithPath(filePath,"DEF_CHANGE_PASSWORD_SQL",null);
 
+    // GroupManager SQL
     private String findAllGroupsSql = queryLoader.getElementWithPath(filePath,"DEF_FIND_GROUPS_SQL",null);
     private String findUsersInGroupSql = queryLoader.getElementWithPath(filePath,"DEF_FIND_USERS_IN_GROUP_SQL",null);
     private String insertGroupSql = queryLoader.getElementWithPath(filePath,"DEF_INSERT_GROUP_SQL",null);
@@ -109,7 +82,6 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
     // ~ Methods
     // ========================================================================================================
-
     protected void initDao() throws ApplicationContextException {
         if (authenticationManager == null) {
             logger.info("No authentication manager set. Reauthentication of users when changing passwords will not be performed.");
@@ -120,7 +92,6 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
     // ~ UserDetailsManager implementation
     // ==============================================================================
-
     public void createUser(final UserDetails user) {
         validateUserDetails(user);
         getJdbcTemplate().update(createUserSql, new PreparedStatementSetter() {
@@ -233,7 +204,6 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
     // ~ GroupManager implementation
     // ====================================================================================
-
     public List<String> findAllGroups() {
         return getJdbcTemplate().queryForList(findAllGroupsSql, String.class);
     }

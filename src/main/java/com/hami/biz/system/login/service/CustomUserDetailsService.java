@@ -1,10 +1,13 @@
 package com.hami.biz.system.login.service;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.hami.sys.jdbc.sql.QueryLoader;
@@ -19,6 +22,7 @@ import org.springframework.security.core.SpringSecurityMessageSource;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.hami.biz.system.login.model.User;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,22 +39,14 @@ import org.springframework.util.Assert;
  */
 public class CustomUserDetailsService extends JdbcDaoSupport implements UserDetailsService, MessageSourceAware {
 
-    private QueryLoader queryLoader = QueryLoader.getInstance();
 
     // =====================================================================================
     // ~ Static fields/initializers
-    public static final String DEF_USERS_BY_USERNAME_QUERY = "select username,password,enabled "
-            + "from users " + "where username = ?";
-    public static final String DEF_AUTHORITIES_BY_USERNAME_QUERY = "select username,authority "
-            + "from authorities " + "where username = ?";
-    public static final String DEF_GROUP_AUTHORITIES_BY_USERNAME_QUERY = "select g.id, g.group_name, ga.authority "
-            + "from groups g, group_members gm, group_authorities ga "
-            + "where gm.username = ? " + "and g.id = ga.group_id "
-            + "and g.id = gm.group_id";
 
     // ~ Instance fields
     // ================================================================================================
     // =====================================================================================
+    private QueryLoader queryLoader = QueryLoader.getInstance();
     protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
 
     private String authoritiesByUsernameQuery;
@@ -65,11 +61,6 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     // ===================================================================================================
 
     public CustomUserDetailsService() {
-        /*
-        this.usersByUsernameQuery = DEF_USERS_BY_USERNAME_QUERY;
-        this.authoritiesByUsernameQuery = DEF_AUTHORITIES_BY_USERNAME_QUERY;
-        this.groupAuthoritiesByUsernameQuery = DEF_GROUP_AUTHORITIES_BY_USERNAME_QUERY;
-        */
         String path = this.getClass().getResource("").getPath();
         String filePath = path.replace("service", "dao") + "Auth.xml";
         this.usersByUsernameQuery = queryLoader.getElementWithPath(filePath,"DEF_USERS_BY_USERNAME_QUERY",null);
@@ -110,7 +101,7 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username)
+    public User loadUserByUsername(String username)
             throws UsernameNotFoundException {
         List<UserDetails> users = loadUsersByUsername(username);
 
@@ -122,8 +113,10 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
                             new Object[] { username }, "Username {0} not found"));
         }
 
-        UserDetails user = users.get(0); // contains no GrantedAuthority[]
+        User user = (User) users.get(0); // contains no GrantedAuthority[]
 
+        Map<String, Object> userInfo = user.getUserInfo();
+        
         Set<GrantedAuthority> dbAuthsSet = new HashSet<GrantedAuthority>();
 
         if (this.enableAuthorities) {
@@ -147,7 +140,7 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
                     "User {0} has no GrantedAuthority"));
         }
 
-        return createUserDetails(username, user, dbAuths);
+        return createUserDetails(username, user, dbAuths, userInfo);
     }
 
     /**
@@ -160,11 +153,23 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
                     @Override
                     public UserDetails mapRow(ResultSet rs, int rowNum)
                             throws SQLException {
-                        String username = rs.getString(1);
-                        String password = rs.getString(2);
-                        boolean enabled = rs.getBoolean(3);
-                        return new User(username, password, enabled, true, true, true,
-                                AuthorityUtils.NO_AUTHORITIES);
+                        String ccd = rs.getString(1);
+                        String username = rs.getString(2);
+                        String password = rs.getString(3);
+                        boolean enabled = rs.getBoolean(4);
+                        
+                        ResultSetMetaData meta = rs.getMetaData();
+                        Map<String, Object> userInfo = new HashMap<String, Object>();
+                        while(rs.next()){
+                            if(rs.getRow() > 1){
+                                userInfo.put(meta.getColumnName(rs.getRow()), rs.getString(rs.getRow()));
+                                
+                                logger.debug("====== KEY:"+meta.getColumnName(rs.getRow())+", VALUE:"+rs.getString(rs.getRow()));
+                            }
+                        }
+                        
+                        return new User(ccd, username, password, enabled, true, true, true,
+                                AuthorityUtils.NO_AUTHORITIES, userInfo);
                     }
 
                 });
@@ -217,16 +222,16 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
      * loading queries.
      * @return the final UserDetails which should be used in the system.
      */
-    protected UserDetails createUserDetails(String username,
-                                            UserDetails userFromUserQuery, List<GrantedAuthority> combinedAuthorities) {
+    protected User createUserDetails(String username,
+                                     User userFromUserQuery, List<GrantedAuthority> combinedAuthorities, Map<String, Object> userInfo) {
         String returnUsername = userFromUserQuery.getUsername();
 
         if (!this.usernameBasedPrimaryKey) {
             returnUsername = username;
         }
 
-        return new User(returnUsername, userFromUserQuery.getPassword(),
-                userFromUserQuery.isEnabled(), true, true, true, combinedAuthorities);
+        return new User(userFromUserQuery.getCcd(), returnUsername, userFromUserQuery.getPassword(),
+                userFromUserQuery.isEnabled(), true, true, true, combinedAuthorities, userInfo);
     }
 
     /**

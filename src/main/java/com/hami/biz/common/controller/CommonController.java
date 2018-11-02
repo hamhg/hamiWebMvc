@@ -3,6 +3,7 @@ package com.hami.biz.common.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hami.biz.common.model.CommonResponseBody;
+import com.hami.biz.sample.model.User;
 import com.hami.biz.system.support.BizController;
 import com.hami.sys.annotation.ServiceMethod;
 import com.hami.sys.exception.BizException;
@@ -10,10 +11,13 @@ import com.hami.sys.util.ContextUtil;
 import com.hami.sys.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -171,6 +175,10 @@ public class CommonController extends BizController{
 
         log.debug("\n[[[[[ OUTPUT ]]]]]\n"
                    +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
+        
+        Principal principal = request.getUserPrincipal();
+        log.debug("\n[[[[[ principal ]]]]]\n"
+            +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(principal));
 
         return new ResponseEntity<CommonResponseBody>(result, result.getCode());
     }
