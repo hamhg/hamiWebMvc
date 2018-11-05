@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Set;
 
 import com.hami.sys.jdbc.sql.QueryLoader;
+import com.hami.sys.util.StringUtils;
+
 import org.springframework.context.ApplicationContextException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
@@ -161,13 +163,10 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
                         ResultSetMetaData meta = rs.getMetaData();
                         int colCount = meta.getColumnCount();
                         Map<String, Object> userInfo = new HashMap<String, Object>();
-                        for (int col=4; col <= colCount; col++) 
+                        for (int col=1; col <= colCount; col++) 
                         {
-                            Object value = rs.getObject(col);
-                            if (value != null) 
-                            {
-                                userInfo.put(meta.getColumnName(col), rs.getString(col));
-                            }
+                            if(!"PASSWORD".equals(meta.getColumnName(col)))
+                            userInfo.put(meta.getColumnName(col), StringUtils.nvl(rs.getString(col),""));
                         }
                         
                         return new User(ccd, username, password, enabled, true, true, true,
@@ -188,7 +187,7 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
                     @Override
                     public GrantedAuthority mapRow(ResultSet rs, int rowNum)
                             throws SQLException {
-                        String roleName = CustomUserDetailsService.this.rolePrefix + rs.getString(2);
+                        String roleName = CustomUserDetailsService.this.rolePrefix + rs.getString(3);
 
                         return new SimpleGrantedAuthority(roleName);
                     }
