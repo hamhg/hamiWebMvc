@@ -1,5 +1,6 @@
 package com.hami.biz.system.config;
 
+import com.hami.sys.config.DBConfigLocal;
 import com.hami.sys.config.DBConfigDev;
 import com.hami.sys.config.DBConfigPrd;
 import com.hami.biz.system.filter.CORSFilter;
@@ -26,7 +27,7 @@ public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{ DBConfigDev.class, DBConfigPrd.class, SecurityConfig.class };
+        return new Class[]{ DBConfigLocal.class, DBConfigDev.class, DBConfigPrd.class, SecurityConfig.class };
     }
 
     @Override
