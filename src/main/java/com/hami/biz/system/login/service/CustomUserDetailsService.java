@@ -159,12 +159,14 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
                         boolean enabled = rs.getBoolean(4);
                         
                         ResultSetMetaData meta = rs.getMetaData();
+                        int colCount = meta.getColumnCount();
                         Map<String, Object> userInfo = new HashMap<String, Object>();
-                        while(rs.next()){
-                            if(rs.getRow() > 1){
-                                userInfo.put(meta.getColumnName(rs.getRow()), rs.getString(rs.getRow()));
-                                
-                                logger.debug("====== KEY:"+meta.getColumnName(rs.getRow())+", VALUE:"+rs.getString(rs.getRow()));
+                        for (int col=4; col <= colCount; col++) 
+                        {
+                            Object value = rs.getObject(col);
+                            if (value != null) 
+                            {
+                                userInfo.put(meta.getColumnName(col), rs.getString(col));
                             }
                         }
                         
