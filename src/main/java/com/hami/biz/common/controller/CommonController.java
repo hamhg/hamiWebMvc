@@ -151,9 +151,9 @@ public class CommonController extends BizController{
                 makeSystemHeader();
                 makeMessageHeader(pcsResult, msgCode, msgValue);		//처리결과코드(S 성공, F 실패) , 메시지코드, 메시지값
 
-                systemHeader = ContextUtil.getSystemHeader();
-                transactionHeader = ContextUtil.getTransactionHeader();
-                messageHeader = ContextUtil.getMessageHeader();
+                systemHeader = (Map<String, Object>) ContextUtil.getSystemHeader();
+                transactionHeader = (Map<String, Object>) ContextUtil.getTransactionHeader();
+                messageHeader = (Map<String, Object>) ContextUtil.getMessageHeader();
 
                 if(resData == null){
                     result.setCode(HttpStatus.NO_CONTENT);
