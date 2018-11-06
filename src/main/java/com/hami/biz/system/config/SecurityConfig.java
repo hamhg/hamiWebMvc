@@ -12,10 +12,12 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.hami.biz.system.login.service.CustomUserDetailsManager;
+import com.hami.biz.system.login.service.CustomUsernamePasswordAuthenticationFilter;
 
 import javax.sql.DataSource;
 
@@ -81,6 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest()
                         .authenticated()
             .and()
+                .addFilterBefore(new CustomUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                     .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                     .loginPage("/login")

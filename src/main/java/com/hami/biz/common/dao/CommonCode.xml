@@ -2,12 +2,9 @@
 <Statement version='1'>
 
 <sql id='search01'><![CDATA[
-SELECT T1.C_CD,
-       T1.USER_ID USERNAME,
-       T1.PASSWORD,
-       T1.ENABLED
-  FROM TSYAU0001 T1
- WHERE 1=1
+SELECT * 
+  FROM TSYST0001
+ WHERE IDX_ID = :IDX_ID
  <#if USERNAME?has_content>
    AND T1.USERNAME = :USERNAME
  </#if>

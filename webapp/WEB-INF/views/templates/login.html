@@ -118,6 +118,14 @@
             Enter your username and password
         </p>
         <fieldset class=" form-group form-group-lg">
+			<select id="ccd" name="ccd" class="form-control" >
+			   <option th:each="comCd : ${COM_CD}"
+			      th:value="${comCd.COM_CD}"
+			      th:utext="${comCd.COM_NM}"/>
+    		</select>
+        </fieldset>
+
+        <fieldset class=" form-group form-group-lg">
             <input type="text" id="userid" name="userid" class="form-control" placeholder="Username or Email">
         </fieldset>
 
@@ -133,7 +141,6 @@
             </label>
             <a href="#" class="font-size-12 text-muted pull-xs-right" id="page-signin-forgot-link">Forgot your password?</a>
         </div>
-
         <button type="submit" class="btn btn-block btn-lg btn-primary m-t-3">Sign In</button>
     </form>
 
@@ -145,7 +152,6 @@
         <a href="index.html" class="page-signin-social-btn btn btn-danger btn-rounded" data-toggle="tooltip" title="Google+"><i class="fa fa-google-plus"></i></a>
     </div>
 </div>
-
 <!-- / Sign In form -->
 
 <!-- Reset form -->

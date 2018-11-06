@@ -85,7 +85,7 @@ public class CommonController extends BizController{
                 //전처리
                 //PreExecute();
 
-                String svcId = StringUtils.nvl((String)systemHeader.get("RECV_SVC_CD"));  //서비스코드(거레코드)
+                String svcId = StringUtils.nvl((String)systemHeader.get("RECV_SVC_CD"));  //서비스코드
                 log.debug(" * Request Service ID : '{}'" , svcId);
 
                 Map<?, ?> serviceMethodMap = bizAnnotationHandler.getServiceMethodMap();

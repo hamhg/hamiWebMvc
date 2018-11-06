@@ -15,5 +15,6 @@ import com.hami.sys.exception.BizException;
  * @author HHG
  */
 public interface CommonService {
-    Map<String,Object> doExcute(Map<String, Object> paramMap) throws SQLException, BizException;
+    Map<String,Object> commonCodeByCd(Map<String, Object> paramMap) throws SQLException, BizException;
+    Map<String,Object> commonService(Map<String, Object> paramMap) throws SQLException, BizException;
 }

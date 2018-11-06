@@ -19,7 +19,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hami.biz.common.service.CommonService;
 import com.hami.biz.system.utils.SecurityUtils;
+import com.hami.sys.exception.BizException;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,6 +49,9 @@ public class LoginController {
     @Autowired
     DataSource dataSource;
 
+    @Autowired
+    CommonService commonService;
+
     // Login form with error
     @RequestMapping("/login-error.html")
     public String loginError(Model model) {
@@ -52,11 +61,13 @@ public class LoginController {
 
     /**
      * both "normal login" and "login for update" shared this form.
+     * @throws SQLException 
+     * @throws BizException 
      *
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
+            @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) throws BizException, SQLException {
 
         ModelAndView model = new ModelAndView();
         if (error != null) {
@@ -77,6 +88,17 @@ public class LoginController {
             model.addObject("msg", "You've been logged out successfully.");
         }
 
+        //회사코드
+        Map<String, Object> map = new HashMap<String, Object>(); 
+        map.put("IDX_ID", "COM_CD");
+        
+        Map<String, Object> searchParam = new HashMap<String, Object>();
+        searchParam.put("ds_search", map);
+        
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("COM_CD",commonService.commonCodeByCd(searchParam).get("ds_result"));
+        model.addAllObjects(data);
+        
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){
             model.setViewName("index.html");
         } else {

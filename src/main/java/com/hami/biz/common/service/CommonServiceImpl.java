@@ -28,12 +28,24 @@ public class CommonServiceImpl extends BizService implements CommonService{
     CommonCodeDao commonCodeDao;
 
     @Override
-    @BizAnnotation(id="CommonService", description="공통서비스")
-    public Map<String, Object> doExcute(Map<String, Object> paramMap) throws SQLException, BizException {
+    @SuppressWarnings("unchecked")
+    @BizAnnotation(id="CommonCodeByCd", description="공통코드")
+    public Map<String, Object> commonCodeByCd(Map<String, Object> paramMap) throws SQLException, BizException {
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
-        resultMap.put("ds_result", commonCodeDao.search01((Map<?, ?>)paramMap.get("ds_search")));
+        resultMap.put("ds_result", commonCodeDao.search01((Map<String, Object>)paramMap.get("ds_search")));
 
+        return resultMap;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    @BizAnnotation(id="CommonService", description="공통서비스")
+    public Map<String, Object> commonService(Map<String, Object> paramMap) throws SQLException, BizException {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        
+        resultMap.put("ds_result", commonCodeDao.search01((Map<String, Object>)paramMap.get("ds_search")));
+        
         return resultMap;
     }
 
