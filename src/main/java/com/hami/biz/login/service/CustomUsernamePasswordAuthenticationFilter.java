@@ -6,10 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.hami.biz.login.model.CustomUsernamePasswordAuthenticationToken;
+import com.hami.biz.system.utils.StringUtils;
 
 /**
  * <pre>
@@ -35,8 +37,8 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
 
         String username = obtainUsername(request);
         String password = obtainPassword(request);
-        String ccd = obtainCcd(request);
-
+        String ccd = StringUtils.nvl(request.getParameter("ccd"),"");
+        
         if (username == null) {
             username = "";
         }
@@ -47,17 +49,13 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
 
         username = username.trim();
 
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username+"|"+ccd, password);
+        CustomUsernamePasswordAuthenticationToken authRequest = new CustomUsernamePasswordAuthenticationToken(username, password, ccd);
 
         log.debug("CustomUsernamePasswordAuthenticationFilter=====================username:"+username+"|"+ccd);
         
         setDetails(request, authRequest);
 
         return this.getAuthenticationManager().authenticate(authRequest);
-    }
-    
-    private String obtainCcd(HttpServletRequest request) {
-        return request.getParameter("ccd");
     }
     
 }

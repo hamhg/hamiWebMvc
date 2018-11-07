@@ -41,10 +41,6 @@ import java.util.List;
 public class CustomUserDetailsManager extends CustomUserDetailsService implements UserDetailsManager,
         GroupManager {
     
-    // =====================================================================================
-    // ~ Static fields/initializers
-    // =====================================================================================
-
     // ~ Instance fields
     // ================================================================================================
     private QueryLoader queryLoader = QueryLoader.getInstance();

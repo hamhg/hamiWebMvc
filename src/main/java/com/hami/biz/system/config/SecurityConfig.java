@@ -1,5 +1,7 @@
 package com.hami.biz.system.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,13 +15,11 @@ import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
+import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
 import com.hami.biz.login.service.CustomUserDetailsManager;
 import com.hami.biz.login.service.CustomUsernamePasswordAuthenticationFilter;
-
-import javax.sql.DataSource;
 
 /**
  * <pre>
@@ -54,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
             .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
+        
         //@formatter:on
     }
 
@@ -123,7 +124,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
+        CustomJdbcTokenRepositoryImpl db = new CustomJdbcTokenRepositoryImpl();
         db.setDataSource(dataSource);
         return db;
     }
