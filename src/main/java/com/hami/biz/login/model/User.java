@@ -1,4 +1,4 @@
-package com.hami.biz.system.login.model;
+package com.hami.biz.login.model;
 
 import java.io.Serializable;
 import java.util.*;

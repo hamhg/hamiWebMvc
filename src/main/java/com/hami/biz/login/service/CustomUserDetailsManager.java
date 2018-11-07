@@ -1,4 +1,4 @@
-package com.hami.biz.system.login.service;
+package com.hami.biz.login.service;
 
 import com.hami.sys.jdbc.sql.QueryLoader;
 import org.apache.commons.logging.Log;

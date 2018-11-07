@@ -16,8 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
-import com.hami.biz.system.login.service.CustomUserDetailsManager;
-import com.hami.biz.system.login.service.CustomUsernamePasswordAuthenticationFilter;
+import com.hami.biz.login.service.CustomUserDetailsManager;
+import com.hami.biz.login.service.CustomUsernamePasswordAuthenticationFilter;
 
 import javax.sql.DataSource;
 

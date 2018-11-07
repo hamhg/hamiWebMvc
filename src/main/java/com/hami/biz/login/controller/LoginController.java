@@ -1,4 +1,4 @@
-package com.hami.biz.system.login.controller;
+package com.hami.biz.login.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

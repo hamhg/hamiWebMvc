@@ -1,4 +1,4 @@
-package com.hami.biz.system.login.service;
+package com.hami.biz.login.service;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.hami.biz.login.model.User;
 import com.hami.sys.jdbc.sql.QueryLoader;
 import com.hami.sys.util.StringUtils;
 
@@ -23,8 +24,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityMessageSource;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import com.hami.biz.system.login.model.User;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

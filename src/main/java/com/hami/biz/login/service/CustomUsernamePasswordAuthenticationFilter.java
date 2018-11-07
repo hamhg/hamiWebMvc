@@ -1,4 +1,4 @@
-package com.hami.biz.system.login.service;
+package com.hami.biz.login.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
