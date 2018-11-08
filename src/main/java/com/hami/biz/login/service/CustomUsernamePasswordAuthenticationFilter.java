@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.hami.biz.login.model.CustomUsernamePasswordAuthenticationToken;
 import com.hami.biz.system.utils.StringUtils;
 
 /**
@@ -28,31 +28,20 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
     private boolean postOnly = true;
     
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request,
-                                                HttpServletResponse response) throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if (postOnly && !request.getMethod().equals("POST")) {
-            throw new AuthenticationServiceException(
-                    "Authentication method not supported: " + request.getMethod());
+            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
-
-        String username = obtainUsername(request);
-        String password = obtainPassword(request);
+        String username = StringUtils.nvl(request.getParameter("userid"),"");
+        String password = StringUtils.nvl(request.getParameter("password"),"");
         String ccd = StringUtils.nvl(request.getParameter("ccd"),"");
-        
-        if (username == null) {
-            username = "";
-        }
-
-        if (password == null) {
-            password = "";
-        }
 
         username = username.trim();
-
-        CustomUsernamePasswordAuthenticationToken authRequest = new CustomUsernamePasswordAuthenticationToken(username, password, ccd);
-
-        log.debug("CustomUsernamePasswordAuthenticationFilter=====================username:"+username+"|"+ccd);
         
+        String ccdAndUsername = String.format("%s%s%s", ccd, "■", username.trim());
+        
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(ccdAndUsername, password);
+
         setDetails(request, authRequest);
 
         return this.getAuthenticationManager().authenticate(authRequest);

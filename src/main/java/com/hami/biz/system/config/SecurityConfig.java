@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
 import com.hami.biz.login.service.CustomUserDetailsManager;
@@ -84,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest()
                         .authenticated()
             .and()
-                .addFilterBefore(new CustomUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(customUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                     .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                     .loginPage("/login")
@@ -127,6 +128,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CustomJdbcTokenRepositoryImpl db = new CustomJdbcTokenRepositoryImpl();
         db.setDataSource(dataSource);
         return db;
+    }
+
+    @Bean
+    public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter() throws Exception {
+        CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter = new CustomUsernamePasswordAuthenticationFilter();
+        customUsernamePasswordAuthenticationFilter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/auth/login_check", "POST"));
+        customUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
+        return customUsernamePasswordAuthenticationFilter;
     }
 
     @Bean

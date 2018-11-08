@@ -102,9 +102,16 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     }
 
     @Override
-    public User loadUserByUsername(String username)
-            throws UsernameNotFoundException {
-        List<UserDetails> users = loadUsersByUsername(username);
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        
+        String[] ccdAndUsername = StringUtils.split(username, "■");
+        
+        if (ccdAndUsername == null || ccdAndUsername.length != 2) {
+            throw new UsernameNotFoundException("Username and domain must be provided");
+        }
+        
+        //List<UserDetails> users = loadUsersByUsername(username);
+        List<UserDetails> users = loadUsersByUsername(ccdAndUsername[0], ccdAndUsername[1]);
 
         if (users.size() == 0) {
             this.logger.debug("Query returned no results for user '" + username + "'");
@@ -121,11 +128,11 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
         Set<GrantedAuthority> dbAuthsSet = new HashSet<GrantedAuthority>();
 
         if (this.enableAuthorities) {
-            dbAuthsSet.addAll(loadUserAuthorities(user.getUsername()));
+            dbAuthsSet.addAll(loadUserAuthorities(ccdAndUsername[0], user.getUsername()));
         }
 
         if (this.enableGroups) {
-            dbAuthsSet.addAll(loadGroupAuthorities(user.getUsername()));
+            dbAuthsSet.addAll(loadGroupAuthorities(ccdAndUsername[0], user.getUsername()));
         }
 
         List<GrantedAuthority> dbAuths = new ArrayList<GrantedAuthority>(dbAuthsSet);
@@ -148,9 +155,9 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
      * Executes the SQL <tt>usersByUsernameQuery</tt> and returns a list of UserDetails
      * objects. There should normally only be one matching user.
      */
-    protected List<UserDetails> loadUsersByUsername(String username) {
+    protected List<UserDetails> loadUsersByUsername(String ccd, String username) {
         return getJdbcTemplate().query(this.usersByUsernameQuery,
-                new String[] { username }, new RowMapper<UserDetails>() {
+                new String[] { ccd, username }, new RowMapper<UserDetails>() {
                     @Override
                     public UserDetails mapRow(ResultSet rs, int rowNum)
                             throws SQLException {
@@ -180,9 +187,9 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
      *
      * @return a list of GrantedAuthority objects for the user
      */
-    protected List<GrantedAuthority> loadUserAuthorities(String username) {
+    protected List<GrantedAuthority> loadUserAuthorities(String ccd, String username) {
         return getJdbcTemplate().query(this.authoritiesByUsernameQuery,
-                new String[] { username }, new RowMapper<GrantedAuthority>() {
+                new String[] { ccd, username }, new RowMapper<GrantedAuthority>() {
                     @Override
                     public GrantedAuthority mapRow(ResultSet rs, int rowNum)
                             throws SQLException {
@@ -199,7 +206,7 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
      *
      * @return a list of GrantedAuthority objects for the user
      */
-    protected List<GrantedAuthority> loadGroupAuthorities(String username) {
+    protected List<GrantedAuthority> loadGroupAuthorities(String ccd, String username) {
         return getJdbcTemplate().query(this.groupAuthoritiesByUsernameQuery,
                 new String[] { username }, new RowMapper<GrantedAuthority>() {
                     @Override
