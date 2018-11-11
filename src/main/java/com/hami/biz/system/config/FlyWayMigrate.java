@@ -25,7 +25,7 @@ public class FlyWayMigrate {
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource());
-        //flyway.clean();
+        flyway.clean();
         flyway.setTarget(MigrationVersion.LATEST);
         flyway.migrate();
 
@@ -71,7 +71,7 @@ public class FlyWayMigrate {
 
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/ORCL");
+        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XE");
         dataSource.setUsername("hami");
         dataSource.setPassword("hami1234");
 

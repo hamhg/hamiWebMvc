@@ -90,7 +90,7 @@ public class LoginController {
 
         //회사코드
         Map<String, Object> map = new HashMap<String, Object>(); 
-        map.put("IDX_ID", "COM_CD");
+        map.put("GRP_CD", "COM_CD");
         
         Map<String, Object> searchParam = new HashMap<String, Object>();
         searchParam.put("ds_search", map);

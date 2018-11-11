@@ -4,7 +4,7 @@
 <sql id='search01'><![CDATA[
 SELECT * 
   FROM TSYST0001
- WHERE IDX_ID = :IDX_ID
+ WHERE GRP_CD = :GRP_CD
  <#if USERNAME?has_content>
    AND T1.USERNAME = :USERNAME
  </#if>
