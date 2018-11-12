@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hamiWebMvc.iml" filepath="$PROJECT_DIR$/.idea/modules/hamiWebMvc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hamiWebMvc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hamiWebMvc_main.iml" group="hamiWebMvc" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hamiWebMvc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hamiWebMvc_test.iml" group="hamiWebMvc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hamiWeb_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hamiWeb_main.iml" group="hamiWebMvc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hamiWeb_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hamiWeb_test.iml" group="hamiWebMvc" />
     </modules>
   </component>
 </project>

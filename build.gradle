@@ -21,16 +21,6 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF8'
 
-configurations.all {
-    resolutionStrategy {
-        eachDependency {
-            if (it.requested.group == 'org.springframework') {
-                it.useVersion '4.3.13.RELEASE'
-            }
-        }
-    }
-}
-
 buildscript {
     repositories {
         mavenCentral()
@@ -86,8 +76,9 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     compileOnly 'org.projectlombok:lombok:1.16.18'
-    
-    runtime files('D:/workspace/hamiCore/build/libs/hamiCore-1.0.jar')
+
+    compile files('/Users/andy/Documents/DevSrc/java_lib/hamiCore-1.0.jar')
+    runtime files('/Users/andy/Documents/DevSrc/java_lib/hamiCore-1.0.jar')
 
     testCompile "org.springframework:spring-test:$springVersion"
     providedCompile 'javax.websocket:javax.websocket-api:1.1'
@@ -97,7 +88,7 @@ dependencies {
 task nestedSpecs(type: Copy) {
     into 'build/explodedWar'
     exclude '**/*Test.java'
-    from('src/main/java/com/hami/biz') {
+    from('src/main/java') {
         include '**/*.xml'
     }
     into('classes') {
