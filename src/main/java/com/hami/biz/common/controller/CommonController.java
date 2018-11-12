@@ -3,7 +3,6 @@ package com.hami.biz.common.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hami.biz.common.model.CommonResponseBody;
-import com.hami.biz.sample.model.User;
 import com.hami.biz.system.support.BizController;
 import com.hami.sys.annotation.ServiceMethod;
 import com.hami.sys.exception.BizException;
@@ -11,12 +10,12 @@ import com.hami.sys.util.ContextUtil;
 import com.hami.sys.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -24,7 +23,7 @@ import java.util.*;
 /**
  * <pre>
  * <li>Program Name : CommonController
- * <li>Description  :
+ * <li>Description  :Å
  * <li>History      : 2017. 12. 26.
  * </pre>
  *
