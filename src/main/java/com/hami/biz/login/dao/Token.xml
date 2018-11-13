@@ -16,7 +16,8 @@ CREATE TABLE TSYAU0009
     SELECT LOGIN_ID,
            SERIES,
            TOKEN,
-           LAST_USED 
+           LAST_USED,
+           C_CD
       FROM TSYAU0009 
      WHERE SERIES = ?
 ]]></sql>

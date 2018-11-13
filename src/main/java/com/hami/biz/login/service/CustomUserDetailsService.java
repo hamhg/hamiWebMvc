@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hami.biz.login.model.User;
 import com.hami.sys.jdbc.sql.QueryLoader;
 import com.hami.sys.util.StringUtils;
@@ -20,10 +22,12 @@ import org.springframework.context.MessageSourceAware;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityMessageSource;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -50,7 +54,8 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     // =====================================================================================
     private QueryLoader queryLoader = QueryLoader.getInstance();
     protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
-
+    protected ObjectMapper mapper = new ObjectMapper();
+    
     private String authoritiesByUsernameQuery;
     private String groupAuthoritiesByUsernameQuery;
     private String usersByUsernameQuery;
@@ -106,9 +111,16 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         
         String[] ccdAndUsername = StringUtils.split(username, "■");
-        
+
         if (ccdAndUsername == null || ccdAndUsername.length != 2) {
-            throw new UsernameNotFoundException("Username and domain must be provided");
+            if(ccdAndUsername.length == 1){
+                String usernm = ccdAndUsername[0];
+                ccdAndUsername = new String[2];
+                ccdAndUsername[0] = "00";
+                ccdAndUsername[1] = usernm;
+            } else {
+                throw new UsernameNotFoundException("Username and domain must be provided");
+            }
         }
         
         //List<UserDetails> users = loadUsersByUsername(username);
