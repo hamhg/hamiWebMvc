@@ -1,5 +1,8 @@
 package com.hami.biz.login.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hami.biz.login.model.User;
 import com.hami.sys.jdbc.sql.QueryLoader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,6 +31,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentReme
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.util.Assert;
 
+import java.security.Principal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +52,8 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     // ~ Instance fields
     // ================================================================================================
     private QueryLoader queryLoader = QueryLoader.getInstance();
-    protected final Log logger = LogFactory.getLog(getClass());
+    protected ObjectMapper mapper = new ObjectMapper();
+    protected final Log log = LogFactory.getLog(getClass());
 
     String path = this.getClass().getResource("").getPath();
     String filePath = path.replace("service", "dao") + "Token.xml";
@@ -67,8 +72,10 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     }
 
     public void createNewToken(PersistentRememberMeToken token) {
-        getJdbcTemplate().update(insertTokenSql, token.getUsername(), token.getSeries(),
-                token.getTokenValue(), token.getDate());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        String ccd = user.getCcd();
+        getJdbcTemplate().update(insertTokenSql, ccd, token.getUsername(), token.getSeries(), token.getTokenValue(), token.getDate());
     }
 
     public void updateToken(String series, String tokenValue, Date lastUsed) {
@@ -89,22 +96,18 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
         try {
             return getJdbcTemplate().queryForObject(tokensBySeriesSql,
                     new RowMapper<PersistentRememberMeToken>() {
-                        public PersistentRememberMeToken mapRow(ResultSet rs, int rowNum)
-                                throws SQLException {
-                            return new PersistentRememberMeToken(rs.getString(1), rs
-                                    .getString(2), rs.getString(3), rs.getTimestamp(4));
+                        public PersistentRememberMeToken mapRow(ResultSet rs, int rowNum) throws SQLException {
+                            return new PersistentRememberMeToken(rs.getString(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4));
                         }
                     }, seriesId);
         }
         catch (EmptyResultDataAccessException zeroResults) {
             if (logger.isDebugEnabled()) {
-                logger.debug("Querying token for series '" + seriesId
-                        + "' returned no results.", zeroResults);
+                logger.debug("Querying token for series '" + seriesId + "' returned no results.", zeroResults);
             }
         }
         catch (IncorrectResultSizeDataAccessException moreThanOne) {
-            logger.error("Querying token for series '" + seriesId
-                    + "' returned more than one value. Series" + " should be unique");
+            logger.error("Querying token for series '" + seriesId + "' returned more than one value. Series" + " should be unique");
         }
         catch (DataAccessException e) {
             logger.error("Failed to load token for series " + seriesId, e);
@@ -114,7 +117,10 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     }
 
     public void removeUserTokens(String username) {
-        getJdbcTemplate().update(removeUserTokensSql, username);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        String ccd = user.getCcd();
+        getJdbcTemplate().update(removeUserTokensSql, ccd, username);
     }
 
     /**
