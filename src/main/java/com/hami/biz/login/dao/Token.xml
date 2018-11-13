@@ -13,8 +13,7 @@ CREATE TABLE TSYAU0009
 ]]></sql>
 
 <sql id='DEF_TOKEN_BY_SERIES_SQL'><![CDATA[
-    SELECT C_CD,
-           LOGIN_ID,
+    SELECT LOGIN_ID,
            SERIES,
            TOKEN,
            LAST_USED 
