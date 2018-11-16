@@ -1,39 +1,24 @@
 package com.hami.biz.login.service;
 
-import com.hami.sys.jdbc.sql.QueryLoader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.context.ApplicationContextException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserCache;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.cache.NullUserCache;
-import org.springframework.security.provisioning.GroupManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.util.Assert;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hami.biz.login.model.User;
+import com.hami.sys.jdbc.sql.QueryLoader;
 
 /**
  * <pre>
@@ -48,7 +33,8 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     // ~ Instance fields
     // ================================================================================================
     private QueryLoader queryLoader = QueryLoader.getInstance();
-    protected final Log logger = LogFactory.getLog(getClass());
+    protected ObjectMapper mapper = new ObjectMapper();
+    protected final Log log = LogFactory.getLog(getClass());
 
     String path = this.getClass().getResource("").getPath();
     String filePath = path.replace("service", "dao") + "Token.xml";
@@ -67,8 +53,10 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     }
 
     public void createNewToken(PersistentRememberMeToken token) {
-        getJdbcTemplate().update(insertTokenSql, token.getUsername(), token.getSeries(),
-                token.getTokenValue(), token.getDate());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        String ccd = user.getCcd();
+        getJdbcTemplate().update(insertTokenSql, ccd, token.getUsername(), token.getSeries(), token.getTokenValue(), token.getDate());
     }
 
     public void updateToken(String series, String tokenValue, Date lastUsed) {
@@ -89,22 +77,18 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
         try {
             return getJdbcTemplate().queryForObject(tokensBySeriesSql,
                     new RowMapper<PersistentRememberMeToken>() {
-                        public PersistentRememberMeToken mapRow(ResultSet rs, int rowNum)
-                                throws SQLException {
-                            return new PersistentRememberMeToken(rs.getString(1), rs
-                                    .getString(2), rs.getString(3), rs.getTimestamp(4));
+                        public CustomPersistentRememberMeToken mapRow(ResultSet rs, int rowNum) throws SQLException {
+                            return new CustomPersistentRememberMeToken(rs.getString(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getString(5));
                         }
                     }, seriesId);
         }
         catch (EmptyResultDataAccessException zeroResults) {
             if (logger.isDebugEnabled()) {
-                logger.debug("Querying token for series '" + seriesId
-                        + "' returned no results.", zeroResults);
+                logger.debug("Querying token for series '" + seriesId + "' returned no results.", zeroResults);
             }
         }
         catch (IncorrectResultSizeDataAccessException moreThanOne) {
-            logger.error("Querying token for series '" + seriesId
-                    + "' returned more than one value. Series" + " should be unique");
+            logger.error("Querying token for series '" + seriesId + "' returned more than one value. Series" + " should be unique");
         }
         catch (DataAccessException e) {
             logger.error("Failed to load token for series " + seriesId, e);
@@ -114,7 +98,10 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     }
 
     public void removeUserTokens(String username) {
-        getJdbcTemplate().update(removeUserTokensSql, username);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        String ccd = user.getCcd();
+        getJdbcTemplate().update(removeUserTokensSql, ccd, username);
     }
 
     /**
@@ -125,6 +112,19 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
      */
     public void setCreateTableOnStartup(boolean createTableOnStartup) {
         this.createTableOnStartup = createTableOnStartup;
+    }
+    
+    public class CustomPersistentRememberMeToken extends PersistentRememberMeToken {
+        private final String ccd;
+
+        public CustomPersistentRememberMeToken(String username, String series, String tokenValue, Date date, String ccd) {
+            super(username, series, tokenValue, date);
+            this.ccd = ccd;
+        }
+
+        public String getCcd() {
+            return ccd;
+        }
     }
     
 }
