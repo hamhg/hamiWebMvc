@@ -776,7 +776,7 @@ CREATE TABLE TSYAU0107
     PROFL_ID             VARCHAR2(10) NOT NULL ,
     MDUL_ID              VARCHAR2(10) NOT NULL ,
     STA_YMDHMS           VARCHAR2(14) NOT NULL ,
-    END_YMDHMS           VARCHAR2(8) NULL ,
+    END_YMDHMS           VARCHAR2(14) NULL ,
     MENU_NM              VARCHAR2(300) NULL ,
     ENG_NM               VARCHAR2(450) NULL ,
     MENU_TYPE_CD         VARCHAR2(10) NULL ,
