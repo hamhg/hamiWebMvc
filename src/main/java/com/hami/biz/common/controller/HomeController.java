@@ -1,21 +1,23 @@
 package com.hami.biz.common.controller;
 
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.RememberMeAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hami.biz.common.service.CommonService;
 import com.hami.biz.system.utils.SecurityUtils;
+import com.hami.sys.exception.BizException;
 
 /**
  * <pre>
@@ -33,15 +35,12 @@ public class HomeController {
 
     @Autowired
     DataSource dataSource;
+    
+    @Autowired
+    CommonService commonService;
 
-    // index.html
-    @RequestMapping("/index")
-    public String index() {
-        return "index.html";
-    }
-
-    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-    public ModelAndView defaultPage() {
+    @RequestMapping(value = { "/", "/index", "/welcome**" }, method = RequestMethod.GET)
+    public ModelAndView defaultPage() throws BizException, SQLException {
 
         ModelAndView model = new ModelAndView();
 
@@ -49,6 +48,17 @@ public class HomeController {
         log.debug(" * isRememberMeAuthenticated() : "+SecurityUtils.isRememberMeAuthenticated());
 
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){
+            //회사코드
+            Map<String, Object> map = new HashMap<String, Object>(); 
+            map.put("GRP_CD", "COM_CD");
+            
+            Map<String, Object> searchParam = new HashMap<String, Object>();
+            searchParam.put("ds_search", map);
+            
+            Map<String, Object> data = new HashMap<String, Object>();
+            data.put("COM_CD",commonService.commonCodeByCd(searchParam).get("ds_result"));
+            model.addAllObjects(data);
+            
             model.setViewName("index.html");
         } else {
             model.setViewName("login.html");

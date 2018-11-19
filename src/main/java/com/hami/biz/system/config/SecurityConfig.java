@@ -1,5 +1,7 @@
 package com.hami.biz.system.config;
 
+import java.util.UUID;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
+import com.hami.biz.login.service.CustomPersistentTokenBasedRememberMeServices;
+import com.hami.biz.login.service.CustomSavedRequestAwareAuthenticationSuccessHandler;
 import com.hami.biz.login.service.CustomUserDetailsManager;
 import com.hami.biz.login.service.CustomUserDetailsService;
 import com.hami.biz.login.service.CustomUsernamePasswordAuthenticationFilter;
@@ -37,7 +41,8 @@ import com.hami.biz.login.service.CustomUsernamePasswordAuthenticationFilter;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+    public static final int TOKEN_VALIDITY_SECONDS = 60 * 60 * 24 * 3; // 3 days
+    
     @Autowired
     DataSource dataSource;
     
@@ -116,7 +121,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .rememberMe()
                     .tokenRepository(persistentTokenRepository())
-                    .tokenValiditySeconds(60 * 60 * 24 * 3) // 3 days
+                    .tokenValiditySeconds(TOKEN_VALIDITY_SECONDS) 
                     .rememberMeServices(persistentTokenBasedRememberMeServices())
             .and()
                 .csrf()
@@ -140,25 +145,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices() {
-        PersistentTokenBasedRememberMeServices service = new PersistentTokenBasedRememberMeServices("remember-me", userDetailsService, persistentTokenRepository());
-        service.setCookieName("remamber-me");
-        service.setTokenValiditySeconds(60 * 60 * 24 * 3); // 3 days
+    public CustomPersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices() {
+        String key = UUID.randomUUID().toString();
+        CustomPersistentTokenBasedRememberMeServices service = new CustomPersistentTokenBasedRememberMeServices(key, userDetailsService, persistentTokenRepository());
+        service.setCookieName("remember_me");
+        service.setTokenValiditySeconds(TOKEN_VALIDITY_SECONDS);
         return service;
     }
     
     @Bean
     public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter() throws Exception {
         CustomUsernamePasswordAuthenticationFilter filter = new CustomUsernamePasswordAuthenticationFilter();
-        filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/auth/login_check", "POST"));
+        filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/auth/login", "POST"));
         filter.setAuthenticationManager(authenticationManagerBean());
         filter.setRememberMeServices(persistentTokenBasedRememberMeServices());
         return filter;
     }
 
     @Bean
-    public SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler() {
-        SavedRequestAwareAuthenticationSuccessHandler auth = new SavedRequestAwareAuthenticationSuccessHandler();
+    public CustomSavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler() {
+        CustomSavedRequestAwareAuthenticationSuccessHandler auth = new CustomSavedRequestAwareAuthenticationSuccessHandler();
+        auth.setDefaultTargetUrl("/");
         auth.setTargetUrlParameter("targetUrl");
         return auth;
     }

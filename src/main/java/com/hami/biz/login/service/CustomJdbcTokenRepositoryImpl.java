@@ -97,11 +97,13 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
         return null;
     }
 
-    public void removeUserTokens(String username) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User) auth.getPrincipal();
-        String ccd = user.getCcd();
+    public void removeUserTokens(String ccd, String username) {
         getJdbcTemplate().update(removeUserTokensSql, ccd, username);
+    }
+
+    @Override
+    public void removeUserTokens(String username) {
+        getJdbcTemplate().update(removeUserTokensSql, username);
     }
 
     /**

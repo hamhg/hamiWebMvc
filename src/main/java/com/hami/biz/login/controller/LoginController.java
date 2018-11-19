@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +28,7 @@ import com.hami.biz.common.service.CommonService;
 import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
 import com.hami.biz.system.utils.SecurityUtils;
 import com.hami.sys.exception.BizException;
+import com.hami.sys.util.StringUtils;
 
 /**
  * <pre>
@@ -87,14 +87,8 @@ public class LoginController {
         }
 
         //회사코드
-        Map<String, Object> map = new HashMap<String, Object>(); 
-        map.put("GRP_CD", "COM_CD");
-        
-        Map<String, Object> searchParam = new HashMap<String, Object>();
-        searchParam.put("ds_search", map);
-        
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("COM_CD",commonService.commonCodeByCd(searchParam).get("ds_result"));
+        data.put("COM_CD",commonService.commonCodeByCd(StringUtils.newMap("ds_search", StringUtils.newMap("GRP_CD", "COM_CD"))).get("ds_result"));
         model.addAllObjects(data);
         
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){
