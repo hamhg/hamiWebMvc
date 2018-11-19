@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Statement version='1'>
+
+<sql id='search01'><![CDATA[
+  WITH AUTH_MENU AS
+      (SELECT MENU.MENU_ID
+            ,MAX(GRPD.AUTH_INQ) AS AUTH_INQ
+            ,MAX(GRPD.AUTH_REG) AS AUTH_REG
+            ,MAX(GRPD.AUTH_PRT) AS AUTH_PRT
+            ,MAX(GRPD.AUTH_CHG) AS AUTH_CHG
+            ,MAX(GRPD.AUTH_DEL) AS AUTH_DEL
+      FROM TSYAU_AUTH_GRP_DTL GRPD
+          ,TSYMU_MENU MENU
+          ,TSYAU_AUTH_GRP_USER GRPU
+      WHERE GRPU.USER_ID     = 'ADMIN'
+      AND GRPD.AUTH_GRP_ID   = GRPU.AUTH_GRP_ID
+      AND MENU.LVL           = 4
+      AND MENU.USE_YN        = 'Y'
+      AND MENU.MENU_ID = GRPD.MENU_ID          
+      GROUP BY MENU.MENU_ID) 
+  SELECT LEVEL,
+        A.MENU_ID,
+        A.MENU_NM,
+        A.UPP_MENU_ID,
+        FSYCD_CODE_REF2('SY00007', A.URL_CD) AS VIEW_PATH,
+        B.AUTH_INQ,
+        B.AUTH_REG,
+        B.AUTH_PRT,
+        B.AUTH_CHG,
+        B.AUTH_DEL,      
+        A.URL_CD,
+        A.LVL,
+        A.SORT_NO,
+        A.USE_YN,
+        CONNECT_BY_ISLEAF AS LLEVEL_YN,
+        SYS_CONNECT_BY_PATH(A.MENU_ID,'|') ID_PATH,
+        SYS_CONNECT_BY_PATH(A.MENU_NM,'|') NM_PATH
+    FROM TSYMU_MENU A,
+        AUTH_MENU B
+  WHERE 1=1
+    AND A.MENU_ID = B.MENU_ID(+)
+  START WITH A.UPP_MENU_ID = '0'
+  CONNECT BY PRIOR A.MENU_ID = A.UPP_MENU_ID
+  ORDER SIBLINGS BY A.SORT_NO
+]]></sql>
+
+</Statement>
