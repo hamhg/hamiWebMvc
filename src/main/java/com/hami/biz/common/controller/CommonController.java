@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * <pre>
  * <li>Program Name : CommonController
- * <li>Description  :Å
+ * <li>Description  : 공통 Controller
  * <li>History      : 2017. 12. 26.
  * </pre>
  *

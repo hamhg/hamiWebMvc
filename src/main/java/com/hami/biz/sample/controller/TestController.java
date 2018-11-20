@@ -22,6 +22,18 @@ import java.sql.Timestamp;
 @Controller
 public class TestController {
 
+    @RequestMapping(value = "/example/{page}", method = RequestMethod.GET)
+    public ModelAndView example(@PathVariable String page) {
+        ModelAndView mav = new ModelAndView();
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        mav.addObject("programId", "pid_"+timestamp.getTime());
+
+        mav.setViewName("example/"+page+".html");
+        return mav;
+
+    }
+
     @RequestMapping(value = "/test/{page}", method = RequestMethod.GET)
     public ModelAndView test(@PathVariable String page) {
         ModelAndView mav = new ModelAndView();
