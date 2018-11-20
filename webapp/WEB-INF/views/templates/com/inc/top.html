@@ -228,6 +228,10 @@
         </div><!-- /.navbar-collapse -->
     </nav>
     <input type="hidden" id="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="hidden" id="leftMenu" th:value="${LEFT_MENU}"/>
+    <input type="hidden" id="topMenu" th:value="${TOP_MENU}"/>
+    
+    
 </th:block>
 </body>
 </html>

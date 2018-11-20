@@ -1,14 +1,12 @@
 package com.hami.biz.common.dao;
 
-import com.hami.sys.exception.BizException;
-import com.hami.sys.support.BizDao;
-
-import org.springframework.stereotype.Repository;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+
+import com.hami.sys.support.BizDao;
 
 /**
  * <pre>

@@ -1,22 +1,13 @@
 package com.hami.biz.system.utils;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.hami.sys.util.StringUtils;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Enumeration;
+import com.hami.biz.login.model.User;
 
 /**
  * <pre>
@@ -40,6 +31,7 @@ public class SecurityUtils {
         }
         return RememberMeAuthenticationToken.class.isAssignableFrom(auth.getClass());
     }
+    
     /**
      * If the login in from remember me cookie, refer
      * org.springframework.security.authentication.AuthenticationTrustResolverImpl
@@ -51,7 +43,15 @@ public class SecurityUtils {
         } else {
             return auth.isAuthenticated();
         }
-
+    }
+    
+    /**
+     * If the login in from remember me cookie, refer
+     * org.springframework.security.authentication.AuthenticationTrustResolverImpl
+     */
+    public static User getUser() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user;
     }
 
     /**

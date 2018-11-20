@@ -111,7 +111,7 @@
 <div class="page-signin-container" id="page-signin-form">
     <h2 class="m-t-0 m-b-4 text-xs-center font-weight-semibold font-size-20">Sign In to your Account</h2>
 
-    <form th:action="@{/auth/login_check}" method="post" class="panel p-a-4">
+    <form th:action="@{/auth/login}" method="post" class="panel p-a-4">
         <p th:if="${loginError}" class="text-muted text-center">Wrong user or password</p>
         <p th:if="${logout}" class="text-muted text-center">You've been logged out successfully.</p>
         <p th:unless="${loginError}" class="text-muted text-center">

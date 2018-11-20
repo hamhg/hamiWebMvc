@@ -1,5 +1,6 @@
 package com.hami.biz.common.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hami.biz.common.service.CommonService;
+import com.hami.biz.common.service.MenuService;
+import com.hami.biz.login.model.User;
 import com.hami.biz.system.utils.SecurityUtils;
 import com.hami.sys.util.StringUtils;
 
@@ -34,9 +37,15 @@ public class HomeController {
 
     @Autowired
     DataSource dataSource;
+
+    @Autowired(required=true)
+    private HttpServletRequest request;
     
     @Autowired
     CommonService commonService;
+    
+    @Autowired
+    MenuService menuService;
 
     @RequestMapping(value = { "/", "/index", "/welcome**" }, method = RequestMethod.GET)
     public ModelAndView defaultPage() throws Exception {
@@ -47,9 +56,17 @@ public class HomeController {
         log.debug(" * isRememberMeAuthenticated() : "+SecurityUtils.isRememberMeAuthenticated());
 
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){
-            //회사코드
+            
+            User user = SecurityUtils.getUser();
+            String ccd = user.getCcd();
+            String user_id = user.getUsername();
+            
+            //TopMenu
             Map<String, Object> data = new HashMap<String, Object>();
-            data.put("COM_CD",commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
+            data.put("TOP_MENU", menuService.getTopMenuList01(StringUtils.newMap("C_CD", ccd, "USER_ID", user_id)).get("ds_result"));
+
+            //LeftMenu
+            data.put("LEFT_MENU", menuService.getLeftMenuList01(StringUtils.newMap("C_CD", ccd, "USER_ID", user_id)).get("ds_result"));
             model.addAllObjects(data);
             
             model.setViewName("index.html");
