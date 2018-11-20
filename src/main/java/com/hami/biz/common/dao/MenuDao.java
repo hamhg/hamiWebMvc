@@ -23,15 +23,19 @@ import java.util.Map;
 public class MenuDao extends BizDao {
 
     public List getTopMenu01(Map paramMap) throws Exception {
-        return super.queryForList(this, "leftMenu01", paramMap);
+        return super.queryForList(this, "getTopMenu01", paramMap);
     }
 
     public List getLeftMenu01(Map paramMap) throws Exception {
-        return super.queryForList(this, "leftMenu01", paramMap);
+        return super.queryForList(this, "getLeftMenu01", paramMap);
+    }
+    
+    public List getLocationMenuList01(Map paramMap) throws Exception {
+        return super.queryForList(this, "getLocationMenuList01", paramMap);
     }
     
     public List getQuickMenu01(Map paramMap) throws Exception {
-        return super.queryForList(this, "leftMenu01", paramMap);
+        return super.queryForList(this, "getQuickMenu01", paramMap);
     }
 
     public List<Map> save01(Map<String,Object>paramMap) throws Exception {

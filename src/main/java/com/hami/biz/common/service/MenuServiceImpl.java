@@ -26,7 +26,7 @@ public class MenuServiceImpl extends BizService implements MenuService{
     MenuDao menuDao;
 
     @Override
-    @BizAnnotation(id="getTopMenuList01", description="상단메뉴")
+    @BizAnnotation(id="getTopMenuList01", description="상단메뉴조회")
     public Map<String, Object> getTopMenuList01(Map<String, Object> paramMap) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
@@ -36,7 +36,6 @@ public class MenuServiceImpl extends BizService implements MenuService{
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     @BizAnnotation(id="getLeftMenuList01", description="메뉴조회")
     public Map<String, Object> getLeftMenuList01(Map<String, Object> paramMap) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -47,7 +46,16 @@ public class MenuServiceImpl extends BizService implements MenuService{
     }
     
     @Override
-    @SuppressWarnings("unchecked")
+    @BizAnnotation(id="getLocationMenuList01", description="로케이션조회")
+    public Map<String, Object> getLocationMenuList01(Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        
+        resultMap.put("ds_result", menuDao.getLocationMenuList01(getSchParam(paramMap)));
+        
+        return resultMap;
+    }
+    
+    @Override
     @BizAnnotation(id="getQuickMenuList01", description="퀵메뉴조회")
     public Map<String, Object> getQuickMenuList01(Map<String, Object> paramMap) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>();

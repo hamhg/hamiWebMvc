@@ -14,5 +14,6 @@ import java.util.Map;
 public interface MenuService {
     Map<String,Object> getTopMenuList01(Map<String, Object> paramMap) throws Exception;
     Map<String,Object> getLeftMenuList01(Map<String, Object> paramMap) throws Exception;
+    Map<String,Object> getLocationMenuList01(Map<String, Object> paramMap) throws Exception;
     Map<String,Object> getQuickMenuList01(Map<String, Object> paramMap) throws Exception;
 }
