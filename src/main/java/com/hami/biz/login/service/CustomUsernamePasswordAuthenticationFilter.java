@@ -28,7 +28,7 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
     private boolean postOnly = true;
     
-    @Override
+    @Override 
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if (postOnly && !request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());

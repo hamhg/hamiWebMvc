@@ -36,7 +36,7 @@ public class CustomSavedRequestAwareAuthenticationSuccessHandler extends SimpleU
             requestCache.removeRequest(request, response);
             super.onAuthenticationSuccess(request, response, authentication);
 
-            return;
+            return; 
         }
 
         clearAuthenticationAttributes(request);

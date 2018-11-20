@@ -97,7 +97,7 @@ public class LoginController {
             model.setViewName("login.html");
         }
 
-        return model;
+        return model; 
 
     }
 

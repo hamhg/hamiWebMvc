@@ -47,7 +47,7 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     private boolean createTableOnStartup;
 
     protected void initDao() {
-        if (createTableOnStartup) {
+        if (createTableOnStartup) { 
             getJdbcTemplate().execute(createTableSql);
         }
     }

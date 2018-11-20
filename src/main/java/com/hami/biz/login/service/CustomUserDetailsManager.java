@@ -48,7 +48,7 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
 
     String path = this.getClass().getResource("").getPath();
     String filePath = path.replace("service", "dao") + "Auth.xml";
-    // UserDetailsManager SQL
+    // UserDetailsManager SQL 
     private String createUserSql = queryLoader.getElementWithPath(filePath,"DEF_CREATE_USER_SQL",null);
     private String deleteUserSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_USER_SQL",null);
     private String updateUserSql = queryLoader.getElementWithPath(filePath,"DEF_UPDATE_USER_SQL",null);

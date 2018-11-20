@@ -49,7 +49,7 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     // =====================================================================================
     // ~ Static fields/initializers
 
-    // ~ Instance fields
+    // ~ Instance fields 
     // ================================================================================================
     // =====================================================================================
     private QueryLoader queryLoader = QueryLoader.getInstance();

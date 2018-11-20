@@ -13,7 +13,7 @@ public class CustomPersistentRememberMeToken extends PersistentRememberMeToken{
     }
 
     public String getCcd() {
-        return ccd;
+        return ccd; 
     }
 
 }

@@ -36,7 +36,7 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
         this.tokenRepository = (CustomJdbcTokenRepositoryImpl) tokenRepository; 
     }
 
-    /**
+    /** 
      * Locates the presented cookie data in the token repository, using the series id. If
      * the data compares successfully with that in the persistent store, a new token is
      * generated and stored with the same series. The corresponding cookie value is set on

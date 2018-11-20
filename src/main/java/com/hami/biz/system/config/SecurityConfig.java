@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final int TOKEN_VALIDITY_SECONDS = 60 * 60 * 24 * 3; // 3 days
     
     @Autowired
-    DataSource dataSource;
+    DataSource dataSource; 
     
     public CustomUserDetailsManager userDetailsService;
     
