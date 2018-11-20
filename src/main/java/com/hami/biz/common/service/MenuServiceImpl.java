@@ -1,17 +1,14 @@
 package com.hami.biz.common.service;
 
-import com.hami.sys.annotation.BizAnnotation;
-import com.hami.sys.exception.BizException;
-import com.hami.sys.support.BizService;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.hami.biz.common.dao.CommonCodeDao;
-import com.hami.biz.common.dao.MenuDao;
 
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import com.hami.biz.common.dao.MenuDao;
+import com.hami.sys.annotation.BizAnnotation;
+import com.hami.sys.support.BizService;
 
 /**
  * <pre>
