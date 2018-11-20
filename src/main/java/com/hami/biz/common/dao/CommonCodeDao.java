@@ -22,11 +22,11 @@ import java.util.Map;
 @Repository
 public class CommonCodeDao extends BizDao {
 
-    public List search01(Map paramMap) throws SQLException, BizException {
+    public List search01(Map paramMap) throws Exception {
         return super.queryForList(this, "search01", paramMap);
     }
 
-    public List<Map> save01(Map<String,Object>paramMap) throws SQLException {
+    public List<Map> save01(Map<String,Object>paramMap) throws Exception {
         List<Map> resultList = new ArrayList<Map>();
 
         cud.setTable("SY9110");

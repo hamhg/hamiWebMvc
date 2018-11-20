@@ -65,7 +65,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) throws BizException, SQLException {
+            @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) throws Exception {
 
         ModelAndView model = new ModelAndView();
         if (error != null) {
@@ -88,7 +88,7 @@ public class LoginController {
 
         //회사코드
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("COM_CD",commonService.commonCodeByCd(StringUtils.newMap("ds_search", StringUtils.newMap("GRP_CD", "COM_CD"))).get("ds_result"));
+        data.put("COM_CD", commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
         model.addAllObjects(data);
         
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){

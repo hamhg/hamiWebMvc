@@ -1,6 +1,5 @@
 package com.hami.biz.common.controller;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hami.biz.common.service.CommonService;
 import com.hami.biz.system.utils.SecurityUtils;
-import com.hami.sys.exception.BizException;
+import com.hami.sys.util.StringUtils;
 
 /**
  * <pre>
@@ -40,7 +39,7 @@ public class HomeController {
     CommonService commonService;
 
     @RequestMapping(value = { "/", "/index", "/welcome**" }, method = RequestMethod.GET)
-    public ModelAndView defaultPage() throws BizException, SQLException {
+    public ModelAndView defaultPage() throws Exception {
 
         ModelAndView model = new ModelAndView();
 
@@ -49,14 +48,8 @@ public class HomeController {
 
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){
             //회사코드
-            Map<String, Object> map = new HashMap<String, Object>(); 
-            map.put("GRP_CD", "COM_CD");
-            
-            Map<String, Object> searchParam = new HashMap<String, Object>();
-            searchParam.put("ds_search", map);
-            
             Map<String, Object> data = new HashMap<String, Object>();
-            data.put("COM_CD",commonService.commonCodeByCd(searchParam).get("ds_result"));
+            data.put("COM_CD",commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
             model.addAllObjects(data);
             
             model.setViewName("index.html");

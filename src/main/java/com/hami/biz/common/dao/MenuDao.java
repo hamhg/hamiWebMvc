@@ -22,11 +22,19 @@ import java.util.Map;
 @Repository
 public class MenuDao extends BizDao {
 
-    public List search01(Map paramMap) throws SQLException, BizException {
-        return super.queryForList(this, "search01", paramMap);
+    public List getTopMenu01(Map paramMap) throws Exception {
+        return super.queryForList(this, "leftMenu01", paramMap);
     }
 
-    public List<Map> save01(Map<String,Object>paramMap) throws SQLException {
+    public List getLeftMenu01(Map paramMap) throws Exception {
+        return super.queryForList(this, "leftMenu01", paramMap);
+    }
+    
+    public List getQuickMenu01(Map paramMap) throws Exception {
+        return super.queryForList(this, "leftMenu01", paramMap);
+    }
+
+    public List<Map> save01(Map<String,Object>paramMap) throws Exception {
         List<Map> resultList = new ArrayList<Map>();
 
         cud.setTable("SY9110");

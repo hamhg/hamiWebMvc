@@ -28,12 +28,11 @@ public class CommonServiceImpl extends BizService implements CommonService{
     CommonCodeDao commonCodeDao;
 
     @Override
-    @SuppressWarnings("unchecked")
     @BizAnnotation(id="CommonCodeByCd", description="공통코드")
-    public Map<String, Object> commonCodeByCd(Map<String, Object> paramMap) throws SQLException, BizException {
+    public Map<String, Object> getCommonCodeByCd(Map<String, Object> paramMap) throws SQLException, BizException {
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
-        resultMap.put("ds_result", commonCodeDao.search01((Map<String, Object>)paramMap.get("ds_search")));
+        resultMap.put("ds_result", commonCodeDao.search01(getSchParam(paramMap)));
 
         return resultMap;
     }
@@ -41,10 +40,10 @@ public class CommonServiceImpl extends BizService implements CommonService{
     @Override
     @SuppressWarnings("unchecked")
     @BizAnnotation(id="CommonService", description="공통서비스")
-    public Map<String, Object> commonService(Map<String, Object> paramMap) throws SQLException, BizException {
+    public Map<String, Object> getCommonService(Map<String, Object> paramMap) throws SQLException, BizException {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         
-        resultMap.put("ds_result", commonCodeDao.search01((Map<String, Object>)paramMap.get("ds_search")));
+        resultMap.put("ds_result", commonCodeDao.search01(getSchParam(paramMap)));
         
         return resultMap;
     }
