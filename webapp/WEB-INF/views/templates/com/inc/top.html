@@ -17,10 +17,12 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="px-demo-navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" data-th-each="tmenu : ${TOP_MENU}">
                 <li class="button">
-                    <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">시스템</a>
+                    <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-th-text="${tmenu.MDUL_NM}">시스템</a>
                 </li>
+            </ul>            
+            <ul class="nav navbar-nav" th:remove="none">
                 <li class="dropdown">
                     <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
                     <div class="dropdown-multi-column">
