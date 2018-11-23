@@ -7,7 +7,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentReme
 public class CustomPersistentRememberMeToken extends PersistentRememberMeToken{
     private final String ccd;
 
-    public CustomPersistentRememberMeToken(String username, String series, String tokenValue, Date date, String ccd) {
+    public CustomPersistentRememberMeToken(String ccd, String username, String series, String tokenValue, Date date) {
         super(username, series, tokenValue, date);
         this.ccd = ccd;
     }

@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentReme
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hami.biz.login.model.CustomPersistentRememberMeToken;
 import com.hami.biz.login.model.User;
 import com.hami.sys.jdbc.sql.QueryLoader;
 
@@ -74,12 +75,12 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
      * @return the token matching the series, or null if no match found or an exception
      * occurred.
      */
-    public PersistentRememberMeToken getTokenForSeries(String seriesId) {
+    public CustomPersistentRememberMeToken getTokenForSeries(String seriesId) {
         try {
-            return getJdbcTemplate().queryForObject(tokensBySeriesSql,
+            return (CustomPersistentRememberMeToken) getJdbcTemplate().queryForObject(tokensBySeriesSql,
                     new RowMapper<PersistentRememberMeToken>() {
                         public CustomPersistentRememberMeToken mapRow(ResultSet rs, int rowNum) throws SQLException {
-                            return new CustomPersistentRememberMeToken(rs.getString(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getString(5));
+                            return new CustomPersistentRememberMeToken(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5));
                         }
                     }, seriesId);
         }
@@ -87,6 +88,7 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
             if (logger.isDebugEnabled()) {
                 logger.debug("Querying token for series '" + seriesId + "' returned no results.", zeroResults);
             }
+            return null;
         }
         catch (IncorrectResultSizeDataAccessException moreThanOne) {
             logger.error("Querying token for series '" + seriesId + "' returned more than one value. Series" + " should be unique");
@@ -115,19 +117,6 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
      */
     public void setCreateTableOnStartup(boolean createTableOnStartup) {
         this.createTableOnStartup = createTableOnStartup;
-    }
-    
-    public class CustomPersistentRememberMeToken extends PersistentRememberMeToken {
-        private final String ccd;
-
-        public CustomPersistentRememberMeToken(String username, String series, String tokenValue, Date date, String ccd) {
-            super(username, series, tokenValue, date);
-            this.ccd = ccd;
-        }
-
-        public String getCcd() {
-            return ccd;
-        }
     }
     
 }

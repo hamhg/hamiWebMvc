@@ -16,9 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -26,7 +24,6 @@ import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
 import com.hami.biz.login.service.CustomPersistentTokenBasedRememberMeServices;
 import com.hami.biz.login.service.CustomSavedRequestAwareAuthenticationSuccessHandler;
 import com.hami.biz.login.service.CustomUserDetailsManager;
-import com.hami.biz.login.service.CustomUserDetailsService;
 import com.hami.biz.login.service.CustomUsernamePasswordAuthenticationFilter;
 
 /**
@@ -42,19 +39,21 @@ import com.hami.biz.login.service.CustomUsernamePasswordAuthenticationFilter;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final int TOKEN_VALIDITY_SECONDS = 60 * 60 * 24 * 3; // 3 days
-    
-    @Autowired
-    DataSource dataSource; 
-    
-    public CustomUserDetailsManager userDetailsService;
-    
-    private static final String[] UNSECURED_RESOURCE_LIST = new String[] {
-            "/resources/**","/libs/**","/css/**","/js/**","/img/**","/images/**","/fonts/**"
+    private static final String REMEMBER_ME_KEY = UUID.randomUUID().toString();
+    private static final String AUTH_PATH = "/auth/login";
+
+    private static final String[] UNSECURED_RESOURCE_LIST = new String[] {  
+            "/resources/**","/libs/**","/css/**","/js/**","/img/**","/images/**","/fonts/**","/favicon.ico"
     };
 
     private static final String[] UNAUTHORIZED_RESOURCE_LIST = new String[] {
             "/","/login.html","/403.html"
     };
+
+    public CustomUserDetailsManager userDetailsService;
+    
+    @Autowired
+    DataSource dataSource; 
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -67,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder())
             .and()
-                .authenticationProvider(new RememberMeAuthenticationProvider("remamber-me"));
+                .authenticationProvider(new RememberMeAuthenticationProvider(REMEMBER_ME_KEY));
         
         //@formatter:on
     }
@@ -100,29 +99,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .addFilterBefore(customUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
-                    .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                     .loginPage("/login")
                     .failureUrl("/login-error.html")
-                    .loginProcessingUrl("/auth/login")
-                    .successForwardUrl("/index")
+                    .loginProcessingUrl(AUTH_PATH)
+                    .successForwardUrl("/")
+                    .successHandler(customSavedRequestAwareAuthenticationSuccessHandler())
                     .usernameParameter("userid")
                     .passwordParameter("password")
                     .permitAll()
             .and()
                 .logout()
                     .logoutUrl( "/logout" )
-                    .logoutSuccessUrl( "/index" )
+                    .logoutSuccessUrl( "/" )
                     .invalidateHttpSession(true)
-                    //.deleteCookies(cookieNamesToClear)
+                    .deleteCookies("JSESSIONID")
             .and()
                 .sessionManagement()
                     .sessionFixation()
                         .migrateSession()
             .and()
                 .rememberMe()
-                    .tokenRepository(persistentTokenRepository())
+                    .tokenRepository(customPersistentTokenRepository())
                     .tokenValiditySeconds(TOKEN_VALIDITY_SECONDS) 
-                    .rememberMeServices(persistentTokenBasedRememberMeServices())
+                    .rememberMeServices(customPersistentTokenBasedRememberMeServices())
             .and()
                 .csrf()
             .and()
@@ -138,17 +137,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
+    public PersistentTokenRepository customPersistentTokenRepository() {
         CustomJdbcTokenRepositoryImpl db = new CustomJdbcTokenRepositoryImpl();
         db.setDataSource(dataSource);
         return db;
     }
 
     @Bean
-    public CustomPersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices() {
-        String key = UUID.randomUUID().toString();
-        CustomPersistentTokenBasedRememberMeServices service = new CustomPersistentTokenBasedRememberMeServices(key, userDetailsService, persistentTokenRepository());
-        service.setCookieName("remember_me");
+    public CustomPersistentTokenBasedRememberMeServices customPersistentTokenBasedRememberMeServices() {
+        CustomPersistentTokenBasedRememberMeServices service = new CustomPersistentTokenBasedRememberMeServices(REMEMBER_ME_KEY, userDetailsService, customPersistentTokenRepository());
+        service.setCookieName("remember-me");
         service.setTokenValiditySeconds(TOKEN_VALIDITY_SECONDS);
         return service;
     }
@@ -156,14 +154,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter() throws Exception {
         CustomUsernamePasswordAuthenticationFilter filter = new CustomUsernamePasswordAuthenticationFilter();
-        filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/auth/login", "POST"));
+        filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(AUTH_PATH, "POST"));
         filter.setAuthenticationManager(authenticationManagerBean());
-        filter.setRememberMeServices(persistentTokenBasedRememberMeServices());
+        filter.setRememberMeServices(customPersistentTokenBasedRememberMeServices());
         return filter;
     }
 
     @Bean
-    public CustomSavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler() {
+    public CustomSavedRequestAwareAuthenticationSuccessHandler customSavedRequestAwareAuthenticationSuccessHandler() {
         CustomSavedRequestAwareAuthenticationSuccessHandler auth = new CustomSavedRequestAwareAuthenticationSuccessHandler();
         auth.setDefaultTargetUrl("/");
         auth.setTargetUrlParameter("targetUrl");

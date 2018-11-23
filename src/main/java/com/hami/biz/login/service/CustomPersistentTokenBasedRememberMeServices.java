@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +24,7 @@ import com.hami.biz.login.model.CustomPersistentRememberMeToken;
 import com.hami.biz.system.utils.SecurityUtils;
 
 public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememberMeServices {
+    protected final Log logger = LogFactory.getLog(this.getClass());
     private CustomJdbcTokenRepositoryImpl tokenRepository = new CustomJdbcTokenRepositoryImpl();
     private SecureRandom random;
 
@@ -64,13 +67,14 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
         final String presentedSeries = cookieTokens[0];
         final String presentedToken = cookieTokens[1];
 
-        CustomPersistentRememberMeToken token = (CustomPersistentRememberMeToken) tokenRepository.getTokenForSeries(presentedSeries);
+        CustomPersistentRememberMeToken token = tokenRepository.getTokenForSeries(presentedSeries);
 
         if (token == null) {
             // No series match, so we can't authenticate using this cookie
             //throw new RememberMeAuthenticationException("No persistent token found for series id: " + presentedSeries);
             cancelCookie(request, response);
             logger.debug("No persistent token found for series id: " + presentedSeries);
+            return getUserDetailsService().loadUserByUsername("!■!");
         } else {
             // We have a match for this user/series combination
             if (!presentedToken.equals(token.getTokenValue())) {
@@ -95,7 +99,7 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
                 logger.debug("Refreshing persistent login token for user '" + token.getUsername() + "', series '" + token.getSeries() + "', ccd '" + token.getCcd() + "'");
             }
 
-            CustomPersistentRememberMeToken newToken = new CustomPersistentRememberMeToken(token.getUsername(), token.getSeries(), generateTokenData(), new Date(), token.getCcd());
+            CustomPersistentRememberMeToken newToken = new CustomPersistentRememberMeToken(token.getCcd(), token.getUsername(), token.getSeries(), generateTokenData(), new Date());
     
             try {
                 tokenRepository.updateToken(newToken.getSeries(), newToken.getTokenValue(), newToken.getDate());
@@ -125,7 +129,7 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
 
         logger.debug("Creating new persistent login for user " + username+", ccd: "+ccd );
 
-        CustomPersistentRememberMeToken persistentToken = new CustomPersistentRememberMeToken(username, generateSeriesData(), generateTokenData(), new Date(), ccd);
+        CustomPersistentRememberMeToken persistentToken = new CustomPersistentRememberMeToken(ccd, username, generateSeriesData(), generateTokenData(), new Date());
         try {
             tokenRepository.createNewToken(persistentToken);
             addCookie(persistentToken, request, response);
@@ -142,6 +146,7 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
         String ccd = SecurityUtils.getUser().getCcd();
         
         if (authentication != null) {
+            cancelCookie(request, response);
             tokenRepository.removeUserTokens(ccd, authentication.getName());
         }
     }
