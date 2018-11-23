@@ -10,18 +10,18 @@
     <script src="../vendors/screenfull/screenfull.js" th:src="@{/libs/screenfull/screenfull.js}"></script>
     <script>
         // -------------------------------------------------------------------------
-        // Initialize DEMO sidebar
-        require(['jquery', 'demo', 'px/plugins/px-sidebar'], function($, pxDemo) {
-            pxDemo.initializeDemoSidebar();
+        // Initialize sidebar
+        require(['jquery', '/js/common/common.js', 'px/plugins/px-sidebar'], function($, pxCom) {
+            pxCom.initializeSidebar();
 
-            $('#px-demo-sidebar').pxSidebar();
-            pxDemo.initializeDemo();
+            $('#px-sidebar').pxSidebar();
+            pxCom.initialize();
         });
     </script>
 
     <script type="text/javascript">
         // -------------------------------------------------------------------------
-        // Initialize DEMO
+        // Initialize 
         require(['jquery', 'px/pixeladmin', 'px/plugins/px-nav', 'px/plugins/px-navbar', 'px/plugins/px-footer', 'px/extensions/perfect-scrollbar.jquery'], function($) {
             var file = String(document.location).split('/').pop();
 
@@ -55,15 +55,15 @@
     <script>
         // -------------------------------------------------------------------------
         // Initialize uploads chart
-        require(['demo', 'px-libs/morris'], function(pxDemo, Morris) {
+        require(['/js/common/common.js', 'px-libs/morris'], function(pxCom, Morris) {
             var data = [
-                { day: '2014-03-10', v: pxDemo.getRandomData(20, 5) },
-                { day: '2014-03-11', v: pxDemo.getRandomData(20, 5) },
-                { day: '2014-03-12', v: pxDemo.getRandomData(20, 5) },
-                { day: '2014-03-13', v: pxDemo.getRandomData(20, 5) },
-                { day: '2014-03-14', v: pxDemo.getRandomData(20, 5) },
-                { day: '2014-03-15', v: pxDemo.getRandomData(20, 5) },
-                { day: '2014-03-16', v: pxDemo.getRandomData(20, 5) }
+                { day: '2014-03-10', v: pxCom.getRandomData(20, 5) },
+                { day: '2014-03-11', v: pxCom.getRandomData(20, 5) },
+                { day: '2014-03-12', v: pxCom.getRandomData(20, 5) },
+                { day: '2014-03-13', v: pxCom.getRandomData(20, 5) },
+                { day: '2014-03-14', v: pxCom.getRandomData(20, 5) },
+                { day: '2014-03-15', v: pxCom.getRandomData(20, 5) },
+                { day: '2014-03-16', v: pxCom.getRandomData(20, 5) }
             ];
 
             new Morris.Line({
@@ -87,8 +87,8 @@
 
         // -------------------------------------------------------------------------
         // Initialize easy pie charts
-        require(['jquery', 'demo', 'jquery.easy-pie-chart/jquery.easypiechart'], function($, pxDemo) {
-            var colors = pxDemo.getRandomColors();
+        require(['jquery', '/js/common/common.js', 'jquery.easy-pie-chart/jquery.easypiechart'], function($, pxCom) {
+            var colors = pxCom.getRandomColors();
 
             var config = {
                 animate: 2000,
@@ -107,9 +107,9 @@
             }
 
             var data = [
-                pxDemo.getRandomData(1000, 1),
-                pxDemo.getRandomData(100, 1),
-                pxDemo.getRandomData(64, 1),
+                pxCom.getRandomData(1000, 1),
+                pxCom.getRandomData(100, 1),
+                pxCom.getRandomData(64, 1),
             ];
 
             $('#easy-pie-chart-1')
@@ -130,17 +130,17 @@
 
         // -------------------------------------------------------------------------
         // Initialize retweets graph
-        require(['jquery', 'demo', 'px/plugins/px-sparkline'], function($, pxDemo) {
+        require(['jquery', '/js/common/common.js', 'px/plugins/px-sparkline'], function($, pxCom) {
             var data = [
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
             ];
 
             $("#sparkline-1").pxSparkline(data, {
@@ -161,38 +161,38 @@
 
         // -------------------------------------------------------------------------
         // Initialize Monthly visitor statistics graph
-        require(['jquery', 'demo', 'px/plugins/px-sparkline'], function($, pxDemo) {
+        require(['jquery', '/js/common/common.js', 'px/plugins/px-sparkline'], function($, pxCom) {
             var data = [
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
-                pxDemo.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100),
             ];
 
             $("#sparkline-2").pxSparkline(data, {

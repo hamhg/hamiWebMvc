@@ -46,14 +46,14 @@ require.config({
         fastclick: 'fastclick/lib/fastclick',
         progressbar: 'bootstrap-progressbar/bootstrap-progressbar.min',
         daterangepicker: 'bootstrap-daterangepicker/daterangepicker',
-        px: "pixeladmin",
-        "px-libs": "pixeladmin/libs",
-        "px-bootstrap": "pixeladmin/bootstrap",
+        px: 'pixeladmin',
+        'px-libs': 'pixeladmin/libs',
+        'px-bootstrap': 'pixeladmin/bootstrap',
         morris: 'pixeladmin/libs/morris',
-        Chartist: "pixeladmin/libs/chartist",
-        c3: "pixeladmin/libs/c3",
-        d3: "pixeladmin/libs/d3",
-        "datatables.net": "pixeladmin/libs/jquery.dataTables"
+        Chartist: 'pixeladmin/libs/chartist',
+        c3: 'pixeladmin/libs/c3',
+        d3: 'pixeladmin/libs/d3',
+        'datatables.net': 'pixeladmin/libs/jquery.dataTables'
     },
     shim: {
         'underscore': { exports: '_' },

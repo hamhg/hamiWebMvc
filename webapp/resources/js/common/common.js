@@ -4,7 +4,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory();
   } else {
-    root.pxDemo = factory();
+    root.pxCom = factory();
   }
 }(this, function() {
   'use strict';
@@ -24,7 +24,7 @@
     }
   }
 
-  var pxDemo = (function() {
+  var pxCom = (function() {
 
     // Constants
 
@@ -47,15 +47,15 @@
     ];
 
     var BACKGROUNDS = [
-      'img/demo/bgs/1.jpg',
-      'img/demo/bgs/2.jpg',
-      'img/demo/bgs/3.jpg',
-      'img/demo/bgs/4.jpg',
-      'img/demo/bgs/5.jpg',
-      'img/demo/bgs/6.jpg',
-      'img/demo/bgs/7.jpg',
-      'img/demo/bgs/8.jpg',
-      'img/demo/bgs/9.jpg',
+      'img/common/bgs/1.jpg',
+      'img/common/bgs/2.jpg',
+      'img/common/bgs/3.jpg',
+      'img/common/bgs/4.jpg',
+      'img/common/bgs/5.jpg',
+      'img/common/bgs/6.jpg',
+      'img/common/bgs/7.jpg',
+      'img/common/bgs/8.jpg',
+      'img/common/bgs/9.jpg',
     ];
 
     var THEMES = [
@@ -77,7 +77,7 @@
       'candy-cyan'
     ];
 
-    var demoSettings = (function loadDemoSettings() {
+    var comSettings = (function loadcomSettings() {
       var result = {
         fixed_navbar:  '0',
         fixed_nav:     '0',
@@ -95,7 +95,7 @@
 
       for (var key in result) {
         if (Object.prototype.hasOwnProperty.call(result, key)) {
-          re = new RegExp(';\\s*' + encodeURIComponent('px-demo-' + key) + '\\s*=\\s*([^;]+)\\s*;');
+          re = new RegExp(';\\s*' + encodeURIComponent('px-' + key) + '\\s*=\\s*([^;]+)\\s*;');
           found = cookie.match(re);
 
           if (found) {
@@ -116,24 +116,24 @@
       return result;
     })();
 
-    var CURRENT_THEME = demoSettings.theme;
+    var CURRENT_THEME = comSettings.theme;
 
     function setSidebarState(state) {
-      $('#px-demo-sidebar input').prop('disabled', state === 'disabled');
-      $('#px-demo-sidebar-loader')[CURRENT_THEME.indexOf('dark') === -1 ? 'removeClass': 'addClass']('form-loading-inverted');
-      $('#px-demo-sidebar-loader')[state === 'disabled' ? 'show': 'hide']();
+      $('#px-sidebar input').prop('disabled', state === 'disabled');
+      $('#px-sidebar-loader')[CURRENT_THEME.indexOf('dark') === -1 ? 'removeClass': 'addClass']('form-loading-inverted');
+      $('#px-sidebar-loader')[state === 'disabled' ? 'show': 'hide']();
     }
 
     // Private
 
-    function updateDemoSettings(settings) {
-      $.extend(demoSettings, settings);
+    function updatecomSettings(settings) {
+      $.extend(comSettings, settings);
 
-      for (var key in demoSettings) {
-        if (Object.prototype.hasOwnProperty.call(demoSettings, key)) {
+      for (var key in comSettings) {
+        if (Object.prototype.hasOwnProperty.call(comSettings, key)) {
           document.cookie =
-            encodeURIComponent('px-demo-' + key) + '=' +
-            encodeURIComponent(demoSettings[key]);
+            encodeURIComponent('px-' + key) + '=' +
+            encodeURIComponent(comSettings[key]);
         }
       }
     }
@@ -162,13 +162,13 @@
           }
 
           document.documentElement.className =
-            document.documentElement.className.replace(/\s*px-demo-no-transition/, '');
+            document.documentElement.className.replace(/\s*px-no-transition/, '');
         }
 
         if (cb) { cb(); }
       };
 
-      document.documentElement.className += ' px-demo-no-transition';
+      document.documentElement.className += ' px-no-transition';
 
       return link;
     }
@@ -186,7 +186,7 @@
 
       // Switch between light and dark assets
 
-      var _assetCls = [ 'px-demo-stylesheet-bs', 'px-demo-stylesheet-sys', 'px-demo-stylesheet-widgets' ];
+      var _assetCls = [ 'px-stylesheet-bs', 'px-stylesheet-sys', 'px-stylesheet-widgets' ];
       var _assetLink;
 
       function _assetReplacer(match, path, name, suffix) {
@@ -203,7 +203,7 @@
         }
       }
 
-      linksToLoad.push([ themePath, 'px-demo-stylesheet-theme' ]);
+      linksToLoad.push([ themePath, 'px-stylesheet-theme' ]);
 
       var linksContainer = document.createDocumentFragment();
       var loadedLinks = 0;
@@ -222,16 +222,16 @@
 
       document.getElementsByTagName('head')[0].insertBefore(
         linksContainer,
-        document.getElementsByClassName('px-demo-stylesheet-bs')[0]
+        document.getElementsByClassName('px-stylesheet-bs')[0]
       );
     }
 
     function loadTheme() {
-      setTheme(demoSettings.theme);
+      setTheme(comSettings.theme);
     }
 
     function loadRtl() {
-      if (demoSettings.rtl !== '1') { return; }
+      if (comSettings.rtl !== '1') { return; }
 
       document.getElementsByTagName("html")[0].setAttribute('dir', 'rtl');
     }
@@ -307,9 +307,9 @@
       return result;
     }
 
-    function initializeDemo() {
-      $('input#px-demo-fixed-navbar-toggler').on('change', function() {
-        updateDemoSettings({
+    function initialize() {
+      $('input#px-fixed-navbar-toggler').on('change', function() {
+        updateSettings({
           fixed_navbar: $(this).is(':checked') ? '1' : '0',
         });
 
@@ -317,15 +317,15 @@
           $(this).is(':checked') ? 'addClass' : 'removeClass'
         ]('px-navbar-fixed');
 
-        var $fixedNavToggler = $('input#px-demo-fixed-nav-toggler');
+        var $fixedNavToggler = $('input#px-fixed-nav-toggler');
 
         if (!$(this).is(':checked') && $fixedNavToggler.is(':checked')) {
           $fixedNavToggler.click();
         }
       });
 
-      $('input#px-demo-fixed-nav-toggler').on('change', function() {
-        updateDemoSettings({
+      $('input#px-fixed-nav-toggler').on('change', function() {
+        updateSettings({
           fixed_nav: $(this).is(':checked') ? '1' : '0',
         });
 
@@ -333,7 +333,7 @@
           $(this).is(':checked') ? 'addClass' : 'removeClass'
         ]('px-nav-fixed');
 
-        var $fixedNavbarToggler = $('input#px-demo-fixed-navbar-toggler');
+        var $fixedNavbarToggler = $('input#px-fixed-navbar-toggler');
 
         if ($(this).is(':checked') && !$fixedNavbarToggler.is(':checked')) {
           $fixedNavbarToggler.click();
@@ -342,16 +342,16 @@
         $(window).trigger('scroll');
       });
 
-      $('input#px-demo-nav-right-toggler').on('change', function() {
-        updateDemoSettings({
+      $('input#px-nav-right-toggler').on('change', function() {
+        updateSettings({
           right_nav: $(this).is(':checked') ? '1' : '0',
         });
 
         placeNav($(this).is(':checked') ? 'right' : 'left');
       });
 
-      $('input#px-demo-nav-off-canvas-toggler').on('change', function() {
-        updateDemoSettings({
+      $('input#px-nav-off-canvas-toggler').on('change', function() {
+        updateSettings({
           offcanvas_nav: $(this).is(':checked') ? '1' : '0',
         });
 
@@ -362,18 +362,18 @@
         $(window).trigger('resize');
       });
 
-      $('input#px-demo-nav-rtl-toggler').on('change', function() {
+      $('input#px-nav-rtl-toggler').on('change', function() {
         setSidebarState('disabled');
 
-        updateDemoSettings({
+        updateSettings({
           rtl: $(this).is(':checked') ? '1' : '0',
         });
 
         document.location.reload();
       });
 
-      $('select#px-demo-footer-position-select').on('change', function() {
-        updateDemoSettings({
+      $('select#px-footer-position-select').on('change', function() {
+        updateSettings({
           footer: $(this).val(),
         });
 
@@ -382,12 +382,12 @@
         $(window).trigger('resize');
       });
 
-      $('input[name="px-demo-current-theme"]').on('change', function() {
+      $('input[name="px-current-theme"]').on('change', function() {
         setSidebarState('disabled');
 
         var themeName = THEMES.indexOf(this.value) !== -1 ? this.value : THEMES[0];
 
-        updateDemoSettings({ theme: themeName });
+        updateSettings({ theme: themeName });
         setTheme(themeName);
       });
 
@@ -396,8 +396,8 @@
       //
 
       $('.px-nav')
-        .off('click.demo-px-nav-box')
-        .on('click.demo-px-nav-box', '#demo-px-nav-box .close', function(e) {
+        .off('click.px-nav-box')
+        .on('click.px-nav-box', '#px-nav-box .close', function(e) {
           e.preventDefault();
 
           var $box     = $(this).parents('.px-nav-box').addClass('no-animation');
@@ -418,7 +418,7 @@
         });
     }
 
-    function initializeBgsDemo(selector, defaultBgIndex, overlay, afterCall) {
+    function initializeBgs(selector, defaultBgIndex, overlay, afterCall) {
       var isBgSet = false;
 
       if (defaultBgIndex) {
@@ -432,20 +432,20 @@
         if (afterCall) { afterCall(isBgSet); }
       }
 
-      var elementsHtml = '<a href="#" class="px-demo-bgs-container px-demo-bgs-clear">&times;</a>';
+      var elementsHtml = '<a href="#" class="px-bgs-container px-bgs-clear">&times;</a>';
 
       for (var i = 0, l = BACKGROUNDS.length; i < l; i++) {
-        elementsHtml += '<a href="#" class="px-demo-bgs-container"><img src="' + BACKGROUNDS[i] + '" alt=""></a>';
+        elementsHtml += '<a href="#" class="px-bgs-container"><img src="' + BACKGROUNDS[i] + '" alt=""></a>';
       }
 
-      var $block = $('<div class="px-demo-bgs">' + elementsHtml + '</div>');
+      var $block = $('<div class="px-bgs">' + elementsHtml + '</div>');
 
-      $block.on('click', '.px-demo-bgs-container', function(e) {
+      $block.on('click', '.px-bgs-container', function(e) {
         e.preventDefault();
 
         var $container = $(this);
 
-        if ($container.hasClass('px-demo-bgs-clear')) {
+        if ($container.hasClass('px-bgs-clear')) {
           if (!isBgSet) { return; }
 
           $(selector).pxResponsiveBg('destroy', true);
@@ -470,19 +470,19 @@
       $('body').append($block);
     }
 
-    function destroyBgsDemo(selector) {
+    function destroyBgs(selector) {
       if (!$.fn.pxResponsiveBg) { return; }
       $(selector).pxResponsiveBg('destroy', true);
-      $('.px-demo-bgs').off().remove();
+      $('.px-bgs').off().remove();
     }
 
-    function initializeDemoSidebar(container, skipFooter) {
+    function initializeSidebar(container, skipFooter) {
       var sidebarEl = document.createElement('DIV');
 
-      sidebarEl.id          = 'px-demo-sidebar';
+      sidebarEl.id          = 'px-sidebar';
       sidebarEl.className   = 'px-sidebar-right bg-primary';
       sidebarEl.style.width = '242px';
-      sidebarEl.innerHTML   = '<div id="px-demo-sidebar-loader" class="form-loading form-loading-inverted"></div>';
+      sidebarEl.innerHTML   = '<div id="px-sidebar-loader" class="form-loading form-loading-inverted"></div>';
 
       var contentEl = document.createElement('DIV');
 
@@ -492,9 +492,9 @@
       var content  = '';
       var navEl  = document.querySelector('body > .px-nav') || document.querySelector('body > ui-view > .px-nav');
 
-      content += '<div id="px-demo-togglers">';
+      content += '<div id="px-togglers">';
 
-      content += '<h6 class="px-demo-sidebar-header b-y-1 bg-primary darker">SETTINGS</h6>';
+      content += '<h6 class="px-sidebar-header b-y-1 bg-primary darker">SETTINGS</h6>';
 
       // Togglers
 
@@ -505,18 +505,18 @@
       // Fixed nav
       content +=
         '<div class="box-row"' + (navEl ? '' : 'style="display: none;"') + '>' +
-          '<div class="box-cell bg-primary p-l-3"><label for="px-demo-fixed-nav-toggler">Fixed nav</label></div>' +
+          '<div class="box-cell bg-primary p-l-3"><label for="px-fixed-nav-toggler">Fixed nav</label></div>' +
           '<div class="box-cell bg-primary p-r-3" style="width: 70px;">' +
-            '<label for="px-demo-fixed-nav-toggler" class="switcher switcher-blank switcher-sm"><input type="checkbox" id="px-demo-fixed-nav-toggler"' + (demoSettings.fixed_nav === '1' ? ' checked' : '') + '><div class="switcher-indicator"><div class="switcher-yes bg-primary darker"><i class="fa fa-check"></i></div><div class="switcher-no"><i class="fa fa-close"></i></div></div></label>' +
+            '<label for="px-fixed-nav-toggler" class="switcher switcher-blank switcher-sm"><input type="checkbox" id="px-fixed-nav-toggler"' + (comSettings.fixed_nav === '1' ? ' checked' : '') + '><div class="switcher-indicator"><div class="switcher-yes bg-primary darker"><i class="fa fa-check"></i></div><div class="switcher-no"><i class="fa fa-close"></i></div></div></label>' +
           '</div>' +
         '</div>';
 
-      if (navEl && demoSettings.fixed_nav === '1') {
+      if (navEl && comSettings.fixed_nav === '1') {
         navEl.className += ' px-nav-fixed';
       }
 
       if (navEl) {
-        placeNav(demoSettings.right_nav === '1' ? 'right' : 'left');
+        placeNav(comSettings.right_nav === '1' ? 'right' : 'left');
       }
 
       // Footer
@@ -524,17 +524,17 @@
 
       if (!skipFooter) {
         content +=
-          '<div id="px-demo-footer-position"' + (hasFooter ? '' : 'style="display: none;"') + '><div class="box m-a-0 border-radius-0 bg-transparent">' +
+          '<div id="px-footer-position"' + (hasFooter ? '' : 'style="display: none;"') + '><div class="box m-a-0 border-radius-0 bg-transparent">' +
             '<div class="box-row">' +
-              '<div class="box-cell bg-primary p-l-3"><label for="px-demo-footer-position-select">Footer</label></div>' +
+              '<div class="box-cell bg-primary p-l-3"><label for="px-footer-position-select">Footer</label></div>' +
               '<div class="box-cell bg-primary p-r-3">' +
-                '<select class="custom-select form-control input-sm bg-primary darker" id="px-demo-footer-position-select"><option value="static"' + (demoSettings.footer === 'static' ? ' selected' : '') + '>Static</option><option value="bottom"' + (demoSettings.footer === 'bottom' ? ' selected' : '') + '>Bottom</option><option value="fixed"' + (demoSettings.footer === 'fixed' ? ' selected' : '') + '>Fixed</option></select>' +
+                '<select class="custom-select form-control input-sm bg-primary darker" id="px-footer-position-select"><option value="static"' + (comSettings.footer === 'static' ? ' selected' : '') + '>Static</option><option value="bottom"' + (comSettings.footer === 'bottom' ? ' selected' : '') + '>Bottom</option><option value="fixed"' + (comSettings.footer === 'fixed' ? ' selected' : '') + '>Fixed</option></select>' +
               '</div>' +
             '</div>' +
           '</div></div>';
 
         if (hasFooter) {
-          setFooterPosition(demoSettings.footer);
+          setFooterPosition(comSettings.footer);
         }
       }
 
@@ -542,15 +542,15 @@
 
       // Themes
 
-      content += '<h6 class="px-demo-sidebar-header bg-primary darker b-y-1">THEMES</h6>';
-      content += '<div class="px-demo-themes-list clearfix bg-primary">';
+      content += '<h6 class="px-sidebar-header bg-primary darker b-y-1">THEMES</h6>';
+      content += '<div class="px-themes-list clearfix bg-primary">';
 
       for (var i = 0, l = THEMES.length; i < l; i++) {
-        content += '<label class="px-demo-themes-item">';
+        content += '<label class="px-themes-item">';
 
-          content += '<input type="radio" class="px-demo-themes-toggler" name="px-demo-current-theme" value="' + THEMES[i] + '"' + (demoSettings.theme === THEMES[i] ? ' checked' : '') + '>';
-          content += '<img src="img/demo/themes/' + THEMES[i] + '.png" class="px-demo-themes-thumbnail">';
-          content += '<div class="px-demo-themes-title font-weight-semibold"><span class="text-white">' + capitalizeAllLetters(THEMES[i], '-') + '</span><div class="bg-primary"></div></div>';
+          content += '<input type="radio" class="px-themes-toggler" name="px-current-theme" value="' + THEMES[i] + '"' + (comSettings.theme === THEMES[i] ? ' checked' : '') + '>';
+          content += '<img src="img/common/themes/' + THEMES[i] + '.png" class="px-themes-thumbnail">';
+          content += '<div class="px-themes-title font-weight-semibold"><span class="text-white">' + capitalizeAllLetters(THEMES[i], '-') + '</span><div class="bg-primary"></div></div>';
 
         content += '</label>';
       }
@@ -569,15 +569,15 @@
       getRandomData:   getRandomData,
       getRandomColors: getRandomColors,
 
-      initializeDemo:        initializeDemo,
-      initializeBgsDemo:     initializeBgsDemo,
-      initializeDemoSidebar: initializeDemoSidebar,
-      destroyBgsDemo:        destroyBgsDemo,
+      initialize:        initialize,
+      initializeBgs:     initializeBgs,
+      initializeSidebar: initializeSidebar,
+      destroyBgs:        destroyBgs,
 
       loadTheme: loadTheme,
       loadRtl:   loadRtl,
     };
   })();
 
-  return pxDemo;
+  return pxCom;
 }));
