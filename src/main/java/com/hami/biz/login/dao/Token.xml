@@ -34,9 +34,16 @@ CREATE TABLE TSYAU0009
      WHERE SERIES = ?
 ]]></sql>
 
-<sql id='DEF_REMOVE_USER_TOKENS_SQL'><![CDATA[
+<sql id='DEF_REMOVE_USER_TOKENS_SQL01'><![CDATA[
     DELETE TSYAU0009 
-     WHERE C_CD = ? 
+     WHERE 1=1
+       AND LOGIN_ID = ?
+]]></sql>
+
+<sql id='DEF_REMOVE_USER_TOKENS_SQL02'><![CDATA[
+    DELETE TSYAU0009 
+     WHERE 1=1
+       AND C_CD = ? 
        AND LOGIN_ID = ?
 ]]></sql>
 

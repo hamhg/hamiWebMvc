@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.rememberme.RememberMeAuth
 import org.springframework.util.Assert;
 
 import com.hami.biz.login.model.CustomPersistentRememberMeToken;
+import com.hami.biz.system.utils.SecurityUtils;
 
 public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememberMeServices {
     private CustomJdbcTokenRepositoryImpl tokenRepository = new CustomJdbcTokenRepositoryImpl();
@@ -137,9 +138,11 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         super.logout(request, response, authentication);
-
+        
+        String ccd = SecurityUtils.getUser().getCcd();
+        
         if (authentication != null) {
-            tokenRepository.removeUserTokens(authentication.getName());
+            tokenRepository.removeUserTokens(ccd, authentication.getName());
         }
     }
 

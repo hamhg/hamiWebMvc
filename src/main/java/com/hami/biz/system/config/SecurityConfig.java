@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     };
 
     private static final String[] UNAUTHORIZED_RESOURCE_LIST = new String[] {
-            "/login.html","/403.html"
+            "/","/login.html","/403.html"
     };
 
     @Autowired
@@ -103,7 +103,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .successHandler(savedRequestAwareAuthenticationSuccessHandler())
                     .loginPage("/login")
                     .failureUrl("/login-error.html")
-                    .loginProcessingUrl("/auth/login_check")
+                    .loginProcessingUrl("/auth/login")
                     .successForwardUrl("/index")
                     .usernameParameter("userid")
                     .passwordParameter("password")

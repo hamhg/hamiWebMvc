@@ -43,7 +43,8 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
     private String tokensBySeriesSql = queryLoader.getElementWithPath(filePath,"DEF_TOKEN_BY_SERIES_SQL",null);
     private String insertTokenSql = queryLoader.getElementWithPath(filePath,"DEF_INSERT_TOKEN_SQL",null);
     private String updateTokenSql = queryLoader.getElementWithPath(filePath,"DEF_UPDATE_TOKEN_SQL",null);
-    private String removeUserTokensSql = queryLoader.getElementWithPath(filePath,"DEF_REMOVE_USER_TOKENS_SQL",null);
+    private String removeUserTokensSql01 = queryLoader.getElementWithPath(filePath,"DEF_REMOVE_USER_TOKENS_SQL01",null);
+    private String removeUserTokensSql02 = queryLoader.getElementWithPath(filePath,"DEF_REMOVE_USER_TOKENS_SQL02",null);
     private boolean createTableOnStartup;
 
     protected void initDao() {
@@ -96,14 +97,14 @@ public class CustomJdbcTokenRepositoryImpl extends JdbcDaoSupport implements Per
 
         return null;
     }
-
-    public void removeUserTokens(String ccd, String username) {
-        getJdbcTemplate().update(removeUserTokensSql, ccd, username);
-    }
-
+    
     @Override
     public void removeUserTokens(String username) {
-        getJdbcTemplate().update(removeUserTokensSql, username);
+        getJdbcTemplate().update(removeUserTokensSql01, username);
+    }
+
+    public void removeUserTokens(String ccd, String username) {
+        getJdbcTemplate().update(removeUserTokensSql02, ccd, username);
     }
 
     /**

@@ -106,7 +106,7 @@ public class LoginController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
-            persistentTokenRepository().removeUserTokens(auth.getName());
+            persistentTokenRepository().removeUserTokens(SecurityUtils.getUser().getCcd(), auth.getName());
             new SecurityContextLogoutHandler().logout(request, response, auth);
             SecurityContextHolder.getContext().setAuthentication(null);
             log.debug("isAuthenticated()==="+SecurityUtils.isAuthenticated());
@@ -116,7 +116,7 @@ public class LoginController {
     }
 
     @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
+    public CustomJdbcTokenRepositoryImpl persistentTokenRepository() {
         CustomJdbcTokenRepositoryImpl db = new CustomJdbcTokenRepositoryImpl();
         db.setDataSource(dataSource);
         return db;
