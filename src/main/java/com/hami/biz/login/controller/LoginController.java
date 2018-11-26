@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hami.biz.common.service.CommonService;
+import com.hami.biz.login.model.User;
 import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
 import com.hami.biz.system.utils.SecurityUtils;
 import com.hami.sys.exception.BizException;
@@ -86,14 +87,14 @@ public class LoginController {
             model.addObject("msg", "You've been logged out successfully.");
         }
 
-        //회사코드
-        Map<String, Object> data = new HashMap<String, Object>();
-        data.put("COM_CD", commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
-        model.addAllObjects(data);
-        
         if(SecurityUtils.isAuthenticated() || SecurityUtils.isRememberMeAuthenticated()){
             model.setViewName("index.html");
         } else {
+            //회사코드
+            Map<String, Object> data = new HashMap<String, Object>();
+            data.put("COM_CD", commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
+            model.addAllObjects(data);
+
             model.setViewName("login.html");
         }
 
