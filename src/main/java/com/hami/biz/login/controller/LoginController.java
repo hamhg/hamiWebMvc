@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
@@ -107,8 +108,13 @@ public class LoginController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
+            Cookie cookie = new Cookie("remember-me", null);
+            cookie.setMaxAge(0);
+
             persistentTokenRepository().removeUserTokens(SecurityUtils.getUser().getCcd(), auth.getName());
+            
             new SecurityContextLogoutHandler().logout(request, response, auth);
+            
             SecurityContextHolder.getContext().setAuthentication(null);
             log.debug("isAuthenticated()==="+SecurityUtils.isAuthenticated());
         }
