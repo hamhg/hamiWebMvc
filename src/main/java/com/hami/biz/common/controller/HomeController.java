@@ -1,6 +1,5 @@
 package com.hami.biz.common.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,6 +70,11 @@ public class HomeController {
             
             model.setViewName("index.html");
         } else {
+            //회사코드
+            Map<String, Object> data = new HashMap<String, Object>();
+            data.put("COM_CD", commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
+            model.addAllObjects(data);
+            
             model.setViewName("login.html");
         }
         return model;

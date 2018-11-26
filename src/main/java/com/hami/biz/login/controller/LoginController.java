@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hami.biz.common.service.CommonService;
-import com.hami.biz.login.model.User;
 import com.hami.biz.login.service.CustomJdbcTokenRepositoryImpl;
 import com.hami.biz.system.utils.SecurityUtils;
 import com.hami.sys.exception.BizException;
