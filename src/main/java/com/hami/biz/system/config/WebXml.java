@@ -11,7 +11,10 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
 import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
@@ -25,6 +28,12 @@ import javax.servlet.ServletRegistration;
  */
 public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.setInitParameter("spring.profiles.active", "local");
+    }
+    
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{ DBConfigLocal.class, DBConfigDev.class, DBConfigPrd.class, SecurityConfig.class };
