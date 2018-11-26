@@ -32,9 +32,4 @@
     <listener>
         <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
     </listener>
-    <context-param>
-        <param-name>spring.profiles.active</param-name>
-        <param-value>dev</param-value>
-        <!-- <param-value>local, dev</param-value> -->
-    </context-param>
 </web-app>
