@@ -32,6 +32,9 @@ public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
         servletContext.setInitParameter("spring.profiles.active", "local");
+        
+        //Set multiple active profile
+        //servletContext.setInitParameter("spring.profiles.active", "dev, local");
     }
     
     @Override
