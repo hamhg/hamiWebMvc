@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -102,8 +103,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .failureUrl("/login-error.html")
                     .loginProcessingUrl(AUTH_PATH)
-                    .successForwardUrl("/")
-                    .successHandler(customSavedRequestAwareAuthenticationSuccessHandler())
+                    //.successForwardUrl("/index")
+                    .successHandler(customLoginSuccessHandler())
+                    .defaultSuccessUrl("/")
                     .usernameParameter("userid")
                     .passwordParameter("password")
                     .permitAll()
@@ -138,9 +140,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PersistentTokenRepository customPersistentTokenRepository() {
-        CustomJdbcTokenRepositoryImpl db = new CustomJdbcTokenRepositoryImpl();
-        db.setDataSource(dataSource);
-        return db;
+        CustomJdbcTokenRepositoryImpl repository = new CustomJdbcTokenRepositoryImpl();
+        repository.setDataSource(dataSource);
+        return repository;
     }
 
     @Bean
@@ -161,11 +163,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public CustomSavedRequestAwareAuthenticationSuccessHandler customSavedRequestAwareAuthenticationSuccessHandler() {
-        CustomSavedRequestAwareAuthenticationSuccessHandler auth = new CustomSavedRequestAwareAuthenticationSuccessHandler();
-        auth.setDefaultTargetUrl("/");
-        auth.setTargetUrlParameter("targetUrl");
-        return auth;
+    public SavedRequestAwareAuthenticationSuccessHandler customLoginSuccessHandler() {
+        return new CustomSavedRequestAwareAuthenticationSuccessHandler("/");
     }
     
 }

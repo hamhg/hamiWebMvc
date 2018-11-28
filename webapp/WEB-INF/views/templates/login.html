@@ -31,7 +31,7 @@
     </script>
 
     <!-- Demo assets -->
-    <script>_pxDemo_loadStylesheet('/js/demo/demo.css');</script>
+    <script>_pxDemo_loadStylesheet('/css/common.css');</script>
     <!-- / Demo assets -->
 
     <!-- Pace.js -->
@@ -43,11 +43,11 @@
     <script>
         requirejs.config({
             // Demo script path
-            paths: { demo: '/js/demo/demo' }
+            paths: { common: '/js/common/common' }
         });
     </script>
     <!-- Require demo script -->
-    <script>require(['demo']);</script>
+    <script>require(['common']);</script>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

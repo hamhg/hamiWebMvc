@@ -68,6 +68,11 @@ public class LoginController {
             @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) throws Exception {
 
         ModelAndView model = new ModelAndView();
+        
+        String referrer = request.getHeader("RedirectUrl");
+        log.debug("referrer===="+referrer);
+        request.getSession().setAttribute("RedirectUrl", referrer);
+        
         if (error != null) {
             model.addObject("errorError", true);
 
@@ -122,8 +127,8 @@ public class LoginController {
 
     @Bean
     public CustomJdbcTokenRepositoryImpl persistentTokenRepository() {
-        CustomJdbcTokenRepositoryImpl db = new CustomJdbcTokenRepositoryImpl();
-        db.setDataSource(dataSource);
-        return db;
+        CustomJdbcTokenRepositoryImpl repository = new CustomJdbcTokenRepositoryImpl();
+        repository.setDataSource(dataSource);
+        return repository;
     }
 }
