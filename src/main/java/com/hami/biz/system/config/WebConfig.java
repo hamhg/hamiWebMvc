@@ -177,7 +177,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         vr01.setPrefix("/WEB-INF/views/jsp/");
         vr01.setContentType("text/html; cherset=UTF-8");
         //vr1.setSuffix("*.jsp");
-        vr01.setViewClass(JstlView.class);
+        vr01.setViewClass(JstlView.class); 
         resolvers.add(vr01);
 
         resolvers.add(jsonViewResolver());
