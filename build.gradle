@@ -1,13 +1,12 @@
 group 'com.hami'
 version '1.0'
 
-plugins {
-    id 'base'
-    id 'eclipse-wtp'
-    id 'idea'
-    id 'war'
-    id 'tomcat'
-}
+apply plugin: 'base'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+
+apply plugin: 'war'
+apply plugin: 'tomcat'
 
 repositories {
     mavenCentral()
