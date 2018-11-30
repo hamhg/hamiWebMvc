@@ -84,9 +84,9 @@ public class HomeController {
         return model;
     }
     
-    @RequestMapping("favicon.ico")
+    @RequestMapping("**/favicon.ico")
     public String favicon() {
-        return "forward:/resources/images/favicon.ico";
+        return "forward:/img/favicon.ico";
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
