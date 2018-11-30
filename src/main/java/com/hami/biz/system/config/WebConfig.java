@@ -1,13 +1,8 @@
 package com.hami.biz.system.config;
 
-import com.hami.biz.system.interceptor.RequestInterceptor;
-import com.hami.biz.system.resolver.ExcelViewResolver;
-import com.hami.biz.system.resolver.JsonViewResolver;
-import com.hami.biz.system.resolver.PdfViewResolver;
-import com.hami.sys.jdbc.audit.interceptor.DataSourceBeanNameAutoProxyCreator;
-import com.hami.sys.jdbc.audit.interceptor.DataSourceInterceptor;
-
-import nz.net.ultraq.thymeleaf.LayoutDialect;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.ApplicationContext;
@@ -17,14 +12,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.context.ThemeSource;
+import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.ThemeResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.theme.CookieThemeResolver;
+import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -35,9 +41,14 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import com.hami.biz.system.interceptor.RequestInterceptor;
+import com.hami.biz.system.resolver.ExcelViewResolver;
+import com.hami.biz.system.resolver.JsonViewResolver;
+import com.hami.biz.system.resolver.PdfViewResolver;
+import com.hami.sys.jdbc.audit.interceptor.DataSourceBeanNameAutoProxyCreator;
+import com.hami.sys.jdbc.audit.interceptor.DataSourceInterceptor;
+
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 /**
  * <pre>
@@ -104,6 +115,17 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestInterceptor());
+        
+        //Internationalization and Localization specific
+        LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+        localeInterceptor.setParamName("locale");
+        registry.addInterceptor(localeInterceptor);
+        
+        //Theme specific
+        ThemeChangeInterceptor themeInterceptor = new ThemeChangeInterceptor();
+        themeInterceptor.setParamName("theme");
+        registry.addInterceptor(themeInterceptor);
+        
     }
     //e: RequestInterceptor Config
 
@@ -182,6 +204,22 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         return new PdfViewResolver();
     }
 
+    //Theme specific
+    @Bean
+    public ThemeSource themeSource() {
+        ResourceBundleThemeSource source = new ResourceBundleThemeSource();
+        source.setBasenamePrefix("ui-");
+        return source;
+    }
+    @Bean 
+    public ThemeResolver themeResolver(){
+        CookieThemeResolver resolver = new CookieThemeResolver();
+        resolver.setCookieMaxAge(4800);
+        resolver.setCookieName("theme");
+        resolver.setDefaultThemeName("theme01");
+        return resolver;
+    }
+    
     //MessageSource Config
     @Bean
     public MessageSource messageSource() {
@@ -193,6 +231,15 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         return messageSource;
     }
 
+    @Bean
+    public LocaleResolver localeResolver(){
+        CookieLocaleResolver resolver = new CookieLocaleResolver();
+        resolver.setDefaultLocale(new Locale("ko_KR"));
+        resolver.setCookieName("locale");
+        resolver.setCookieMaxAge(4800);
+        return resolver;
+    }    
+    
     /*
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getMultipartResolver() {
