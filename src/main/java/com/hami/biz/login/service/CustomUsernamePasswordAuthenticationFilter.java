@@ -33,9 +33,9 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
         if (postOnly && !request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
+        String ccd = StringUtils.nvl(request.getParameter("ccd"),"");
         String username = StringUtils.nvl(request.getParameter("userid"),"");
         String password = StringUtils.nvl(request.getParameter("password"),"");
-        String ccd = StringUtils.nvl(request.getParameter("ccd"),"");
 
         username = username.trim();
         

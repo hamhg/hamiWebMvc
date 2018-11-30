@@ -16,13 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hami.biz.common.service.CommonService;
 import com.hami.biz.common.service.MenuService;
+import com.hami.biz.login.controller.LoginController;
 import com.hami.biz.login.model.User;
 import com.hami.biz.system.utils.SecurityUtils;
 import com.hami.sys.util.StringUtils;
 
 /**
  * <pre>
- * <li>Program Name : CommonController
+ * <li>Program Name : HomeController
  * <li>Description  :
  * <li>History      : 2017. 7. 31.
  * </pre>
@@ -41,12 +42,15 @@ public class HomeController {
     private HttpServletRequest request;
     
     @Autowired
+    LoginController loginController;
+    
+    @Autowired
     CommonService commonService;
     
     @Autowired
     MenuService menuService;
 
-    @RequestMapping(value = { "/", "/index", "/welcome**" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     public ModelAndView defaultPage() throws Exception {
 
         ModelAndView model = new ModelAndView();
@@ -74,11 +78,15 @@ public class HomeController {
             Map<String, Object> data = new HashMap<String, Object>();
             data.put("COM_CD", commonService.getCommonCodeByCd(StringUtils.newMap("GRP_CD", "COM_CD")).get("ds_result"));
             model.addAllObjects(data);
-            
+
             model.setViewName("login.html");
         }
         return model;
-
+    }
+    
+    @RequestMapping("favicon.ico")
+    public String favicon() {
+        return "forward:/resources/images/favicon.ico";
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)

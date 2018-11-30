@@ -16,7 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -44,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String AUTH_PATH = "/auth/login";
 
     private static final String[] UNSECURED_RESOURCE_LIST = new String[] {  
-            "/resources/**","/libs/**","/css/**","/js/**","/img/**","/images/**","/fonts/**","/favicon.ico"
+            "/resources/**","/libs/**","/css/**","/js/**","/img/**","/images/**","/fonts/**"
     };
 
     private static final String[] UNAUTHORIZED_RESOURCE_LIST = new String[] {
-            "/","/login.html","/403.html"
+            "/","/login.html","/403.html","/favicon.ico"
     };
 
     public CustomUserDetailsManager userDetailsService;
@@ -103,7 +102,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .failureUrl("/login-error.html")
                     .loginProcessingUrl(AUTH_PATH)
-                    //.successForwardUrl("/index")
+                    //.successForwardUrl("/")
                     .successHandler(customLoginSuccessHandler())
                     .defaultSuccessUrl("/")
                     .usernameParameter("userid")
@@ -163,7 +162,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public SavedRequestAwareAuthenticationSuccessHandler customLoginSuccessHandler() {
+    public CustomSavedRequestAwareAuthenticationSuccessHandler customLoginSuccessHandler() {
         return new CustomSavedRequestAwareAuthenticationSuccessHandler("/");
     }
     

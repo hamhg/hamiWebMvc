@@ -9,14 +9,14 @@
     <nav class="navbar px-navbar">
         <!-- Header -->
         <div class="navbar-header">
-            <a class="navbar-brand px-demo-brand" href="index.html"><span class="px-demo-logo bg-primary"><span class="px-demo-logo-1"></span><span class="px-demo-logo-2"></span><span class="px-demo-logo-3"></span><span class="px-demo-logo-4"></span><span class="px-demo-logo-5"></span><span class="px-demo-logo-6"></span><span class="px-demo-logo-7"></span><span class="px-demo-logo-8"></span><span class="px-demo-logo-9"></span></span>HamiAdmin</a>
+            <a class="navbar-brand px-brand" href="index.html"><span class="px-logo bg-primary"><span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span><span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span><span class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span></span>HamiAdmin</a>
         </div>
 
         <!-- Navbar togglers -->
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-demo-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="px-demo-navbar-collapse">
+        <div class="collapse navbar-collapse" id="px-navbar-collapse">
             <ul class="nav navbar-nav" id="topMenu" th:each="topMenu : ${TOP_MENU}">
                 <li class="button">
                     <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" th:text="${topMenu.MDUL_NM}" th:attr="mdul_id=${topMenu.MDUL_ID}">시스템</a>
@@ -145,56 +145,56 @@
                     <div class="dropdown-menu p-a-0" style="width: 300px;">
                         <div id="navbar-messages" style="height: 280px; position: relative;">
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/2.jpg" th:src="@{/img/demo/avatars/2.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/2.jpg" th:src="@{/img/common/avatars/2.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Robert Jang</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/3.jpg" th:src="@{/img/demo/avatars/3.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/3.jpg" th:src="@{/img/common/avatars/3.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Michelle Bortz</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/4.jpg" th:src="@{/img/demo/avatars/4.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/4.jpg" th:src="@{/img/common/avatars/4.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Timothy Owens</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/5.jpg" th:src="@{/img/demo/avatars/5.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/5.jpg" th:src="@{/img/common/avatars/5.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Denise Steiner</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/2.jpg" th:src="@{/img/demo/avatars/2.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/2.jpg" th:src="@{/img/common/avatars/2.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Robert Jang</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/3.jpg" th:src="@{/img/demo/avatars/3.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/3.jpg" th:src="@{/img/common/avatars/3.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Michelle Bortz</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/4.jpg" th:src="@{/img/demo/avatars/4.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/4.jpg" th:src="@{/img/common/avatars/4.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Timothy Owens</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
                             </div>
 
                             <div class="widget-messages-alt-item">
-                                <img src="assets/demo/avatars/5.jpg" th:src="@{/img/demo/avatars/5.jpg}" alt="" class="widget-messages-alt-avatar">
+                                <img src="assets/common/avatars/5.jpg" th:src="@{/img/common/avatars/5.jpg}" alt="" class="widget-messages-alt-avatar">
                                 <a href="#" class="widget-messages-alt-subject text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a>
                                 <div class="widget-messages-alt-description">from <a href="#">Denise Steiner</a></div>
                                 <div class="widget-messages-alt-date">2h ago</div>
@@ -215,7 +215,7 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/demo/avatars/1.jpg" th:src="@{/img/demo/avatars/6.png}" alt="" class="px-navbar-image">
+                        <img src="assets/common/avatars/1.jpg" th:src="@{/img/common/avatars/6.png}" alt="" class="px-navbar-image">
                         <span class="hidden-md">Andy, Ham</span>
                     </a>
                     <ul class="dropdown-menu">

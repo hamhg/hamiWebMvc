@@ -32,7 +32,7 @@ import com.hami.sys.util.StringUtils;
 
 /**
  * <pre>
- * <li>Program Name : CommonController
+ * <li>Program Name : LoginController
  * <li>Description  :
  * <li>History      : 2017. 7. 31.
  * </pre>
@@ -69,9 +69,11 @@ public class LoginController {
 
         ModelAndView model = new ModelAndView();
         
+        /*
         String referrer = request.getHeader("RedirectUrl");
         log.debug("referrer===="+referrer);
         request.getSession().setAttribute("RedirectUrl", referrer);
+        */
         
         if (error != null) {
             model.addObject("errorError", true);
