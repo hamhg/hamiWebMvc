@@ -96,12 +96,9 @@ sourceSets {
 	main {
 		java {
 			srcDirs = ['src/main/java']
-            //include 'src/main/java/**/*.*'
 		}
 		resources {
 			srcDirs = ['src/main/resources', 'src/main/resources/properties/${profile}']
-            //exclude 'src/main/resources/properties/**'
-            //exclude 'src/main/resources/db/**'
 		}
 	}
 }
@@ -109,18 +106,19 @@ sourceSets {
 war {
     baseName = project.warBaseName
     version = project.warVersion
-    webInf { // adds a file-set to the WEB-INF dir.
+    webInf {
               from('src/main/java') {
                   include '**/*.xml'
               }
               into('classes')
            } 
     exclude("build/**")
+    exclude("src/main/resources/db/**")
     archiveName = "${baseName}_${warVersion}.${extension}" 
 }
 
 war.doLast {
-    explodedWar.execute()
+    //explodedWar.execute()
 }
 
 task explodedWar(type: Sync) {
