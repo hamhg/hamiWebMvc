@@ -86,23 +86,11 @@ dependencies {
     providedCompile 'javax.servlet:jsp-api:2.0'
 }
 
-task nestedSpecs(type: Copy) {
-    into 'build/exploded/WEB-INF/classes'
-    exclude '**/*Test.java'
-    from('src/main/java') {
-        include '**/*.xml'
-    }
-    into('classes') {
-        from configurations.runtime
-    }
-}
-
 project.ext {
     warBaseName = 'hamiWeb'
     warVersion = '1.0' + '_' + new Date().format('yyyyMMdd-HHmmss')
+    profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
 }
-
-ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
 
 sourceSets {
 	main {
@@ -121,12 +109,6 @@ sourceSets {
 war {
     baseName = project.warBaseName
     version = project.warVersion
-    //from 'src/rootContent' // adds a file-set to the root of the archive
-    //fileSet(dir: file('src/main/java/**/*.xml')) // adds a file-set to the root of the archive
-    //additionalLibs(dir: file('additionalLibs')) // adds a file-set to the WEB-INF/lib dir.
-    //classpath fileTree('additionalLibs') // adds a file-set to the WEB-INF/lib dir.
-    //libConfigurations('moreLibs') // adds a configuration to the WEB-INF/lib dir.
-    //webXml = file('src/someWeb.xml') // copies a file to WEB-INF/web.xml    
     webInf { // adds a file-set to the WEB-INF dir.
               from('src/main/java') {
                   include '**/*.xml'
@@ -138,7 +120,6 @@ war {
 }
 
 war.doLast {
-    //nestedSpecs.execute()
     explodedWar.execute()
 }
 
