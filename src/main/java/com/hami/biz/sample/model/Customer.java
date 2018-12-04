@@ -13,7 +13,8 @@ import lombok.Data;
  *
  * @author HHG
  */
-public @Data class Customer {
+@Data
+public class Customer {
 
     private Long id;
     private String firstName;

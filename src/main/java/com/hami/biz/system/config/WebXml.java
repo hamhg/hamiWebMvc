@@ -5,6 +5,7 @@ import com.hami.sys.config.DBConfigDev;
 import com.hami.sys.config.DBConfigPrd;
 import com.hami.biz.system.filter.CORSFilter;
 import com.hami.sys.annotation.BizAnnotationHandler;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -31,7 +32,7 @@ public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-        servletContext.setInitParameter("spring.profiles.active", "local");
+        servletContext.setInitParameter("spring.profiles.active", "dev");
         
         //Set multiple active profile
         //servletContext.setInitParameter("spring.profiles.active", "dev, local");
@@ -54,10 +55,12 @@ public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer
 
     @Override
     protected Filter[] getServletFilters() {
-        Filter[] singleton = { new CORSFilter() };
-        return singleton;
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        Filter[] filter = { new CORSFilter(), characterEncodingFilter };
+        return filter;
     }
-    
+
     /*
     // 10MB
     private static final int MAX_UPLOAD_SIZE_IN_MB = 10 * 1024 * 1024;

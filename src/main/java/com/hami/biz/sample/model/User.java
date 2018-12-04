@@ -12,8 +12,8 @@ import lombok.Data;
  *
  * @author HHG
  */
-public @Data
-class User {
+@Data
+public class User {
 
     @JsonView(JsonView.class)
     String username;

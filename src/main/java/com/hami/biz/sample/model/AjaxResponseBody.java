@@ -14,7 +14,8 @@ import java.util.List;
  *
  * @author HHG
  */
-public @Data class AjaxResponseBody {
+@Data
+public class AjaxResponseBody {
 
     @JsonView(JsonView.class)
     String msg;

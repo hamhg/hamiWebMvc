@@ -11,7 +11,8 @@ import lombok.Data;
  *
  * @author HHG
  */
-public @Data class SearchCriteria {
+@Data
+public class SearchCriteria {
 
     String username;
     String email;
