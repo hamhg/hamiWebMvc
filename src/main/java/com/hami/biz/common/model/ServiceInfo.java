@@ -20,6 +20,6 @@ public @Data class ServiceInfo {
 
     @Override
     public String toString() {
-        return "ServiceInfo [serviceId=" + serviceId + ", methodNm=" + methodNm + "]";
+        return "ServiceInfo [ moduleId="+moduleId+", serviceId=" + serviceId + ", methodNm=" + methodNm + ", workNo="+workNo+" ]";
     }
 }

@@ -9,45 +9,45 @@
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" th:href="@{/libs/ionicons/css/ionicons.min.css}">
-    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" th:href="@{/libs/font-awesome/css/font-awesome.css}">
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" th:href="@{/libs/font-awesome/css/font-awesome.css}">
     <link href='http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
-    <link href='http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css' rel='stylesheet' type='text/css'>
-    <!-- DEMO ONLY: Function for the proper stylesheet loading according to the demo settings -->
-    <script>function _pxDemo_loadStylesheet(a,b,c){var c=c||decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean"),d="rtl"===document.getElementsByTagName("html")[0].getAttribute("dir");document.write(a.replace(/^(.*?)((?:\.min)?\.css)$/,'<link href="$1'+(c.indexOf("dark")!==-1&&a.indexOf("/css/")!==-1&&a.indexOf("/themes/")===-1?"-dark":"")+(!d||0!==a.indexOf("assets/css")&&0!==a.indexOf("assets/demo")?"":".rtl")+'$2" rel="stylesheet" type="text/css"'+(b?'class="'+b+'"':"")+">"))}</script>
+    <!-- link href='http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css' rel='stylesheet' type='text/css' -->
+    <!-- Function for the proper stylesheet loading according to the demo settings -->
+    <script>function _pxDemo_loadStylesheet(a,b,c){var c=c||decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean"),d="rtl"===document.getElementsByTagName("html")[0].getAttribute("dir");document.write(a.replace(/^(.*?)((?:\.min)?\.css)$/,'<link href="$1'+(c.indexOf("dark")!==-1&&a.indexOf("/css/")!==-1&&a.indexOf("/themes/")===-1?"-dark":"")+(!d||0!==a.indexOf("/css")&&0!==a.indexOf("css/common")?"":".rtl")+'$2" rel="stylesheet" type="text/css"'+(b?'class="'+b+'"':"")+">"))}</script>
 
-    <!-- DEMO ONLY: Set RTL direction -->
+    <!--  Set RTL direction -->
     <script>"ltr"!==document.getElementsByTagName("html")[0].getAttribute("dir")&&"1"===decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-rtl")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"0")&&document.getElementsByTagName("html")[0].setAttribute("dir","rtl");</script>
 
-    <!-- DEMO ONLY: Load PixelAdmin sys stylesheets -->
+    <!--  Load PixelAdmin sys stylesheets -->
     <script>
         _pxDemo_loadStylesheet('/css/bootstrap.min.css', 'px-stylesheet-bs');
         _pxDemo_loadStylesheet('/css/pixeladmin.css', 'px-stylesheet-core');
         _pxDemo_loadStylesheet('/css/widgets.min.css', 'px-stylesheet-widgets');
     </script>
 
-    <!-- DEMO ONLY: Load theme -->
+    <!--  Load theme -->
     <script>
         function _pxDemo_loadTheme(a){var b=decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean");_pxDemo_loadStylesheet(a+b+".min.css","px-stylesheet-theme",b)}
         _pxDemo_loadTheme('/css/themes/');
     </script>
 
-    <!-- Demo assets -->
+    <!-- Load css -->
     <script>_pxDemo_loadStylesheet('/css/common.css');</script>
-    <!-- / Demo assets -->
+    <!-- / Load css -->
 
     <!-- holder.js -->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/holder/2.9.0/holder.js"></script>
 
     <!-- Pace.js -->
-    <script src="assets/pace/pace.min.js" th:src="@{/libs/pace/pace.min.js}"></script>
+    <script src="/libs/pace/pace.min.js" th:src="@{/libs/pace/pace.min.js}"></script>
 
     <!-- handsontable.js -->
-    <script src="/dist/handsontable.full.js" th:src="@{/libs/handsontable/handsontable.full.js}"></script>
-    <link rel="stylesheet" media="screen" href="/dist/handsontable.full.css" th:href="@{/libs/handsontable/handsontable.full.css}">
+    <script src="/libs/handsontable/handsontable.full.js" th:src="@{/libs/handsontable/handsontable.full.js}"></script>
+    <link rel="stylesheet" media="screen" href="/libs/handsontable/handsontable.full.css" th:href="@{/libs/handsontable/handsontable.full.css}">
 
     <!-- Require.js -->
-    <script src="assets/js/require.js" th:src="@{/libs/require/require.js}"></script>
-    <script src="assets/js/requirejs-config.js" th:src="@{/js/requirejs-config.js}"></script>
+    <script src="/libs/require/require.js" th:src="@{/libs/require/require.js}"></script>
+    <script src="/js/requirejs-config.js" th:src="@{/js/requirejs-config.js}"></script>
 
     <!-- Custom styling -->
     <style>
@@ -62,6 +62,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="../../../Grid/GridE.js" th:src="@{/libs/treeGrid/GridE.js}"> </script>
+    <script src="/libs/Grid/GridE.js" th:src="@{/libs/treeGrid/GridE.js}"> </script>
 </th:block>
 </html>

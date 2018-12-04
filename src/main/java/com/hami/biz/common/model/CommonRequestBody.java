@@ -14,11 +14,11 @@ import lombok.Data;
 public @Data class CommonRequestBody {
 
     ServiceInfo serviceInfo;
-    ReqHeaderInfo reqHeaderInfo;
-
-    @Override
+    ReqHeaderInfo reqHeaderInfo; 
+    
+    @Override 
     public String toString() {
-        return "CommonRequestBody [serviceInfo=" + serviceInfo.toString() + ", reqHeaderInfo=" + reqHeaderInfo + "]";
+        return "CommonRequestBody { serviceInfo=" + serviceInfo.toString() + ", reqHeaderInfo=" + reqHeaderInfo.toString() + " }";
     }
 
 }

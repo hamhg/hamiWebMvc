@@ -19,6 +19,6 @@ public @Data class ReqHeaderInfo {
 
     @Override
     public String toString() {
-        return "ReqHeaderInfo [clientIp=" + clientIp + ", refererUri=" + refererUri +", requestUri=" + requestUri + "]";
+        return "ReqHeaderInfo [ clientIp=" + clientIp + ", refererUri=" + refererUri +", requestUri=" + requestUri + " ]";
     }
 }

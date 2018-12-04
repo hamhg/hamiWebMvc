@@ -13,7 +13,7 @@
     <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" th:href="@{/libs/font-awesome/css/font-awesome.css}">
 
     <!-- Function for the proper stylesheet loading according to the demo settings -->
-    <script>function _pxCom_loadStylesheet(a,b,c){var c=c||decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean"),d="rtl"===document.getElementsByTagName("html")[0].getAttribute("dir");document.write(a.replace(/^(.*?)((?:\.min)?\.css)$/,'<link href="$1'+(c.indexOf("dark")!==-1&&a.indexOf("/css/")!==-1&&a.indexOf("/themes/")===-1?"-dark":"")+(!d||0!==a.indexOf("assets/css")&&0!==a.indexOf("assets/demo")?"":".rtl")+'$2" rel="stylesheet" type="text/css"'+(b?'class="'+b+'"':"")+">"))}</script>
+    <script>function _pxCom_loadStylesheet(a,b,c){var c=c||decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean"),d="rtl"===document.getElementsByTagName("html")[0].getAttribute("dir");document.write(a.replace(/^(.*?)((?:\.min)?\.css)$/,'<link href="$1'+(c.indexOf("dark")!==-1&&a.indexOf("/css/")!==-1&&a.indexOf("/themes/")===-1?"-dark":"")+(!d||0!==a.indexOf("/css")&&0!==a.indexOf("css/common")?"":".rtl")+'$2" rel="stylesheet" type="text/css"'+(b?'class="'+b+'"':"")+">"))}</script>
 
     <!-- Set RTL direction -->
     <script>"ltr"!==document.getElementsByTagName("html")[0].getAttribute("dir")&&"1"===decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-rtl")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"0")&&document.getElementsByTagName("html")[0].setAttribute("dir","rtl");</script>
@@ -30,16 +30,16 @@
         _pxCom_loadTheme('/css/themes/');
     </script>
 
-    <!-- assets -->
+    <!-- Load css -->
     <script>_pxCom_loadStylesheet('/css/common.css');</script>
-    <!-- / Demo assets -->
+    <!-- / Load css -->
 
     <!-- Pace.js -->
-    <script src="assets/pace/pace.min.js" th:src="@{/libs/pace/pace.min.js}"></script>
+    <script src="/libs/pace/pace.min.js" th:src="@{/libs/pace/pace.min.js}"></script>
 
     <!-- Require.js -->
-    <script src="assets/js/require.js" th:src="@{/libs/require/require.js}"></script>
-    <script src="assets/js/requirejs-config.js" th:src="@{/js/requirejs-config.js}"></script>
+    <script src="/js/require.js" th:src="@{/libs/require/require.js}"></script>
+    <script src="/js/requirejs-config.js" th:src="@{/js/requirejs-config.js}"></script>
     <script>
         requirejs.config({
             // script path
@@ -196,7 +196,7 @@
     // Initialize page components
 
     require(['jquery', 'common', 'px/extensions/tooltip', 'px/plugins/px-responsive-bg'], function($, pxCom) {
-        pxCom.initializeBgs('body', 0, '#000', function(isBgSet) {
+        pxCom.initializeBgs('body', 2, '#000', function(isBgSet) {
             $('h2')[isBgSet ? 'addClass' : 'removeClass']('text-white font-weight-bold');
 
             $('h4')

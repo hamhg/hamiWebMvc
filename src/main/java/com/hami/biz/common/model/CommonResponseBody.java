@@ -32,6 +32,6 @@ public @Data class CommonResponseBody {
 
     @Override
     public String toString() {
-        return "CommonResult [msg=" + msg + ", code=" + code + ", result=" + resultData + "]";
+        return "CommonResult { msg=" + msg + ", code=" + code + ", result=" + resultData + " }";
     }
 }
