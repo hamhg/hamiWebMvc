@@ -43,7 +43,7 @@ logger("org.springframework.context", OFF)
 logger("org.springframework.beans", OFF)
 logger("org.springframework.biz", OFF)
 logger("org.springframework.jndi", OFF)
-logger("org.springframework.security", OFF)
+logger("org.springframework.security", DEBUG)
 logger("org.apache.commons.dbcp2", OFF)
 
 logger("log4jdbc.debug", OFF)

@@ -36,7 +36,6 @@ public class CommonServiceImpl extends BizService implements CommonService{
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     @BizAnnotation(id="CommonService", description="공통서비스")
     public Map<String, Object> getCommonService(Map<String, Object> paramMap) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>();

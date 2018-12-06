@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hami.biz.common.service.CommonService;
 import com.hami.biz.common.service.MenuService;
 import com.hami.biz.login.controller.LoginController;
@@ -34,6 +35,7 @@ import com.hami.sys.util.StringUtils;
 public class HomeController {
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
+    ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     DataSource dataSource;
@@ -69,7 +71,7 @@ public class HomeController {
             data.put("TOP_MENU", menuService.getTopMenuList01(StringUtils.newMap("C_CD", ccd, "USER_ID", user_id)).get("ds_result"));
 
             //LeftMenu
-            data.put("LEFT_MENU", menuService.getLeftMenuList01(StringUtils.newMap("C_CD", ccd, "USER_ID", user_id)).get("ds_result"));
+            data.put("LEFT_MENU", mapper.writeValueAsString(menuService.getLeftMenuList01(StringUtils.newMap("C_CD", ccd, "USER_ID", user_id)).get("ds_result")));
             model.addAllObjects(data);
             
             model.setViewName("index.html");

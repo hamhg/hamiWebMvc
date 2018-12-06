@@ -221,7 +221,7 @@
         });
 
         require(['jquery', 'px-libs/toastr'], function ($, toastr) {
-            $("#test li").each(function(){
+            $("#test li").each(function (){
                 var tabNm = $(this).find('a').html();
                 $(this).find('a').on("click", function () {
 
@@ -245,30 +245,95 @@
                  });
             });
 
-            function tabCheck(nm) {
-                var flag = false;
-                $('#top-tab > ul li').each(function () {
-                    var tabNm = $(this).attr('nm');
-                    if (tabNm == nm) {
-                        $(this).find('a').trigger('click');
-                        flag = true;
-                    }
-                });
-                if (!flag && $('#top-tab > ul li').not('.dropdown').size() > 5) {
-                    var msg = '메뉴는 최대 5개까지 열수 있습니다. <br/>사용하지 않는 탭을 닫아주세요!';
-                    var title = '';
-                    toastr['info'](msg, title, {
-                        positionClass: 'toast-top-center'
-                    });
-                    flag = true;
-                }
-                return flag;
-            }
-
             $('#screenfull').click(function () {
                 screenfull.toggle($('html')[0]);
             });
         });
+
+        require(['jquery', 'px-libs/toastr'], function ($, toastr) {
+            var navData = JSON.parse($('<div>').html('[[${LEFT_MENU}]]')[0].textContent);
+            var mdulId;
+
+            $("#topMenu > li").each(function(idx, item){
+                var selItem = $(item).find('a').attr("mdul_id");
+                if(idx == 0 || $(item).hasClass('active')){
+                    mdulId = selItem;
+                }
+            });
+
+            $(".px-nav-content > .px-nav-item").each(function(){
+                $(this).remove();
+            });
+
+            var navHtml = '';
+            var navLV = 0;
+            $(navData).each(function(idx, item){
+                //if( mdulId == item.MDUL_ID ){
+                    if(navLV < item.LV) {
+                        navLV = item.LV;
+                    }
+                    if(navLV > item.LV){
+                        navHtml += '</ul>';
+                        navHtml += '</li>';
+                        navLV = 0;
+                    }
+                    if(item.LV == 1 && item.NODE_END_YN == 0){
+                        navHtml += '<li class="px-nav-item px-nav-dropdown">';
+                        navHtml += '<a href="#"><i class="px-nav-icon ion-ios-keypad"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
+                        navHtml += '<ul class="px-nav-dropdown-menu">';
+                    } else if(item.NODE_END_YN == 1){
+                        navHtml += '<li class="px-nav-item"><a href="#"><span class="px-nav-label" id="pgm" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
+                    }
+                //} 
+            });
+            navHtml += '</ul>';
+            navHtml += '</li>';
+            console.log(navHtml);
+            $(".px-nav-content").append(navHtml);
+
+        });
+
+        function pgmOpen(menu){
+            var tabNm = $(menu).html();
+
+            if(tabCheck(tabNm)) return;
+            var tabId = "pid_"+new Date().getTime();
+            var tabHtml = '<li nm="'+tabNm+'"><a href="#'+tabId+'" data-toggle="tab">'+tabNm+'<button type="button" class="close" onclick="tabClose(this)" tab="'+tabId+'" style="margin:-2px -5px 0px 10px" aria-label="Close">×</button></a></li>';
+            var paneHtml = '<div class="tab-pane" id="'+tabId+'"></div>';
+
+            $('#biz-pane').append(paneHtml);
+            $('#top-tab > ul').append(tabHtml).find('a').trigger('click');
+
+            if($(menu).attr('type')=='JSP'){
+                $("#"+tabId).load("/testJsp/"+$(menu).attr('id'));
+            } else {
+                $("#"+tabId).load("/test/"+$(menu).attr('id'));
+            }
+            $('.px-nav-content .px-nav-item').each(function(i, el){
+                $(el).removeClass('active');
+            });
+            $(menu).parent().addClass('active');
+        }
+
+        function tabCheck(nm) {
+            var flag = false;
+            $('#top-tab > ul li').each(function () {
+                var tabNm = $(this).attr('nm');
+                if (tabNm == nm) {
+                    $(this).find('a').trigger('click');
+                    flag = true;
+                }
+            });
+            if (!flag && $('#top-tab > ul li').not('.dropdown').size() > 5) {
+                var msg = '메뉴는 최대 5개까지 열수 있습니다. <br/>사용하지 않는 탭을 닫아주세요!';
+                var title = '';
+                toastr['info'](msg, title, {
+                    positionClass: 'toast-top-center'
+                });
+                flag = true;
+            }
+            return flag;
+        }
 
         function tabClose(el) {
             var $el = $(el);
