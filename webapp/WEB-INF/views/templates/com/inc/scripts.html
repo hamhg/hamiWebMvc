@@ -11,11 +11,20 @@
     <script>
         // -------------------------------------------------------------------------
         // Initialize sidebar
-        require(['jquery', '/js/common/common.js', 'px/plugins/px-sidebar'], function($, pxCom) {
+        require(['jquery', '/js/common/common.js', 'px-libs/toastr', 'px/plugins/px-sidebar'], function($, pxCom, toastr) {
             pxCom.initializeSidebar();
 
             $('#px-sidebar').pxSidebar();
             pxCom.initialize();
+
+            window.toastr = toastr;
+            window.navData = JSON.parse($('<div>').html('[[${LEFT_MENU}]]')[0].textContent);
+
+            $("#topMenu > li").each(function(idx, item){
+                if(idx == 0){
+                    $(item).find('a').trigger("click");
+                }
+            });
         });
     </script>
 
@@ -220,7 +229,7 @@
             $('#tab-resize-pills').pxTabResize();
         });
 
-        require(['jquery', 'px-libs/toastr'], function ($, toastr) {
+        require(['jquery'], function ($) {
             $("#test li").each(function (){
                 var tabNm = $(this).find('a').html();
                 $(this).find('a').on("click", function () {
@@ -250,12 +259,11 @@
             });
         });
 
-        require(['jquery', 'px-libs/toastr'], function ($, toastr) {
-            var navData = JSON.parse($('<div>').html('[[${LEFT_MENU}]]')[0].textContent);
-            var mdulId;
+        function setLeftMenu(mdul) {
+            var mdulId = $(mdul).attr('mdulId');
 
             $("#topMenu > li").each(function(idx, item){
-                var selItem = $(item).find('a').attr("mdul_id");
+                var selItem = $(item).find('a').attr("mdulId");
                 if(idx == 0 || $(item).hasClass('active')){
                     mdulId = selItem;
                 }
@@ -268,7 +276,7 @@
             var navHtml = '';
             var navLV = 0;
             $(navData).each(function(idx, item){
-                //if( mdulId == item.MDUL_ID ){
+                if( mdulId == item.MDUL_ID ){
                     if(navLV < item.LV) {
                         navLV = item.LV;
                     }
@@ -280,25 +288,30 @@
                     if(item.LV == 1 && item.NODE_END_YN == 0){
                         var expCss = (idx==0)?'px-open':'';
                         navHtml += '<li class="px-nav-item px-nav-dropdown '+expCss+'">';
-                            navHtml += '<a href="#"><i class="px-nav-icon ion-ios-keypad"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
+                            navHtml += '<a href="#"><i class="px-nav-icon ion-ios-paper"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
                             navHtml += '<ul class="px-nav-dropdown-menu">';
                     } else if(item.NODE_END_YN == 1){
-                        var activeCss = '';//(idx==1)?'class=active':'';
-                        navHtml += '<li class="px-nav-item"><a href="#" '+activeCss+'><span class="px-nav-label" id="'+item.PGM_ID+'" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
+                        var activeCss = (idx==1)?'active':'';
+                        navHtml += '<li class="px-nav-item '+activeCss+'"><a href="#"><span class="px-nav-label" id="'+item.PGM_ID+'" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
                     }
-                //} 
+                } 
             });
             navHtml += '</ul>';
             navHtml += '</li>';
-            console.log(navHtml);
+            //console.log(navHtml);
             $(".px-nav-content").append(navHtml);
 
-        });
+        }
 
         function pgmOpen(menu){
             var tabNm = $(menu).html();
 
             if(tabCheck(tabNm)) return;
+            $('.px-nav-content .px-nav-item').each(function(i, el){
+                $(el).removeClass('active');
+            });
+            $(menu).parent().parent().addClass('active');
+
             var tabId = "pid_"+new Date().getTime();
             var tabHtml = '<li nm="'+tabNm+'"><a href="#'+tabId+'" data-toggle="tab">'+tabNm+'<button type="button" class="close" onclick="tabClose(this)" tab="'+tabId+'" style="margin:-2px -5px 0px 10px" aria-label="Close">×</button></a></li>';
             var paneHtml = '<div class="tab-pane" id="'+tabId+'"></div>';
@@ -309,18 +322,17 @@
             $("#"+tabId).load("/pgm/"+$(menu).attr('id'),
                 function (responseText, textStatus, XMLHttpRequest) {
                 // XMLHttpRequest.responseText has the error info you want.
-                var msg = '프로그램 Load 오류' ;
-                var title = '';
-                toastr['info'](msg, title, {
-                    positionClass: 'toast-top-center'
-                });
-                alert(XMLHttpRequest.responseText);
+                //console.log(responseText);
+                //console.log(textStatus);
+                //console.log(XMLHttpRequest);
+                if(XMLHttpRequest.status != '200'){
+                    var msg = '프로그램 Load 오류' ;//XMLHttpRequest.responseText
+                    var title = '';
+                    toastr['info'](msg, title, {
+                        positionClass: 'toast-top-center'
+                    });
+                }
             });
-
-            $('.px-nav-content .px-nav-item').each(function(i, el){
-                $(el).removeClass('active');
-            });
-            $(menu).parent().addClass('active');
         }
 
         function tabCheck(nm) {

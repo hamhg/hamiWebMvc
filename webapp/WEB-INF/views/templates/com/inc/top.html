@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="px-navbar-collapse">
             <ul class="nav navbar-nav" id="topMenu" th:each="topMenu : ${TOP_MENU}">
                 <li class="button">
-                    <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" th:text="${topMenu.MDUL_NM}" th:attr="mdul_id=${topMenu.MDUL_ID}">시스템</a>
+                    <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" th:text="${topMenu.MDUL_NM}" th:attr="mdulId=${topMenu.MDUL_ID}" onclick="setLeftMenu(this)">시스템</a>
                 </li>
             </ul>            
             <ul class="nav navbar-nav" th:remove="none">
