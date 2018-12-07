@@ -56,6 +56,16 @@ public class MenuServiceImpl extends BizService implements MenuService{
     }
     
     @Override
+    @BizAnnotation(id="getProgram01", description="프로그램조회")
+    public Map<String, Object> getProgram01(Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        
+        resultMap.put("ds_result", menuDao.getProgram01(getSchParam(paramMap)));
+        
+        return resultMap;
+    }
+    
+    @Override
     @BizAnnotation(id="getQuickMenuList01", description="퀵메뉴조회")
     public Map<String, Object> getQuickMenuList01(Map<String, Object> paramMap) throws Exception {
         Map<String, Object> resultMap = new HashMap<String, Object>();

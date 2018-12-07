@@ -278,11 +278,13 @@
                         navLV = 0;
                     }
                     if(item.LV == 1 && item.NODE_END_YN == 0){
-                        navHtml += '<li class="px-nav-item px-nav-dropdown">';
-                        navHtml += '<a href="#"><i class="px-nav-icon ion-ios-keypad"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
-                        navHtml += '<ul class="px-nav-dropdown-menu">';
+                        var expCss = (idx==0)?'px-open':'';
+                        navHtml += '<li class="px-nav-item px-nav-dropdown '+expCss+'">';
+                            navHtml += '<a href="#"><i class="px-nav-icon ion-ios-keypad"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
+                            navHtml += '<ul class="px-nav-dropdown-menu">';
                     } else if(item.NODE_END_YN == 1){
-                        navHtml += '<li class="px-nav-item"><a href="#"><span class="px-nav-label" id="pgm" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
+                        var activeCss = '';//(idx==1)?'class=active':'';
+                        navHtml += '<li class="px-nav-item"><a href="#" '+activeCss+'><span class="px-nav-label" id="pgm" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
                     }
                 //} 
             });

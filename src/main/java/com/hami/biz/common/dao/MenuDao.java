@@ -35,6 +35,10 @@ public class MenuDao extends BizDao {
     public List getQuickMenu01(Map paramMap) throws Exception {
         return super.queryForList(this, "getQuickMenu01", paramMap);
     }
+    
+    public List getProgram01(Map paramMap) throws Exception {
+        return super.queryForList(this, "getProgram01", paramMap);
+    }
 
     public List<Map> save01(Map<String,Object>paramMap) throws Exception {
         List<Map> resultList = new ArrayList<Map>();
