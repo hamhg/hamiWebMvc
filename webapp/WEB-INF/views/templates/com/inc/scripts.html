@@ -284,7 +284,7 @@
                             navHtml += '<ul class="px-nav-dropdown-menu">';
                     } else if(item.NODE_END_YN == 1){
                         var activeCss = '';//(idx==1)?'class=active':'';
-                        navHtml += '<li class="px-nav-item"><a href="#" '+activeCss+'><span class="px-nav-label" id="pgm" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
+                        navHtml += '<li class="px-nav-item"><a href="#" '+activeCss+'><span class="px-nav-label" id="'+item.PGM_ID+'" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
                     }
                 //} 
             });
@@ -306,11 +306,17 @@
             $('#biz-pane').append(paneHtml);
             $('#top-tab > ul').append(tabHtml).find('a').trigger('click');
 
-            if($(menu).attr('type')=='JSP'){
-                $("#"+tabId).load("/testJsp/"+$(menu).attr('id'));
-            } else {
-                $("#"+tabId).load("/test/"+$(menu).attr('id'));
-            }
+            $("#"+tabId).load("/pgm/"+$(menu).attr('id'),
+                function (responseText, textStatus, XMLHttpRequest) {
+                // XMLHttpRequest.responseText has the error info you want.
+                var msg = '프로그램 Load 오류' ;
+                var title = '';
+                toastr['info'](msg, title, {
+                    positionClass: 'toast-top-center'
+                });
+                alert(XMLHttpRequest.responseText);
+            });
+
             $('.px-nav-content .px-nav-item').each(function(i, el){
                 $(el).removeClass('active');
             });

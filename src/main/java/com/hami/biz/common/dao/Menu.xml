@@ -65,6 +65,22 @@ CONNECT BY PRIOR AUTH_MENU.MENU_ID = AUTH_MENU.PAR_MENU_ID
     FROM TSYAU0102
    WHERE C_CD = :C_CD
      AND PGM_ID = :PGM_ID
+     AND PGM_ID IN (SELECT MENU.PGM_ID 
+                      FROM TSYAU0105 USER_AUTH,
+					       TSYAU0104 AUTH,
+					       TSYAU0107 MENU,
+                           TSYAU0108 AUTH_MENU
+                     WHERE 1=1
+					   AND USER_AUTH.C_CD = AUTH.C_CD
+					   AND USER_AUTH.PROFL_ID = AUTH.PROFL_ID    
+					   AND USER_AUTH.C_CD = AUTH_MENU.C_CD
+					   AND USER_AUTH.PROFL_ID = AUTH_MENU.PROFL_ID    
+					   AND AUTH_MENU.C_CD = MENU.C_CD
+					   AND AUTH_MENU.MENU_ID = MENU.MENU_ID    
+					   AND AUTH_MENU.PROFL_ID = MENU.PROFL_ID   
+					   AND USER_AUTH.C_CD = :C_CD
+					   AND USER_AUTH.USER_ID = :USER_ID
+                    )
 ]]></sql>
 
 <sql id='getQuickMenu01'><![CDATA[

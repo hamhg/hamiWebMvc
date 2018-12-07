@@ -83,6 +83,7 @@ public class ExceptionController {
         // Nothing to do. Return value 'databaseError' used as logical view name
         // of an error page, passed to view-resolver(s) in usual way.
         log.error("Request raised " + exception.getClass().getSimpleName());
+        log.error(exception.getMessage());
         //return "databaseError";
 
         return makeError(request, response, exception);

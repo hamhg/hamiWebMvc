@@ -9,12 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hami.biz.common.service.MenuService;
 import com.hami.biz.system.utils.SecurityUtils;
+import com.hami.sys.exception.BizException;
 import com.hami.sys.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,19 +34,27 @@ public class ProgramController {
     @Autowired
     MenuService menuService;
     
-    @RequestMapping(value = "/pgm/{pageId}", method = RequestMethod.GET)
-    public ModelAndView example(@PathVariable String pageId) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @RequestMapping(value = "/pgm/{pgmId}", method = RequestMethod.GET)
+    public ModelAndView example(@PathVariable String pgmId) throws Exception {
         ModelAndView mav = new ModelAndView();
         
         //Program Info
         String ccd = SecurityUtils.getUser().getCcd();
+        String userId = SecurityUtils.getUser().getUsername();
         Map<String, Object> programInfo = new HashMap<String, Object>();
-        programInfo = (Map<String, Object>) menuService.getProgram01(StringUtils.newMap("C_CD", ccd, "USER_ID", pageId)).get("ds_result");
+        programInfo = ((List<Map>) menuService.getProgram01(StringUtils.newMap("C_CD", ccd, "PGM_ID", pgmId, "USER_ID", userId)).get("ds_result")).get(0);
+        if(!StringUtils.isEmpty(programInfo)){
+            String url = (String) programInfo.get("PGM_URL");
+            
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            mav.addObject("programId", "pid_"+timestamp.getTime());
+            
+            mav.setViewName(url);
+        } else {
+            mav.addObject("error", "No file");
+        }
         
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        mav.addObject("programId", "pid_"+timestamp.getTime());
-
-        mav.setViewName(page+".html");
         return mav;
 
     }

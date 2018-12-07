@@ -10,7 +10,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" session="true" %>
 <sql:query var="rs" dataSource="jdbc/hamiDB">
-    select username, password from users where rownum < 20
+    select login_id, password from TSYAU0001 where rownum < 20
 </sql:query>
 <html>
 <head>
@@ -45,7 +45,7 @@
                     </tr>
                     <c:forEach var="row" items="${rs.rows}">
                         <tr>
-                            <td> ${row.username} </td>
+                            <td> ${row.login_id} </td>
                             <td> ${row.password} </td>
                         </tr>
                     </c:forEach>
