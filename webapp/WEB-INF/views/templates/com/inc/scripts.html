@@ -229,6 +229,12 @@
             $('#tab-resize-pills').pxTabResize();
         });
 
+        // -------------------------------------------------------------------------
+        // Initialize TreeGrid
+        require(['jquery'], function($) {
+        	$("#treeGridInit").load("/treeGridInit");
+        });
+
         require(['jquery'], function ($) {
             $("#test li").each(function (){
                 var tabNm = $(this).find('a').html();
@@ -261,13 +267,14 @@
 
         function setLeftMenu(mdul) {
             var mdulId = $(mdul).attr('mdulId');
-
-            $("#topMenu > li").each(function(idx, item){
-                var selItem = $(item).find('a').attr("mdulId");
-                if(idx == 0 || $(item).hasClass('active')){
-                    mdulId = selItem;
-                }
-            });
+            if(mdul == undefined || mdul == ''){
+	            $("#topMenu > li").each(function(idx, item){
+	                var selItem = $(item).find('a').attr("mdulId");
+	                if(idx == 0 || $(item).hasClass('active')){
+	                    mdulId = selItem;
+	                }
+	            });
+            }
 
             $(".px-nav-content > .px-nav-item").each(function(){
                 $(this).remove();
@@ -275,8 +282,10 @@
 
             var navHtml = '';
             var navLV = 0;
+            var navOpen = 0;
             $(navData).each(function(idx, item){
                 if( mdulId == item.MDUL_ID ){
+                	navOpen ++;
                     if(navLV < item.LV) {
                         navLV = item.LV;
                     }
@@ -286,12 +295,12 @@
                         navLV = 0;
                     }
                     if(item.LV == 1 && item.NODE_END_YN == 0){
-                        var expCss = (idx==0)?'px-open':'';
+                        var expCss = (navOpen==1)?'px-open':'';
                         navHtml += '<li class="px-nav-item px-nav-dropdown '+expCss+'">';
-                            navHtml += '<a href="#"><i class="px-nav-icon ion-ios-paper"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
-                            navHtml += '<ul class="px-nav-dropdown-menu">';
+                        navHtml += '<a href="#"><i class="px-nav-icon ion-ios-paper"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
+                        navHtml += '<ul class="px-nav-dropdown-menu">';
                     } else if(item.NODE_END_YN == 1){
-                        var activeCss = (idx==1)?'active':'';
+                        var activeCss = (navOpen==1)?'active':'';
                         navHtml += '<li class="px-nav-item '+activeCss+'"><a href="#"><span class="px-nav-label" id="'+item.PGM_ID+'" onclick="pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
                     }
                 } 
@@ -305,12 +314,7 @@
 
         function pgmOpen(menu){
             var tabNm = $(menu).html();
-
-            if(tabCheck(tabNm)) return;
-            $('.px-nav-content .px-nav-item').each(function(i, el){
-                $(el).removeClass('active');
-            });
-            $(menu).parent().parent().addClass('active');
+            if(tabCheck(menu)) return;
 
             var tabId = "pid_"+new Date().getTime();
             var tabHtml = '<li nm="'+tabNm+'"><a href="#'+tabId+'" data-toggle="tab">'+tabNm+'<button type="button" class="close" onclick="tabClose(this)" tab="'+tabId+'" style="margin:-2px -5px 0px 10px" aria-label="Close">×</button></a></li>';
@@ -335,12 +339,17 @@
             });
         }
 
-        function tabCheck(nm) {
+        function tabCheck(menu) {
             var flag = false;
+            var menuNm = $(menu).html();
             $('#top-tab > ul li').each(function () {
                 var tabNm = $(this).attr('nm');
-                if (tabNm == nm) {
+                if (tabNm == menuNm) {
                     $(this).find('a').trigger('click');
+                    $('.px-nav-content .px-nav-item').each(function(i, el){
+                        $(el).removeClass('active');
+                    });
+                    $(menu).parent().parent().addClass('active');
                     flag = true;
                 }
             });

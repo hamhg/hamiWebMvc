@@ -36,7 +36,7 @@ public class ProgramController {
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @RequestMapping(value = "/pgm/{pgmId}", method = RequestMethod.GET)
-    public ModelAndView example(@PathVariable String pgmId) throws Exception {
+    public ModelAndView pgm(@PathVariable String pgmId) throws Exception {
         ModelAndView mav = new ModelAndView();
         
         //Program Info
@@ -56,7 +56,17 @@ public class ProgramController {
         }
         
         return mav;
-
+    }
+    
+    @RequestMapping(value = "/treeGridInit", method = RequestMethod.GET)
+    public ModelAndView treeGridInit() throws Exception {
+        ModelAndView mav = new ModelAndView();
+        
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        mav.addObject("programId", "pid_"+timestamp.getTime());
+        mav.setViewName("/com/inc/treeGridInit.html");
+        
+        return mav;
     }
 
 }
