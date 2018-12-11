@@ -102,10 +102,10 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
             CustomPersistentRememberMeToken newToken = new CustomPersistentRememberMeToken(token.getCcd(), token.getUsername(), token.getSeries(), generateTokenData(), new Date());
     
             try {
-                tokenRepository.updateToken(newToken.getSeries(), newToken.getTokenValue(), newToken.getDate());
                 addCookie(newToken, request, response);
+                tokenRepository.updateToken(newToken.getSeries(), newToken.getTokenValue(), newToken.getDate());
                 if (logger.isDebugEnabled()) {
-                    logger.debug("Refreshing persistent login token(New) for user '" + newToken.getUsername() + "', series '" + newToken.getSeries() + "', ccd '" + newToken.getCcd() + "'");
+                    logger.debug("Refreshing persistent login token(New) for user '" + newToken.getUsername() + "', series '" + newToken.getSeries() + "', token '" + newToken.getTokenValue() + "', ccd '" + newToken.getCcd() + "'");
                 }
                 
             }
