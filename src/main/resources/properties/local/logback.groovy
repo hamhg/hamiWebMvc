@@ -36,15 +36,18 @@ appender("ROLLING", RollingFileAppender) {
 root(DEBUG, appenderList)
  
 logger("org.thymeleaf", OFF)
+logger("org.apache.commons.dbcp2", OFF)
 logger("org.springframework.jdbc", OFF)
-logger("org.springframework.web", OFF)
 logger("org.springframework.core", OFF)
 logger("org.springframework.context", OFF)
 logger("org.springframework.beans", OFF)
 logger("org.springframework.biz", OFF)
 logger("org.springframework.jndi", OFF)
+logger("org.springframework.security.web.util.matcher.AntPathRequestMatcher", OFF)
+logger("org.springframework.security.web.FilterChainProxy", OFF)
+
 logger("org.springframework.security", DEBUG)
-logger("org.apache.commons.dbcp2", OFF)
+logger("org.springframework.web", DEBUG)
 
 logger("log4jdbc.debug", OFF)
 logger("jdbc.sqltiming", DEBUG)

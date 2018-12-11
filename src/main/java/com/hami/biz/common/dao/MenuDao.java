@@ -18,26 +18,27 @@ import com.hami.sys.support.BizDao;
  * @author HHG
  */
 @Repository
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class MenuDao extends BizDao {
 
     public List getTopMenu01(Map paramMap) throws Exception {
-        return super.queryForList(this, "getTopMenu01", paramMap);
+        return queryForList(this, "getTopMenu01", paramMap);
     }
 
     public List getLeftMenu01(Map paramMap) throws Exception {
-        return super.queryForList(this, "getLeftMenu01", paramMap);
+        return queryForList(this, "getLeftMenu01", paramMap);
     }
     
     public List getLocationMenuList01(Map paramMap) throws Exception {
-        return super.queryForList(this, "getLocationMenuList01", paramMap);
+        return queryForList(this, "getLocationMenuList01", paramMap);
     }
     
     public List getQuickMenu01(Map paramMap) throws Exception {
-        return super.queryForList(this, "getQuickMenu01", paramMap);
+        return queryForList(this, "getQuickMenu01", paramMap);
     }
     
-    public List getProgram01(Map paramMap) throws Exception {
-        return super.queryForList(this, "getProgram01", paramMap);
+    public Map getProgram01(Map paramMap) throws Exception {
+        return queryForMap(this, "getProgram01", paramMap);
     }
 
     public List<Map> save01(Map<String,Object>paramMap) throws Exception {
