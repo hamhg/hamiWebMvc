@@ -1,5 +1,11 @@
 package com.hami.biz.common.controller;
 
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,15 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hami.biz.common.service.MenuService;
 import com.hami.biz.login.model.User;
 import com.hami.biz.system.utils.SecurityUtils;
-import com.hami.sys.exception.BizException;
 import com.hami.sys.util.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * <pre>
@@ -37,7 +35,7 @@ public class ProgramController {
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @RequestMapping(value = "/pgm/{pgmId}", method = RequestMethod.GET)
-    public ModelAndView pgm(@PathVariable String pgmId) throws Exception {
+    public ModelAndView pgm(@PathVariable String pgmId, HttpServletRequest request) throws Exception {
         ModelAndView mav = new ModelAndView();
         Boolean errYn = true;
 
@@ -52,6 +50,10 @@ public class ProgramController {
                 
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 mav.addObject("programId", "pid_"+timestamp.getTime());
+                
+                if(StringUtils.nvl(request.getParameter("menuId"),null) != null){
+                    mav.addObject("menuId", request.getParameter("menuId"));
+                }
                 
                 mav.setViewName(url);
                 errYn = false;
