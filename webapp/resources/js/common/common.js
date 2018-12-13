@@ -619,7 +619,7 @@
         $('#biz-pane').append(paneHtml);
         $('#top-tab > ul').append(tabHtml).find('a').trigger('click');
 
-        $("#"+tabId).load("/pgm/"+$(menu).attr('pgmId'),
+        $("#"+tabId).load("/pgm/"+$(menu).attr('pgmId'),"menuId="+$(menu).attr('menuId'),
             function (responseText, textStatus, XMLHttpRequest) {
             // XMLHttpRequest.responseText has the error info you want.
             //console.log(responseText);
@@ -668,6 +668,27 @@
         if (isActive) {
             $preLi.find('a').trigger('click');
         }
+    }    
+    
+    function setLocation(programId, menuId) {
+    	var $el = $("#"+programId).find('.breadcrumb');
+    	var html = '';
+        $(navData).each(function(idx, item){
+            if( menuId == item.MENU_ID ){
+            	var locTxt = item.nm_path;
+            	var locArr = locTxt.split('|');
+            	var activeCss = '';
+            	html += '<li><a href="index.html">Home</a></li>';
+            	$(locArr).each(function(idx, value){
+            		if(idx == locArr.length){
+            			activeCss = 'class="active"';
+            		}
+            		html += '<li '+activeCss+'>tGrid</li>';
+            	});
+        		return false;
+            } 
+        });
+    	$el.html(html);
     }    
     
     // Return
