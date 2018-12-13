@@ -310,7 +310,7 @@
     function initialize() {
       $('input#px-fixed-navbar-toggler').on('change', function() {
         updateSettings({
-          fixed_navbar: $(this).is(':checked') ? '1' : '0',
+          fixed_navbar: $(this).is(':checked') ? '1' : '0'
         });
 
         $(document.querySelector('body > ui-view') || document.body)[
@@ -326,7 +326,7 @@
 
       $('input#px-fixed-nav-toggler').on('change', function() {
         updateSettings({
-          fixed_nav: $(this).is(':checked') ? '1' : '0',
+          fixed_nav: $(this).is(':checked') ? '1' : '0'
         });
 
         $('body > .px-nav, body > ui-view > .px-nav')[
@@ -344,7 +344,7 @@
 
       $('input#px-nav-right-toggler').on('change', function() {
         updateSettings({
-          right_nav: $(this).is(':checked') ? '1' : '0',
+          right_nav: $(this).is(':checked') ? '1' : '0'
         });
 
         placeNav($(this).is(':checked') ? 'right' : 'left');
@@ -352,7 +352,7 @@
 
       $('input#px-nav-off-canvas-toggler').on('change', function() {
         updateSettings({
-          offcanvas_nav: $(this).is(':checked') ? '1' : '0',
+          offcanvas_nav: $(this).is(':checked') ? '1' : '0'
         });
 
         $('body > .px-nav, body > ui-view > .px-nav')[
@@ -366,7 +366,7 @@
         setSidebarState('disabled');
 
         updateSettings({
-          rtl: $(this).is(':checked') ? '1' : '0',
+          rtl: $(this).is(':checked') ? '1' : '0'
         });
 
         document.location.reload();
@@ -374,7 +374,7 @@
 
       $('select#px-footer-position-select').on('change', function() {
         updateSettings({
-          footer: $(this).val(),
+          footer: $(this).val()
         });
 
         setFooterPosition($(this).val());
@@ -411,7 +411,7 @@
             .append($box)
             .animate({
               opacity: 0,
-              height:  'toggle',
+              height:  'toggle'
             }, 400, function() {
               $wrapper.remove();
             });
@@ -458,7 +458,7 @@
 
           $(selector).pxResponsiveBg({
             backgroundImage: $container.find('> img').attr('src'),
-            overlay:         overlay,
+            overlay:         overlay
           });
 
           isBgSet = true;
@@ -590,7 +590,7 @@
                     navHtml += '<a href="#"><i class="px-nav-icon ion-ios-paper"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
                     navHtml += '<ul class="px-nav-dropdown-menu">';
                 } else if(item.NODE_END_YN == 1){
-                    var activeCss = (menuId==item.MENU_ID)?'active':'';
+                    var activeCss = (menuId == item.MENU_ID)?'active':'';
                     navHtml += '<li class="px-nav-item '+activeCss+'"><a href="#"><span class="px-nav-label" pgmId="'+item.PGM_ID+'" menuId="'+item.MENU_ID+'" onclick="pxCom.pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
                 }
             } 
@@ -675,15 +675,18 @@
     	var html = '';
         $(navData).each(function(idx, item){
             if( menuId == item.MENU_ID ){
-            	var locTxt = item.nm_path;
+            	var locTxt = item.NM_PATH;
             	var locArr = locTxt.split('|');
             	var activeCss = '';
-            	html += '<li><a href="index.html">Home</a></li>';
+            	html += '<li><a href="#" onclick="pxCom.tabCheck(\'home\')">Home</a></li>';
+            	html += '<li>'+item.MDUL_NM+'</li>';
             	$(locArr).each(function(idx, value){
-            		if(idx == locArr.length){
+            		if(idx == locArr.length-1){
             			activeCss = 'class="active"';
             		}
-            		html += '<li '+activeCss+'>tGrid</li>';
+            		if(idx > 0){
+                        html += '<li '+activeCss+'>'+locArr[idx]+'</li>';
+                    }
             	});
         		return false;
             } 
@@ -708,6 +711,7 @@
       loadRtl:   loadRtl,
 
       setLeftMenu:   setLeftMenu,
+      setLocation:   setLocation,
       pgmOpen:       pgmOpen,
       tabCheck:      tabCheck,
       tabClose:      tabClose

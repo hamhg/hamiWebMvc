@@ -64,11 +64,15 @@
     </div>
 </div>
 <script>
-    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-    
+    // -----------------------------------------------------------------------------------------
+    // Initialize
+    require(['jquery'], function($) {
+        pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+    });
+
     // -----------------------------------------------------------------------------------------
     // Shows the year 2005 only
-    Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
+    Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); };
 
     // -----------------------------------------------------------------------------------------
     // Custom event for searching
@@ -81,7 +85,7 @@
             if(!(found<=0)) return found;
         }
         return 0;
-    }
+    };
     // -----------------------------------------------------------------------------------------
     // Creates popup right click menu to manipulate the row
     Grids.OnGetMenu = function(G,row,col){
@@ -95,7 +99,7 @@
         if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
         if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
         return M;
-    }
+    };
     // -----------------------------------------------------------------------------------------
     // Called after selecting item in the popup right click menu
     Grids.OnContextMenu = function(G,row,col,N){
@@ -108,7 +112,7 @@
             case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
             case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
         }
-    }
+    };
     // -----------------------------------------------------------------------------------------
     // Called when NoVScroll / NoHScroll is set automatically due small window size, disables the checkbox for manual change of NoVScroll / NoHScroll
     Grids.OnLimitScroll = function(G,clr,noh,nov){
@@ -116,7 +120,7 @@
         var tip = clr?"Disable grid scrollbars and use page scrollbars":"Used page scrollbars because browser window is too small to show this example with its own scrollbars";
         G.SetAttribute(G.Rows.Group,"Win","Tip",tip,1);
         G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
-    }
+    };
     // -----------------------------------------------------------------------------------------
 
 </script>
