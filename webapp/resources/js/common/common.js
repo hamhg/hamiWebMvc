@@ -27,7 +27,7 @@
   var pxCom = (function() {
 
     // Constants
-
+	  
     var COLORS = [
       '#0288D1',
       '#FF4081',
@@ -561,6 +561,115 @@
       (container ? document.querySelector(container) : document.body).appendChild(sidebarEl);
     }
 
+    function setLeftMenu(mdul, menuId) {
+        if(mdul){
+        	window.mdulId = $(mdul).attr('mdulId');
+        }
+
+        $(".px-nav-content > .px-nav-item").each(function(){
+            $(this).remove();
+        });
+
+        var navHtml = '';
+        var navLV = 0;
+        var navOpen = 0;
+        $(navData).each(function(idx, item){
+            if( window.mdulId == item.MDUL_ID ){
+            	navOpen ++;
+                if(navLV < item.LV) {
+                    navLV = item.LV;
+                }
+                if(navLV > item.LV){
+                    navHtml += '</ul>';
+                    navHtml += '</li>';
+                    navLV = 0;
+                }
+                if(item.LV == 1 && item.NODE_END_YN == 0){
+                    var expCss = (navOpen==1)?'px-open':'';
+                    navHtml += '<li class="px-nav-item px-nav-dropdown '+expCss+'">';
+                    navHtml += '<a href="#"><i class="px-nav-icon ion-ios-paper"></i><span class="px-nav-label">'+item.MENU_NM+'</span></a>';
+                    navHtml += '<ul class="px-nav-dropdown-menu">';
+                } else if(item.NODE_END_YN == 1){
+                    var activeCss = (menuId==item.MENU_ID)?'active':'';
+                    navHtml += '<li class="px-nav-item '+activeCss+'"><a href="#"><span class="px-nav-label" pgmId="'+item.PGM_ID+'" menuId="'+item.MENU_ID+'" onclick="pxCom.pgmOpen(this)">'+item.MENU_NM+'</span></a></li>';
+                }
+            } 
+        });
+        navHtml += '</ul>';
+        navHtml += '</li>';
+        //console.log(navHtml);
+        $(".px-nav-content").append(navHtml);
+
+    }
+
+    function pgmOpen(menu){
+        var tabNm = $(menu).text();
+        
+        if(tabCheck(menu)) return;
+
+        $('.px-nav-content .px-nav-item').each(function(i, el){
+            $(el).removeClass('active');
+        });
+        $(menu).parent().parent().addClass('active');
+        
+        var tabId = "pid_"+new Date().getTime();
+        var tabHtml = '<li nm="'+tabNm+'"><a href="#'+tabId+'" data-toggle="tab">'+tabNm+'<button type="button" class="close" onclick="pxCom.tabClose(this)" tab="'+tabId+'" style="margin:-2px -5px 0px 10px" aria-label="Close">×</button></a></li>';
+        var paneHtml = '<div class="tab-pane" id="'+tabId+'"></div>';
+
+        $('#biz-pane').append(paneHtml);
+        $('#top-tab > ul').append(tabHtml).find('a').trigger('click');
+
+        $("#"+tabId).load("/pgm/"+$(menu).attr('pgmId'),
+            function (responseText, textStatus, XMLHttpRequest) {
+            // XMLHttpRequest.responseText has the error info you want.
+            //console.log(responseText);
+            //console.log(textStatus);
+            //console.log(XMLHttpRequest);
+            if(XMLHttpRequest.status != '200'){
+                var msg = '프로그램 Load 오류' ;//XMLHttpRequest.responseText
+                var title = '';
+                toastr['info'](msg, title, {positionClass: 'toast-top-center'});
+            }
+        });
+    }
+
+    function tabCheck(menu) {
+        var flag = false;
+        var maxCnt = 8;
+        var menuNm = $(menu).html();
+        $('#top-tab > ul li').each(function () {
+            var tabNm = $(this).attr('nm');
+            if (tabNm == menuNm) {
+                $(this).find('a').trigger('click');
+                $('.px-nav-content .px-nav-item').each(function(i, el){
+                    $(el).removeClass('active');
+                });
+                $(menu).parent().parent().addClass('active');
+                flag = true;
+            }
+        });
+        if (!flag && $('#top-tab > ul li').not('.dropdown').size() > maxCnt) {
+            var msg = '메뉴는 최대 '+maxCnt+'개까지 열수 있습니다. <br/>사용하지 않는 탭을 닫아주세요!';
+            var title = '';
+            toastr['info'](msg, title, {positionClass: 'toast-top-center'});
+            flag = true;
+        }
+        return flag;
+    }
+
+    function tabClose(el) {
+        var $el = $(el);
+        var $bizWrap = $('#' + $el.attr('tab'));
+        var isActive = $el.closest('li').hasClass('active');
+        var idx = $el.closest('li').index();
+        var $preLi = $(el).closest('ul').find('li').eq(idx - 1);
+        $bizWrap.remove();
+        $el.closest('li').remove();
+        if (isActive) {
+            $preLi.find('a').trigger('click');
+        }
+    }    
+    
     // Return
     return {
       COLORS: COLORS,
@@ -576,6 +685,11 @@
 
       loadTheme: loadTheme,
       loadRtl:   loadRtl,
+
+      setLeftMenu:   setLeftMenu,
+      pgmOpen:       pgmOpen,
+      tabCheck:      tabCheck,
+      tabClose:      tabClose
     };
   })();
 
