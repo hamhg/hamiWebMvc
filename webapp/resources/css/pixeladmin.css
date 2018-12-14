@@ -5969,6 +5969,15 @@ label.required:after {
     color: #999
 }
 
+.breadcrumb>.title {
+    font-size: 15px;
+    font-weight: bold
+}
+
+.breadcrumb>span {
+    margin-top: 2px;
+}
+
 .breadcrumb .active,.breadcrumb .active a,.breadcrumb a:hover {
     color: #444
 }
