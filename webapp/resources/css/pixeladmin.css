@@ -5977,7 +5977,7 @@ label.required:after {
     color: #ccc
 }
 
-html[dir=rtl] .breadcrumb li+li:before {
+html[dir=rtl] .breadcrumb>span li+li:before {
     content: "\\"
 }
 

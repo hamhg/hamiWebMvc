@@ -671,21 +671,23 @@
     }    
     
     function setLocation(programId, menuId) {
-    	var $el = $("#"+programId).find('.breadcrumb');
+    	var $el = $("#"+programId).find('.breadcrumb>span');
     	var html = '';
         $(navData).each(function(idx, item){
             if( menuId == item.MENU_ID ){
             	var locTxt = item.NM_PATH;
             	var locArr = locTxt.split('|');
-            	var activeCss = '';
-            	html += '<li><a href="#" onclick="pxCom.tabCheck(\'home\')">Home</a></li>';
-            	html += '<li>'+item.MDUL_NM+'</li>';
+            	var activeCssS = '';
+            	var activeCssE = '';
+            	html += '<a href="#" onclick="pxCom.tabCheck(\'home\')">Home</a>';
+            	html += ' / '+item.MDUL_NM;
             	$(locArr).each(function(idx, value){
             		if(idx == locArr.length-1){
-            			activeCss = 'class="active"';
+            			activeCssS = '<span class="active">';
+            			activeCssE = '</span>';
             		}
             		if(idx > 0){
-                        html += '<li '+activeCss+'>'+locArr[idx]+'</li>';
+                        html += ' / '+activeCssS+locArr[idx]+activeCssE;
                     }
             	});
         		return false;

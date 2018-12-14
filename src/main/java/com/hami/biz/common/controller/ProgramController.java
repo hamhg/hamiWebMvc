@@ -61,7 +61,7 @@ public class ProgramController {
         } 
         
         if(errYn){
-            mav.setViewName("/com/exception/404.html");
+            mav.setViewName("/com/exception/404_pgm.html");
         }
         
         return mav;
