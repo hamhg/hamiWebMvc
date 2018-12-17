@@ -181,9 +181,8 @@ public class CommonController extends BizController{
         log.debug("\n[[[[[ OUTPUT ]]]]]\n"
                    +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
 
-        Principal principal = request.getUserPrincipal();
-        log.debug("\n[[[[[ principal ]]]]]\n"
-            +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(principal));
+        //Principal principal = request.getUserPrincipal();
+        //log.debug("\n[[[[[ principal ]]]]]\n"+mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request.getUserPrincipal()));
 
         return new ResponseEntity<CommonResponseBody>(result, result.getCode());
     }

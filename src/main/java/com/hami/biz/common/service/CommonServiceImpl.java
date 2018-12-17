@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hami.biz.common.dao.CommonCodeDao;
 import com.hami.sys.annotation.BizAnnotation;
 import com.hami.sys.support.BizService;
@@ -24,7 +25,9 @@ public class CommonServiceImpl extends BizService implements CommonService{
 
     @Autowired
     CommonCodeDao commonCodeDao;
-
+    
+    protected ObjectMapper mapper = new ObjectMapper();
+    
     @Override
     @BizAnnotation(id="CommonCodeByCd", description="공통코드")
     public Map<String, Object> getCommonCodeByCd(Map<String, Object> paramMap) throws Exception {
@@ -44,5 +47,5 @@ public class CommonServiceImpl extends BizService implements CommonService{
         
         return resultMap;
     }
-
+    
 }

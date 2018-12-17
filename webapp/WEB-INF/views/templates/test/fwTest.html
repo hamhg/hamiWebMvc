@@ -151,7 +151,8 @@
             },
             ds_search: {
                 USERNAME: $("#[[${programId}]] #username").val(),
-                EMAIL: $("#[[${programId}]] #email").val()
+                EMAIL: $("#[[${programId}]] #email").val(),
+                GRP_CD: 'COM_CD'
             }
         };
 
@@ -173,7 +174,8 @@
                             MSG_ARGS: ['11','22']
                         },
                         ds_search: {
-                            USERNAME: this.schNm
+                            USERNAME: this.schNm,
+                            GRP_CD:'COM_CD'
                         }
                     },
                     {
@@ -204,7 +206,8 @@
                                 "LANG_CD": "KO"
                             },
                             ds_search: {
-                                USERNAME: this.schNm
+                                USERNAME: this.schNm,
+                                GRP_CD:'COM_CD'
                             }
                         },
                         {
