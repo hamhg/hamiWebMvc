@@ -628,7 +628,7 @@
             if(XMLHttpRequest.status != '200'){
                 var msg = '프로그램 Load 오류' ;//XMLHttpRequest.responseText
                 var title = '';
-                toastr['info'](msg, title, {positionClass: 'toast-top-center'});
+                toastr['info'](msg, title, {positionClass: 'toast-bottom-full-width'});
             }
         });
     }
@@ -649,9 +649,9 @@
             }
         });
         if (!flag && $('#top-tab > ul li').not('.dropdown').size() > maxCnt) {
-            var msg = '메뉴는 최대 '+maxCnt+'개까지 열수 있습니다. <br/>사용하지 않는 탭을 닫아주세요!';
+            var msg = '메뉴는 최대 '+maxCnt+'개까지 열수 있습니다. 사용하지 않는 탭을 닫아주세요!';
             var title = '';
-            toastr['info'](msg, title, {positionClass: 'toast-top-center'});
+            toastr['info'](msg, title, {positionClass: 'toast-bottom-full-width'});
             flag = true;
         }
         return flag;
@@ -671,27 +671,43 @@
     }    
     
     function setLocation(programId, menuId) {
-    	var $el = $("#"+programId).find('.breadcrumb>span');
-    	var html = '';
+        if(!navData) return;
+        var $el = $("#"+programId).find('.tab-pane').first();
+        var $tmpl = $(document.createDocumentFragment());
+
         $(navData).each(function(idx, item){
             if( menuId == item.MENU_ID ){
-            	var locTxt = item.NM_PATH;
-            	var locArr = locTxt.split('|');
-            	html += '<a href="#" onclick="pxCom.tabCheck(\'home\')">Home</a>';
-            	html += ' / '+item.MDUL_NM;
-            	$(locArr).each(function(idx, value){
-            		if(idx == locArr.length-1){
-            			$("#"+programId).find('.breadcrumb>h1').html('<i class="page-header-icon ion-ios-paper-outline"></i>'+locArr[idx]);
-            			html += ' / <span class="active">'+locArr[idx]+'</span>';
-            		} else if(idx > 0){
-                        html += ' / '+locArr[idx];
+                var locTxt = item.NM_PATH;
+                var locArr = locTxt.split('|');
+                var locArrLen = locArr.length;
+
+                $tmpl.append('<div class="row">'
+                    +'<ol class="breadcrumb page-breadcrumb">'
+                    +'<li class="active font-size-15"><i class="ion-android-document"></i> '+locArr[locArrLen-1]+'</li>'
+                    +'<span class="pull-right">'
+                    +'<a href="#" onclick="pxCom.tabCheck(\'home\')">Home</a>'
+                    +' / '+item.MDUL_NM
+                    +'</span>'
+                    +'</ol>'
+                    +'</div>');
+
+                $(locArr).each(function(idx){
+                    if(idx == locArrLen-1){
+                        $tmpl.find('.pull-right').append(' / <span class="active">'+locArr[idx]+'</span>');
+                    } else if(idx > 0){
+                        $tmpl.find('.pull-right').append(' / '+locArr[idx]);
                     }
-            	});
-        		return false;
-            } 
+                });
+                return false;
+            }
         });
-    	$el.html(html);
-    }    
+
+        if($el.find('.breadcrumb')){
+            $("#"+programId).find('.tab-pane div:first-child').first().html($tmpl.find('.row').html());
+        } else {
+            $el.prepend($tmpl);
+        }
+    }
     
     // Return
     return {

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
 <head>
-    <title>Metis</title>
     <style>
         /* Example shared styles */
         .Example h1 { font:30px Arial; padding:5px 0px 5px 0px; margin:0px; text-align:center; }
@@ -29,13 +28,20 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb">
-	        <li class="active title">tGrid</li>
-	        <span class="pull-right">
-	            <li><a href="index.html">Home</a></li>
-	            <li class="active">tGrid</li>
-            </span>
-        </ol>
+        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+    </div>
+    <div class="panel m-t-1">
+        <div class="panel-body p-b-1 p-t-1">
+            <form class="form-inline">
+                <div class="form-group-sm">
+                    <label for="form-inline-input-1">Name</label>
+                    <input type="text" class="form-control" id="form-inline-input-1" placeholder="Jane Doe">
+                    <label for="form-inline-input-2" class="m-l-1">Email</label>
+                    <input type="email" class="form-control" id="form-inline-input-2" placeholder="jane.doe@example.com">
+                    <button type="button" class="btn-sm btn-primary fa fa-search pull-right"> Search</button>
+                </div>
+            </form>
+        </div>
     </div>
     <div id="content" class="page-header" th:remove="all">
         <div class="row">
@@ -60,7 +66,7 @@
             </form>
         </div>
     </div>
-</div><br>
+</div>
 <div id="ExampleContent" class="Example ExampleContent">
     <div th:id="'tgrid_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
         <script> TreeGrid('<bdo Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </bdo>',"tgrid_[[${programId}]]"); </script>

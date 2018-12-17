@@ -11,7 +11,7 @@
     <script>
         // -------------------------------------------------------------------------
         // Initialize sidebar
-        require(['jquery', '/js/common/common.js', 'px-libs/toastr', 'px/plugins/px-sidebar'], function($, pxCom, toastr) {
+        require(['jquery', '/js/common/common.js', 'px-libs/toastr', 'px/plugins/px-sidebar', 'px-libs/bootstrap3-typeahead'], function($, pxCom, toastr) {
             pxCom.initializeSidebar();
 
             $('#px-sidebar').pxSidebar();
@@ -27,8 +27,18 @@
                     window.mdulId = $(item).find("a").attr('mdulId');
                 }
             });
+
+            var menuArr = [];
+            $(function() {
+                $(navData).each(function(idx, item){
+                    if(item.NODE_END_YN == 1 && menuArr.indexOf(item.MENU_NM) == -1){
+                        menuArr.push(item.MENU_NM);
+                    }
+                });
+
+                $('#menuSch').typeahead({source: menuArr});
+            });
         });
-        
     </script>
 
     <script type="text/javascript">

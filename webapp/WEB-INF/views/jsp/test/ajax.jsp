@@ -15,10 +15,7 @@
 <program id="${programId}">
 <div class="tab-pane" id="aj_wrap">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">AjaxTest (JSP)</li>
-        </ol>
+        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
     </div>
     <div id="content" class="page-header">
         <div class="row">
@@ -73,6 +70,12 @@
 </div>
 
 <script>
+    // -----------------------------------------------------------------------------------------
+    // Initialize
+    require(['jquery'], function($) {
+        pxCom.setLocation('${programId}','${menuId}');
+    });
+
     jQuery(document).ready(function ($) {
 
         $("#${programId} #search-form").submit(function (event) {

@@ -16,80 +16,20 @@
       left: 0;
     }
 
-    .page-404-header,
-    .page-404-error-code,
-    .page-404-subheader,
-    .page-404-text,
-    .page-404-form {
-      position: relative;
-
-      padding: 0 30px;
-
+    .page-404-text {
+      font-size: 15px;
       text-align: center;
-    }
-
-    .page-404-header {
-      width: 100%;
-      padding: 20px 0;
-
-      box-shadow: 0 4px 0 rgba(0,0,0,.1);
-    }
-
-    .page-404-error-code {
-      margin-top: 60px;
-
-      color: #fff;
-      text-shadow: 0 4px 0 rgba(0,0,0,.1);
-
-      font-size: 120px;
-      font-weight: 700;
-      line-height: 140px;
-    }
-
-    .page-404-subheader,
-    .page-404-text {
-      margin-bottom: 60px;
-
-      color: rgba(0,0,0,.5);
-
-      font-weight: 600;
-    }
-
-    .page-404-subheader {
-      font-size: 50px;
-    }
-
-    .page-404-subheader:after {
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-
-      display: block;
-
-      width: 40px;
-      height: 4px;
-      margin-left: -20px;
-
-      content: "";
-
-      background: rgba(0,0,0,.2);
-    }
-
-    .page-404-error-code {
-      font-size: 25px;
-    }
-
-    .page-404-text {
-      font-size: 20px;
+      padding: 30px;
+      margin: 0px;
     }
 
   </style>
   <!-- / Custom styling -->
 </head>
 <body class="error">
-  <div class="page-404-bg bg-default"></div>
-  <h3 class="page-404-error-code">잘못된 접근입니다.</h1>
-  <h3 class="page-404-text">프로그램을 찾을수 없거나 권한이 없습니다.</h3>
+  <div class="alert alert-info">
+    <h3 class="page-404-text"><i class="ion-alert-circled"></i> 프로그램이 존재하지 않거나 접근 권한이 없습니다.</h3>
+  </div>
 </body>
 
 </html>
