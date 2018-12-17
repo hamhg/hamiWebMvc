@@ -102,6 +102,12 @@
     </div>
 </div>
 <script type="text/javascript">
+	// -----------------------------------------------------------------------------------------
+	// Initialize
+	require(['jquery'], function($) {
+	    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+	});
+
     require(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/ojmodel',
             'ojs/ojtable', 'ojs/ojdatacollection-utils', 'ojs/ojinputtext', 'ojs/ojvalidation-datetime',
             'ojs/ojvalidation-number', 'ojs/ojcollectiontabledatasource'],

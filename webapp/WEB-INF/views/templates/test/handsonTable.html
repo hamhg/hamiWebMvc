@@ -47,6 +47,12 @@
     </div>
 </div>
 <script>
+	// -----------------------------------------------------------------------------------------
+	// Initialize
+	require(['jquery'], function($) {
+	    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+	});
+
     $(document).ready(function () {
         var data = [
             ["", "Ford", "Tesla", "Toyota", "Honda"],

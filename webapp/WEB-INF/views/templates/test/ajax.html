@@ -87,6 +87,12 @@
     </div>
 </div>
 <script>
+	// -----------------------------------------------------------------------------------------
+	// Initialize
+	require(['jquery'], function($) {
+	    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+	});
+	
     require(["jquery", "Vue"], function ($, Vue) {
         $(document).ready(function ($) {
 
