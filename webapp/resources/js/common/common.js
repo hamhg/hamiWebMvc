@@ -683,7 +683,7 @@
 
                 $tmpl.append('<div class="row">'
                     +'<ol class="breadcrumb page-breadcrumb">'
-                    +'<li class="active font-size-15"><i class="ion-android-document"></i> '+locArr[locArrLen-1]+'</li>'
+                    +'<h1><i class="ion-android-document"></i>  '+locArr[locArrLen-1]+'</h1>'
                     +'<span class="pull-right">'
                     +'<a href="#" onclick="pxCom.tabCheck(\'home\')">Home</a>'
                     +' / '+item.MDUL_NM

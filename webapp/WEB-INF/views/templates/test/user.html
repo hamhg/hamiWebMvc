@@ -32,17 +32,100 @@
     <div class="row">
         <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
     </div>
-    <div class="panel m-t-1">
-        <div class="panel-body p-b-1 p-t-1">
-            <form class="form-inline">
-                <div class="form-group-sm">
-                    <label for="form-inline-input-1">Name</label>
-                    <input type="text" class="form-control" id="form-inline-input-1" placeholder="Jane Doe">
-                    <label for="form-inline-input-2" class="m-l-1">Email</label>
-                    <input type="email" class="form-control" id="form-inline-input-2" placeholder="jane.doe@example.com">
-                    <button type="button" class="btn-sm btn-primary fa fa-search pull-right"> Search</button>
-                </div>
-            </form>
+    <div class="ibox">
+        <div class="ibox-title">
+            <h3>조회</h3>
+            <div class="ibox-btn">
+                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-bordered table-search">
+                <colgroup>
+                    <col width="8%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="17%">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>사고 등록일자</th>
+                        <td>
+                            <div class="input-group input-daterange" id="">
+                                <input type="text" class="form-control" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="form-control" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
+                            </div>
+                        </td>
+                        <th>계약ID</th>
+                        <td>
+                            <div class="input-group">
+                                <input id="conCtrtId" name="conCtrtId" type="text" class="form-control" readonly/>
+                                <span class="input-group-btn">
+                                    <button id="btnCtrtSearch" class="btn btn-sm btn-red" role="button" ><i class="nsokicon-search"></i></button>
+                                </span>
+                            </div>
+                        </td>
+                        <th>관리조직</th>
+                        <td>
+                            <div class="input-group type2">
+                                <span class="w45p"><input type="text" id="condMngOrgId" class="form-control" readonly/></span>
+                                <span class="input-group-btn">
+                                    <button id="btnOpenMngOrg" class="btn btn-sm btn-red" role="button"><i class="nsokicon-search"></i></button>
+                                </span>
+                                <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control" readonly /></span>
+                            </div>
+                        </td>
+                        <th>영업조직</th>
+                        <td>
+                            <div class="input-group type2">
+                                <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control" readonly/></span>
+                                <span class="input-group-btn">
+                                    <button id="btnOpenSalesOrg" class="btn btn-sm btn-red" role="button"><i class="nsokicon-search"></i></button>
+                                </span>
+                                <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control" readonly /></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>업태</th>
+                        <td>
+                            <select id="conBizCndtCd" name="conBizCndtCd" class="form-control">
+                                <c:forEach items="${bizCndtCdList}" var="bizCndtCdList" varStatus="status">
+                                    <option value="${bizCndtCdList.commCd}">${bizCndtCdList.commNm}</option>
+                                </c:forEach>
+                            </select>
+                        </td>
+                        <th>업종</th>
+                        <td>
+                            <select id="conIndutyCd" name="conIndutyCd" class="form-control">
+                                <option value="">:: 선택 ::</option>
+                                <option value="1">업종1</option>
+                            </select>
+                        </td>
+                        <th>회선</th>
+                        <td>
+                            <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control"  />
+                        </td>
+                        <th>고객명</th>
+                        <td>
+                            <input id="conCustNm" name="conCustNm" type="text" class="form-control"  />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ibox">
+        <div class="ibox-title">
+            <h3>보험사고현황</h3>
+            <div class="ibox-btn">
+                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
+            </div>
         </div>
     </div>
     <div id="ExampleContent" class="Example ExampleContent">

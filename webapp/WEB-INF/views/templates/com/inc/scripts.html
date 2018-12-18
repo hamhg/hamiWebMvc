@@ -19,7 +19,7 @@
 
             window.pxCom = pxCom;
             window.toastr = toastr;
-            window.navData = JSON.parse($('<div>').html('[[${LEFT_MENU}]]')[0].textContent);
+            window.navData = Object.freeze(JSON.parse($('<div>').html('[[${LEFT_MENU}]]')[0].textContent));
 
             $("#topMenu > li").each(function(idx, item){
                 if(idx == 0){
