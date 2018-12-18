@@ -55,14 +55,14 @@
 
    <!-- Column definition -->
    <Cols>
-      <C Name='C' Width='120' Type='Text' CanEdit='0' CanFilter='2'/> <!-- Customer -->
-      <C Name='I' Width='106' Type='Date' Format='d' CanEdit='0' CanFilter='2'/> <!-- Date -->
-      <C Name='T' Width='70' Type='Enum' Enum='|Comp|Access|Mon|Print|Soft' CanFilter='2'/> <!-- Kind -->
-      <C Name='D' Width='90' Type='Int' CanFilter='2'/> <!-- Amount -->
-      <C Name='E' Width='93' Type='Float' EditMask='^\-?\d*\.?\d*$' Format='0.00' CanFilter='2' CanGroup='0'/> <!-- Unit price -->
-      <C Name='F' Width='90' Type='Float' Format='0.00' Formula='D*E' CanFilter='2'/> <!-- List price -->
-      <C Name='G' Width='90' Type='Int' Format='0\%' CanFilter='2'/> <!-- Discount -->
-      <C Name='H' Width='90' Type='Float' Format='0.00' CanFilter='2'/> <!-- Shipping -->
+      <C Name='C' Width='476' Type='Text' CanEdit='0' CanFilter='2'/> <!-- Customer -->
+      <C Name='I' Width='150' Type='Date' Format='d' CanEdit='0' CanFilter='2'/> <!-- Date -->
+      <C Name='T' Width='130' Type='Enum' Enum='|Comp|Access|Mon|Print|Soft' CanFilter='2'/> <!-- Kind -->
+      <C Name='D' Width='130' Type='Int' CanFilter='2'/> <!-- Amount -->
+      <C Name='E' Width='130' Type='Float' EditMask='^\-?\d*\.?\d*$' Format='0.00' CanFilter='2' CanGroup='0'/> <!-- Unit price -->
+      <C Name='F' Width='180' Type='Float' Format='0.00' Formula='D*E' CanFilter='2'/> <!-- List price -->
+      <C Name='G' Width='180' Type='Int' Format='0\%' CanFilter='2'/> <!-- Discount -->
+      <C Name='H' Width='180' Type='Float' Format='0.00' CanFilter='2'/> <!-- Shipping -->
    </Cols>
 
    <!-- Column captions -->
@@ -76,8 +76,8 @@
          <Cols>
             <C Name='Pos' Width='65'/>   <!-- Index -->
             <C Name='X' Width='65'/>     <!-- Used -->
-            <C Name='A' MinWidth='270'/> <!-- Product / Order name -->
-            <C Name='T' Width='75'/> <!-- Kind -->
+            <C Name='A' Width='270'/> <!-- Product / Order name -->
+            <C Name='T' MinWidth='75'/> <!-- Kind -->
             <C Name='D' Width='105'/> <!-- Amount -->
             <C Name='E' Width='115'/> <!-- Unit price -->
             <C Name='F' Width='115'/> <!-- List price -->

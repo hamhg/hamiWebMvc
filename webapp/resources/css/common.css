@@ -346,9 +346,10 @@ a.px-brand:hover {
 }
 
 .ibox {
+	font-size: 12px;
 	clear: both;
 	margin-bottom: 0px;
-	margin-top: 5px;
+	margin-top: 0px;
 	padding: 0;
 }
 
@@ -421,7 +422,7 @@ a.px-brand:hover {
 	font-size: 1em;
 	font-weight: bold;
     vertical-align: middle !important;
-	margin-left: 6px;
+	padding: 4px 8px !important;
 	background: #f3f3f3;
 }
 

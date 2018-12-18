@@ -30,27 +30,98 @@
     <div class="row">
         <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
     </div>
-    <div id="content" class="page-header">
-        <div class="row">
-            <div class="col-md-4 text-xs-center text-md-left text-nowrap">
-                <h1><i class="page-header-icon ion-ios-paper-outline"></i>tGrid</h1>
+    <div class="ibox">
+        <div class="ibox-title">
+            <h3>조회</h3>
+            <div class="ibox-btn">
+                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
             </div>
-
-            <hr class="page-wide-block visible-xs visible-sm">
-
-            <div class="col-xs-12 width-md-auto width-lg-auto width-xl-auto pull-md-right">
-                <a href="#" class="btn btn-primary btn-block"><span class="btn-label-icon left ion-plus-round"></span>Create project</a>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-bordered table-search">
+                <colgroup>
+                    <col width="8%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="17%">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>사고 등록일자</th>
+                    <td>
+                        <div class="input-group input-daterange" id="datepicker-range">
+                            <input type="text" class="form-control input-sm" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
+                            <span class="input-group-addon">to</span>
+                            <input type="text" class="form-control input-sm" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
+                        </div>
+                    </td>
+                    <th>계약ID</th>
+                    <td>
+                        <div class="input-group">
+                            <input id="conCtrtId" name="conCtrtId" type="text" class="form-control input-sm" readonly/>
+                            <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm"><i class="btn-icon fa fa-search"></i></button>
+                                </span>
+                        </div>
+                    </td>
+                    <th>관리조직</th>
+                    <td>
+                        <div class="input-group type2">
+                            <span class="w45p"><input type="text" id="condMngOrgId" class="form-control input-sm" readonly/></span>
+                            <span class="input-group-btn">
+                                    <button id="btnOpenMngOrg" class="btn btn-sm" type="button"><i class="btn-icon fa fa-search"></i></button>
+                                </span>
+                            <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control input-sm" readonly /></span>
+                        </div>
+                    </td>
+                    <th>영업조직</th>
+                    <td>
+                        <div class="input-group type2">
+                            <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control input-sm" readonly/></span>
+                            <span class="input-group-btn">
+                                    <button id="btnOpenSalesOrg" class="btn btn-sm" role="button"><i class="btn-icon fa fa-search"></i></button>
+                                </span>
+                            <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control input-sm" readonly /></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>업태</th>
+                    <td>
+                        <select id="conBizCndtCd" name="conBizCndtCd" class="form-control input-sm">
+                            <option value="${bizCndtCdList.commCd}">:: 선택 ::</option>
+                        </select>
+                    </td>
+                    <th>업종</th>
+                    <td>
+                        <select id="conIndutyCd" name="conIndutyCd" class="form-control input-sm">
+                            <option value="">:: 선택 ::</option>
+                            <option value="1">업종1</option>
+                        </select>
+                    </td>
+                    <th>회선</th>
+                    <td>
+                        <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control input-sm" />
+                    </td>
+                    <th>고객명</th>
+                    <td>
+                        <input id="conCustNm" name="conCustNm" type="text" class="form-control input-sm" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ibox">
+        <div class="ibox-title">
+            <h3>보험사고현황</h3>
+            <div class="ibox-btn">
+                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
             </div>
-
-            <!-- Spacer -->
-            <div class="m-b-2 visible-xs visible-sm clearfix"></div>
-
-            <form action="" class="page-header-form col-xs-12 col-md-4 pull-md-right">
-                <div class="input-group">
-                    <span class="input-group-addon b-a-0 font-size-16"><i class="ion-search"></i></span>
-                    <input type="text" placeholder="Search..." class="form-control p-l-0 b-a-0">
-                </div>
-            </form>
         </div>
     </div>
 </div>

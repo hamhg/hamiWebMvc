@@ -34,7 +34,7 @@
         <div class="ibox-title">
             <h3>조회</h3>
             <div class="ibox-btn">
-                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
+                <button type="button" class="btn btn-sm btn-primary fa fa-search pull-right"> 조회</button>
             </div>
         </div>
         <div class="ibox-content">
@@ -53,65 +53,63 @@
                     <tr>
                         <th>사고 등록일자</th>
                         <td>
-                            <div class="input-group input-daterange" id="">
-                                <input type="text" class="form-control" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
+                            <div class="input-group input-daterange" id="datepicker-range">
+                                <input type="text" class="form-control input-sm" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
                                 <span class="input-group-addon">to</span>
-                                <input type="text" class="form-control" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
+                                <input type="text" class="form-control input-sm" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
                             </div>
                         </td>
                         <th>계약ID</th>
                         <td>
                             <div class="input-group">
-                                <input id="conCtrtId" name="conCtrtId" type="text" class="form-control" readonly/>
+                                <input id="conCtrtId" name="conCtrtId" type="text" class="form-control input-sm" readonly/>
                                 <span class="input-group-btn">
-                                    <button id="btnCtrtSearch" class="btn btn-sm btn-red" role="button" ><i class="nsokicon-search"></i></button>
+                                    <button type="button" class="btn btn-sm"><i class="btn-icon fa fa-search"></i></button>
                                 </span>
                             </div>
                         </td>
                         <th>관리조직</th>
                         <td>
                             <div class="input-group type2">
-                                <span class="w45p"><input type="text" id="condMngOrgId" class="form-control" readonly/></span>
+                                <span class="w45p"><input type="text" id="condMngOrgId" class="form-control input-sm" readonly/></span>
                                 <span class="input-group-btn">
-                                    <button id="btnOpenMngOrg" class="btn btn-sm btn-red" role="button"><i class="nsokicon-search"></i></button>
+                                    <button id="btnOpenMngOrg" class="btn btn-sm" type="button"><i class="btn-icon fa fa-search"></i></button>
                                 </span>
-                                <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control" readonly /></span>
+                                <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control input-sm" readonly /></span>
                             </div>
                         </td>
                         <th>영업조직</th>
                         <td>
                             <div class="input-group type2">
-                                <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control" readonly/></span>
+                                <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control input-sm" readonly/></span>
                                 <span class="input-group-btn">
-                                    <button id="btnOpenSalesOrg" class="btn btn-sm btn-red" role="button"><i class="nsokicon-search"></i></button>
+                                    <button id="btnOpenSalesOrg" class="btn btn-sm" role="button"><i class="btn-icon fa fa-search"></i></button>
                                 </span>
-                                <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control" readonly /></span>
+                                <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control input-sm" readonly /></span>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th>업태</th>
                         <td>
-                            <select id="conBizCndtCd" name="conBizCndtCd" class="form-control">
-                                <c:forEach items="${bizCndtCdList}" var="bizCndtCdList" varStatus="status">
-                                    <option value="${bizCndtCdList.commCd}">${bizCndtCdList.commNm}</option>
-                                </c:forEach>
+                            <select id="conBizCndtCd" name="conBizCndtCd" class="form-control input-sm">
+                                <option value="${bizCndtCdList.commCd}">:: 선택 ::</option>
                             </select>
                         </td>
                         <th>업종</th>
                         <td>
-                            <select id="conIndutyCd" name="conIndutyCd" class="form-control">
+                            <select id="conIndutyCd" name="conIndutyCd" class="form-control input-sm">
                                 <option value="">:: 선택 ::</option>
                                 <option value="1">업종1</option>
                             </select>
                         </td>
                         <th>회선</th>
                         <td>
-                            <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control"  />
+                            <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control input-sm" />
                         </td>
                         <th>고객명</th>
                         <td>
-                            <input id="conCustNm" name="conCustNm" type="text" class="form-control"  />
+                            <input id="conCustNm" name="conCustNm" type="text" class="form-control input-sm" />
                         </td>
                     </tr>
                 </tbody>
@@ -139,6 +137,32 @@
         pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
     });
 
+    require(['jquery', 'px/extensions/bootstrap-datepicker'], function($) {
+        $('#datepicker-features').datepicker({
+            calendarWeeks:         true,
+            todayBtn:              'linked',
+            daysOfWeekDisabled:    '1',
+            clearBtn:              true,
+            todayHighlight:        true,
+            multidate:             true,
+            daysOfWeekHighlighted: '1,2',
+            orientation:           'auto right',
+
+            beforeShowMonth: function(date) {
+                if (date.getMonth() === 8) {
+                    return false;
+                }
+            },
+
+            beforeShowYear: function(date){
+                if (date.getFullYear() === 2014) {
+                    return false;
+                }
+            }
+        });
+        $('#datepicker-range').datepicker();
+        $('#datepicker-inline').datepicker();
+    });
     // -----------------------------------------------------------------------------------------
     // Shows the year 2005 only
     Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }

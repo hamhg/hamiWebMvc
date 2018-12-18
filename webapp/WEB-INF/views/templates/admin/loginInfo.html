@@ -13,7 +13,7 @@
         .Example ul { margin:6px 0px 0px 20px; font:13px Arial; }
         .Example .Desc { margin:0px 5px 10px 5px; padding:10px; border:1px solid #dfdfdf; }
         .Example .Desc > ul { margin-left:0px; padding:0px 0px 0px 15px; clear:both; }
-        .Example .Desc b { color:#0585B9; } 
+        .Example .Desc b { color:#0585B9; }
         .Example .Path { font:normal 12px Arial; color:#0585B9; }
         .Example .Path b { color:#D73938; }
         .Example .Path u { text-decoration:none; color:black; font-weight:bold; padding:0px 2px 0px 2px; }
@@ -26,196 +26,198 @@
 </head>
 <body class="  ">
 <program th:id="${programId}">
-<div class="tab-pane">
-    <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
-    </div>
-    <div class="ibox">
-        <div class="ibox-title">
-            <h3>조회</h3>
-            <div class="ibox-btn">
-                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
-            </div>
+    <div class="tab-pane">
+        <div class="row">
+            <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
         </div>
-        <div class="ibox-content">
-            <table class="table table-bordered table-search">
-                <colgroup>
-                    <col width="8%">
-                    <col width="17%">
-                    <col width="8%">
-                    <col width="17%">
-                    <col width="8%">
-                    <col width="17%">
-                    <col width="8%">
-                    <col width="17%">
-                </colgroup>
-                <tbody>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h3></h3>
+                <div class="ibox-btn">
+                    <button href="#" type="button" class="btn btn-sm btn-primary fa fa-search pull-right"> 조회</button>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-bordered table-search">
+                    <colgroup>
+                        <col width="8%">
+                        <col width="17%">
+                        <col width="8%">
+                        <col width="17%">
+                        <col width="8%">
+                        <col width="17%">
+                        <col width="8%">
+                        <col width="17%">
+                    </colgroup>
+                    <tbody>
                     <tr>
-                        <th>사고 등록일자</th>
+                        <th>등록일자</th>
                         <td>
-                            <div class="input-group input-daterange" id="">
-                                <input type="text" class="form-control" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
+                            <div class="input-group input-daterange" id="datepicker-range">
+                                <input type="text" class="form-control input-sm" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
                                 <span class="input-group-addon">to</span>
-                                <input type="text" class="form-control" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
+                                <input type="text" class="form-control input-sm" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
                             </div>
                         </td>
-                        <th>계약ID</th>
+                        <th>아이디</th>
                         <td>
                             <div class="input-group">
-                                <input id="conCtrtId" name="conCtrtId" type="text" class="form-control" readonly/>
+                                <input id="conCtrtId" name="conCtrtId" type="text" class="form-control input-sm" readonly/>
                                 <span class="input-group-btn">
-                                    <button id="btnCtrtSearch" class="btn btn-sm btn-red" role="button" ><i class="nsokicon-search"></i></button>
+                                    <button type="button" class="btn btn-sm"><i class="btn-icon fa fa-search"></i></button>
                                 </span>
                             </div>
                         </td>
-                        <th>관리조직</th>
+                        <th>조직</th>
                         <td>
                             <div class="input-group type2">
-                                <span class="w45p"><input type="text" id="condMngOrgId" class="form-control" readonly/></span>
+                                <span class="w45p"><input type="text" id="condMngOrgId" class="form-control input-sm" readonly/></span>
                                 <span class="input-group-btn">
-                                    <button id="btnOpenMngOrg" class="btn btn-sm btn-red" role="button"><i class="nsokicon-search"></i></button>
+                                    <button id="btnOpenMngOrg" class="btn btn-sm" type="button"><i class="btn-icon fa fa-search"></i></button>
                                 </span>
-                                <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control" readonly /></span>
+                                <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control input-sm" readonly /></span>
                             </div>
                         </td>
-                        <th>영업조직</th>
+                        <th>소속</th>
                         <td>
                             <div class="input-group type2">
-                                <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control" readonly/></span>
+                                <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control input-sm" readonly/></span>
                                 <span class="input-group-btn">
-                                    <button id="btnOpenSalesOrg" class="btn btn-sm btn-red" role="button"><i class="nsokicon-search"></i></button>
+                                    <button id="btnOpenSalesOrg" class="btn btn-sm" role="button"><i class="btn-icon fa fa-search"></i></button>
                                 </span>
-                                <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control" readonly /></span>
+                                <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control input-sm" readonly /></span>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th>업태</th>
+                        <th>지역</th>
                         <td>
-                            <select id="conBizCndtCd" name="conBizCndtCd" class="form-control">
-                                <c:forEach items="${bizCndtCdList}" var="bizCndtCdList" varStatus="status">
-                                    <option value="${bizCndtCdList.commCd}">${bizCndtCdList.commNm}</option>
-                                </c:forEach>
+                            <select id="conBizCndtCd" name="conBizCndtCd" class="form-control input-sm">
+                                <option value="${bizCndtCdList.commCd}">:: 선택 ::</option>
                             </select>
                         </td>
-                        <th>업종</th>
+                        <th>성별</th>
                         <td>
-                            <select id="conIndutyCd" name="conIndutyCd" class="form-control">
+                            <select id="conIndutyCd" name="conIndutyCd" class="form-control input-sm">
                                 <option value="">:: 선택 ::</option>
                                 <option value="1">업종1</option>
                             </select>
                         </td>
-                        <th>회선</th>
+                        <th>연락처</th>
                         <td>
-                            <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control"  />
+                            <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control input-sm" />
                         </td>
-                        <th>고객명</th>
+                        <th>성명</th>
                         <td>
-                            <input id="conCustNm" name="conCustNm" type="text" class="form-control"  />
+                            <input id="conCustNm" name="conCustNm" type="text" class="form-control input-sm" />
                         </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="ibox">
-        <div class="ibox-title">
-            <h3>보험사고현황</h3>
-            <div class="ibox-btn">
-                <a href="#" type="button" class="btn btn-primary fa fa-search pull-right"> Search</a>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-    <div id="content" class="page-header" th:remove="all">
-        <div class="row">
-            <div class="col-md-4 text-xs-center text-md-left text-nowrap">
-                <h1><i class="page-header-icon ion-ios-paper-outline"></i>tGrid</h1>
-            </div>
-
-            <hr class="page-wide-block visible-xs visible-sm">
-
-            <div class="col-xs-12 width-md-auto width-lg-auto width-xl-auto pull-md-right">
-                <a href="#" class="btn btn-primary btn-block"><span class="btn-label-icon left ion-plus-round"></span>Create project</a>
-            </div>
-
-            <!-- Spacer -->
-            <div class="m-b-2 visible-xs visible-sm clearfix"></div>
-
-            <form action="" class="page-header-form col-xs-12 col-md-4 pull-md-right">
-                <div class="input-group">
-                    <span class="input-group-addon b-a-0 font-size-16"><i class="ion-search"></i></span>
-                    <input type="text" placeholder="Search..." class="form-control p-l-0 b-a-0">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h3>로그인정보</h3>
+                <div class="ibox-btn">
+                    <a href="#" type="button" class="btn btn-sm btn-primary fa fa-save pull-right"> 저장</a>
+                    <a href="#" type="button" class="btn btn-sm fa fa-plus pull-right"> 추가</a>
                 </div>
-            </form>
+            </div>
+        </div>
+        <div id="ExampleContent" class="Example ExampleContent">
+            <div th:id="'tg_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
+                <script> TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/conf/User.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tg_[[${programId}]]"); </script>
+            </div>
         </div>
     </div>
-</div>
-<div id="ExampleContent" class="Example ExampleContent">
-    <div th:id="'tgrid_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
-        <script> TreeGrid('<bdo Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </bdo>',"tgrid_[[${programId}]]"); </script>
-    </div>
-</div>
-<script>
-    // -----------------------------------------------------------------------------------------
-    // Initialize
-    require(['jquery'], function($) {
-        pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-    });
+    <script>
+        // -----------------------------------------------------------------------------------------
+        // Initialize
+        require(['jquery'], function($) {
+            pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+        });
 
-    // -----------------------------------------------------------------------------------------
-    // Shows the year 2005 only
-    Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); };
+        require(['jquery', 'px/extensions/bootstrap-datepicker'], function($) {
+            $('#datepicker-features').datepicker({
+                calendarWeeks:         true,
+                todayBtn:              'linked',
+                daysOfWeekDisabled:    '1',
+                clearBtn:              true,
+                todayHighlight:        true,
+                multidate:             true,
+                daysOfWeekHighlighted: '1,2',
+                orientation:           'auto right',
 
-    // -----------------------------------------------------------------------------------------
-    // Custom event for searching
-    // Searches in orders with specified items
-    Grids.OnRowSearch = function(G,row,col,found,F,type){
-        if(type || G.SearchDefs!="") return found; // Only for "in orders with items" and default call
-        if(row.Def.Name=="Data") return -1;        // Only for orders
-        for(var r=row.firstChild;r;r=r.nextSibling) {
-            var found = F(r,col,1);                 // calls F(r,col,type=1)
-            if(!(found<=0)) return found;
+                beforeShowMonth: function(date) {
+                    if (date.getMonth() === 8) {
+                        return false;
+                    }
+                },
+
+                beforeShowYear: function(date){
+                    if (date.getFullYear() === 2014) {
+                        return false;
+                    }
+                }
+            });
+            $('#datepicker-range').datepicker();
+            $('#datepicker-inline').datepicker();
+        });
+        // -----------------------------------------------------------------------------------------
+        // Shows the year 2005 only
+        Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
+
+        // -----------------------------------------------------------------------------------------
+        // Custom event for searching
+        // Searches in orders with specified items
+        Grids.OnRowSearch = function(G,row,col,found,F,type){
+            if(type || G.SearchDefs!="") return found; // Only for "in orders with items" and default call
+            if(row.Def.Name=="Data") return -1;        // Only for orders
+            for(var r=row.firstChild;r;r=r.nextSibling) {
+                var found = F(r,col,1);                 // calls F(r,col,type=1)
+                if(!(found<=0)) return found;
+            }
+            return 0;
         }
-        return 0;
-    };
-    // -----------------------------------------------------------------------------------------
-    // Creates popup right click menu to manipulate the row
-    Grids.OnGetMenu = function(G,row,col){
-        if(row.Fixed) return null;
-        var I = [], M = {Items:I};
-        I[I.length] = {Name:"Del",Text:row.Deleted?"Undelete row":"Delete row"};
-        I[I.length] = {Name:"Sel",Text:row.Selected?"Deselect row":"Select row"};
-        I[I.length] = {Name:"Cpy",Text:"Copy row"};
-        if(row.firstChild) I[I.length] = {Name:"CpyTree",Text:"Copy row tree"};
-        I[I.length] = {Name:"Add",Text:"Add new row"};
-        if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
-        if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
-        return M;
-    };
-    // -----------------------------------------------------------------------------------------
-    // Called after selecting item in the popup right click menu
-    Grids.OnContextMenu = function(G,row,col,N){
-        switch(N){
-            case "Del" : G.DeleteRow(row); break;
-            case "Sel" : G.SelectRow(row); break;
-            case "Cpy" : G.CopyRow(row,null,row); break;
-            case "CpyTree" : G.CopyRows([row],null,row,1); break;
-            case "Add" : G.AddRow(null,row,1); break;
-            case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
-            case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
+        // -----------------------------------------------------------------------------------------
+        // Creates popup right click menu to manipulate the row
+        Grids.OnGetMenu = function(G,row,col){
+            if(row.Fixed) return null;
+            var I = [], M = {Items:I};
+            I[I.length] = {Name:"Del",Text:row.Deleted?"Undelete row":"Delete row"};
+            I[I.length] = {Name:"Sel",Text:row.Selected?"Deselect row":"Select row"};
+            I[I.length] = {Name:"Cpy",Text:"Copy row"};
+            if(row.firstChild) I[I.length] = {Name:"CpyTree",Text:"Copy row tree"};
+            I[I.length] = {Name:"Add",Text:"Add new row"};
+            if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
+            if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
+            return M;
         }
-    };
-    // -----------------------------------------------------------------------------------------
-    // Called when NoVScroll / NoHScroll is set automatically due small window size, disables the checkbox for manual change of NoVScroll / NoHScroll
-    Grids.OnLimitScroll = function(G,clr,noh,nov){
-        G.SetAttribute(G.Rows.Group,"Win","CanEdit",clr,1);
-        var tip = clr?"Disable grid scrollbars and use page scrollbars":"Used page scrollbars because browser window is too small to show this example with its own scrollbars";
-        G.SetAttribute(G.Rows.Group,"Win","Tip",tip,1);
-        G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
-    };
-    // -----------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------
+        // Called after selecting item in the popup right click menu
+        Grids.OnContextMenu = function(G,row,col,N){
+            switch(N){
+                case "Del" : G.DeleteRow(row); break;
+                case "Sel" : G.SelectRow(row); break;
+                case "Cpy" : G.CopyRow(row,null,row); break;
+                case "CpyTree" : G.CopyRows([row],null,row,1); break;
+                case "Add" : G.AddRow(null,row,1); break;
+                case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
+                case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
+            }
+        }
+        // -----------------------------------------------------------------------------------------
+        // Called when NoVScroll / NoHScroll is set automatically due small window size, disables the checkbox for manual change of NoVScroll / NoHScroll
+        Grids.OnLimitScroll = function(G,clr,noh,nov){
+            G.SetAttribute(G.Rows.Group,"Win","CanEdit",clr,1);
+            var tip = clr?"Disable grid scrollbars and use page scrollbars":"Used page scrollbars because browser window is too small to show this example with its own scrollbars";
+            G.SetAttribute(G.Rows.Group,"Win","Tip",tip,1);
+            G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
+        }
+        // -----------------------------------------------------------------------------------------
 
-</script>
+    </script>
 </program>
 </body>
 </html>
