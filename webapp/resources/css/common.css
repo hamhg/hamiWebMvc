@@ -379,7 +379,7 @@ a.px-brand:hover {
 	border-width: 0 0 0;
 	color: inherit;
 	margin-bottom: 0;
-	padding: 8px 8px 4px;
+	padding: 8px 2px 4px;
 	min-height: 30px;
 	overflow: hidden;
 }
@@ -422,13 +422,14 @@ a.px-brand:hover {
 	font-size: 1em;
 	font-weight: bold;
     vertical-align: middle !important;
-	padding: 4px 8px !important;
-	background: #f3f3f3;
+	padding: 3px 4px 3px 6px !important;
+	background: #f1f3f7;
 }
 
 .ibox-content table td {
-	padding: 4px !important;
-	margin-left: 6px;
+	padding: 1px !important;
+	padding: 3px 4px !important;
+	margin-left: 0px;
 }
 
 .ibox table {
