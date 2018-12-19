@@ -60,8 +60,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" id="bth-search"
-                        class="btn btn-primary btn-lg">Search
+                <button type="submit" id="bth-search" class="btn btn-primary btn-lg">Search
                 </button>
             </div>
         </div>
@@ -73,12 +72,12 @@
     // -----------------------------------------------------------------------------------------
     // Initialize
     require(['jquery'], function($) {
-        pxCom.setLocation('${programId}','${menuId}');
+        pxCom.setLocation('${programId}', '${menuId}');
     });
 
-    jQuery(document).ready(function ($) {
+    jQuery(document).ready(function($) {
 
-        $("#${programId} #search-form").submit(function (event) {
+        $("#${programId} #search-form").submit(function(event) {
 
             // Disble the search button
             enableSearchButton(false);
@@ -106,18 +105,18 @@
                 data: JSON.stringify(search),
                 dataType: 'json',
                 timeout: 100000,
-                beforeSend: function (xhr) {
+                beforeSend: function(xhr) {
                     xhr.setRequestHeader("X-CSRF-TOKEN", token);
                 },
-                success: function (data) {
+                success: function(data) {
                     console.log("SUCCESS: ", data);
                     display(data);
                 },
-                error: function (e) {
+                error: function(e) {
                     console.log("ERROR: ", e);
                     display(e);
                 },
-                done: function (e) {
+                done: function(e) {
                     console.log("DONE");
                     enableSearchButton(true);
                 }
@@ -129,8 +128,7 @@
         }
 
         function display(data) {
-            var json = "<h4>Ajax Response</h4><pre>"
-                + JSON.stringify(data, null, 4) + "</pre>";
+            var json = "<h4>Ajax Response</h4><pre>" + JSON.stringify(data, null, 4) + "</pre>";
             $('#${programId} #feedback').html(json);
         }
     });

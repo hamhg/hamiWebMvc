@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <body>
 <th:block id="top" th:fragment="top">
     <nav class="navbar px-navbar">
         <!-- Header -->
         <div class="navbar-header">
-            <a class="navbar-brand px-brand" href="index.html"><span class="px-logo bg-primary"><span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span><span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span><span class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span></span>HamiAdmin</a>
+            <a class="navbar-brand px-brand" href="index.html"><span class="px-logo bg-primary"><span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span><span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span><span
+                    class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span></span>HamiAdmin</a>
         </div>
 
         <!-- Navbar togglers -->
@@ -21,7 +18,7 @@
                 <li class="button">
                     <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" th:text="${topMenu.MDUL_NM}" th:attr="mdulId=${topMenu.MDUL_ID}" onclick="pxCom.setLeftMenu(this)">시스템</a>
                 </li>
-            </ul>            
+            </ul>
             <ul class="nav navbar-nav" th:remove="none">
                 <li class="dropdown">
                     <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>

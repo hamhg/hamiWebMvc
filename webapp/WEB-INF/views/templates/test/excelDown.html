@@ -17,8 +17,7 @@
     <div id="content" class="starter-template">
         <div class="outer">
             <div class="inner bg-light lter">
-                <h1>Search Form</h1>
-                <br>
+                <h1>Search Form</h1><br>
                 <div id="Item">
                     <table class="table">
                         <tr>
@@ -51,13 +50,13 @@
                     <div class="form-group form-group-lg">
                         <label class="col-sm-2 control-label">Id</label>
                         <div class="col-sm-10">
-                            <input type=text class="form-control" id="username" v-model="schNm">
+                            <input type="text" class="form-control" id="username" v-model="schNm">
                         </div>
                     </div>
-                    <br />
+                    <br/>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button @click="search01" id="bth-search" class="btn btn-primary btn-lg" >Search</button>
+                            <button @click="search01" id="bth-search" class="btn btn-primary btn-lg">Search</button>
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,8 +70,7 @@
         </div>
     </div>
 </div>
-<div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false
-     th:replace="com/inc/right.html :: right">
+<div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded="false" th:replace="com/inc/right.html :: right">
     <!-- @right -->
 </div>
 <footer class="Footer bg-dark dker" th:replace="com/inc/footer.html :: footer">
@@ -82,11 +80,11 @@
     <!-- @scripts -->
 </div>
 <script type="text/javascript">
-    require(["jquery", "Vue", "Axios"], function ($, Vue, axios) {
+    require(["jquery", "Vue", "Axios"], function($, Vue, axios) {
 
-        $(document).ready(function ($) {
+        $(document).ready(function($) {
 
-            $("#search-form").submit(function (event) {
+            $("#search-form").submit(function(event) {
 
                 //button click event
                 $('#bth-search').trigger('click');
@@ -100,9 +98,9 @@
         var test0 = new Vue({
             el: '#ItemList',
             data: {
-                ItemLists:[]
+                ItemLists: []
             },
-            mounted(){
+            mounted() {
                 this.$http.get('/customers').then(response => this.ItemLists = response.data);
             }
         });
@@ -110,15 +108,14 @@
         var test1 = new Vue({
             el: '#Item',
             data: {
-                schNm:'',
-                Items:[]
+                schNm: '',
+                Items: []
             },
             methods: {
-                search01: function(event){
-                    this.$http.get('/customers/'+this.schNm).then(response => this.Items = response.data)
-                    .catch(
-                        function (messages) {
-                            console.log('[ ===== Error ===== ]\n'+messages);
+                search01: function(event) {
+                    this.$http.get('/customers/' + this.schNm).then(response => this.Items = response.data).catch(
+                        function(messages) {
+                            console.log('[ ===== Error ===== ]\n' + messages);
                         }
                     );
                     this.schNm = '';

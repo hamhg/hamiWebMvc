@@ -22,8 +22,8 @@
     <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
     <meta name="author" content="">
 
-    <meta name="msapplication-TileColor" content="#5bc0de" />
-    <meta name="msapplication-TileImage" content="<c:url value='assets/img/metis-tile.png' />" />
+    <meta name="msapplication-TileColor" content="#5bc0de"/>
+    <meta name="msapplication-TileImage" content="<c:url value='assets/img/metis-tile.png' />"/>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<c:url value='/assets/lib/bootstrap/css/bootstrap.css' />">
@@ -70,13 +70,12 @@
                 </c:if>
                 <c:if test="${empty error}">
                     <p class="text-muted text-center">
-                        Enter your username and password
-                    </p>
+                        Enter your username and password </p>
                 </c:if>
                 <input type="text" placeholder="Username" name="username" class="form-control top">
                 <input type="password" placeholder="Password" name="password" class="form-control bottom">
                 <c:if test="${empty loginUpdate}">
-                <!-- if this is login for update, ignore remember me check -->
+                    <!-- if this is login for update, ignore remember me check -->
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" name="remember-me"> Remember Me

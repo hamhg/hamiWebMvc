@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <body class="  ">
 <program th:id="${programId}">
 <div class="bg-dark dk" id="slick_wrap">
@@ -32,8 +32,7 @@
                 </div>
             </div>
             <div class="inner bg-light lter">
-                <h3>Search Form</h3>
-                <br>
+                <h3>Search Form</h3><br>
                 <div id="ItemList">
                     <table class="table">
                         <tr>
@@ -65,13 +64,13 @@
                         <div class="form-group form-group-lg">
                             <label class="col-sm-2 control-label">Id</label>
                             <div class="col-sm-10">
-                                <input type=text class="form-control" id="username" v-model="schNm">
+                                <input type="text" class="form-control" id="username" v-model="schNm">
                             </div>
                         </div>
-                        <br />
+                        <br/>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button @click="search01" id="bth-search" class="btn btn-primary btn-lg" >Search</button>
+                                <button @click="search01" id="bth-search" class="btn btn-primary btn-lg">Search</button>
                             </div>
                         </div>
                         <input type="hidden" id="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
@@ -83,17 +82,17 @@
     </div>
 </div>
 <script type="text/javascript">
-	// -----------------------------------------------------------------------------------------
-	// Initialize
-	require(['jquery'], function($) {
-	    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-	});
+    // -----------------------------------------------------------------------------------------
+    // Initialize
+    require(['jquery'], function($) {
+        pxCom.setLocation('[[${programId}]]', '[[${menuId}]]');
+    });
 
-    require(["jquery", "Vue", "Axios"], function ($, Vue, axios) {
+    require(["jquery", "Vue", "Axios"], function($, Vue, axios) {
 
-        $(document).ready(function ($) {
+        $(document).ready(function($) {
 
-            $("#[[${programId}]] #search-form").submit(function (event) {
+            $("#[[${programId}]] #search-form").submit(function(event) {
 
                 //button click event
                 $('#[[${programId}]] #bth-search').trigger('click');
@@ -107,25 +106,25 @@
         var test0 = new Vue({
             el: '#[[${programId}]] #ItemList',
             data: {
-                ItemLists:[]
+                ItemLists: []
             },
-            mounted(){
-                this.$http.get('/customers').then(response => this.ItemLists = response.data);
+            mounted() {
+                this.$http.get('/customers').then(response = > this.ItemLists = response.data);
             }
         });
 
         var test1 = new Vue({
             el: '#[[${programId}]] #Item',
             data: {
-                schNm:'',
-                Items:[]
+                schNm: '',
+                Items: []
             },
             methods: {
-                search01: function(event){
-                    this.$http.get('/customers/'+this.schNm).then(response => this.Items = response.data)
+                search01: function(event) {
+                    this.$http.get('/customers/' + this.schNm).then(response = > this.Items = response.data)
                     .catch(
-                        function (messages) {
-                            console.log('[ ===== Error ===== ]\n'+messages);
+                        function(messages) {
+                            console.log('[ ===== Error ===== ]\n' + messages);
                         }
                     );
                     this.schNm = '';

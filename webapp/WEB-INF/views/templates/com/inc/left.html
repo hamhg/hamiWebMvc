@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
 <body>
 <th:block th:fragment="left">
     <nav class="px-nav px-nav-left px-nav-fixed">
@@ -202,7 +198,7 @@
         <a data-toggle="tooltip" data-placement="top" title="Lock">
             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Logout" href="/j_spring_security_logout"  th:href="@{/logout}" >
+        <a data-toggle="tooltip" data-placement="top" title="Logout" href="/j_spring_security_logout" th:href="@{/logout}">
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
         </a>
     </div>

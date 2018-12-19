@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <body>
 <th:block th:fragment="scripts">
     <!-- ScreenFull -->
@@ -21,8 +17,8 @@
             window.toastr = toastr;
             window.navData = Object.freeze(JSON.parse($('<div>').html('[[${LEFT_MENU}]]')[0].textContent));
 
-            $("#topMenu > li").each(function(idx, item){
-                if(idx == 0){
+            $("#topMenu > li").each(function(idx, item) {
+                if (idx == 0) {
                     $(item).find('a').trigger("click");
                     window.mdulId = $(item).find("a").attr('mdulId');
                 }
@@ -30,8 +26,8 @@
 
             var menuArr = [];
             $(function() {
-                $(navData).each(function(idx, item){
-                    if(item.NODE_END_YN == 1 && menuArr.indexOf(item.MENU_NM) == -1){
+                $(navData).each(function(idx, item) {
+                    if (item.NODE_END_YN == 1 && menuArr.indexOf(item.MENU_NM) == -1) {
                         menuArr.push(item.MENU_NM);
                     }
                 });
@@ -79,13 +75,13 @@
         // Initialize uploads chart
         require(['/js/common/common.js', 'px-libs/morris'], function(pxCom, Morris) {
             var data = [
-                { day: '2014-03-10', v: pxCom.getRandomData(20, 5) },
-                { day: '2014-03-11', v: pxCom.getRandomData(20, 5) },
-                { day: '2014-03-12', v: pxCom.getRandomData(20, 5) },
-                { day: '2014-03-13', v: pxCom.getRandomData(20, 5) },
-                { day: '2014-03-14', v: pxCom.getRandomData(20, 5) },
-                { day: '2014-03-15', v: pxCom.getRandomData(20, 5) },
-                { day: '2014-03-16', v: pxCom.getRandomData(20, 5) }
+                {day: '2014-03-10', v: pxCom.getRandomData(20, 5)},
+                {day: '2014-03-11', v: pxCom.getRandomData(20, 5)},
+                {day: '2014-03-12', v: pxCom.getRandomData(20, 5)},
+                {day: '2014-03-13', v: pxCom.getRandomData(20, 5)},
+                {day: '2014-03-14', v: pxCom.getRandomData(20, 5)},
+                {day: '2014-03-15', v: pxCom.getRandomData(20, 5)},
+                {day: '2014-03-16', v: pxCom.getRandomData(20, 5)}
             ];
 
             new Morris.Line({
@@ -102,8 +98,8 @@
                 gridTextColor: '#fff',
                 xLabels: "day",
                 xLabelFormat: function(d) {
-                    return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov', 'Dec'][d.getMonth()] + ' ' + d.getDate();
-                },
+                    return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()] + ' ' + d.getDate();
+                }
             });
         });
 
@@ -125,29 +121,29 @@
                     $(this.el)
                         .find('> span')
                         .text(Math.round(value) + $(this.el).attr('data-suffix'));
-                },
+                }
             }
 
             var data = [
                 pxCom.getRandomData(1000, 1),
                 pxCom.getRandomData(100, 1),
-                pxCom.getRandomData(64, 1),
+                pxCom.getRandomData(64, 1)
             ];
 
             $('#easy-pie-chart-1')
                 .attr('data-percent', (data[0] / 1000) * 100)
                 .attr('data-max-value', 1000)
-                .easyPieChart($.extend({}, config, { barColor: colors[0] }));
+                .easyPieChart($.extend({}, config, {barColor: colors[0]}));
 
             $('#easy-pie-chart-2')
                 .attr('data-percent', (data[1] / 100) * 100)
                 .attr('data-max-value', 100)
-                .easyPieChart($.extend({}, config, { barColor: colors[1] }));
+                .easyPieChart($.extend({}, config, {barColor: colors[1]}));
 
             $('#easy-pie-chart-3')
                 .attr('data-percent', (data[2] / 64) * 100)
                 .attr('data-max-value', 64)
-                .easyPieChart($.extend({}, config, { barColor: colors[2] }));
+                .easyPieChart($.extend({}, config, {barColor: colors[2]}));
         });
 
         // -------------------------------------------------------------------------
@@ -162,7 +158,7 @@
                 pxCom.getRandomData(300, 100),
                 pxCom.getRandomData(300, 100),
                 pxCom.getRandomData(300, 100),
-                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100)
             ];
 
             $("#sparkline-1").pxSparkline(data, {
@@ -177,7 +173,7 @@
                 maxSpotColor: '#ffffff',
                 highlightSpotColor: '#ffffff',
                 highlightLineColor: '#ffffff',
-                spotRadius: 4,
+                spotRadius: 4
             });
         });
 
@@ -214,7 +210,7 @@
                 pxCom.getRandomData(300, 100),
                 pxCom.getRandomData(300, 100),
                 pxCom.getRandomData(300, 100),
-                pxCom.getRandomData(300, 100),
+                pxCom.getRandomData(300, 100)
             ];
 
             $("#sparkline-2").pxSparkline(data, {
@@ -223,7 +219,7 @@
                 width: '100%',
                 barSpacing: 2,
                 zeroAxis: false,
-                barColor: '#ffffff',
+                barColor: '#ffffff'
             });
         });
 
@@ -245,9 +241,9 @@
         // -------------------------------------------------------------------------
         // Initialize Etc
         require(['jquery'], function($) {
-        	$("#treeGridInit").load("/treeGridInit");
-        	
-            $('#screenfull').click(function () {
+            $("#treeGridInit").load("/treeGridInit");
+
+            $('#screenfull').click(function() {
                 screenfull.toggle($('html')[0]);
             });
         });

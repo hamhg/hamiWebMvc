@@ -1,308 +1,308 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <body>
 <program th:id="${programId}">
-  <div class="tab-pane">
+<div class="tab-pane">
     <div class="row">
         <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
     </div>
 
     <div class="panel m-t-2">
-      <div class="panel-heading">
-        <div class="panel-title">Date Range Picker</div>
-      </div>
-      <div class="panel-body">
-        <input type="text" id="daterange-1" value="01/01/2015 - 01/31/2015" class="form-control">
+        <div class="panel-heading">
+            <div class="panel-title">Date Range Picker</div>
+        </div>
+        <div class="panel-body">
+            <input type="text" id="daterange-1" value="01/01/2015 - 01/31/2015" class="form-control">
 
-        <hr class="panel-wide-block">
+            <hr class="panel-wide-block">
 
-        <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">DATE &amp; TIME</h6>
+            <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">DATE &amp; TIME</h6>
 
-        <input type="text" id="daterange-2" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" class="form-control">
+            <input type="text" id="daterange-2" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" class="form-control">
 
-        <hr class="panel-wide-block">
+            <hr class="panel-wide-block">
 
-        <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">SINGLE DATE PICKER</h6>
+            <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">SINGLE DATE PICKER</h6>
 
-        <input type="text" id="daterange-3" value="10/24/1984" class="form-control">
+            <input type="text" id="daterange-3" value="10/24/1984" class="form-control">
 
-        <hr class="panel-wide-block">
+            <hr class="panel-wide-block">
 
-        <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">PREDEFINED RANGES</h6>
+            <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">PREDEFINED RANGES</h6>
 
-        <button id="daterange-4" class="btn dropdown-toggle"></button>
-      </div>
+            <button id="daterange-4" class="btn dropdown-toggle"></button>
+        </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+        <div class="col-md-6">
 
-        <div class="panel">
-          <div class="panel-heading">
-            <div class="panel-title">Datepicker</div>
-          </div>
-          <div class="panel-body">
-            <input type="text" class="form-control" id="datepicker-features">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Datepicker</div>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" id="datepicker-features">
 
-            <hr class="panel-wide-block">
+                    <hr class="panel-wide-block">
 
-            <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">RANGE</h6>
+                    <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">RANGE</h6>
 
-            <div class="input-daterange input-group" id="datepicker-range">
-              <input type="text" class="form-control" name="start">
-              <span class="input-group-addon">to</span>
-              <input type="text" class="form-control" name="end">
+                    <div class="input-daterange input-group" id="datepicker-range">
+                        <input type="text" class="form-control" name="start">
+                        <span class="input-group-addon">to</span>
+                        <input type="text" class="form-control" name="end">
+                    </div>
+
+                    <hr class="panel-wide-block">
+
+                    <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">INLINE</h6>
+
+                    <div id="datepicker-inline"></div>
+                </div>
             </div>
 
-            <hr class="panel-wide-block">
-
-            <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">INLINE</h6>
-
-            <div id="datepicker-inline"></div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-heading">
-            <div class="panel-title">Timepicker</div>
-          </div>
-          <div class="panel-body">
-            <input type="text" class="form-control m-b-2" id="timepicker-base">
-            <input type="text" class="form-control m-b-2" id="timepicker-features" data-show-inputs="false" data-show-seconds="true">
-            <div class="input-group m-b-2">
-              <input type="text" class="form-control input-small" id="timepicker-addon">
-              <span class="input-group-addon">ST</span>
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Timepicker</div>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control m-b-2" id="timepicker-base">
+                    <input type="text" class="form-control m-b-2" id="timepicker-features" data-show-inputs="false" data-show-seconds="true">
+                    <div class="input-group m-b-2">
+                        <input type="text" class="form-control input-small" id="timepicker-addon">
+                        <span class="input-group-addon">ST</span>
+                    </div>
+                    <input type="text" class="form-control" id="timepicker-modal" data-template="modal">
+                </div>
             </div>
-            <input type="text" class="form-control" id="timepicker-modal" data-template="modal">
-          </div>
+
         </div>
+        <div class="col-md-6">
 
-      </div>
-      <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Minicolors</div>
+                </div>
+                <div class="panel-body">
+                    <input type="text" id="minicolors-hue" class="form-control" value="#ff6161">
+                    <br>
+                    <input type="text" id="minicolors-saturation" class="form-control" value="#0088cc">
+                    <br>
+                    <input type="text" id="minicolors-wheel" class="form-control" value="#ff99ee">
+                    <br>
+                    <input type="text" id="minicolors-opacity" class="form-control" value="#766fa8" data-opacity=".5">
+                    <br>
+                    <input type="text" id="minicolors-brightness" class="form-control" value="#00ffff">
+                    <br>
+                    <input type="hidden" id="minicolors-hidden" class="form-control" value="#db913d">
 
-        <div class="panel">
-          <div class="panel-heading">
-            <div class="panel-title">Minicolors</div>
-          </div>
-          <div class="panel-body">
-            <input type="text" id="minicolors-hue" class="form-control" value="#ff6161">
-            <br>
-            <input type="text" id="minicolors-saturation" class="form-control" value="#0088cc">
-            <br>
-            <input type="text" id="minicolors-wheel" class="form-control" value="#ff99ee">
-            <br>
-            <input type="text" id="minicolors-opacity" class="form-control" value="#766fa8" data-opacity=".5">
-            <br>
-            <input type="text" id="minicolors-brightness" class="form-control" value="#00ffff">
-            <br>
-            <input type="hidden" id="minicolors-hidden" class="form-control" value="#db913d">
+                    <hr class="panel-wide-block">
 
-            <hr class="panel-wide-block">
+                    <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">SIZES</h6>
 
-            <h6 class="m-t-0 m-b-2 font-weight-semibold text-muted">SIZES</h6>
+                    <input type="text" id="minicolors-sm-left" class="form-control input-sm" value="#ff6161" data-opacity=".5">
+                    <br>
+                    <input type="text" id="minicolors-sm-right" class="form-control input-sm" value="#00ffff" data-opacity=".5">
+                    <br>
+                    <input type="hidden" id="minicolors-sm-hidden" class="form-control input-sm" value="#766fa8">
+                    <br>
+                    <input type="text" id="minicolors-lg-left" class="form-control input-lg" value="#ff6161" data-opacity=".5">
+                    <br>
+                    <input type="text" id="minicolors-lg-right" class="form-control input-lg" value="#00ffff" data-opacity=".5">
+                    <br>
+                    <input type="hidden" id="minicolors-lg-hidden" class="form-control input-lg" value="#766fa8">
+                </div>
+            </div>
 
-            <input type="text" id="minicolors-sm-left" class="form-control input-sm" value="#ff6161" data-opacity=".5">
-            <br>
-            <input type="text" id="minicolors-sm-right" class="form-control input-sm" value="#00ffff" data-opacity=".5">
-            <br>
-            <input type="hidden" id="minicolors-sm-hidden" class="form-control input-sm" value="#766fa8">
-            <br>
-            <input type="text" id="minicolors-lg-left" class="form-control input-lg" value="#ff6161" data-opacity=".5">
-            <br>
-            <input type="text" id="minicolors-lg-right" class="form-control input-lg" value="#00ffff" data-opacity=".5">
-            <br>
-            <input type="hidden" id="minicolors-lg-hidden" class="form-control input-lg" value="#766fa8">
-          </div>
         </div>
-
-      </div>
     </div>
-  </div>
-  <!-- ==============================================================================
-  |
-  |  SCRIPTS
-  |
-  =============================================================================== -->
-  <script type="text/javascript">
-      // -----------------------------------------------------------------------------------------
-      // Initialize
-      require(['jquery'], function($) {
-          pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-      });
-  </script>
+</div>
+<!-- ==============================================================================
+|
+|  SCRIPTS
+|
+=============================================================================== -->
+<script type="text/javascript">
+    // -----------------------------------------------------------------------------------------
+    // Initialize
+    require(['jquery'], function($) {
+        pxCom.setLocation('[[${programId}]]', '[[${menuId}]]');
+    });
+</script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     // -------------------------------------------------------------------------
     // Initialize DEMO
 
     require(['jquery', 'px/pixeladmin', 'px/plugins/px-nav', 'px/plugins/px-navbar', 'px/plugins/px-footer', 'px/extensions/perfect-scrollbar.jquery'], function($) {
-      var file = String(document.location).split('/').pop();
+        var file = String(document.location).split('/').pop();
 
-      // Remove unnecessary file parts
-      file = file.replace(/(\.html).*/i, '$1');
+        // Remove unnecessary file parts
+        file = file.replace(/(\.html).*/i, '$1');
 
-      if (!/.html$/i.test(file)) {
-        file = 'index.html';
-      }
+        if (!/.html$/i.test(file)) {
+            file = 'index.html';
+        }
 
-      // Activate current nav item
-      $('body > .px-nav')
-        .find('.px-nav-item > a[href="' + file + '"]')
-        .parent()
-        .addClass('active');
+        // Activate current nav item
+        $('body > .px-nav')
+            .find('.px-nav-item > a[href="' + file + '"]')
+            .parent()
+            .addClass('active');
 
-      $('body > .px-nav').pxNav();
-      $('body > .px-footer').pxFooter();
+        $('body > .px-nav').pxNav();
+        $('body > .px-footer').pxFooter();
 
-      $('#navbar-notifications').perfectScrollbar();
-      $('#navbar-messages').perfectScrollbar();
+        $('#navbar-notifications').perfectScrollbar();
+        $('#navbar-messages').perfectScrollbar();
     });
-  </script>
+</script>
 
-  <script>
+<script>
     // -------------------------------------------------------------------------
     // Initialize Date Range Picker
 
     require(['jquery', 'moment', 'px-libs/daterangepicker'], function($, moment) {
-      $('#daterange-1').daterangepicker();
+        $('#daterange-1').daterangepicker();
 
-      $('#daterange-2').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        locale: {
-          format: 'MM/DD/YYYY h:mm A'
-        }
-      });
+        $('#daterange-2').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY h:mm A'
+            }
+        });
 
-      $('#daterange-3').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true
-      },
-      function(start, end, label) {
-        var years = moment().diff(start, 'years');
+        $('#daterange-3').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true
+            },
+            function(start, end, label) {
+                var years = moment().diff(start, 'years');
 
-        alert("You are " + years + " years old.");
-      });
+                alert("You are " + years + " years old.");
+            });
 
-      (function() {
-        var startDate = moment().subtract(29, 'days');
-        var endDate = moment();
+        (function() {
+            var startDate = moment().subtract(29, 'days');
+            var endDate = moment();
 
-        function cb(start, end) {
-          $('#daterange-4').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
+            function cb(start, end) {
+                $('#daterange-4').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
 
-        $('#daterange-4').daterangepicker({
-          startDate: startDate,
-          endDate: endDate,
-          ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          }
-        }, cb);
+            $('#daterange-4').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
 
-        cb(startDate, endDate);
-      })();
+            cb(startDate, endDate);
+        })();
     });
 
     // -------------------------------------------------------------------------
     // Initialize Datepicker
 
     require(['jquery', 'px/extensions/bootstrap-datepicker'], function($) {
-      $('#datepicker-features').datepicker({
-        calendarWeeks:         true,
-        todayBtn:              'linked',
-        daysOfWeekDisabled:    '1',
-        clearBtn:              true,
-        todayHighlight:        true,
-        multidate:             true,
-        daysOfWeekHighlighted: '1,2',
-        orientation:           'auto right',
+        $('#datepicker-features').datepicker({
+            calendarWeeks: true,
+            todayBtn: 'linked',
+            daysOfWeekDisabled: '1',
+            clearBtn: true,
+            todayHighlight: true,
+            multidate: true,
+            daysOfWeekHighlighted: '1,2',
+            orientation: 'auto right',
 
-        beforeShowMonth: function(date) {
-          if (date.getMonth() === 8) {
-            return false;
-          }
-        },
+            beforeShowMonth: function(date) {
+                if (date.getMonth() === 8) {
+                    return false;
+                }
+            },
 
-        beforeShowYear: function(date){
-          if (date.getFullYear() === 2014) {
-            return false;
-          }
-        }
-      });
-      $('#datepicker-range').datepicker();
-      $('#datepicker-inline').datepicker();
+            beforeShowYear: function(date) {
+                if (date.getFullYear() === 2014) {
+                    return false;
+                }
+            }
+        });
+        $('#datepicker-range').datepicker();
+        $('#datepicker-inline').datepicker();
     });
 
     // -------------------------------------------------------------------------
     // Initialize Timepicker
 
     require(['jquery', 'px/extensions/bootstrap-timepicker'], function($) {
-      $('#timepicker-base').timepicker();
-      $('#timepicker-features').timepicker();
-      $('#timepicker-addon').timepicker();
-      $('#timepicker-modal').timepicker();
+        $('#timepicker-base').timepicker();
+        $('#timepicker-features').timepicker();
+        $('#timepicker-addon').timepicker();
+        $('#timepicker-modal').timepicker();
     });
 
     // -------------------------------------------------------------------------
     // Initialize Minicolors
 
     require(['jquery', 'px-libs/jquery.minicolors'], function($) {
-      $('#minicolors-hue').minicolors({
-        control:  'hue',
-        position: 'bottom left',
-      });
+        $('#minicolors-hue').minicolors({
+            control: 'hue',
+            position: 'bottom left'
+        });
 
-      $('#minicolors-saturation').minicolors({
-        control:  'saturation',
-        position: 'bottom right',
-      });
+        $('#minicolors-saturation').minicolors({
+            control: 'saturation',
+            position: 'bottom right'
+        });
 
-      $('#minicolors-wheel').minicolors({
-        control:  'wheel',
-        position: 'top right',
-      });
+        $('#minicolors-wheel').minicolors({
+            control: 'wheel',
+            position: 'top right'
+        });
 
-      $('#minicolors-opacity').minicolors({
-        control: 'wheel',
-        opacity: true,
-      });
+        $('#minicolors-opacity').minicolors({
+            control: 'wheel',
+            opacity: true
+        });
 
-      $('#minicolors-brightness').minicolors({
-        control:  'brightness',
-        position: 'top left',
-      });
+        $('#minicolors-brightness').minicolors({
+            control: 'brightness',
+            position: 'top left'
+        });
 
-      $('#minicolors-hidden').minicolors();
+        $('#minicolors-hidden').minicolors();
 
-      $('#minicolors-sm-left').minicolors({
-        opacity: true,
-      });
+        $('#minicolors-sm-left').minicolors({
+            opacity: true
+        });
 
-      $('#minicolors-sm-right').minicolors({
-        opacity:  true,
-        position: 'top right',
-      });
+        $('#minicolors-sm-right').minicolors({
+            opacity: true,
+            position: 'top right'
+        });
 
-      $('#minicolors-sm-hidden').minicolors();
+        $('#minicolors-sm-hidden').minicolors();
 
-      $('#minicolors-lg-left').minicolors({
-        opacity: true,
-      });
+        $('#minicolors-lg-left').minicolors({
+            opacity: true
+        });
 
-      $('#minicolors-lg-right').minicolors({
-        opacity:  true,
-        position: 'top right',
-      });
+        $('#minicolors-lg-right').minicolors({
+            opacity: true,
+            position: 'top right'
+        });
 
-      $('#minicolors-lg-hidden').minicolors();
+        $('#minicolors-lg-hidden').minicolors();
     });
-  </script>
+</script>
 </program>
 </body>
 </html>

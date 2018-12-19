@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <link rel="stylesheet" media="screen" href="/libs/handsontable/handsontable.full.css" th:href="@{/libs/handsontable/handsontable.full.css}">
 </head>
@@ -37,19 +37,21 @@
         <button type="button" class="btn btn-primary">Load</button>
         <button type="button" class="btn btn-success">Save</button>
         <div class="page-block m-b-1"></div>
-        <div th:id="'ht1_'+${programId}"></div><br/><br/>
-        <div th:id="'ht2_'+${programId}"></div><br/><br/>
+        <div th:id="'ht1_'+${programId}"></div>
+        <br/><br/>
+        <div th:id="'ht2_'+${programId}"></div>
+        <br/><br/>
         <div th:id="'ht3_'+${programId}"></div>
     </div>
 </div>
 <script>
-	// -----------------------------------------------------------------------------------------
-	// Initialize
-	require(['jquery'], function($) {
-	    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-	});
+    // -----------------------------------------------------------------------------------------
+    // Initialize
+    require(['jquery'], function($) {
+        pxCom.setLocation('[[${programId}]]', '[[${menuId}]]');
+    });
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         var data = [
             ["", "Ford", "Tesla", "Toyota", "Honda"],
             ["2017", 10, 11, 12, 13],
@@ -68,7 +70,7 @@
     });
 
     require(['jquery', "Handsontable"], function($, Handsontable) {
-        $(document).ready(function () {
+        $(document).ready(function() {
             var data = [
                 ['', 'Maserati', 'Mazda', 'Mercedes', 'Mini', 'Mitsubishi'],
                 ['2009', 0, 2941, 4303, 354, 5814],
@@ -84,7 +86,7 @@
             };
             var container = document.getElementById('ht2_[[${programId}]]');
             var hot = new Handsontable(container, config);
-         });
+        });
     });
 
 </script>

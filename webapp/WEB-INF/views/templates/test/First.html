@@ -1,92 +1,108 @@
 <html>
-   <head>
-      <script src="../../../Grid/GridE.js"> </script>
-   </head>
-   <body>
-      <style>
-         /* Examples shared styles */
-         .ExampleHeader { font:normal 16px Arial; color:blue; }
-         .ExampleHeader b { color:#800; }
-         .ExampleHeader i { color:black; font-style:normal; font-weight:bold; }
-         .ExampleHeader u { text-decoration:none; color:#0B0; font-weight:bold; padding:0px 2px 0px 2px; }
-         .ExampleName { font:bold 30px Arial; padding:5px 0px 5px 0px; }
-         .ExampleShort { font:italic 15px Arial; margin-bottom:10px; padding-top:5px; }
-         .ExampleDesc { margin:0px 5px 10px 5px; }
-         .ExampleErr { margin:50px auto 10px auto; padding:5px; line-height:30px; border:1px solid black; color:red; width:800px; text-align:center; display:none; }
-         .ExampleBorder { margin:0px 5px 15px 5px; clear:both; zoom:1; }
-         .ExampleDesc ul { padding:0px 0px 0px 15px; margin:10px 0px 0px 0px; }
-         .ExampleDesc li { padding-bottom:8px; line-height:18px; }
-         .ExampleDesc h4 { display:inline; font:bold 15px Arial; line-height:20px; padding-left:6px; padding-right:6px; background:#87DAE5; border:1px solid #888; color:black; margin:0px; font-style:normal; }
-      </style>
-      <center class="ExampleHeader"><script>document.write(location.href.replace(/(.*)(\/ExamplesPDF\/)([^\/_]+)_([^\/_]+)\/([^\/]+)$/,"$2<b>$3</b>_<i>$4</i>/$5").replace(/([^<]|^)(\/|\.)/g,"$1<u>$2</u>"));</script></center>
-      <center class="ExampleName">Complex grid</center>
-      <center class="ExampleShort">Demonstrates free command line tool <b>WKHtmlToPdf</b> distributed under <b>LGPL</b> license, homepage at <a href="http://wkhtmltopdf.org">wkhtmltopdf.org</a></center>
-      <div class="ExampleErr">
-         <script> if(location.protocol=="file:") document.write("<style>.ExampleDesc, .ExampleBorder {display:none;} .ExampleErr { display:block; } </style>"); </script>
-         Do <b>not</b> run this file locally!<br />Run it from your local or remote web http server where is installed JAVA JRE.<br>
-      </div>
-      <div class="ExampleBorder">
-         <div class="ExampleMain" style="width:100%;height:530px;">
-            <bdo Debug="check" 
-               Layout_Url="FirstDef.xml" 
-               Data_Url="FirstData.xml"
-               Export_Url="../Export.jsp"
-               ExportPDF_Url="../ExportPdf.jsp" ExportPDF_Type="Settings,Expanded,Selected,Changes" ExportPDF_Param_Source="First/FirstExportPDF.html"
-               ></bdo>
-         </div>
-      </div>
-      <div class="ExampleDesc">
-         <button onclick='Grids[0].ActionExportPDF();'>Print to PDF</button>
-         <button onclick='Grids[0].ActionPrint();'>Print to printer</button>
-         <button onclick='Grids[0].ExportFormat="xlsx"; Grids[0].ActionExport()'>Export to XLSX</button>
-         <button onclick='Grids[0].ExportFormat="xls"; Grids[0].ActionExport()'>Export to old XLS (XHTML)</button>
-         <button onclick='Grids[0].ExportFormat="csv"; Grids[0].ActionExport()'>Export to CSV</button>
-      </div>
-      <script>
-// -----------------------------------------------------------------------------------------
-Grids.OnClickButtonExport = function(G){ Grids[0].Source.Export.Type=""; Grids[0].ActionExport(); return true; } // Clears the type if set by the Export XLS/CSV button
-// -----------------------------------------------------------------------------------------
-// Shows the year 2005 only
-Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
-// -----------------------------------------------------------------------------------------
-// Custom event for searching
-// Searches in orders with specified items
-Grids.OnRowSearch = function(G,row,col,found,F,type){
-if(type || G.SearchDefs!="") return found; // Only for "in orders with items" and default call
-if(row.Def.Name=="Data") return -1;        // Only for orders
-for(var r=row.firstChild;r;r=r.nextSibling) { 
-	var found = F(r,col,1);                 // calls F(r,col,type=1)
-	if(!(found<=0)) return found; 
-	}
-return 0;
-}
-// -----------------------------------------------------------------------------------------
-// Creates popup right click menu to manipulate the row
-Grids.OnGetMenu = function(G,row,col){
-var I = [], M = {Items:I}; 
-I[I.length] = {Name:"Del",Text:row.Deleted?"Undelete row":"Delete row"};
-I[I.length] = {Name:"Sel",Text:row.Selected?"Deselect row":"Select row"};
-I[I.length] = {Name:"Copy",Text:"Copy row"};
-if(row.firstChild) I[I.length] = {Name:"CopyTree",Text:"Copy row tree"};
-I[I.length] = {Name:"Add",Text:"Add new row"};
-if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
-if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
-return M;
-}
-// -----------------------------------------------------------------------------------------
-// Called after selecting item in the popup right click menu
-Grids.OnContextMenu = function(G,row,col,N){
-switch(N){
-   case "Del" : G.DeleteRow(row); break;
-   case "Sel" : G.SelectRow(row); break;
-   case "Copy" : G.CopyRow(row,null,row); break;
-   case "CopyTree" : G.CopyRows([row],null,row,1); break;
-   case "Add" : G.AddRow(null,row,1); break;
-   case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
-   case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
-   }
-}
-// -----------------------------------------------------------------------------------------
-      </script>
-   </body>
+<head>
+    <script src="../../../Grid/GridE.js"></script>
+</head>
+<body>
+<style>
+    /* Examples shared styles */
+    .ExampleHeader { font: normal 16px Arial; color: blue; }
+    .ExampleHeader b { color: #800; }
+    .ExampleHeader i { color: black; font-style: normal; font-weight: bold; }
+    .ExampleHeader u { text-decoration: none; color: #0B0; font-weight: bold; padding: 0px 2px 0px 2px; }
+    .ExampleName { font: bold 30px Arial; padding: 5px 0px 5px 0px; }
+    .ExampleShort { font: italic 15px Arial; margin-bottom: 10px; padding-top: 5px; }
+    .ExampleDesc { margin: 0px 5px 10px 5px; }
+    .ExampleErr { margin: 50px auto 10px auto; padding: 5px; line-height: 30px; border: 1px solid black; color: red; width: 800px; text-align: center; display: none; }
+    .ExampleBorder { margin: 0px 5px 15px 5px; clear: both; zoom: 1; }
+    .ExampleDesc ul { padding: 0px 0px 0px 15px; margin: 10px 0px 0px 0px; }
+    .ExampleDesc li { padding-bottom: 8px; line-height: 18px; }
+    .ExampleDesc h4 { display: inline; font: bold 15px Arial; line-height: 20px; padding-left: 6px; padding-right: 6px; background: #87DAE5; border: 1px solid #888; color: black; margin: 0px; font-style: normal; }
+</style>
+<center class="ExampleHeader">
+    <script>document.write(location.href.replace(/(.*)(\/ExamplesPDF\/)([^\/_]+)_([^\/_]+)\/([^\/]+)$/, "$2<b>$3</b>_<i>$4</i>/$5").replace(/([^<]|^)(\/|\.)/g, "$1<u>$2</u>"));</script>
+</center>
+<center class="ExampleName">Complex grid</center>
+<center class="ExampleShort">Demonstrates free command line tool <b>WKHtmlToPdf</b> distributed under <b>LGPL</b> license, homepage at <a href="http://wkhtmltopdf.org">wkhtmltopdf.org</a></center>
+<div class="ExampleErr">
+    <script> if (location.protocol == "file:") document.write("<style>.ExampleDesc, .ExampleBorder {display:none;} .ExampleErr { display:block; } </style>"); </script>
+    Do <b>not</b> run this file locally!<br/>Run it from your local or remote web http server where is installed JAVA JRE.<br>
+</div>
+<div class="ExampleBorder">
+    <div class="ExampleMain" style="width:100%;height:530px;">
+        <bdo Debug="check" Layout_Url="FirstDef.xml" Data_Url="FirstData.xml" Export_Url="../Export.jsp" ExportPDF_Url="../ExportPdf.jsp" ExportPDF_Type="Settings,Expanded,Selected,Changes" ExportPDF_Param_Source="First/FirstExportPDF.html"></bdo>
+    </div>
+</div>
+<div class="ExampleDesc">
+    <button onclick="Grids[0].ActionExportPDF();">Print to PDF</button>
+    <button onclick="Grids[0].ActionPrint();">Print to printer</button>
+    <button onclick='Grids[0].ExportFormat="xlsx"; Grids[0].ActionExport()'>Export to XLSX</button>
+    <button onclick='Grids[0].ExportFormat="xls"; Grids[0].ActionExport()'>Export to old XLS (XHTML)</button>
+    <button onclick='Grids[0].ExportFormat="csv"; Grids[0].ActionExport()'>Export to CSV</button>
+</div>
+<script>
+    // -----------------------------------------------------------------------------------------
+    Grids.OnClickButtonExport = function(G) {
+        Grids[0].Source.Export.Type = "";
+        Grids[0].ActionExport();
+        return true;
+    }
+    // Clears the type if set by the Export XLS/CSV button
+    // -----------------------------------------------------------------------------------------
+    // Shows the year 2005 only
+    Grids.OnUpdated = function(G) { G.FilterDateRange('I', '1/1/2005~12/31/2005', 'Year', 0); }
+    // -----------------------------------------------------------------------------------------
+    // Custom event for searching
+    // Searches in orders with specified items
+    Grids.OnRowSearch = function(G, row, col, found, F, type) {
+        if (type || G.SearchDefs != "") return found; // Only for "in orders with items" and default call
+        if (row.Def.Name == "Data") return -1;        // Only for orders
+        for (var r = row.firstChild; r; r = r.nextSibling) {
+            var found = F(r, col, 1);                 // calls F(r,col,type=1)
+            if (!(found <= 0)) return found;
+        }
+        return 0;
+    }
+    // -----------------------------------------------------------------------------------------
+    // Creates popup right click menu to manipulate the row
+    Grids.OnGetMenu = function(G, row, col) {
+        var I = [], M = {Items: I};
+        I[I.length] = {Name: "Del", Text: row.Deleted ? "Undelete row" : "Delete row"};
+        I[I.length] = {Name: "Sel", Text: row.Selected ? "Deselect row" : "Select row"};
+        I[I.length] = {Name: "Copy", Text: "Copy row"};
+        if (row.firstChild) I[I.length] = {Name: "CopyTree", Text: "Copy row tree"};
+        I[I.length] = {Name: "Add", Text: "Add new row"};
+        if (row.firstChild) I[I.length] = {Name: "Expand", Text: row.Expanded ? "Collapse children" : "Expand children"};
+        if (row.firstChild) I[I.length] = {Name: "Check", Text: Get(row, 'X') ? "Uncheck Used" : "Check Used"};
+        return M;
+    }
+    // -----------------------------------------------------------------------------------------
+    // Called after selecting item in the popup right click menu
+    Grids.OnContextMenu = function(G, row, col, N) {
+        switch(N) {
+            case "Del" :
+                G.DeleteRow(row);
+                break;
+            case "Sel" :
+                G.SelectRow(row);
+                break;
+            case "Copy" :
+                G.CopyRow(row, null, row);
+                break;
+            case "CopyTree" :
+                G.CopyRows([row], null, row, 1);
+                break;
+            case "Add" :
+                G.AddRow(null, row, 1);
+                break;
+            case "Expand" :
+                if (row.Expanded) G.Collapse(row); else G.Expand(row);
+                break;
+            case "Check" :
+                G.SetValue(row, "X", !Get(row, 'X'), 1);
+                break;
+        }
+    }
+    // -----------------------------------------------------------------------------------------
+</script>
+</body>
 </html>

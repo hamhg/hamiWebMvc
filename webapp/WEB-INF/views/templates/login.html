@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 
 <head>
     <meta charset="utf-8">
@@ -13,10 +13,15 @@
     <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" th:href="@{/libs/font-awesome/css/font-awesome.css}">
 
     <!-- Function for the proper stylesheet loading according to the demo settings -->
-    <script>function _pxCom_loadStylesheet(a,b,c){var c=c||decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean"),d="rtl"===document.getElementsByTagName("html")[0].getAttribute("dir");document.write(a.replace(/^(.*?)((?:\.min)?\.css)$/,'<link href="$1'+(c.indexOf("dark")!==-1&&a.indexOf("/css/")!==-1&&a.indexOf("/themes/")===-1?"-dark":"")+(!d||0!==a.indexOf("/css")&&0!==a.indexOf("css/common")?"":".rtl")+'$2" rel="stylesheet" type="text/css"'+(b?'class="'+b+'"':"")+">"))}</script>
+    <script>
+        function _pxCom_loadStylesheet(a, b, c) {
+            var c = c || decodeURIComponent((new RegExp(";\\s*" + encodeURIComponent("px-theme") + "\\s*=\\s*([^;]+)\\s*;", "g").exec(";" + document.cookie + ";") || [])[1] || "clean"), d = "rtl" === document.getElementsByTagName("html")[0].getAttribute("dir");
+            document.write(a.replace(/^(.*?)((?:\.min)?\.css)$/, '<link href="$1' + (c.indexOf("dark") !== -1 && a.indexOf("/css/") !== -1 && a.indexOf("/themes/") === -1 ? "-dark" : "") + (!d || 0 !== a.indexOf("/css") && 0 !== a.indexOf("css/common") ? "" : ".rtl") + '$2" rel="stylesheet" type="text/css"' + (b ? 'class="' + b + '"' : "") + ">"))
+        }
+    </script>
 
     <!-- Set RTL direction -->
-    <script>"ltr"!==document.getElementsByTagName("html")[0].getAttribute("dir")&&"1"===decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-rtl")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"0")&&document.getElementsByTagName("html")[0].setAttribute("dir","rtl");</script>
+    <script>"ltr" !== document.getElementsByTagName("html")[0].getAttribute("dir") && "1" === decodeURIComponent((new RegExp(";\\s*" + encodeURIComponent("px-rtl") + "\\s*=\\s*([^;]+)\\s*;", "g").exec(";" + document.cookie + ";") || [])[1] || "0") && document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");</script>
 
     <!-- Load PixelAdmin sys stylesheets -->
     <script>
@@ -26,7 +31,11 @@
 
     <!-- Load theme -->
     <script>
-        function _pxCom_loadTheme(a){var b=decodeURIComponent((new RegExp(";\\s*"+encodeURIComponent("px-theme")+"\\s*=\\s*([^;]+)\\s*;","g").exec(";"+document.cookie+";")||[])[1]||"clean");_pxCom_loadStylesheet(a+b+".min.css","px-stylesheet-theme",b)}
+        function _pxCom_loadTheme(a) {
+            var b = decodeURIComponent((new RegExp(";\\s*" + encodeURIComponent("px-theme") + "\\s*=\\s*([^;]+)\\s*;", "g").exec(";" + document.cookie + ";") || [])[1] || "clean");
+            _pxCom_loadStylesheet(a + b + ".min.css", "px-stylesheet-theme", b)
+        }
+
         _pxCom_loadTheme('/css/themes/');
     </script>
 
@@ -43,7 +52,7 @@
     <script>
         requirejs.config({
             // script path
-            paths: { common: '/js/common/common' }
+            paths: {common: '/js/common/common'}
         });
     </script>
     <!-- Require script -->
@@ -57,7 +66,7 @@
     <!-- Custom styling -->
     <style>
         .page-signin-header {
-            box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, .05), 0 1px 0 rgba(0, 0, 0, .05);
         }
 
         .page-signin-header .btn {
@@ -78,7 +87,7 @@
 
         .page-signin-container form {
             border: 0;
-            box-shadow: 0 2px 2px rgba(0,0,0,.05), 0 1px 0 rgba(0,0,0,.05);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, .05), 0 1px 0 rgba(0, 0, 0, .05);
         }
 
         @media (min-width: 544px) {
@@ -102,7 +111,12 @@
 </head>
 <body>
 <div class="page-signin-header p-a-2 text-sm-center bg-white">
-    <a class="px-brand px-brand-lg text-default" href="index.html"><span class="px-logo bg-primary m-t-0"><span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span><span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span><span class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span></span>PixelAdmin</a>
+    <a class="px-brand px-brand-lg text-default" href="index.html">
+        <span class="px-logo bg-primary m-t-0">
+            <span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span>
+            <span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span>
+            <span class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span>
+        </span>PixelAdmin</a>
     <a href="pages-signup-v2.html" class="btn btn-primary">Sign Up</a>
 </div>
 
@@ -114,15 +128,11 @@
     <form th:action="@{/auth/login}" method="post" class="panel p-a-4">
         <p th:if="${loginError}" class="text-muted text-center">Wrong user or password</p>
         <p th:if="${logout}" class="text-muted text-center">You've been logged out successfully.</p>
-        <p th:unless="${loginError}" class="text-muted text-center">
-            Enter your username and password
-        </p>
+        <p th:unless="${loginError}" class="text-muted text-center">Enter your username and password </p>
         <fieldset class=" form-group form-group-lg">
-			<select id="ccd" name="ccd" class="form-control" >
-			   <option th:each="comCd : ${COM_CD}"
-			      th:value="${comCd.COM_CD}"
-			      th:utext="${comCd.COM_NM}"/>
-    		</select>
+            <select id="ccd" name="ccd" class="form-control">
+                <option th:each="comCd : ${COM_CD}" th:value="${comCd.COM_CD}" th:utext="${comCd.COM_NM}"/>
+            </select>
         </fieldset>
 
         <fieldset class=" form-group form-group-lg">
@@ -136,8 +146,7 @@
         <div class="clearfix">
             <label class="custom-control custom-checkbox pull-xs-left">
                 <input type="checkbox" name="remember-me" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                Remember me
+                <span class="custom-control-indicator"></span>Remember me
             </label>
             <a href="#" class="font-size-12 text-muted pull-xs-right" id="page-signin-forgot-link">Forgot your password?</a>
         </div>
@@ -170,22 +179,16 @@
         </div>
     </form>
 </div>
-
 <!-- / Reset form -->
 
 <!-- ==============================================================================
-|
 |  SCRIPTS
-|
 =============================================================================== -->
-
 <script>
     // -------------------------------------------------------------------------
     // Initialize DEMO sidebar
-
     require(['jquery', 'common', 'px/plugins/px-sidebar'], function($, pxCom) {
         pxCom.initializeSidebar();
-
         $('#px-sidebar').pxSidebar();
         pxCom.initialize();
     });
@@ -194,7 +197,6 @@
 <script>
     // -------------------------------------------------------------------------
     // Initialize page components
-
     require(['jquery', 'common', 'px/extensions/tooltip', 'px/plugins/px-responsive-bg'], function($, pxCom) {
         pxCom.initializeBgs('body', 2, '#000', function(isBgSet) {
             $('h2')[isBgSet ? 'addClass' : 'removeClass']('text-white font-weight-bold');
@@ -207,8 +209,8 @@
         $('#page-signin-forgot-link').on('click', function(e) {
             e.preventDefault();
 
-            $('#page-signin-form').css({ display: 'none' });
-            $('#page-signin-forgot-form').css({ display: 'block' });
+            $('#page-signin-form').css({display: 'none'});
+            $('#page-signin-forgot-form').css({display: 'block'});
 
             $(window).trigger('resize');
         });
@@ -216,8 +218,8 @@
         $('#page-signin-forgot-back').on('click', function(e) {
             e.preventDefault();
 
-            $('#page-signin-form').css({ display: 'block' });
-            $('#page-signin-forgot-form').css({ display: 'none' });
+            $('#page-signin-form').css({display: 'block'});
+            $('#page-signin-forgot-form').css({display: 'none'});
 
             $(window).trigger('resize');
         });

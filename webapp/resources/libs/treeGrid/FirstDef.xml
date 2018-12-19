@@ -1,126 +1,127 @@
 <?xml version="1.0"?>
 <Grid>
-   <Cfg id='First' SuppressCfg='1'/> <!-- Configuration is not saved to cookies -->
-   <Cfg MainCol='A'/> <!-- Shows tree in column 'A' -->
-   <Cfg ConstHeight='1'/> <!-- Grid will always fill its main tag -->
-   <Cfg RowIndex='Pos' RowIndexWidth='45'/> <!-- Adds row index column named 'Pos' that displays visible row position -->
-   <Cfg ReloadChanged='1'/> <!-- Grid can reload and automatically discard pending changes -->
-   <Cfg Undo='1'/> <!-- Undo / redo is supported, Ctrl+Z / Ctrl+Y -->
-   <Cfg SuppressMessage='2'/> <!-- Grid produces no informational message -->
-   <Cfg Sort='A'/> <!-- Grid is sorted according to column A by default -->
-   <Cfg ResizingMain='3'/> <!-- User can resize grid main tag in both directions -->
-   <Cfg ExportType='Expanded,Outline'/> <!-- Export setting, all rows will be exported expanded and will be used Excel outline -->
-   <Cfg ChildParts='0'/> <!-- Rendering children on background is disabled -->
-   <Cfg CalculateSelected='1'/> <!-- Recalculates rows after selection changed -->
-   <Cfg LimitScroll="23"/> <!-- Responsive design, for small windows sets NoVScroll and NoHScroll -->
-   <Cfg Style='Standard' CSS='*Styles/StandardGrid.css'/>
+    <Cfg id='First' SuppressCfg='1'/> <!-- Configuration is not saved to cookies -->
+    <Cfg MainCol='A'/> <!-- Shows tree in column 'A' -->
+    <Cfg ConstHeight='1'/> <!-- Grid will always fill its main tag -->
+    <Cfg RowIndex='Pos' RowIndexWidth='45'/> <!-- Adds row index column named 'Pos' that displays visible row position -->
+    <Cfg ReloadChanged='1'/> <!-- Grid can reload and automatically discard pending changes -->
+    <Cfg Undo='1'/> <!-- Undo / redo is supported, Ctrl+Z / Ctrl+Y -->
+    <Cfg SuppressMessage='2'/> <!-- Grid produces no informational message -->
+    <Cfg Sort='A'/> <!-- Grid is sorted according to column A by default -->
+    <Cfg ResizingMain='3'/> <!-- User can resize grid main tag in both directions -->
+    <Cfg ExportType='Expanded,Outline'/> <!-- Export setting, all rows will be exported expanded and will be used Excel outline -->
+    <Cfg ChildParts='0'/> <!-- Rendering children on background is disabled -->
+    <Cfg CalculateSelected='1'/> <!-- Recalculates rows after selection changed -->
+    <Cfg LimitScroll="23"/> <!-- Responsive design, for small windows sets NoVScroll and NoHScroll -->
+    <Cfg Style='Standard' CSS='*Styles/StandardGrid.css'/>
 
-   <Actions OnDragRow="DragSelected OR DragRow"/> <!-- Overrides default dragging action just for dragging rows -->
-   
-   <!-- Default rows definition -->
-   <Def> 
-      <!-- Data rows without children -->
-      <D Name='Data' CalcOrder='F,B' CDef='' AcceptDef=''
-         A='Item' ASuggest='|*RowsDef' XType='Text' XCanEdit='0' XCanFilter='0' CCanFilter='0' G='0' H='0' I='' ICanFilter='0'
-         />
-      
-      <!-- Order rows with children -->
-      <D Name='Node' CDef='Data' AcceptDef='Data' Expanded='0' Calculated='1' CalcOrder='D,F,B' CanFilter='3'
-         X='1' A='Order' ACanFilter='0'
-         BFormula='F-F*G/100+H'  BCanFilter='0'
-         CCanEdit='1' CCanFilter='1' CButton='Defaults' 
-         CDefaults='{ShowCursor:0,Items:[{Name:"*RowsVisibleDef"},"-",{Name:"All",Text:"&lt;b>All customers&lt;/b>",Menu:1,MinHeight:200,Items:"|*RowsAllDef"}]}'
-         TVisible='0' TCanEdit='0' TCanFilter='0'
-         DType='Enum' DFormula='count()' DCanFilter='0' DAlign='Right' DEnum='|empty|1 item&amp;#160;&amp;#160;' DIntFormat='0 "items"'
-         EVisible='0' ECanEdit='0' ECanFilter='0'
-         FFormula='sum("B")' FCanFilter='0'
-         G='0' GCanFilter='0'
-         H='0' HCanFilter='0'
-         ICanEdit='1' ICanFilter='1'
-         />
+    <Actions OnDragRow="DragSelected OR DragRow"/> <!-- Overrides default dragging action just for dragging rows -->
 
-      <!-- Footer summary rows -->
-      <D Name='Foot' CalcOrder='D,B' XVisible='0' EVisible='0' FVisible='0' HVisible='0' IVisible='0' TVisible='0' CanFilter='0'/>
-
-      <!-- Row created when grouping rows -->
-      <D Name='Group' Def='Node' CanSelect='0' AggChildren='1' CanFilter='2'
-         XVisible='0'
-         ACanEdit='1'
-         CVisible='0' CCanEdit='0' CButton='None' 
-         IVisible='0' ICanEdit='0'
-         BFormula='sum("X==1")'
-         DFormula='count("X==1")' DEnum='|no order|1 order&amp;#160;&amp;#160;' DIntFormat='0 "orders"'
+    <!-- Default rows definition -->
+    <Def>
+        <!-- Data rows without children -->
+        <D Name='Data' CalcOrder='F,B' CDef='' AcceptDef=''
+           A='Item' ASuggest='|*RowsDef' XType='Text' XCanEdit='0' XCanFilter='0' CCanFilter='0' G='0' H='0' I='' ICanFilter='0'
         />
-   </Def>
 
-   <!-- Column definition -->
-   <LeftCols>
-      <C Name='X' Width='51' Type='Bool' CanFilter='2' CanSort='0'/> <!-- Used -->
-      <C Name='A' PrintWidth='300' RelWidth='100' MinWidth='250' Width='250' Type='Text' ToolTip='1' CanFilter='2' CanHide='0' SearchNames='Product name,Product,Order name,Order'/> <!-- Product / Order name -->
-   </LeftCols>
-   <Cols>
-      <C Name='C' Width='120' Type='Text' CanEdit='0' CanFilter='2'/> <!-- Customer -->
-      <C Name='I' Width='106' Type='Date' Format='d' CanEdit='0' CanFilter='2'/> <!-- Date -->
-      <C Name='T' Width='70' Type='Enum' Enum='|Comp|Access|Mon|Print|Soft' CanFilter='2'/> <!-- Kind -->
-      <C Name='D' Width='90' Type='Int' CanFilter='2'/> <!-- Amount -->
-      <C Name='E' Width='93' Type='Float' EditMask='^\-?\d*\.?\d*$' Format='0.00' CanFilter='2' CanGroup='0'/> <!-- Unit price -->
-      <C Name='F' Width='90' Type='Float' Format='0.00' Formula='D*E' CanFilter='2'/> <!-- List price -->
-      <C Name='G' Width='90' Type='Int' Format='0\%' CanFilter='2'/> <!-- Discount -->
-      <C Name='H' Width='90' Type='Float' Format='0.00' CanFilter='2'/> <!-- Shipping -->
-   </Cols>
-   <RightCols>
-      <C Name='B' Width='90' Type='Float' Format='0.00' Formula='F-F*G/100+H' CanFilter='2'/> <!-- Price -->
-   </RightCols>   
-   
-   <!-- Parent of root nodes, accepts only Node rows -->
-   <Root CDef='Node' AcceptDef='Node' />
-	
-   <!-- Column captions -->
-   <Header 
-      X="Used" A="Product / Order name" ALevels="1"
-      C="Customer" I="Date" T="Kind" D="Amount" E="Unit Price" F="List Price" G="Discount" H="Shipping"
-      B="Price"
-      />
+        <!-- Order rows with children -->
+        <D Name='Node' CDef='Data' AcceptDef='Data' Expanded='0' Calculated='1' CalcOrder='D,F,B' CanFilter='3'
+           X='1' A='Order' ACanFilter='0'
+           BFormula='F-F*G/100+H' BCanFilter='0'
+           CCanEdit='1' CCanFilter='1' CButton='Defaults'
+           CDefaults='{ShowCursor:0,Items:[{Name:"*RowsVisibleDef"},"-",{Name:"All",Text:"&lt;b>All customers&lt;/b>",Menu:1,MinHeight:200,Items:"|*RowsAllDef"}]}'
+           TVisible='0' TCanEdit='0' TCanFilter='0'
+           DType='Enum' DFormula='count()' DCanFilter='0' DAlign='Right' DEnum='|empty|1 item&amp;#160;&amp;#160;' DIntFormat='0 "items"'
+           EVisible='0' ECanEdit='0' ECanFilter='0'
+           FFormula='sum("B")' FCanFilter='0'
+           G='0' GCanFilter='0'
+           H='0' HCanFilter='0'
+           ICanEdit='1' ICanFilter='1'
+        />
 
-   <Solid>
-      <!-- Top tabber -->
-      <Tabber id="Tabber" Cells="All,Y5,Y6,Y7,Y8,Y9,Cnt,Sel,Add,Del,Chg" Width="40" CanFocus="0" NoUpload="0"
-         AllButtonText="All" Y5ButtonText="2005" Y6ButtonText="2006" Y7ButtonText="2007" Y8ButtonText="2008" Y9ButtonText="2009"
-         AllOnClick="Grid.SetFilter('Year','');"
-         Y5OnClick="Grid.FilterDateRange('I','1/1/2005~12/31/2005','Year');" Y5="1"
-         Y6OnClick="Grid.FilterDateRange('I','1/1/2006~12/31/2006','Year');"
-         Y7OnClick="Grid.FilterDateRange('I','1/1/2007~12/31/2007','Year');"
-         Y8OnClick="Grid.FilterDateRange('I','1/1/2008~12/31/2008','Year');"
-         Y9OnClick="Grid.FilterDateRange('I','1/1/2009~12/31/2009','Year');"
-         CntRelWidth="1" CntType="Html" CntFormula='"Rows:&lt;b>"+count(7)+"&lt;/b>&amp;#160;&amp;#160;shown:&lt;b>"+count(6)+"&lt;/b>"' CntAlign="Right"
-         SelType="Html" SelFormula='var cnt=count(15);return cnt?"selected:&lt;b>"+cnt+"&lt;/b>":""' SelWidth='-1' SelWrap='0'
-         AddType="Html" AddFormula='var cnt=count("Row.Added==1",7);return cnt?"added:&lt;b>"+cnt+"&lt;/b>":""' AddWidth='-1' AddWrap='0'
-         DelType="Html" DelFormula='var cnt=count("Row.Deleted>0",7);return cnt?"deleted:&lt;b>"+cnt+"&lt;/b>":""' DelWidth='-1' DelWrap='0'
-         ChgType="Html" ChgFormula='var cnt=count("Row.Changed==1",7);return cnt?"changed:&lt;b>"+cnt+"&lt;/b>":""' ChgWidth='-1' ChgWrap='0'
-         CanPrint='5' AllPrintHPage='1' Y5PrintHPage='1' Y6PrintHPage='1' Y7PrintHPage='1' Y8PrintHPage='1' Y9PrintHPage='1'
-         CntPrintHPage='2' SelPrintHPage='2' AddPrintHPage='2' DelPrintHPage='2' ChgPrintHPage='2'
-         />
-      
-   </Solid>
-   
+        <!-- Footer summary rows -->
+        <D Name='Foot' CalcOrder='D,B' XVisible='0' EVisible='0' FVisible='0' HVisible='0' IVisible='0' TVisible='0' CanFilter='0'/>
+
+        <!-- Row created when grouping rows -->
+        <D Name='Group' Def='Node' CanSelect='0' AggChildren='1' CanFilter='2'
+           XVisible='0'
+           ACanEdit='1'
+           CVisible='0' CCanEdit='0' CButton='None'
+           IVisible='0' ICanEdit='0'
+           BFormula='sum("X==1")'
+           DFormula='count("X==1")' DEnum='|no order|1 order&amp;#160;&amp;#160;' DIntFormat='0 "orders"'
+        />
+    </Def>
+
+    <!-- Column definition -->
+    <LeftCols>
+        <C Name='X' Width='51' Type='Bool' CanFilter='2' CanSort='0'/> <!-- Used -->
+        <C Name='A' PrintWidth='300' RelWidth='100' MinWidth='250' Width='250' Type='Text' ToolTip='1' CanFilter='2' CanHide='0'
+           SearchNames='Product name,Product,Order name,Order'/> <!-- Product / Order name -->
+    </LeftCols>
+    <Cols>
+        <C Name='C' Width='120' Type='Text' CanEdit='0' CanFilter='2'/> <!-- Customer -->
+        <C Name='I' Width='106' Type='Date' Format='d' CanEdit='0' CanFilter='2'/> <!-- Date -->
+        <C Name='T' Width='70' Type='Enum' Enum='|Comp|Access|Mon|Print|Soft' CanFilter='2'/> <!-- Kind -->
+        <C Name='D' Width='90' Type='Int' CanFilter='2'/> <!-- Amount -->
+        <C Name='E' Width='93' Type='Float' EditMask='^\-?\d*\.?\d*$' Format='0.00' CanFilter='2' CanGroup='0'/> <!-- Unit price -->
+        <C Name='F' Width='90' Type='Float' Format='0.00' Formula='D*E' CanFilter='2'/> <!-- List price -->
+        <C Name='G' Width='90' Type='Int' Format='0\%' CanFilter='2'/> <!-- Discount -->
+        <C Name='H' Width='90' Type='Float' Format='0.00' CanFilter='2'/> <!-- Shipping -->
+    </Cols>
+    <RightCols>
+        <C Name='B' Width='90' Type='Float' Format='0.00' Formula='F-F*G/100+H' CanFilter='2'/> <!-- Price -->
+    </RightCols>
+
+    <!-- Parent of root nodes, accepts only Node rows -->
+    <Root CDef='Node' AcceptDef='Node'/>
+
+    <!-- Column captions -->
+    <Header
+            X="Used" A="Product / Order name" ALevels="1"
+            C="Customer" I="Date" T="Kind" D="Amount" E="Unit Price" F="List Price" G="Discount" H="Shipping"
+            B="Price"
+    />
+
+    <Solid>
+        <!-- Top tabber -->
+        <Tabber id="Tabber" Cells="All,Y5,Y6,Y7,Y8,Y9,Cnt,Sel,Add,Del,Chg" Width="40" CanFocus="0" NoUpload="0"
+                AllButtonText="All" Y5ButtonText="2005" Y6ButtonText="2006" Y7ButtonText="2007" Y8ButtonText="2008" Y9ButtonText="2009"
+                AllOnClick="Grid.SetFilter('Year','');"
+                Y5OnClick="Grid.FilterDateRange('I','1/1/2005~12/31/2005','Year');" Y5="1"
+                Y6OnClick="Grid.FilterDateRange('I','1/1/2006~12/31/2006','Year');"
+                Y7OnClick="Grid.FilterDateRange('I','1/1/2007~12/31/2007','Year');"
+                Y8OnClick="Grid.FilterDateRange('I','1/1/2008~12/31/2008','Year');"
+                Y9OnClick="Grid.FilterDateRange('I','1/1/2009~12/31/2009','Year');"
+                CntRelWidth="1" CntType="Html" CntFormula='"Rows:&lt;b>"+count(7)+"&lt;/b>&amp;#160;&amp;#160;shown:&lt;b>"+count(6)+"&lt;/b>"' CntAlign="Right"
+                SelType="Html" SelFormula='var cnt=count(15);return cnt?"selected:&lt;b>"+cnt+"&lt;/b>":""' SelWidth='-1' SelWrap='0'
+                AddType="Html" AddFormula='var cnt=count("Row.Added==1",7);return cnt?"added:&lt;b>"+cnt+"&lt;/b>":""' AddWidth='-1' AddWrap='0'
+                DelType="Html" DelFormula='var cnt=count("Row.Deleted>0",7);return cnt?"deleted:&lt;b>"+cnt+"&lt;/b>":""' DelWidth='-1' DelWrap='0'
+                ChgType="Html" ChgFormula='var cnt=count("Row.Changed==1",7);return cnt?"changed:&lt;b>"+cnt+"&lt;/b>":""' ChgWidth='-1' ChgWrap='0'
+                CanPrint='5' AllPrintHPage='1' Y5PrintHPage='1' Y6PrintHPage='1' Y7PrintHPage='1' Y8PrintHPage='1' Y9PrintHPage='1'
+                CntPrintHPage='2' SelPrintHPage='2' AddPrintHPage='2' DelPrintHPage='2' ChgPrintHPage='2'
+        />
+
+    </Solid>
+
     <!-- Bottom toolbar formula -->
-   <Toolbar Formula='count("X==1")+" / "+count(1)+" orders"' Indent='0' Outdent='0'/>
-   
-   <!-- Column widths change for Turq style for bigger header -->
-   <Media>
-      <M>
-         <Cols>
-            <C Name='Pos' Width='65'/>   <!-- Index -->
-            <C Name='X' Width='65'/>     <!-- Used -->
-            <C Name='A' MinWidth='270'/> <!-- Product / Order name -->
-            <C Name='T' Width='75'/> <!-- Kind -->
-            <C Name='D' Width='105'/> <!-- Amount -->
-            <C Name='E' Width='115'/> <!-- Unit price -->
-            <C Name='F' Width='115'/> <!-- List price -->
-            <C Name='G' Width='110'/> <!-- Discount -->
-            <C Name='H' Width='110'/> <!-- Shipping -->
-         </Cols>
-      </M>
-   </Media>
+    <Toolbar Formula='count("X==1")+" / "+count(1)+" orders"' Indent='0' Outdent='0'/>
+
+    <!-- Column widths change for Turq style for bigger header -->
+    <Media>
+        <M>
+            <Cols>
+                <C Name='Pos' Width='65'/>   <!-- Index -->
+                <C Name='X' Width='65'/>     <!-- Used -->
+                <C Name='A' MinWidth='270'/> <!-- Product / Order name -->
+                <C Name='T' Width='75'/> <!-- Kind -->
+                <C Name='D' Width='105'/> <!-- Amount -->
+                <C Name='E' Width='115'/> <!-- Unit price -->
+                <C Name='F' Width='115'/> <!-- List price -->
+                <C Name='G' Width='110'/> <!-- Discount -->
+                <C Name='H' Width='110'/> <!-- Shipping -->
+            </Cols>
+        </M>
+    </Media>
 
 </Grid>

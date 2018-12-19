@@ -1,283 +1,283 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <body>
 <program th:id="${programId}">
-  <div class="tab-pane">
+<div class="tab-pane">
     <div class="row">
         <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
     </div>
 
     <div class="row m-t-2">
-      <div class="col-md-6">
-        <div class="panel">
-          <div class="panel-title">Graph</div>
-          <hr>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-title">Graph</div>
+                <hr>
 
-          <div class="panel-body">
-            <canvas id="chart-graph" width="400" height="250"></canvas>
-          </div>
+                <div class="panel-body">
+                    <canvas id="chart-graph" width="400" height="250"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="col-md-6">
-        <div class="panel">
-          <div class="panel-title">Bars</div>
-          <hr>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-title">Bars</div>
+                <hr>
 
-          <div class="panel-body">
-            <canvas id="chart-bars" width="400" height="250"></canvas>
-          </div>
+                <div class="panel-body">
+                    <canvas id="chart-bars" width="400" height="250"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
-        <div class="panel">
-          <div class="panel-title">Radar</div>
-          <hr>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-title">Radar</div>
+                <hr>
 
-          <div class="panel-body">
-            <canvas id="chart-radar" width="400" height="250"></canvas>
-          </div>
+                <div class="panel-body">
+                    <canvas id="chart-radar" width="400" height="250"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="col-md-6">
-        <div class="panel">
-          <div class="panel-title">Polar Area</div>
-          <hr>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-title">Polar Area</div>
+                <hr>
 
-          <div class="panel-body">
-            <canvas id="chart-polar-area" width="400" height="250"></canvas>
-          </div>
+                <div class="panel-body">
+                    <canvas id="chart-polar-area" width="400" height="250"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
-        <div class="panel">
-          <div class="panel-title">Pie</div>
-          <hr>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-title">Pie</div>
+                <hr>
 
-          <div class="panel-body">
-            <canvas id="chart-pie" width="400" height="250"></canvas>
-          </div>
+                <div class="panel-body">
+                    <canvas id="chart-pie" width="400" height="250"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="col-md-6">
-        <div class="panel">
-          <div class="panel-title">Doughnut</div>
-          <hr>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-title">Doughnut</div>
+                <hr>
 
-          <div class="panel-body">
-            <canvas id="chart-doughnut" width="400" height="250"></canvas>
-          </div>
+                <div class="panel-body">
+                    <canvas id="chart-doughnut" width="400" height="250"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <!-- ==============================================================================
-  |
-  |  SCRIPTS
-  |
-  =============================================================================== -->
-  <script type="text/javascript">
-      // -----------------------------------------------------------------------------------------
-      // Initialize
-      require(['jquery'], function($) {
-          pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-      });
-  </script>
+<!-- ==============================================================================
+|
+|  SCRIPTS
+|
+=============================================================================== -->
+<script type="text/javascript">
+    // -----------------------------------------------------------------------------------------
+    // Initialize
+    require(['jquery'], function($) {
+        pxCom.setLocation('[[${programId}]]', '[[${menuId}]]');
+    });
+</script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     // -------------------------------------------------------------------------
     // Initialize DEMO
 
     require(['jquery', 'px/pixeladmin', 'px/plugins/px-nav', 'px/plugins/px-navbar', 'px/plugins/px-footer', 'px/extensions/perfect-scrollbar.jquery'], function($) {
-      var file = String(document.location).split('/').pop();
+        var file = String(document.location).split('/').pop();
 
-      // Remove unnecessary file parts
-      file = file.replace(/(\.html).*/i, '$1');
+        // Remove unnecessary file parts
+        file = file.replace(/(\.html).*/i, '$1');
 
-      if (!/.html$/i.test(file)) {
-        file = 'index.html';
-      }
+        if (!/.html$/i.test(file)) {
+            file = 'index.html';
+        }
 
-      // Activate current nav item
-      $('body > .px-nav')
-        .find('.px-nav-item > a[href="' + file + '"]')
-        .parent()
-        .addClass('active');
+        // Activate current nav item
+        $('body > .px-nav')
+            .find('.px-nav-item > a[href="' + file + '"]')
+            .parent()
+            .addClass('active');
 
-      $('body > .px-nav').pxNav();
-      $('body > .px-footer').pxFooter();
+        $('body > .px-nav').pxNav();
+        $('body > .px-footer').pxFooter();
 
-      $('#navbar-notifications').perfectScrollbar();
-      $('#navbar-messages').perfectScrollbar();
+        $('#navbar-notifications').perfectScrollbar();
+        $('#navbar-messages').perfectScrollbar();
     });
-  </script>
+</script>
 
-  <script>
+<script>
     // -------------------------------------------------------------------------
     // Initialize line chart
 
     require(['px/util', '/js/common/common.js', 'px-libs/Chart'], function(pxUtil, pxDemo, Chart) {
-      var colors = pxDemo.getRandomColors(2);
+        var colors = pxDemo.getRandomColors(2);
 
-      var data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label:           'My First dataset',
-          data:            [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
-          borderWidth:     1,
-          backgroundColor: pxUtil.hexToRgba(colors[0], 0.3),
-          borderColor:     colors[0],
-          borderDash:      [5, 5],
-          fill: false
-        }, {
-          label:           'My Second dataset',
-          data:            [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
-          borderWidth:     1,
-          backgroundColor: pxUtil.hexToRgba(colors[1], 0.3),
-          borderColor:     colors[1],
-        }],
-      };
+        var data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                borderWidth: 1,
+                backgroundColor: pxUtil.hexToRgba(colors[0], 0.3),
+                borderColor: colors[0],
+                borderDash: [5, 5],
+                fill: false
+            }, {
+                label: 'My Second dataset',
+                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                borderWidth: 1,
+                backgroundColor: pxUtil.hexToRgba(colors[1], 0.3),
+                borderColor: colors[1]
+            }]
+        };
 
-      new Chart(document.getElementById('chart-graph').getContext("2d"), {
-        type: 'line',
-        data: data,
-      });
+        new Chart(document.getElementById('chart-graph').getContext("2d"), {
+            type: 'line',
+            data: data
+        });
     });
 
     // -------------------------------------------------------------------------
     // Initialize bar chart
 
     require(['px/util', '/js/common/common.js', 'px-libs/Chart'], function(pxUtil, pxDemo, Chart) {
-      var colors = pxDemo.getRandomColors(2);
+        var colors = pxDemo.getRandomColors(2);
 
-      var data = {
-        labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
-        datasets: [{
-          label:           '2010 customers #',
-          data:            [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
-          borderWidth:     1,
-          backgroundColor: pxUtil.hexToRgba(colors[0], 0.3),
-          borderColor:     colors[0],
-        }, {
-          label:           '2014 customers #',
-          data:            [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
-          borderWidth:     1,
-          backgroundColor: pxUtil.hexToRgba(colors[1], 0.3),
-          borderColor:     colors[1],
-        }],
-      };
+        var data = {
+            labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
+            datasets: [{
+                label: '2010 customers #',
+                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                borderWidth: 1,
+                backgroundColor: pxUtil.hexToRgba(colors[0], 0.3),
+                borderColor: colors[0]
+            }, {
+                label: '2014 customers #',
+                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                borderWidth: 1,
+                backgroundColor: pxUtil.hexToRgba(colors[1], 0.3),
+                borderColor: colors[1]
+            }]
+        };
 
-      new Chart(document.getElementById('chart-bars').getContext("2d"), {
-        type: 'bar',
-        data: data,
-      });
+        new Chart(document.getElementById('chart-bars').getContext("2d"), {
+            type: 'bar',
+            data: data
+        });
     });
 
     // -------------------------------------------------------------------------
     // Initialize radar chart
 
     require(['px/util', '/js/common/common.js', 'px-libs/Chart'], function(pxUtil, pxDemo, Chart) {
-      var colors = pxDemo.getRandomColors(2);
+        var colors = pxDemo.getRandomColors(2);
 
-      var data = {
-        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
-        datasets: [{
-          label:                     'My First dataset',
-          backgroundColor:           pxUtil.hexToRgba(colors[0], 0.2),
-          borderColor:               colors[0],
-          pointBackgroundColor:      colors[0],
-          pointBorderColor:          '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor:     colors[0],
-          data:                      [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
-          borderWidth:               1,
-        }, {
-          label:                     'My Second dataset',
-          backgroundColor:           pxUtil.hexToRgba(colors[1], 0.2),
-          borderColor:               colors[1],
-          pointBackgroundColor:      colors[1],
-          pointBorderColor:          '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor:     colors[1],
-          data:                      [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
-          borderWidth:               1,
-        }],
-      }
+        var data = {
+            labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: pxUtil.hexToRgba(colors[0], 0.2),
+                borderColor: colors[0],
+                pointBackgroundColor: colors[0],
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: colors[0],
+                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                borderWidth: 1
+            }, {
+                label: 'My Second dataset',
+                backgroundColor: pxUtil.hexToRgba(colors[1], 0.2),
+                borderColor: colors[1],
+                pointBackgroundColor: colors[1],
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: colors[1],
+                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                borderWidth: 1
+            }]
+        }
 
-      new Chart(document.getElementById('chart-radar').getContext("2d"), {
-        type: 'radar',
-        data: data,
-      });
+        new Chart(document.getElementById('chart-radar').getContext("2d"), {
+            type: 'radar',
+            data: data
+        });
     });
 
     // -------------------------------------------------------------------------
     // Initialize polar area chart
 
     require(['/js/common/common.js', 'px-libs/Chart'], function(pxDemo, Chart) {
-      var colors = pxDemo.getRandomColors(2);
+        var colors = pxDemo.getRandomColors(2);
 
-      var data = {
-        datasets: [{
-          data:            [ pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5) ],
-          backgroundColor: [ '#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB' ],
-          label:           'My dataset',
-        }],
-        labels: [ 'Red', 'Green', 'Yellow', 'Grey', 'Blue' ]
-      };
+        var data = {
+            datasets: [{
+                data: [pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5)],
+                backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
+                label: 'My dataset'
+            }],
+            labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue']
+        };
 
-      new Chart(document.getElementById('chart-polar-area').getContext("2d"), {
-        type: 'polarArea',
-        data: data,
-      });
+        new Chart(document.getElementById('chart-polar-area').getContext("2d"), {
+            type: 'polarArea',
+            data: data
+        });
     });
 
     // -------------------------------------------------------------------------
     // Initialize pie chart
 
     require(['/js/common/common.js', 'px-libs/Chart'], function(pxDemo, Chart) {
-      var data = {
-        labels: [ 'Red', 'Blue', 'Yellow' ],
-        datasets: [{
-          data:                 [ pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50) ],
-          backgroundColor:      [ '#FF6384', '#36A2EB', '#FFCE56' ],
-          hoverBackgroundColor: [ '#FF6384', '#36A2EB', '#FFCE56' ],
-        }],
-      };
+        var data = {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                data: [pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50)],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        };
 
-      new Chart(document.getElementById('chart-pie').getContext("2d"), {
-        type: 'pie',
-        data: data,
-      });
+        new Chart(document.getElementById('chart-pie').getContext("2d"), {
+            type: 'pie',
+            data: data
+        });
     });
 
     // -------------------------------------------------------------------------
     // Initialize doughnut chart
 
     require(['/js/common/common.js', 'px-libs/Chart'], function(pxDemo, Chart) {
-      var data = {
-        labels: [ 'Red', 'Blue', 'Yellow' ],
-        datasets: [{
-          data:                 [ pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50) ],
-          backgroundColor:      [ '#FF6384', '#36A2EB', '#FFCE56' ],
-          hoverBackgroundColor: [ '#FF6384', '#36A2EB', '#FFCE56' ],
-        }],
-      };
+        var data = {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                data: [pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50)],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        };
 
-      new Chart(document.getElementById('chart-doughnut').getContext("2d"), {
-        type: 'doughnut',
-        data: data,
-      });
+        new Chart(document.getElementById('chart-doughnut').getContext("2d"), {
+            type: 'doughnut',
+            data: data
+        });
     });
-  </script>
+</script>
 </program>
 </body>
 </html>
