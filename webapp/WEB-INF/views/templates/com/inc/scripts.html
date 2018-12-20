@@ -32,7 +32,7 @@
     <script type="text/javascript">
         // -------------------------------------------------------------------------
         // Initialize sidebar
-        require(['jquery', '/js/common/common.js', 'px-libs/toastr', 'px/plugins/px-sidebar', 'px-libs/bootstrap3-typeahead'], function($, pxCom, toastr) {
+        require(['jquery', '/js/common.js', 'px-libs/toastr', 'px/plugins/px-sidebar', 'px-libs/bootstrap3-typeahead'], function($, pxCom, toastr) {
             pxCom.initializeSidebar();
 
             $('#px-sidebar').pxSidebar();
@@ -98,7 +98,7 @@
     <script>
         // -------------------------------------------------------------------------
         // Initialize uploads chart
-        require(['/js/common/common.js', 'px-libs/morris'], function(pxCom, Morris) {
+        require(['/js/common.js', 'px-libs/morris'], function(pxCom, Morris) {
             var data = [
                 {day: '2014-03-10', v: pxCom.getRandomData(20, 5)},
                 {day: '2014-03-11', v: pxCom.getRandomData(20, 5)},
@@ -130,7 +130,7 @@
 
         // -------------------------------------------------------------------------
         // Initialize easy pie charts
-        require(['jquery', '/js/common/common.js', 'jquery.easy-pie-chart/jquery.easypiechart'], function($, pxCom) {
+        require(['jquery', '/js/common.js', 'jquery.easy-pie-chart/jquery.easypiechart'], function($, pxCom) {
             var colors = pxCom.getRandomColors();
 
             var config = {
@@ -173,7 +173,7 @@
 
         // -------------------------------------------------------------------------
         // Initialize retweets graph
-        require(['jquery', '/js/common/common.js', 'px/plugins/px-sparkline'], function($, pxCom) {
+        require(['jquery', '/js/common.js', 'px/plugins/px-sparkline'], function($, pxCom) {
             var data = [
                 pxCom.getRandomData(300, 100),
                 pxCom.getRandomData(300, 100),
@@ -204,7 +204,7 @@
 
         // -------------------------------------------------------------------------
         // Initialize Monthly visitor statistics graph
-        require(['jquery', '/js/common/common.js', 'px/plugins/px-sparkline'], function($, pxCom) {
+        require(['jquery', '/js/common.js', 'px/plugins/px-sparkline'], function($, pxCom) {
             var data = [
                 pxCom.getRandomData(300, 100),
                 pxCom.getRandomData(300, 100),
