@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
@@ -59,6 +60,13 @@ public class ExceptionController {
     public String handleAccessDeniedException(Exception e) {
     	log.debug("AccessDenied" + e);
         return "accessDeniedPage";
+    }
+    
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String usernameNotFoundException(Exception e) {
+        log.debug("UsernameNotFound" + e);
+        return "login";
     }
     
     /**

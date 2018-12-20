@@ -5,8 +5,14 @@
     <nav class="navbar px-navbar">
         <!-- Header -->
         <div class="navbar-header">
-            <a class="navbar-brand px-brand" href="index.html"><span class="px-logo bg-primary"><span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span><span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span><span
-                    class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span></span>HamiAdmin</a>
+            <a class="navbar-brand px-brand" href="/">
+	            <span class="px-logo bg-primary">
+		            <span class="px-logo-1"></span><span class="px-logo-2"></span><span class="px-logo-3"></span>
+		            <span class="px-logo-4"></span><span class="px-logo-5"></span><span class="px-logo-6"></span>
+		            <span class="px-logo-7"></span><span class="px-logo-8"></span><span class="px-logo-9"></span>
+                </span>
+                HamiAdmin
+            </a>
         </div>
 
         <!-- Navbar togglers -->
@@ -79,7 +85,9 @@
                             </ul>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#">Overview</a></li>
+                        <li><a href="https://uxpowered.com/products/pixeladmin/v232/" target="blank">Preview</a></li>
+                        <li><a href="https://uxpowered.com/products/pixeladmin/v232/requirejs_demo/index.html" target="blank">Preview (RequireJs)</a></li>
+                        <li><a href="https://mighty-ravine-84144.herokuapp.com/docs/index.html" target="blank">Help Doc</a></li>
                     </ul>
                 </li>
             </ul>
@@ -216,11 +224,11 @@
                         <span class="hidden-md" sec:authentication="name">Andy</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="pages-profile-v2.html"><span class="label label-warning pull-xs-right"><i class="fa fa-asterisk"></i></span>Profile</a></li>
-                        <li><a href="pages-account.html">Account</a></li>
+                        <li><a href="#" pgmid="10009" menuid="11000000" tabNm="Account" onclick="pxCom.pgmOpen(this)"><span class="label label-warning pull-xs-right"><i class="fa fa-asterisk"></i></span>Profile</a></li>
+                        <li><a href="#" pgmid="10009" menuid="11000000" tabNm="Account" onclick="pxCom.pgmOpen(this)">Account</a></li>
                         <li><a href="pages-messages-list.html"><i class="dropdown-icon fa fa-envelope"></i>&nbsp;&nbsp;Messages</a></li>
                         <li class="divider"></li>
-                        <li><a href="pages-signin-v1.html"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+                        <li><a href="/logout" ><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
                     </ul>
                 </li>
             </ul>

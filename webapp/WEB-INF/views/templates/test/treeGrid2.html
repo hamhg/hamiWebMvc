@@ -28,7 +28,10 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> TreeGrid</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">TreeGrid</span></span>
+        </ol>
     </div>
     <div id="content" class="page-header">
         <div class="row">
@@ -56,7 +59,7 @@
 </div>
 <div id="ExampleContent" class="Example ExampleContent">
     <div th:id="'tgrid_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
-        <script> TreeGrid('<bdo Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </bdo>',"tgrid_[[${programId}]]"); </script>
+        <script> TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tgrid_[[${programId}]]"); </script>
     </div>
 </div>
 <script>

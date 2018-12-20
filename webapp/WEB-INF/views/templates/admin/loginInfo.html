@@ -121,14 +121,12 @@
                 <h3>로그인정보</h3>
                 <div class="ibox-btn">
                     <a href="#" type="button" class="btn btn-sm btn-primary fa fa-save pull-right"> 저장</a>
-                    <a href="#" type="button" class="btn btn-sm fa fa-plus pull-right"> 추가</a>
+                    <a href="#" type="button" class="btn btn-sm ion-plus-round pull-right"> 추가</a>
                 </div>
             </div>
         </div>
         <div id="ExampleContent" class="Example ExampleContent">
-            <div th:id="'tg_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
-                <script> TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/conf/User.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tg_[[${programId}]]"); </script>
-            </div>
+            <div th:id="'tg_'+${programId}" style="width:100%;height:700px;"></div>
         </div>
     </div>
     <script>
@@ -136,6 +134,7 @@
         // Initialize
         require(['jquery'], function($) {
             pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+            TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/conf/User.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tg_[[${programId}]]"); 
         });
 
         require(['jquery', 'px/extensions/bootstrap-datepicker'], function($) {

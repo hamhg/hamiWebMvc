@@ -84,6 +84,8 @@ CONNECT BY PRIOR AUTH_MENU.MENU_ID = AUTH_MENU.PAR_MENU_ID
 					   AND AUTH_MENU.PROFL_ID = MENU.PROFL_ID   
 					   AND USER_AUTH.C_CD = :C_CD
 					   AND USER_AUTH.USER_ID = :USER_ID
+					UNION 
+                    SELECT '10009' FROM DUAL
                     )
 ]]></sql>
 

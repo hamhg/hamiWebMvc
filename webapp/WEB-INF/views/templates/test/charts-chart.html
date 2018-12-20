@@ -4,7 +4,10 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> Charts</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">Charts</span></span>
+        </ol>
     </div>
 
     <div class="row m-t-2">
@@ -163,13 +166,23 @@
             labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
             datasets: [{
                 label: '2010 customers #',
-                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                data: [pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(),
+                	pxDemo.getRandomData(),
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData()],
                 borderWidth: 1,
                 backgroundColor: pxUtil.hexToRgba(colors[0], 0.3),
                 borderColor: colors[0]
             }, {
                 label: '2014 customers #',
-                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                data: [pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(),
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData()],
                 borderWidth: 1,
                 backgroundColor: pxUtil.hexToRgba(colors[1], 0.3),
                 borderColor: colors[1]
@@ -198,7 +211,13 @@
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: colors[0],
-                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                data: [pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData()],
                 borderWidth: 1
             }, {
                 label: 'My Second dataset',
@@ -208,7 +227,13 @@
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: colors[1],
-                data: [pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData(), pxDemo.getRandomData()],
+                data: [pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(),
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData(), 
+                	pxDemo.getRandomData()],
                 borderWidth: 1
             }]
         }
@@ -227,7 +252,11 @@
 
         var data = {
             datasets: [{
-                data: [pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5), pxDemo.getRandomData(20, 5)],
+                data: [pxDemo.getRandomData(20, 5), 
+                	pxDemo.getRandomData(20, 5), 
+                	pxDemo.getRandomData(20, 5), 
+                	pxDemo.getRandomData(20, 5), 
+                	pxDemo.getRandomData(20, 5)],
                 backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
                 label: 'My dataset'
             }],
@@ -247,7 +276,9 @@
         var data = {
             labels: ['Red', 'Blue', 'Yellow'],
             datasets: [{
-                data: [pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50)],
+                data: [pxDemo.getRandomData(300, 50), 
+                	pxDemo.getRandomData(300, 50), 
+                	pxDemo.getRandomData(300, 50)],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
                 hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
             }]
@@ -266,7 +297,9 @@
         var data = {
             labels: ['Red', 'Blue', 'Yellow'],
             datasets: [{
-                data: [pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50), pxDemo.getRandomData(300, 50)],
+                data: [pxDemo.getRandomData(300, 50), 
+                	pxDemo.getRandomData(300, 50), 
+                	pxDemo.getRandomData(300, 50)],
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
                 hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
             }]

@@ -3,8 +3,33 @@
 <body>
 <th:block th:fragment="scripts">
     <!-- ScreenFull -->
-    <script src="/libs/screenfull/screenfull.js" th:src="@{/libs/screenfull/screenfull.js}"></script>
-    <script>
+    <script type="text/javascript">
+        function toggleFullScreen() {
+    	    if (!document.fullscreenElement &&    // alternative standard method
+    	        !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+	    	    if (document.documentElement.requestFullscreen) {
+	    	        document.documentElement.requestFullscreen();
+	    	    } else if (document.documentElement.msRequestFullscreen) {
+	    	        document.documentElement.msRequestFullscreen();
+	    	    } else if (document.documentElement.mozRequestFullScreen) {
+	    	        document.documentElement.mozRequestFullScreen();
+	    	    } else if (document.documentElement.webkitRequestFullscreen) {
+	    	        document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+	    	    }
+    	    } else {
+	    	    if (document.exitFullscreen) {
+	    	        document.exitFullscreen();
+	    	    } else if (document.msExitFullscreen) {
+	    	        document.msExitFullscreen();
+	    	    } else if (document.mozCancelFullScreen) {
+	    	        document.mozCancelFullScreen();
+	    	    } else if (document.webkitExitFullscreen) {
+	    	        document.webkitExitFullscreen();
+	    	    }
+    	    }
+    	}
+    </script>
+    <script type="text/javascript">
         // -------------------------------------------------------------------------
         // Initialize sidebar
         require(['jquery', '/js/common/common.js', 'px-libs/toastr', 'px/plugins/px-sidebar', 'px-libs/bootstrap3-typeahead'], function($, pxCom, toastr) {

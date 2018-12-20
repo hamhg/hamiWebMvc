@@ -4,16 +4,15 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> Boxes</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">Boxes</span></span>
+        </ol>
     </div>
 
     <div class="page-wide-block p-a-4 bg-white font-size-15">
-        <p>
-            PixelAdmin's <span class="font-weight-semibold">boxes</span> are
-            flexible tool to build content blocks. You can create boxes without writing
-            any extra styles. </p>
-        <p>
-            <span class="font-weight-semibold">NOTE:</span> These examples uses <a href="utilities.html">the utility classes</a>. </p>
+        <p>PixelAdmin's <span class="font-weight-semibold">boxes</span> are flexible tool to build content blocks. You can create boxes without writing any extra styles. </p>
+        <p> <span class="font-weight-semibold">NOTE:</span> These examples uses <a href="utilities.html">the utility classes</a>. </p>
         <button id="equalize-heights" class="btn">Equalize heights</button>
     </div>
 
@@ -34,7 +33,7 @@
                                 32 messages
                                 <i class="box-icon pull-xs-right fa fa-envelope-o"></i>
                             </a>
-                        </div>
+                        </div>s
                         <div class="box-row">
                             <a href="#" class="box-cell p-a-1 valign-middle bg-success darken">
                                 9 issues
@@ -56,7 +55,6 @@
             <a href="#" class="box bg-danger">
                 <div class="box-cell p-a-3 valign-middle">
                     <i class="box-bg-icon middle right ion-ios-chatbubble-outline"></i>
-
                     <span class="font-size-24"><strong>124</strong></span><br>
                     <span class="font-size-15">New comments today</span>
                 </div>
@@ -425,16 +423,13 @@
             $('.box-examples').each(function() {
                 var maxHeight = 0;
 
-                $(this)
-                    .find('.box')
-                    .each(function() {
-                        var height = $(this).height();
+                $(this).find('.box').each(function() {
+                    var height = $(this).height();
 
-                        if (height > maxHeight) {
-                            maxHeight = height;
-                        }
-                    })
-                    .height(maxHeight);
+                    if (height > maxHeight) {
+                        maxHeight = height;
+                    }
+                }).height(maxHeight);
             });
         });
     });

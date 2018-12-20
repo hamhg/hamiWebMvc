@@ -15,7 +15,10 @@
 <program id="${programId}">
 <div class="tab-pane" id="aj_wrap">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> Ajax</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">Ajax</span></span>
+        </ol>
     </div>
     <div id="content" class="page-header">
         <div class="row">

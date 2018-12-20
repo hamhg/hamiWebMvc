@@ -5,7 +5,10 @@
 <div class="bg-dark dk" id="wrap">
     <div id="content" class="tab-pane">
         <div class="row">
-            <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+	        <ol class="breadcrumb page-breadcrumb">
+	            <h1><i class="ion-android-document"></i> OJ Table</h1>
+	            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">OJ Table</span></span>
+	        </ol>
         </div>
         <div id="content" class="page-header">
             <div class="row">
@@ -38,21 +41,21 @@
                           data='[[datasource]]'
                           edit-mode='rowEdit'
                           columns='[{"headerText": "Department Id",
-                                               "headerStyle": "min-width: 8em; max-width: 8em; width: 8em",
-                                               "headerClassName": "oj-helper-text-align-end",
-                                               "style": "min-width: 8em; max-width: 8em; width: 8em",
-                                               "className": "oj-helper-text-align-end oj-read-only",
-                                               "sortProperty": "DepartmentId"},
-                                              {"headerText": "Department Name",
-                                               "headerStyle": "min-width: 8em; max-width: 8em; width: 8em",
-                                               "style": "min-width: 8em; max-width: 8em; width: 8em",
-                                               "sortProperty": "DepartmentName"},
-                                              {"headerText": "Location Id",
-                                               "headerStyle": "min-width: 12em; max-width: 12em; width: 12em",
-                                               "headerClassName": "oj-helper-text-align-end",
-                                               "style": "min-width: 12em; max-width: 12em; width: 12em",
-                                               "className": "oj-helper-text-align-end",
-                                               "sortProperty": "LocationId"}]'
+                                     "headerStyle": "min-width: 8em; max-width: 8em; width: 8em",
+                                     "headerClassName": "oj-helper-text-align-end",
+                                     "style": "min-width: 8em; max-width: 8em; width: 8em",
+                                     "className": "oj-helper-text-align-end oj-read-only",
+                                     "sortProperty": "DepartmentId"},
+                                    {"headerText": "Department Name",
+                                     "headerStyle": "min-width: 8em; max-width: 8em; width: 8em",
+                                     "style": "min-width: 8em; max-width: 8em; width: 8em",
+                                     "sortProperty": "DepartmentName"},
+                                    {"headerText": "Location Id",
+                                     "headerStyle": "min-width: 12em; max-width: 12em; width: 12em",
+                                     "headerClassName": "oj-helper-text-align-end",
+                                     "style": "min-width: 12em; max-width: 12em; width: 12em",
+                                     "className": "oj-helper-text-align-end",
+                                     "sortProperty": "LocationId"}]'
                           row-renderer='[[rowRenderer]]'>
                 </oj-table>
                 <br>

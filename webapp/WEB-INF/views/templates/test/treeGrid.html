@@ -28,7 +28,10 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> TreeGrid</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">TreeGrid</span></span>
+        </ol>
     </div>
     <div class="ibox">
         <div class="ibox-title">
@@ -64,8 +67,8 @@
                         <div class="input-group">
                             <input id="conCtrtId" name="conCtrtId" type="text" class="form-control input-sm" readonly/>
                             <span class="input-group-btn">
-                                    <button type="button" class="btn btn-sm"><i class="btn-icon fa fa-search"></i></button>
-                                </span>
+                                <button type="button" class="btn btn-sm"><i class="btn-icon fa fa-search"></i></button>
+                            </span>
                         </div>
                     </td>
                     <th>관리조직</th>
@@ -73,8 +76,8 @@
                         <div class="input-group type2">
                             <span class="w45p"><input type="text" id="condMngOrgId" class="form-control input-sm" readonly/></span>
                             <span class="input-group-btn">
-                                    <button id="btnOpenMngOrg" class="btn btn-sm" type="button"><i class="btn-icon fa fa-search"></i></button>
-                                </span>
+                                <button id="btnOpenMngOrg" class="btn btn-sm" type="button"><i class="btn-icon fa fa-search"></i></button>
+                            </span>
                             <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control input-sm" readonly /></span>
                         </div>
                     </td>
@@ -83,8 +86,8 @@
                         <div class="input-group type2">
                             <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control input-sm" readonly/></span>
                             <span class="input-group-btn">
-                                    <button id="btnOpenSalesOrg" class="btn btn-sm" role="button"><i class="btn-icon fa fa-search"></i></button>
-                                </span>
+                                <button id="btnOpenSalesOrg" class="btn btn-sm" role="button"><i class="btn-icon fa fa-search"></i></button>
+                            </span>
                             <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control input-sm" readonly /></span>
                         </div>
                     </td>
@@ -127,7 +130,7 @@
 </div>
 <div id="ExampleContent" class="Example ExampleContent">
     <div th:id="'tgrid_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
-        <script> TreeGrid('<bdo Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </bdo>',"tgrid_[[${programId}]]"); </script>
+        <script> TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tgrid_[[${programId}]]"); </script>
     </div>
 </div>
 <script>

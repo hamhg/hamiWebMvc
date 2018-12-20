@@ -20,13 +20,7 @@
         .spacing-example > div > div,
         .blocks-example {
             background: #ddd;
-            background: repeating-linear-gradient(
-                    45deg,
-                    #e0e0e0,
-                    #e0e0e0 10px,
-                    #ddd 10px,
-                    #ddd 20px
-            );
+            background: repeating-linear-gradient(45deg, #e0e0e0, #e0e0e0 10px, #ddd 10px, #ddd 20px);
         }
 
         .spacing-example > div > div > div {
@@ -106,7 +100,10 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> Utilities</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">Utilities</span></span>
+        </ol>
     </div>
     <div class="row m-t-2">
         <div class="col-md-12">
@@ -122,8 +119,7 @@
                 <hr>
 
                 <div class="panel-body">
-                    <p>
-                        The <code>.m-{side}-{size}</code> class set on the inner element: </p>
+                    <p>The <code>.m-{side}-{size}</code> class set on the inner element: </p>
 
                     <div class="row clearfix spacing-example">
                         <div class="col-sm-4">
@@ -177,8 +173,7 @@
                 <hr>
 
                 <div class="panel-body">
-                    <p>
-                        The <code>.p-{side}-{size}</code> class set on the outer element: </p>
+                    <p>The <code>.p-{side}-{size}</code> class set on the outer element: </p>
 
                     <div class="row clearfix spacing-example">
                         <div class="col-sm-4">
@@ -228,8 +223,7 @@
                 <hr>
 
                 <div class="panel-body">
-                    <p>
-                        Use the <code>.m-x-auto</code> class for horizontally centering fixed-width block level content: </p>
+                    <p>Use the <code>.m-x-auto</code> class for horizontally centering fixed-width block level content: </p>
 
                     <div class="row clearfix spacing-example">
                         <div class="col-xs-12">

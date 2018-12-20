@@ -4,7 +4,10 @@
 <program th:id="${programId}">
 <div class="tab-pane">
     <div class="row">
-        <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        <ol class="breadcrumb page-breadcrumb">
+            <h1><i class="ion-android-document"></i> Validation</h1>
+            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">Validation</span></span>
+        </ol>
     </div>
     <div class="panel m-t-2">
         <div class="panel-heading">
@@ -710,43 +713,16 @@
     require(['jquery'], function($) {
         pxCom.setLocation('[[${programId}]]', '[[${menuId}]]');
     });
+    
+    
 </script>
-
 <script>
     // -------------------------------------------------------------------------
     // Initialize DEMO sidebar
-    require(['jquery', '/js/common/common.js', 'px/plugins/px-sidebar'], function($, pxDemo) {
+    require(['jquery', '/js/common/common.js'], function($, pxDemo) {
         pxDemo.initializeDemo();
     });
-</script>
-
-<script type="text/javascript">
-    // -------------------------------------------------------------------------
-    // Initialize DEMO
-    require(['jquery', 'px/pixeladmin', 'px/plugins/px-nav', 'px/plugins/px-navbar', 'px/plugins/px-footer', 'px/extensions/perfect-scrollbar.jquery'], function($) {
-        var file = String(document.location).split('/').pop();
-
-        // Remove unnecessary file parts
-        file = file.replace(/(\.html).*/i, '$1');
-
-        if (!/.html$/i.test(file)) {
-            file = 'index.html';
-        }
-
-        // Activate current nav item
-        $('body > .px-nav')
-            .find('.px-nav-item > a[href="' + file + '"]')
-            .parent()
-            .addClass('active');
-
-        $('body > .px-nav').pxNav();
-        $('body > .px-footer').pxFooter();
-
-        $('#navbar-notifications').perfectScrollbar();
-        $('#navbar-messages').perfectScrollbar();
-    });
-</script>
-
+  </script>
 <script>
     // -------------------------------------------------------------------------
     // Initialize validation example

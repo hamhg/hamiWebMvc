@@ -124,7 +124,7 @@ public class LoginController {
             log.debug("isAuthenticated()==="+SecurityUtils.isAuthenticated());
         }
         model.addAttribute("logout", true);
-        return new ModelAndView("redirect:/login?logout=true", model);
+        return new ModelAndView("redirect:/", model);
     }
 
     @Bean

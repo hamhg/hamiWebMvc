@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     };
 
     private static final String[] UNAUTHORIZED_RESOURCE_LIST = new String[] {
-            "/","/login.html","/403.html","/favicon.ico"
+            "/","/login.html","/favicon.ico"
     };
 
     public CustomUserDetailsManager userDetailsService;
@@ -85,8 +85,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //@formatter:off
         http
             .authorizeRequests()
-                //.antMatchers("/**").access("hasRole('USER')")
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/**").access("hasRole('USER')")
+                //.antMatchers("/admin/**").access("hasRole('ADMIN')")
                 //.antMatchers("/wc/**").access("hasRole('ROLE_DBA')")
             .and()
                 .authorizeRequests()
