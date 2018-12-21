@@ -26,7 +26,7 @@ public class AjaxResponseBody {
 
     @Override
     public String toString() {
-        return "AjaxResponseResult [msg=" + msg + ", code=" + code + ", result=" + result + "]";
+        return "AjaxResponseResult [msg=" + msg + ", code=" + code + ", result=" + result.toString() + "]";
     }
 
 }

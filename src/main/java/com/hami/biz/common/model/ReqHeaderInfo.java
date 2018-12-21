@@ -11,7 +11,8 @@ import lombok.Data;
  *
  * @author HHG
  */
-public @Data class ReqHeaderInfo {
+@Data
+public class ReqHeaderInfo {
 
     String clientIp;
     String refererUri;

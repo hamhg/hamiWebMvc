@@ -132,12 +132,9 @@
     <script>
         // -----------------------------------------------------------------------------------------
         // Initialize
-        require(['jquery'], function($) {
-            pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-            TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/conf/User.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tg_[[${programId}]]"); 
-        });
-
         require(['jquery', 'px/extensions/bootstrap-datepicker'], function($) {
+            pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
+
             $('#datepicker-features').datepicker({
                 calendarWeeks:         true,
                 todayBtn:              'linked',
@@ -163,6 +160,82 @@
             $('#datepicker-range').datepicker();
             $('#datepicker-inline').datepicker();
         });
+        
+        // -----------------------------------------------------------------------------------------
+        // Grid init
+        var layout = {
+			Cfg: { 
+				id:"Json", 
+				MainCol:"C1",          <!-- Shows tree in column -->
+				//Sort:"C1",             <!-- Grid is sorted according to column A by default -->
+				ResizingMain:"3",      <!-- User can resize grid main tag in both directions -->
+				ExportType:"Expanded, Outline", <!-- Export setting, all rows will be exported expanded and will be used Excel outline -->
+				SuppressCfg:"1",       <!-- Configuration is not saved to cookies -->
+				ConstHeight:"1",       <!-- Grid will always fill its main tag -->
+				ReloadChanged:"1",     <!-- Grid can reload and automatically discard pending changes -->
+				Undo:"1",              <!-- Undo / redo is supported, Ctrl+Z / Ctrl+Y -->
+                ChildParts:"0",        <!-- Rendering children on background is disabled -->
+				SuppressMessage:"2",   <!-- Grid produces no informational message -->
+				CalculateSelected:"1", <!-- Recalculates rows after selection changed -->
+				LimitScroll:"20",      <!-- Responsive design, for small windows sets NoVScroll and NoHScroll -->
+				RowIndex:"No",         <!-- Adds row index column named 'No' -->
+				RowIndexWidth:"45",    <!-- displays visible row position -->
+                FullId:"1",            <!-- Tree ids contain parent's id  -->
+                UseButton: "1",
+                ShowButtons: "1",
+                IdPrefix: "R",
+                IdChars: "0123456789",
+				Style:"Standard", 
+				CSS:"*Styles/StandardGrid.css", 
+				Paging:3
+			},
+			Pager: { Visible: 0 },     <!-- displays visible row position -->
+			Cols: [
+				{ Name: "C1", MinWidth: "300", RelWidth:'100', Type: "Text", Align:"Left", CanEdit: "1", CanSort: '1' },
+				{ Name: "C2", Width: "200", Type: "Text", Align:"Left" },
+				{ Name: "C3", Width: "200", Type: "Int", Align:"Right" },
+				{ Name: "C4", Width: "200", Type: "Select", Align:"Center", Defaults: "||<option value=01>Comp</option>|<option value=02>Access</option>|<option value=03>Mon</option>|<option value=04>Print</option>|<option value=05>Soft</option>", EmptyValue:":: Select ::" },
+				{ Name: "C5", Width: "200", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+			    { Name: "C6", Width: "200", Type: "Date", Align:"Center", Format: "hh:mm" },
+				{ Name: "C7", Width: "80", Type: "Bool", Align:"Center" },
+				{ Name: "id", Width: "80", Type: "Text", Align:"Center" }
+			],
+			Header: { 
+				C1: "소속", C1Align:"Center",
+				C2: "성명", C2Align:"Center",
+			    C3: "나이", C3Align:"Center",
+				C4: "유형", C4Align:"Center",
+				C5: "일자", C5Align:"Center",
+				C6: "시간", C6Align:"Center",
+				C7: "사용여부", C7Align:"Center",
+				id: "id"
+			},
+			Toolbar: {
+				Formula: '"전체:"+count(7)+", 조회:"+count(6)+", 신규:"+count("Row.Added==1",7)+", 삭제:"+count("Row.Deleted>0",7)+", 수정:"+count("Row.Changed==1",7)',
+				Indent: "0",
+				Outdent: "0"
+			}
+		}
+        
+        var data = {
+			Body: [
+				[
+					{ id:"R1", C1:"본부", C2:"김이사", C3:"45", C4:"", C5:"2000.01.01", C6:"", C7:"1" },
+					{ id:"R2", C1:"경영", C2:"이부장", C3:"42", C4:"Mon", C5:"2002.04.05", C6:"", C7:"1",
+						Items: [
+							{ id:"R3", C1:"총무", C2:"이차장", C3:"35", C4:"", C5:"2010.01.01", C6:"", C7:"" },
+							{ id:"R4", C1:"인사", C2:"강차장", C3:"37", C4:"", C5:"", C6:"", C7:"", 
+								Items: [
+									  { id:"R5", C1:"지원", C2:"김대리", C3:"30", C4:"", C5:"", C6:"", C7:"" }
+								]}
+						]}
+				]
+			],
+            Solid: [{}]
+		}
+        
+        TreeGrid( {Layout:{ Data: layout }, Data:{ Data: data }, Debug:"", Sync:"1" }, "tg_[[${programId}]]" );
+
         // -----------------------------------------------------------------------------------------
         // Shows the year 2005 only
         Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }

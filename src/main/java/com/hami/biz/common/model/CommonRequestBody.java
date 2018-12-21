@@ -11,7 +11,8 @@ import lombok.Data;
  *
  * @author HHG
  */
-public @Data class CommonRequestBody {
+@Data 
+public class CommonRequestBody {
 
     ServiceInfo serviceInfo;
     ReqHeaderInfo reqHeaderInfo; 

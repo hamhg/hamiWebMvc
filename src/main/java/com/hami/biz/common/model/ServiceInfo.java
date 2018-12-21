@@ -11,7 +11,8 @@ import lombok.Data;
  *
  * @author HHG
  */
-public @Data class ServiceInfo {
+@Data 
+public class ServiceInfo {
 
     String moduleId;
     String serviceId;

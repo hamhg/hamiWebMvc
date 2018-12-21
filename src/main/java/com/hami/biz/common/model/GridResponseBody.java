@@ -2,9 +2,11 @@ package com.hami.biz.common.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
+import java.util.List;
 import java.util.Map;
+
+import org.springframework.http.HttpStatus;
 
 /**
  * <pre>
@@ -15,24 +17,19 @@ import java.util.Map;
  *
  * @author HHG
  */
-@Data 
-public class CommonResponseBody {
+@Data
+public class GridResponseBody {
 
     @JsonView(JsonView.class)
     String msg;
     @JsonView(JsonView.class)
     HttpStatus code;
     @JsonView(JsonView.class)
-    Map<String, Object> systemHeader;
-    @JsonView(JsonView.class)
-    Map<String, Object> transactionHeader;
-    @JsonView(JsonView.class)
-    Map<String, Object> messageHeader;
-    @JsonView(JsonView.class)
-    Map<String, Object> resultData;
+    Map<String, Object> result;
 
     @Override
     public String toString() {
-        return "CommonResult { msg=" + msg + ", code=" + code + ", result=" + resultData + " }";
+        return "GridResponseResult [msg=" + msg + ", code=" + code + ", result=" + result.toString() + "]";
     }
+
 }
