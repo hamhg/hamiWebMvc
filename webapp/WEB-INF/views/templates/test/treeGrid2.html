@@ -1,128 +1,270 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
-<head>
-    <style>
-        /* Example shared styles */
-        .Example h1 { font:30px Arial; padding:5px 0px 5px 0px; margin:0px; text-align:center; }
-        .Example h2 { font:15px Arial; padding:0px; margin:0px 0px 10px 0px; text-align:center; color:#757575; }
-        .Example h3,.Example h4 { display:inline-block; font:bold 15px Arial; padding:0px 5px 0px 5px; border-radius:2px; color:black; margin:2px; font-style:normal; color:#333; }
-        .Example h3 { background:#EE9; border:1px solid #DD8; }
-        .Example h4 { background:#BDE; border:1px solid #ACD; }
-        .Example a { text-decoration:underline; }
-        .Example li { padding-bottom:8px; }
-        .Example ul { margin:6px 0px 0px 20px; font:13px Arial; }
-        .Example .Desc { margin:0px 5px 10px 5px; padding:10px; border:1px solid #dfdfdf; }
-        .Example .Desc > ul { margin-left:0px; padding:0px 0px 0px 15px; clear:both; }
-        .Example .Desc b { color:#0585B9; }
-        .Example .Path { font:normal 12px Arial; color:#0585B9; }
-        .Example .Path b { color:#D73938; }
-        .Example .Path u { text-decoration:none; color:black; font-weight:bold; padding:0px 2px 0px 2px; }
-        .Example .Path i { color:black; font-style:normal; font-weight:bold; }
-        .Example .Xml { margin-bottom:6px; font-size:12px; color:#757575; }
-        .Example .Border { margin:0px 5px 15px 5px; }
-        .Example .Main { }
-        .Example .Highlight { color:#0585B9; padding-bottom:5px; }
-    </style>
-</head>
-<body class="  ">
+<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<body>
 <program th:id="${programId}">
-<div class="tab-pane">
-    <div class="row">
-        <ol class="breadcrumb page-breadcrumb">
-            <h1><i class="ion-android-document"></i> TreeGrid</h1>
-            <span class="pull-right"><a href="#" onclick="pxCom.tabCheck('home')">Home</a> / <span class="active">TreeGrid</span></span>
-        </ol>
-    </div>
-    <div id="content" class="page-header">
+    <div class="tab-pane">
         <div class="row">
-            <div class="col-md-4 text-xs-center text-md-left text-nowrap">
-                <h1><i class="page-header-icon ion-ios-paper-outline"></i>tGrid</h1>
-            </div>
-
-            <hr class="page-wide-block visible-xs visible-sm">
-
-            <div class="col-xs-12 width-md-auto width-lg-auto width-xl-auto pull-md-right">
-                <a href="#" class="btn btn-primary btn-block"><span class="btn-label-icon left ion-plus-round"></span>Create project</a>
-            </div>
-
-            <!-- Spacer -->
-            <div class="m-b-2 visible-xs visible-sm clearfix"></div>
-
-            <form action="" class="page-header-form col-xs-12 col-md-4 pull-md-right">
-                <div class="input-group">
-                    <span class="input-group-addon b-a-0 font-size-16"><i class="ion-search"></i></span>
-                    <input type="text" placeholder="Search..." class="form-control p-l-0 b-a-0">
+            <ol class="breadcrumb page-breadcrumb"><li>Home</li></ol>
+        </div>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h3></h3>
+                <div class="ibox-btn">
+                    <button href="#" type="button" class="btn btn-sm btn-primary fa fa-search pull-right"> 조회</button>
                 </div>
-            </form>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-bordered table-search">
+                    <colgroup>
+                        <col width="8%">
+                        <col width="17%">
+                        <col width="8%">
+                        <col width="17%">
+                        <col width="8%">
+                        <col width="17%">
+                        <col width="8%">
+                        <col width="17%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>등록일자</th>
+                        <td>
+                            <div class="input-group input-daterange" id="datepicker-range">
+                                <input type="text" class="form-control input-sm" id="conRcptDateStrDt" name="conRcptDateStrDt" value=""/>
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="form-control input-sm" id="conRcptDateEndDt" name="conRcptDateEndDt" value="" />
+                            </div>
+                        </td>
+                        <th>아이디</th>
+                        <td>
+                            <div class="input-group">
+                                <input id="conCtrtId" name="conCtrtId" type="text" class="form-control input-sm" readonly/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm"><i class="btn-icon fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </td>
+                        <th>조직</th>
+                        <td>
+                            <div class="input-group type2">
+                                <span class="w45p"><input type="text" id="condMngOrgId" class="form-control input-sm" readonly/></span>
+                                <span class="input-group-btn">
+                                    <button id="btnOpenMngOrg" class="btn btn-sm" type="button"><i class="btn-icon fa fa-search"></i></button>
+                                </span>
+                                <span class="w55p"><input type="text" id="condMngOrgNm" class="form-control input-sm" readonly /></span>
+                            </div>
+                        </td>
+                        <th>소속</th>
+                        <td>
+                            <div class="input-group type2">
+                                <span class="w45p"><input type="text" id="condSalesOrgId" class="form-control input-sm" readonly/></span>
+                                <span class="input-group-btn">
+                                    <button id="btnOpenSalesOrg" class="btn btn-sm" role="button"><i class="btn-icon fa fa-search"></i></button>
+                                </span>
+                                <span class="w55p"><input type="text" id="condSalesOrgNm" class="form-control input-sm" readonly /></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>지역</th>
+                        <td>
+                            <select id="conBizCndtCd" name="conBizCndtCd" class="form-control input-sm">
+                                <option value="${bizCndtCdList.commCd}">:: 선택 ::</option>
+                            </select>
+                        </td>
+                        <th>성별</th>
+                        <td>
+                            <select id="conIndutyCd" name="conIndutyCd" class="form-control input-sm">
+                                <option value="">:: 선택 ::</option>
+                                <option value="1">업종1</option>
+                            </select>
+                        </td>
+                        <th>연락처</th>
+                        <td>
+                            <input id="conSvcCmpsId" name="conSvcCmpsId" type="text" class="form-control input-sm" />
+                        </td>
+                        <th>성명</th>
+                        <td>
+                            <input id="conCustNm" name="conCustNm" type="text" class="form-control input-sm" />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="ibox">
+            <div class="ibox-title">
+                <h3>로그인정보</h3>
+                <div class="ibox-btn">
+                    <a href="#" type="button" class="btn btn-sm btn-primary fa fa-save pull-right"> 저장</a>
+                    <a href="#" type="button" class="btn btn-sm ion-plus-round pull-right"> 추가</a>
+                </div>
+            </div>
+        </div>
+        <div id="ExampleContent" class="Example ExampleContent">
+            <div th:id="'tg_'+${programId}" style="width:100%;height:600px;"></div>
         </div>
     </div>
-</div>
-<div id="ExampleContent" class="Example ExampleContent">
-    <div th:id="'tgrid_'+${programId}" style="width:100%;height:700px;"> <!-- TreeGrid main div tag with id -->
-        <script> TreeGrid('<treegrid Sync="1" Debug="" Layout_Url="/libs/treeGrid/FirstDef.xml" Data_Url="/libs/treeGrid/FirstData.xml"> </treegrid>',"tgrid_[[${programId}]]"); </script>
-    </div>
-</div>
-<script>
-	// -----------------------------------------------------------------------------------------
-	// Initialize
-	require(['jquery'], function($) {
-	    pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
-	});
+    <script>
+        // -----------------------------------------------------------------------------------------
+        // Initialize
+        require(['jquery', 'px/extensions/bootstrap-datepicker'], function($) {
+            pxCom.setLocation('[[${programId}]]','[[${menuId}]]');
 
-    // -----------------------------------------------------------------------------------------
-    // Shows the year 2005 only
-    Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
+            $('#datepicker-features').datepicker({
+                calendarWeeks:         true,
+                todayBtn:              'linked',
+                daysOfWeekDisabled:    '1',
+                clearBtn:              true,
+                todayHighlight:        true,
+                multidate:             true,
+                daysOfWeekHighlighted: '1,2',
+                orientation:           'auto right',
 
-    // -----------------------------------------------------------------------------------------
-    // Custom event for searching
-    // Searches in orders with specified items
-    Grids.OnRowSearch = function(G,row,col,found,F,type){
-        if(type || G.SearchDefs!="") return found; // Only for "in orders with items" and default call
-        if(row.Def.Name=="Data") return -1;        // Only for orders
-        for(var r=row.firstChild;r;r=r.nextSibling) {
-            var found = F(r,col,1);                 // calls F(r,col,type=1)
-            if(!(found<=0)) return found;
+                beforeShowMonth: function(date) {
+                    if (date.getMonth() === 8) {
+                        return false;
+                    }
+                },
+
+                beforeShowYear: function(date){
+                    if (date.getFullYear() === 2014) {
+                        return false;
+                    }
+                }
+            });
+            $('#datepicker-range').datepicker();
+            $('#datepicker-inline').datepicker();
+        });
+
+        // -----------------------------------------------------------------------------------------
+        // Grid init
+        var layout = {
+            Cfg: {
+                id:"Json",
+                MainCol:"C1",          <!-- Shows tree in column -->
+                //Sort:"C1",             <!-- Grid is sorted according to column A by default -->
+                ResizingMain:"3",      <!-- User can resize grid main tag in both directions -->
+                ExportType:"Expanded, Outline", <!-- Export setting, all rows will be exported expanded and will be used Excel outline -->
+                SuppressCfg:"1",       <!-- Configuration is not saved to cookies -->
+                ConstHeight:"1",       <!-- Grid will always fill its main tag -->
+                ReloadChanged:"1",     <!-- Grid can reload and automatically discard pending changes -->
+                Undo:"1",              <!-- Undo / redo is supported, Ctrl+Z / Ctrl+Y -->
+                ChildParts:"0",        <!-- Rendering children on background is disabled -->
+                SuppressMessage:"2",   <!-- Grid produces no informational message -->
+                CalculateSelected:"1", <!-- Recalculates rows after selection changed -->
+                LimitScroll:"20",      <!-- Responsive design, for small windows sets NoVScroll and NoHScroll -->
+                RowIndex:"No",         <!-- Adds row index column named 'No' -->
+                RowIndexWidth:"45",    <!-- displays visible row position -->
+                FullId:"1",            <!-- Tree ids contain parent's id  -->
+                UseButton: "1",
+                ShowButtons: "1",
+                IdPrefix: "R",
+                IdChars: "0123456789",
+                Style:"Standard",
+                CSS:"*Styles/StandardGrid.css",
+                Paging:3
+            },
+            Pager: { Visible: 0 },     <!-- displays visible row position -->
+            Cols: [
+                { Name: "C1", MinWidth: "300", RelWidth:'100', Type: "Text", Align:"Left", CanEdit: "1", CanSort: '1' },
+                { Name: "C2", Width: "200", Type: "Text", Align:"Left" },
+                { Name: "C3", Width: "100", Type: "Int", Align:"Right" },
+                { Name: "C4", Width: "100", Type: "Select", Align:"Center", Defaults: "||<option value=01>Comp</option>|<option value=02>Access</option>|<option value=03>Mon</option>|<option value=04>Print</option>|<option value=05>Soft</option>", EmptyValue:":: Select ::" },
+                { Name: "C5", Width: "150", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+                { Name: "C6", Width: "100", Type: "Date", Align:"Center", Format: "hh:mm" },
+                { Name: "C7", Width: "120", Type: "Bool", Align:"Center" },
+                { Name: "id", Width: "80", Type: "Text", Align:"Center" }
+            ],
+            Header: {
+                C1: "소속", C1Align:"Center",
+                C2: "성명", C2Align:"Center",
+                C3: "나이", C3Align:"Center",
+                C4: "유형", C4Align:"Center",
+                C5: "일자", C5Align:"Center",
+                C6: "시간", C6Align:"Center",
+                C7: "사용여부", C7Align:"Center",
+                id: "id"
+            },
+            Toolbar: {
+                Formula: '"전체:"+count(7)+", 조회:"+count(6)+", 신규:"+count("Row.Added==1",7)+", 삭제:"+count("Row.Deleted>0",7)+", 수정:"+count("Row.Changed==1",7)',
+                Indent: "0",
+                Outdent: "0"
+            }
+        };
+
+        var data = {
+            Body: [
+                [
+                    { id:"R1", C1:"본부", C2:"김이사", C3:"45", C4:"", C5:"2000.01.01", C6:"", C7:"1" },
+                    { id:"R2", C1:"경영", C2:"이부장", C3:"42", C4:"Mon", C5:"2002.04.05", C6:"", C7:"1",
+                        Items: [
+                            { id:"R3", C1:"총무", C2:"이차장", C3:"35", C4:"", C5:"2010.01.01", C6:"", C7:"" },
+                            { id:"R4", C1:"인사", C2:"강차장", C3:"37", C4:"", C5:"", C6:"", C7:"",
+                                Items: [
+                                    { id:"R5", C1:"지원", C2:"김대리", C3:"30", C4:"", C5:"", C6:"", C7:"" }
+                                ]}
+                        ]}
+                ]
+            ]
+        };
+
+        TreeGrid( {Layout:{ Data: layout }, Data:{ Data: data }, Debug:"", Sync:"1" }, "tg_[[${programId}]]" );
+        $(".TSToolbarRow .TSSpaceWidthInner").html("");
+        // -----------------------------------------------------------------------------------------
+        // Shows the year 2005 only
+        Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
+
+        // -----------------------------------------------------------------------------------------
+        // Custom event for searching
+        // Searches in orders with specified items
+        Grids.OnRowSearch = function(G,row,col,found,F,type){
+            if(type || G.SearchDefs!="") return found; // Only for "in orders with items" and default call
+            if(row.Def.Name=="Data") return -1;        // Only for orders
+            for(var r=row.firstChild;r;r=r.nextSibling) {
+                var found = F(r,col,1);                 // calls F(r,col,type=1)
+                if(!(found<=0)) return found;
+            }
+            return 0;
         }
-        return 0;
-    }
-    // -----------------------------------------------------------------------------------------
-    // Creates popup right click menu to manipulate the row
-    Grids.OnGetMenu = function(G,row,col){
-        if(row.Fixed) return null;
-        var I = [], M = {Items:I};
-        I[I.length] = {Name:"Del",Text:row.Deleted?"Undelete row":"Delete row"};
-        I[I.length] = {Name:"Sel",Text:row.Selected?"Deselect row":"Select row"};
-        I[I.length] = {Name:"Cpy",Text:"Copy row"};
-        if(row.firstChild) I[I.length] = {Name:"CpyTree",Text:"Copy row tree"};
-        I[I.length] = {Name:"Add",Text:"Add new row"};
-        if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
-        if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
-        return M;
-    }
-    // -----------------------------------------------------------------------------------------
-    // Called after selecting item in the popup right click menu
-    Grids.OnContextMenu = function(G,row,col,N){
-        switch(N){
-            case "Del" : G.DeleteRow(row); break;
-            case "Sel" : G.SelectRow(row); break;
-            case "Cpy" : G.CopyRow(row,null,row); break;
-            case "CpyTree" : G.CopyRows([row],null,row,1); break;
-            case "Add" : G.AddRow(null,row,1); break;
-            case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
-            case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
+        // -----------------------------------------------------------------------------------------
+        // Creates popup right click menu to manipulate the row
+        Grids.OnGetMenu = function(G,row,col){
+            if(row.Fixed) return null;
+            var I = [], M = {Items:I};
+            I[I.length] = {Name:"Del",Text:row.Deleted?"Undelete row":"Delete row"};
+            I[I.length] = {Name:"Sel",Text:row.Selected?"Deselect row":"Select row"};
+            I[I.length] = {Name:"Cpy",Text:"Copy row"};
+            if(row.firstChild) I[I.length] = {Name:"CpyTree",Text:"Copy row tree"};
+            I[I.length] = {Name:"Add",Text:"Add new row"};
+            if(row.firstChild) I[I.length] = {Name:"Expand",Text:row.Expanded?"Collapse children":"Expand children"};
+            if(row.firstChild) I[I.length] = {Name:"Check",Text:Get(row,'X')?"Uncheck Used":"Check Used"};
+            return M;
         }
-    }
-    // -----------------------------------------------------------------------------------------
-    // Called when NoVScroll / NoHScroll is set automatically due small window size, disables the checkbox for manual change of NoVScroll / NoHScroll
-    Grids.OnLimitScroll = function(G,clr,noh,nov){
-        G.SetAttribute(G.Rows.Group,"Win","CanEdit",clr,1);
-        var tip = clr?"Disable grid scrollbars and use page scrollbars":"Used page scrollbars because browser window is too small to show this example with its own scrollbars";
-        G.SetAttribute(G.Rows.Group,"Win","Tip",tip,1);
-        G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
-    }
-    // -----------------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------------
+        // Called after selecting item in the popup right click menu
+        Grids.OnContextMenu = function(G,row,col,N){
+            switch(N){
+                case "Del" : G.DeleteRow(row); break;
+                case "Sel" : G.SelectRow(row); break;
+                case "Cpy" : G.CopyRow(row,null,row); break;
+                case "CpyTree" : G.CopyRows([row],null,row,1); break;
+                case "Add" : G.AddRow(null,row,1); break;
+                case "Expand" : if(row.Expanded) G.Collapse(row); else G.Expand(row); break;
+                case "Check" : G.SetValue(row,"X",!Get(row,'X'),1); break;
+            }
+        }
+        // -----------------------------------------------------------------------------------------
+        // Called when NoVScroll / NoHScroll is set automatically due small window size, disables the checkbox for manual change of NoVScroll / NoHScroll
+        Grids.OnLimitScroll = function(G,clr,noh,nov){
+            G.SetAttribute(G.Rows.Group,"Win","CanEdit",clr,1);
+            var tip = clr?"Disable grid scrollbars and use page scrollbars":"Used page scrollbars because browser window is too small to show this example with its own scrollbars";
+            G.SetAttribute(G.Rows.Group,"Win","Tip",tip,1);
+            G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
+        }
+        // -----------------------------------------------------------------------------------------
 
-</script>
+    </script>
 </program>
 </body>
 </html>

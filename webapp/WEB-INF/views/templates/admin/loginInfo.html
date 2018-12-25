@@ -1,30 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
-<head>
-    <style>
-        /* Example shared styles */
-        .Example h1 { font:30px Arial; padding:5px 0px 5px 0px; margin:0px; text-align:center; }
-        .Example h2 { font:15px Arial; padding:0px; margin:0px 0px 10px 0px; text-align:center; color:#757575; }
-        .Example h3,.Example h4 { display:inline-block; font:bold 15px Arial; padding:0px 5px 0px 5px; border-radius:2px; color:black; margin:2px; font-style:normal; color:#333; }
-        .Example h3 { background:#EE9; border:1px solid #DD8; }
-        .Example h4 { background:#BDE; border:1px solid #ACD; }
-        .Example a { text-decoration:underline; }
-        .Example li { padding-bottom:8px; }
-        .Example ul { margin:6px 0px 0px 20px; font:13px Arial; }
-        .Example .Desc { margin:0px 5px 10px 5px; padding:10px; border:1px solid #dfdfdf; }
-        .Example .Desc > ul { margin-left:0px; padding:0px 0px 0px 15px; clear:both; }
-        .Example .Desc b { color:#0585B9; }
-        .Example .Path { font:normal 12px Arial; color:#0585B9; }
-        .Example .Path b { color:#D73938; }
-        .Example .Path u { text-decoration:none; color:black; font-weight:bold; padding:0px 2px 0px 2px; }
-        .Example .Path i { color:black; font-style:normal; font-weight:bold; }
-        .Example .Xml { margin-bottom:6px; font-size:12px; color:#757575; }
-        .Example .Border { margin:0px 5px 15px 5px; }
-        .Example .Main { }
-        .Example .Highlight { color:#0585B9; padding-bottom:5px; }
-    </style>
-</head>
-<body class="  ">
+<body>
 <program th:id="${programId}">
     <div class="tab-pane">
         <div class="row">
@@ -126,7 +102,7 @@
             </div>
         </div>
         <div id="ExampleContent" class="Example ExampleContent">
-            <div th:id="'tg_'+${programId}" style="width:100%;height:700px;"></div>
+            <div th:id="'tg_'+${programId}" style="width:100%;height:600px;"></div>
         </div>
     </div>
     <script>
@@ -166,7 +142,7 @@
         var layout = {
 			Cfg: { 
 				id:"Json", 
-				MainCol:"C1",          <!-- Shows tree in column -->
+				//MainCol:"C1",          <!-- Shows tree in column -->
 				//Sort:"C1",             <!-- Grid is sorted according to column A by default -->
 				ResizingMain:"3",      <!-- User can resize grid main tag in both directions -->
 				ExportType:"Expanded, Outline", <!-- Export setting, all rows will be exported expanded and will be used Excel outline -->
@@ -191,54 +167,64 @@
 			},
 			Pager: { Visible: 0 },     <!-- displays visible row position -->
 			Cols: [
-				{ Name: "C1", MinWidth: "300", RelWidth:'100', Type: "Text", Align:"Left", CanEdit: "1", CanSort: '1' },
-				{ Name: "C2", Width: "200", Type: "Text", Align:"Left" },
-				{ Name: "C3", Width: "200", Type: "Int", Align:"Right" },
-				{ Name: "C4", Width: "200", Type: "Select", Align:"Center", Defaults: "||<option value=01>Comp</option>|<option value=02>Access</option>|<option value=03>Mon</option>|<option value=04>Print</option>|<option value=05>Soft</option>", EmptyValue:":: Select ::" },
-				{ Name: "C5", Width: "200", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
-			    { Name: "C6", Width: "200", Type: "Date", Align:"Center", Format: "hh:mm" },
-				{ Name: "C7", Width: "80", Type: "Bool", Align:"Center" },
-				{ Name: "id", Width: "80", Type: "Text", Align:"Center" }
+				{ Name: "LOGIN_ID", Width: "120", Type: "Text", Align:"Left", CanEdit: "1", CanSort: '1' },
+				{ Name: "USER_NM", MinWidth: "150", RelWidth:'100', Type: "Text", Align:"Left" },
+				{ Name: "USER_ID", Width: "120", Type: "Text", Align:"Left" },
+				{ Name: "STA_YMD", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+				{ Name: "END_YMD", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+			    { Name: "PASSWORD", Width: "150", Type: "Text", Align:"Left" },
+				{ Name: "PWD_U_DATE", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+				{ Name: "ENABLED", Width: "120", Type: "Bool", Align:"Center" },
+				{ Name: "LOGIN_DATE", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+				{ Name: "LOGIN_IP", Width: "160", Type: "Text", Align:"Center" },
+				{ Name: "ERR_CNT", Width: "90", Type: "Int", Align:"Center" },
+				{ Name: "LOCK_YN", Width: "100", Type: "Bool", Align:"Center" },
+				{ Name: "LOCK_DATE", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
+				{ Name: "SA_YN", Width: "100", Type: "Bool", Align:"Center" },
+				{ Name: "NOTE", Width: "300", Type: "Text", Align:"Center" }
 			],
-			Header: { 
-				C1: "소속", C1Align:"Center",
-				C2: "성명", C2Align:"Center",
-			    C3: "나이", C3Align:"Center",
-				C4: "유형", C4Align:"Center",
-				C5: "일자", C5Align:"Center",
-				C6: "시간", C6Align:"Center",
-				C7: "사용여부", C7Align:"Center",
-				id: "id"
+			Header: {
+                LOGIN_ID: "아이디", Align:"Center",
+                USER_NM: "계정명", Align:"Center",
+                USER_ID: "연결계정", Align:"Center",
+                STA_YMD: "시작일", Align:"Center",
+                END_YMD: "종료일", Align:"Center",
+                PASSWORD: "비밀번호", Align:"Center",
+                PWD_U_DATE: "비번변경일", Align:"Center",
+                ENABLED: "사용여부", Align:"Center",
+                LOGIN_DATE: "최종로그인", Align:"Center",
+                LOGIN_IP: "로그인IP", Align:"Center",
+                ERR_CNT: "오류횟수", Align:"Center",
+                LOCK_YN: "잠김여부", Align:"Center",
+                LOCK_DATE: "잠김일자", Align:"Center",
+                SA_YN: "관리자여부", Align:"Center",
+                NOTE: "비고", Align:"Center"
 			},
 			Toolbar: {
 				Formula: '"전체:"+count(7)+", 조회:"+count(6)+", 신규:"+count("Row.Added==1",7)+", 삭제:"+count("Row.Deleted>0",7)+", 수정:"+count("Row.Changed==1",7)',
 				Indent: "0",
 				Outdent: "0"
 			}
-		}
+		};
         
         var data = {
 			Body: [
-				[
+			    [
 					{ id:"R1", C1:"본부", C2:"김이사", C3:"45", C4:"", C5:"2000.01.01", C6:"", C7:"1" },
 					{ id:"R2", C1:"경영", C2:"이부장", C3:"42", C4:"Mon", C5:"2002.04.05", C6:"", C7:"1",
 						Items: [
 							{ id:"R3", C1:"총무", C2:"이차장", C3:"35", C4:"", C5:"2010.01.01", C6:"", C7:"" },
-							{ id:"R4", C1:"인사", C2:"강차장", C3:"37", C4:"", C5:"", C6:"", C7:"", 
+							{ id:"R4", C1:"인사", C2:"강차장", C3:"37", C4:"", C5:"", C6:"", C7:"",
 								Items: [
 									  { id:"R5", C1:"지원", C2:"김대리", C3:"30", C4:"", C5:"", C6:"", C7:"" }
 								]}
 						]}
-				]
-			],
-            Solid: [{}]
-		}
+                ]
+			]
+		};
         
-        TreeGrid( {Layout:{ Data: layout }, Data:{ Data: data }, Debug:"", Sync:"1" }, "tg_[[${programId}]]" );
-
-        // -----------------------------------------------------------------------------------------
-        // Shows the year 2005 only
-        Grids.OnUpdated = function(G){ G.FilterDateRange('I','1/1/2005~12/31/2005','Year',0); }
+        TreeGrid( {Layout:{ Data: layout }, Data:{ Data: data }, Debug:"", Sync:"1"}, "tg_[[${programId}]]" );
+        $(".TSToolbarRow .TSSpaceWidthInner").html("");
 
         // -----------------------------------------------------------------------------------------
         // Custom event for searching

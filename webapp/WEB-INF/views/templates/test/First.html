@@ -95,8 +95,7 @@
                 G.AddRow(null, row, 1);
                 break;
             case "Expand" :
-                if (row.Expanded) G.Collapse(row);
-                else G.Expand(row);
+                if (row.Expanded) G.Collapse(row); else G.Expand(row);
                 break;
             case "Check" :
                 G.SetValue(row, "X", !Get(row, 'X'), 1);
