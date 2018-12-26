@@ -10,7 +10,7 @@
             <div class="ibox-title">
                 <h3></h3>
                 <div class="ibox-btn">
-                    <button href="#" type="button" class="btn btn-sm btn-primary fa fa-search pull-right"> 조회</button>
+                    <button href="#" type="button" class="btn btn-sm btn-primary fa fa-search pull-right" onclick="doAction_${programId}('search01')"> 조회</button>
                 </div>
             </div>
             <div class="ibox-content">
@@ -160,46 +160,49 @@
         ];
 
         GridInit(grid01, "tg_[[${programId}]]", null);
+        doAction_[[${programId}]]('search01');
+
         
-        require(['jquery'], function($) {
-            var param = {
-                serviceInfo: {
-                    "RECV_SVC_CD": "UserInfo",
-                    "LANG_CD": "KO"
-                },
-                ds_search: {
-                    STA_YMD: $("#[[${programId}]] #schStaYmd").val(),
-                    END_YMD: $("#[[${programId}]] #schEndYmd").val(),
-                    USER_ID: $("#[[${programId}]] #schUserId").val(),
-                    GRP_CD: 'COM_CD'
-                }
-            };
+    function doAction_[[${programId}]](action){
+    	switch(action)
+    	  {
+    	    //조회
+    	    case "search01":
+    	        require(['jquery'], function($) {
+    	            var param = {
+    	                serviceInfo: {
+    	                    "RECV_SVC_CD": "UserInfo",
+    	                    "LANG_CD": "KO"
+    	                },
+    	                ds_search: {
+    	                    STA_YMD: $("#[[${programId}]] #schStaYmd").val(),
+    	                    END_YMD: $("#[[${programId}]] #schEndYmd").val(),
+    	                    USER_ID: $("#[[${programId}]] #schUserId").val(),
+    	                    GRP_CD: 'COM_CD'
+    	                }
+    	            };
+    	            
+    	            GridSearch("tg_[[${programId}]]", param);
+    	        });
+    	    	break;
+   	        //입력
+    	    case "insert01":
+    	    	break;
+    	    //복사
+    	    case "copy01":
+    	    break;
+    	    //저장
+    	    case "save01":
+    	    break;
+    	    //엑셀다운로드
+    	    case "excelDn01":
+    	    break;
+    	    //엑셀업로드
+    	    case "excelUp01":
+    	    break;
+    	  }
         	
-            $.ajax({
-                type: "POST",
-                contentType: "application/json",
-                url: "/doExcute",
-                data: JSON.stringify(param),
-                dataType: 'json',
-                timeout: 100000,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
-                },
-                success: function (data) {
-                    var gridData = [];
-	                    gridData[0] = data.resultData.ds_result;
-                    Grids["tg_[[${programId}]]"].Source.Data.Data.Body = gridData;
-                    Grids["tg_[[${programId}]]"].ReloadBody();
-                },
-                error: function (e) {
-                    console.log("ERROR: ", e);
-                },
-                done: function (e) {
-                    console.log("DONE");
-                    //enableSearchButton(true);
-                }
-            });
-        })
+    };
     </script>
 </program>
 </body>

@@ -149,3 +149,34 @@ function GridInit(layout, target, data){
         }
     });
 }
+
+function GridSearch(target, param){
+	require(['jquery'], function($) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/doExcute",
+            data: JSON.stringify(param),
+            dataType: 'json',
+            timeout: 100000,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
+            },
+            success: function (data) {
+                var gridData = [];
+                    gridData[0] = data.resultData.ds_result;
+                Grids[target].Source.Data.Data.Body = gridData;
+                Grids[target].ReloadBody();
+            },
+            error: function (e) {
+            	//console.log("ERROR: ", e);
+	            var msg = '조회 중 오류가 발생하였습니다! 시스템 운영자에게 문의 바랍니다.';
+	            var title = '';
+	            toastr['info'](msg, title, {positionClass: 'toast-bottom-full-width'});
+            },
+            done: function (e) {
+                console.log("DONE");
+            }
+        });
+    });
+}
