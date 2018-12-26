@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Statement version='1'>
+
+<sql id='search01'><![CDATA[
+SELECT * 
+  FROM TSYAU0001
+ WHERE C_CD = :C_CD
+ <#if LOGIN_ID?has_content>
+   AND T1.LOGIN_ID = :LOGIN_ID
+ </#if>
+ <#if USER_ID?has_content>
+   AND T1.USER_ID = :USER_ID
+ </#if>
+]]></sql>
+
+</Statement>

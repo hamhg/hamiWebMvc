@@ -650,6 +650,9 @@
 	        var isActive = $el.closest('li').hasClass('active');
 	        var idx = $el.closest('li').index();
 	        var $preLi = $(el).closest('ul').find('li').eq(idx - 1);
+	        $bizWrap.find("div[id*='tGrid']").each(function(idx, item){
+	        	Grids[$(item).find("div:first-child").attr("id")].Dispose();
+	        });
 	        $bizWrap.remove();
 	        $el.closest('li').remove();
 	        if (isActive) {

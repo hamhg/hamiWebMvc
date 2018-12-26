@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hami.biz.common.model.CommonResponseBody;
 import com.hami.biz.system.support.BizController;
+import com.hami.biz.system.utils.SecurityUtils;
 import com.hami.sys.annotation.ServiceMethod;
 import com.hami.sys.exception.BizException;
 import com.hami.sys.util.ContextUtil;
@@ -67,6 +68,10 @@ public class CommonController extends BizController{
 
                     log.debug("\n[[[[[ INPUT ]]]]]\n"
                             +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(inMap));
+                }
+                
+                if(!((Map<String, Object>) reqData.get("ds_search")).containsKey("C_CD")){
+                    ((Map<String, Object>) reqData.get("ds_search")).put("C_CD", SecurityUtils.getUser().getCcd());
                 }
 
                 //set Headers
