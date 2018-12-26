@@ -163,9 +163,13 @@ function GridSearch(target, param){
                 xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
             },
             success: function (data) {
-                var gridData = [];
+                if(data.resultData.ds_result){
+                    var gridData = [];
                     gridData[0] = data.resultData.ds_result;
-                Grids[target].Source.Data.Data.Body = gridData;
+                    Grids[target].Source.Data.Data.Body = gridData;
+                } else {
+                    Grids[target].Source.Data.Data = [];
+                }
                 Grids[target].ReloadBody();
             },
             error: function (e) {

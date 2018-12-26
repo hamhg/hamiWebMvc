@@ -106,8 +106,12 @@ public class CommonController extends BizController{
                     ServiceMethod sm = (ServiceMethod)refectionService;
 
                     //Service call
-                    Object invokeResult = ReflectionUtils.invokeMethod(sm.getMethod(), sm.getBeanObject(), reqData);
-                    resData = (Map<String, Object>)invokeResult;
+                    try{
+                        Object invokeResult = ReflectionUtils.invokeMethod(sm.getMethod(), sm.getBeanObject(), reqData);
+                        resData = (Map<String, Object>)invokeResult;
+                    } catch(Exception e){
+                        resData = new HashMap<String, Object>();
+                    }
 
                     //후처리
                     //PostExecute();
@@ -165,17 +169,18 @@ public class CommonController extends BizController{
                 transactionHeader = (Map<String, Object>) ContextUtil.getTransactionHeader();
                 messageHeader = (Map<String, Object>) ContextUtil.getMessageHeader();
 
-                if(resData == null){
+                if(StringUtils.isEmpty(resData)){
                     result.setCode(HttpStatus.NO_CONTENT);
                     result.setMsg("No Data Found!");
                 }else{
                     result.setCode(HttpStatus.OK);
                     result.setMsg("");
-                    result.setSystemHeader(systemHeader);
-                    result.setTransactionHeader(transactionHeader);
-                    result.setMessageHeader(messageHeader);
-                    result.setResultData(resData);
                 }
+
+                result.setSystemHeader(systemHeader);
+                result.setTransactionHeader(transactionHeader);
+                result.setMessageHeader(messageHeader);
+                result.setResultData(resData);
             }
 
         } else {

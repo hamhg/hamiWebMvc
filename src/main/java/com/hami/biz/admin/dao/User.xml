@@ -2,14 +2,34 @@
 <Statement version='1'>
 
 <sql id='search01'><![CDATA[
-SELECT * 
+SELECT C_CD,
+       LOGIN_ID,
+       USER_ID,
+       TO_DATE(STA_YMD,'YYYY.MM.DD') STA_YMD,
+       TO_DATE(END_YMD,'YYYY.MM.DD') END_YMD,
+       USER_NM,
+       PASSWORD,
+       PWD_U_DATE,
+       ENABLED,
+       LOGIN_DATE,
+       LOGIN_IP,
+       ERR_CNT,
+       SKIN_CD,
+       LOCK_YN,
+       LOCK_DATE,
+       SA_YN,
+       USER_CD,
+       PROFL_ID,
+       MDUL_ID,
+       MENU_ID,
+       NOTE
   FROM TSYAU0001
  WHERE C_CD = :C_CD
  <#if LOGIN_ID?has_content>
-   AND T1.LOGIN_ID = :LOGIN_ID
+   AND LOGIN_ID = :LOGIN_ID
  </#if>
  <#if USER_ID?has_content>
-   AND T1.USER_ID = :USER_ID
+   AND UPPER(USER_ID) LIKE '%'||UPPER(:USER_ID)||'%'
  </#if>
 ]]></sql>
 
