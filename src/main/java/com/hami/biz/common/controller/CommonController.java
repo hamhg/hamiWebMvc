@@ -70,8 +70,10 @@ public class CommonController extends BizController{
                             +mapper.writerWithDefaultPrettyPrinter().writeValueAsString(inMap));
                 }
                 
-                if(!((Map<String, Object>) reqData.get("ds_search")).containsKey("C_CD")){
-                    ((Map<String, Object>) reqData.get("ds_search")).put("C_CD", SecurityUtils.getUser().getCcd());
+                if(reqData.containsKey("ds_search")){
+                    if(!((Map<String, Object>) reqData.get("ds_search")).containsKey("C_CD")){
+                        ((Map<String, Object>) reqData.get("ds_search")).put("C_CD", SecurityUtils.getUser().getCcd());
+                    }
                 }
 
                 //set Headers
@@ -106,12 +108,8 @@ public class CommonController extends BizController{
                     ServiceMethod sm = (ServiceMethod)refectionService;
 
                     //Service call
-                    try{
-                        Object invokeResult = ReflectionUtils.invokeMethod(sm.getMethod(), sm.getBeanObject(), reqData);
-                        resData = (Map<String, Object>)invokeResult;
-                    } catch(Exception e){
-                        resData = new HashMap<String, Object>();
-                    }
+                    Object invokeResult = ReflectionUtils.invokeMethod(sm.getMethod(), sm.getBeanObject(), reqData);
+                    resData = (Map<String, Object>)invokeResult;
 
                     //후처리
                     //PostExecute();
@@ -136,17 +134,18 @@ public class CommonController extends BizController{
 
             } catch (Exception be) {
                 log.error("[ERROR]", be);
-
+                
+                pcsResult = "F";								//처리결과 : S(성공), F(실패, default)
+                resData = new HashMap<String, Object>();
+                
                 Throwable t = be;
                 while (t.getCause() != null) {
                     t = t.getCause();
                 }
 
                 if (t instanceof BizException) {
-                    pcsResult = "F";								//처리결과 : S(성공), F(실패, default)
                     msgCode = t.getMessage();						//메시지코드 : Biz업무 메시지코드
                     msgValue = searchMessageByCode(msgCode, (String[])((BizException)t).getMessageParameters());
-
                 } else {
                     //메시지 없을 경우 전체 에러를 리턴
                     if ("".equals(msgValue) || msgValue == null) {

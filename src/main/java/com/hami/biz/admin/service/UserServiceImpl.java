@@ -29,12 +29,22 @@ public class UserServiceImpl extends BizService implements UserService{
     protected ObjectMapper mapper = new ObjectMapper();
     
     @Override
-    @BizAnnotation(id="UserInfo", description="공통코드")
+    @BizAnnotation(id="getUserInfo", description="로그인정보 조회")
     public Map<String,Object> getUserInfo(Map<String, Object> paramMap) throws Exception {
         Map<String,Object> resultMap = new HashMap<String, Object>();
 
         resultMap.put("ds_result", userDao.search01(getSchParam(paramMap)));
 
+        return resultMap;
+    }
+    
+    @Override
+    @BizAnnotation(id="updUserInfo", description="로그인정보 저장")
+    public Map<String,Object> updUserInfo(Map<String, Object> paramMap) throws Exception {
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        
+        resultMap.put("ds_result", userDao.save01(paramMap));
+        
         return resultMap;
     }
     

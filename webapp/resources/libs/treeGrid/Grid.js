@@ -92,8 +92,19 @@ function GridInit(layout, target, data){
 		            gridBody.push(data);
 		            gridData["Body"] = gridBody;
 	        }
-	        TreeGrid( {Layout:{ Data: gridLayout }, Data:{ Data: gridData }, Debug:"", Sync:"1"}, target );
+	        TreeGrid( 
+	        	{
+	        		Layout: { Data: gridLayout },
+		        	Data: { Data: gridData }, 
+		        	Debug:"", 
+		        	Sync:"1", 
+	        		Upload_Type: "changes, Body"
+                }, 
+                target 
+            );
 	        $(target+" .TSToolbarRow .TSSpaceWidthInner").html("");
+    		Grids[target].DateStrings = 'yyyyMMdd';
+    		Grids[target].Source.Upload.Format = "JSON";
 	        if(!gridData){
 	        	$(target+" .TSNoDataRow .TSSpaceWidthInner").attr("style", $(target+" .TSNoDataRow .TSSpaceWidthInner").attr("style")+" text-align:center;height:100px;vertical-align:middle");
 	        }
@@ -163,11 +174,13 @@ function GridSearch(target, param){
                 xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
             },
             success: function (data) {
-                if(data.resultData.ds_result){
+                if(data.resultData.ds_result.length){
+                	console.log("gridData Load OK: "+target);
                     var gridData = [];
                     gridData[0] = data.resultData.ds_result;
                     Grids[target].Source.Data.Data.Body = gridData;
                 } else {
+                	console.log("gridData No Data: "+target);
                     Grids[target].Source.Data.Data = [];
                 }
                 Grids[target].ReloadBody();

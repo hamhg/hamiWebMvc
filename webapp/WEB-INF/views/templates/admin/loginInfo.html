@@ -10,7 +10,7 @@
             <div class="ibox-title">
                 <h3></h3>
                 <div class="ibox-btn">
-                    <button href="#" type="button" class="btn btn-sm btn-primary fa fa-search pull-right" th:onclick="'doAction_'+${programId}+'(\'search01\')'"> 조회</button>
+                    <button href="#" type="button" class="btn btn-sm btn-primary fa fa-search pull-right" th:onclick="'do_'+${programId}+'(\'search01\')'"> 조회</button>
                 </div>
             </div>
             <div class="ibox-content">
@@ -96,7 +96,7 @@
             <div class="ibox-title">
                 <h3>로그인정보</h3>
                 <div class="ibox-btn">
-                    <a href="#" type="button" class="btn btn-sm btn-primary fa fa-save pull-right"> 저장</a>
+                    <a href="#" type="button" class="btn btn-sm btn-primary fa fa-save pull-right" th:onclick="'do_'+${programId}+'(\'save01\')'"> 저장</a>
                     <a href="#" type="button" class="btn btn-sm ion-plus-round pull-right"> 추가</a>
                 </div>
             </div>
@@ -112,38 +112,14 @@
             $("#csrf").val("[[${_csrf.token}]]"); //CSRF 
             pxCom.setLocation('[[${programId}]]','[[${menuId}]]'); //Location
             
-            $('#datepicker-features').datepicker({
-                calendarWeeks:         true,
-                todayBtn:              'linked',
-                daysOfWeekDisabled:    '1',
-                clearBtn:              true,
-                todayHighlight:        true,
-                multidate:             true,
-                daysOfWeekHighlighted: '1,2',
-                orientation:           'auto right',
-
-                beforeShowMonth: function(date) {
-                    if (date.getMonth() === 8) {
-                        return false;
-                    }
-                },
-
-                beforeShowYear: function(date){
-                    if (date.getFullYear() === 2014) {
-                        return false;
-                    }
-                }
-            });
             $('#datepicker-range').datepicker();
-            $('#datepicker-inline').datepicker();
-            
         });
         
         // -----------------------------------------------------------------------------------------
         // Grid init
         var grid01 = [
             { Header: "아이디", Name: "LOGIN_ID", Width: "120", Type: "Text", Align:"Left", CanEdit: "1", CanSort: '1' },
-            { Header: "계정명", Name: "USER_NM", Width: "150", RelWidth:'100', Type: "Text", Align:"Left" },
+            { Header: "계정명", Name: "USER_NM", Width: "150", Type: "Text", Align:"Left" },
             { Header: "연결계정", Name: "USER_ID", Width: "120", Type: "Text", Align:"Left" },
             { Header: "시작일", Name: "STA_YMD", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
             { Header: "종료일", Name: "END_YMD", Width: "120", Type: "Date", Align:"Center", Format: "yyyy.MM.dd" },
@@ -160,10 +136,10 @@
         ];
 
         GridInit(grid01, "tg_[[${programId}]]", null);
-        doAction_[[${programId}]]('search01');
+        do_[[${programId}]]('search01');
 
         
-    function doAction_[[${programId}]](action){
+    function do_[[${programId}]](action){
     	switch(action)
     	  {
     	    //조회
@@ -171,7 +147,7 @@
     	        require(['jquery'], function($) {
     	            var param = {
     	                serviceInfo: {
-    	                    "RECV_SVC_CD": "UserInfo",
+    	                    "RECV_SVC_CD": "getUserInfo",
     	                    "LANG_CD": "KO"
     	                },
     	                ds_search: {
@@ -181,7 +157,6 @@
     	                    GRP_CD: 'COM_CD'
     	                }
     	            };
-    	            
     	            GridSearch("tg_[[${programId}]]", param);
     	        });
     	    	break;
@@ -193,6 +168,82 @@
     	    break;
     	    //저장
     	    case "save01":
+    	    	var grid = Grids["tg_[[${programId}]]"];
+    	    	if(grid.HasChanges()){
+    	    		var chgData = JSON.parse(grid.GetXmlData());
+    	    		var saveData = [];
+    	    		var exColArr = ["tagName","nodeName","Expanded","Kind","Visible","Calculated","State","HasIndex","No","cLC","wA","_ConstWidth","Spanned","Selected","Hidden","Deleted","Changed","Added"];
+    	    		var dateCols = [];
+    	    		$.each(grid.Cols, function(key, item) {
+    	    			if(item.Type == "Date"){
+	    	    			dateCols.push(key);
+    	    			}
+	    		    });
+    	    		$.each(chgData.Changes, function(idx, item) {
+    	    		    var rowData = {};
+   	    		        $.each(grid.Rows[item.id], function(key, val) {
+   	    		        	if(!exColArr.includes(key)){
+	   	    		        	if(typeof val === "string" || typeof val ==="number"){
+	   	    		        		var col = val;
+	   	    		        		if(dateCols.includes(key) && col != ""){
+	   	    		        			col = new Date(col);
+			   	                        col = col.getFullYear().toString()+(col.getMonth()+1)+col.getDate();
+	   	    		        		}
+		   	    		        	rowData[key] = col.toString();
+	   	    		        	}
+   	    		        	}
+   	    		        });
+   	    		        
+    	    			if (item.Changed){
+    	    				rowData["_CUD"] = "U";
+    	    			} else if (item.Added){
+    	    				rowData["_CUD"] = "C";
+    	    			} else if (item.Deleted){
+    	    				rowData["_CUD"] = "D";
+    	    			}
+   	    				saveData.push(rowData);
+    	    		});
+    	    		
+                    var param = {
+                            serviceInfo: {
+                                "RECV_SVC_CD": "updUserInfo",
+                                "LANG_CD": "KO"
+                            },
+                            ds_save: saveData
+                        };
+                    
+                    var target = grid.id;
+                    
+    	    		require(['jquery'], function($) {
+   	    		        $.ajax({
+   	    		            type: "POST",
+   	    		            contentType: "application/json",
+   	    		            url: "/doExcute",
+   	    		            data: JSON.stringify(param),
+   	    		            dataType: 'json',
+   	    		            timeout: 100000,
+   	    		            beforeSend: function (xhr) {
+   	    		                xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
+   	    		            },
+   	    		            success: function (data) {
+   	    		                Grids[target].AcceptChanges();
+   	    		            },
+   	    		            error: function (e) {
+   	    		                //console.log("ERROR: ", e);
+   	    		                var msg = '저장 중 오류가 발생하였습니다! 시스템 운영자에게 문의 바랍니다.';
+   	    		                var title = '';
+   	    		                toastr['info'](msg, title, {positionClass: 'toast-bottom-full-width'});
+   	    		            },
+   	    		            done: function (e) {
+   	    		                console.log("DONE");
+   	    		            }
+   	    		        });
+   	    		    });
+    	    		
+    	    	} else {
+   	                toastr['info']('데이터 변경내역이 없습니다.', '', {positionClass: 'toast-top-right'});
+    	    	}
+   	    		console.log("saveData:"+JSON.stringify(saveData));
     	    break;
     	    //엑셀다운로드
     	    case "excelDn01":

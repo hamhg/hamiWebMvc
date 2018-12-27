@@ -13,4 +13,5 @@ import java.util.Map;
  */
 public interface UserService {
     Map<String,Object> getUserInfo(Map<String, Object> paramMap) throws Exception;
+    Map<String,Object> updUserInfo(Map<String, Object> paramMap) throws Exception;
 }
