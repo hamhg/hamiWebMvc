@@ -1,22 +1,5 @@
 package com.hami.biz.common.controller;
 
-import java.security.Principal;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hami.biz.common.model.CommonResponseBody;
@@ -26,6 +9,17 @@ import com.hami.sys.annotation.ServiceMethod;
 import com.hami.sys.exception.BizException;
 import com.hami.sys.util.ContextUtil;
 import com.hami.sys.util.StringUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLDataException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * <pre>
@@ -108,8 +102,12 @@ public class CommonController extends BizController{
                     ServiceMethod sm = (ServiceMethod)refectionService;
 
                     //Service call
-                    Object invokeResult = ReflectionUtils.invokeMethod(sm.getMethod(), sm.getBeanObject(), reqData);
-                    resData = (Map<String, Object>)invokeResult;
+                    try{
+                        Object invokeResult = ReflectionUtils.invokeMethod(sm.getMethod(), sm.getBeanObject(), reqData);
+                        resData = (Map<String, Object>)invokeResult;
+                    } catch(Exception e){
+                        throw new Exception(e.getMessage());
+                    }
 
                     //후처리
                     //PostExecute();
@@ -133,7 +131,7 @@ public class CommonController extends BizController{
                 }
 
             } catch (Exception be) {
-                log.error("[ERROR]", be);
+                //log.error("[ERROR]", be);
                 
                 pcsResult = "F";								//처리결과 : S(성공), F(실패, default)
                 resData = new HashMap<String, Object>();
@@ -141,6 +139,9 @@ public class CommonController extends BizController{
                 Throwable t = be;
                 while (t.getCause() != null) {
                     t = t.getCause();
+                    if(t instanceof SQLDataException){
+                        log.debug(t.getMessage());
+                    }
                 }
 
                 if (t instanceof BizException) {
@@ -151,11 +152,14 @@ public class CommonController extends BizController{
                     if ("".equals(msgValue) || msgValue == null) {
                         log.error("[Not Find Message!]");
                         msgCode = "Unknown Message Code";
+                        msgValue = "Program Error!";
+                        /*
                         StackTraceElement[] ste = be.getStackTrace();
                         msgValue = msgValue + be.fillInStackTrace() + System.lineSeparator();
                         for (StackTraceElement el : ste) {
                             msgValue += (el + System.lineSeparator());
                         }
+                        */
                     }
                 }
 

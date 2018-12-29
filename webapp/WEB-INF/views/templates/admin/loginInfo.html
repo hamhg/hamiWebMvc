@@ -187,7 +187,7 @@
 	   	    		        		var col = val;
 	   	    		        		if(dateCols.includes(key) && col != ""){
 	   	    		        			col = new Date(col);
-			   	                        col = col.getFullYear().toString()+(col.getMonth()+1)+col.getDate();
+			   	                        col = col.getFullYear().toString()+gfn_lPad((col.getMonth()+1),'0',2)+gfn_lPad(col.getDate(),'0',2);
 	   	    		        		}
 		   	    		        	rowData[key] = col.toString();
 	   	    		        	}
