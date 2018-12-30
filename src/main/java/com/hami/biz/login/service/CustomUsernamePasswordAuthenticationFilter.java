@@ -26,10 +26,11 @@ import com.hami.sys.util.StringUtils;
 public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
-    private boolean postOnly = true;
-    
-    @Override 
+
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        boolean postOnly = true;
+
         if (postOnly && !request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }

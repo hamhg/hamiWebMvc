@@ -63,12 +63,11 @@ public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer
 
     /*
     // 10MB
-    private static final int MAX_UPLOAD_SIZE_IN_MB = 10 * 1024 * 1024;
+    private static final int MAX_UPLOAD_SIZE_IN_MB = 5 * 1024 * 1024;
     
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/tmp", MAX_UPLOAD_SIZE_IN_MB, MAX_UPLOAD_SIZE_IN_MB * 2,
-                MAX_UPLOAD_SIZE_IN_MB / 2);
+        MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/tmp", MAX_UPLOAD_SIZE_IN_MB, MAX_UPLOAD_SIZE_IN_MB * 2, MAX_UPLOAD_SIZE_IN_MB / 2);
         registration.setMultipartConfig(multipartConfigElement);
     }
     */

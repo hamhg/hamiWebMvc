@@ -46,8 +46,8 @@ public class CustomUserDetailsManager extends CustomUserDetailsService implement
     private QueryLoader queryLoader = QueryLoader.getInstance();
     protected final Log logger = LogFactory.getLog(getClass());
 
-    String path = this.getClass().getResource("").getPath();
-    String filePath = path.replace("service", "dao") + "Auth.xml";
+    private String path = this.getClass().getResource("").getPath();
+    private String filePath = path.replace("service", "dao") + "Auth.xml";
     // UserDetailsManager SQL 
     private String createUserSql = queryLoader.getElementWithPath(filePath,"DEF_CREATE_USER_SQL",null);
     private String deleteUserSql = queryLoader.getElementWithPath(filePath,"DEF_DELETE_USER_SQL",null);

@@ -54,7 +54,7 @@ public class CustomUserDetailsService extends JdbcDaoSupport implements UserDeta
     // =====================================================================================
     private QueryLoader queryLoader = QueryLoader.getInstance();
     protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
-    protected ObjectMapper mapper = new ObjectMapper();
+    protected ObjectMapper mapper;
     
     private String authoritiesByUsernameQuery;
     private String groupAuthoritiesByUsernameQuery;

@@ -25,7 +25,7 @@ import com.hami.biz.system.utils.SecurityUtils;
 
 public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememberMeServices {
     protected final Log logger = LogFactory.getLog(this.getClass());
-    private CustomJdbcTokenRepositoryImpl tokenRepository = new CustomJdbcTokenRepositoryImpl();
+    private CustomJdbcTokenRepositoryImpl tokenRepository;
     private SecureRandom random;
 
     public static final int DEFAULT_SERIES_LENGTH = 16;
@@ -69,50 +69,42 @@ public class CustomPersistentTokenBasedRememberMeServices extends AbstractRememb
 
         CustomPersistentRememberMeToken token = tokenRepository.getTokenForSeries(presentedSeries);
 
-        if (token == null) {
-            // No series match, so we can't authenticate using this cookie
-            //throw new RememberMeAuthenticationException("No persistent token found for series id: " + presentedSeries);
+        // We have a match for this user/series combination
+        if (!presentedToken.equals(token.getTokenValue())) {
+            // Token doesn't match series value. Delete all logins for this user and throw
+            // an exception to warn them.
+            tokenRepository.removeUserTokens(token.getCcd(), token.getUsername());
+
             cancelCookie(request, response);
-            logger.debug("No persistent token found for series id: " + presentedSeries);
-            return getUserDetailsService().loadUserByUsername("!■!");
-        } else {
-            // We have a match for this user/series combination
-            if (!presentedToken.equals(token.getTokenValue())) {
-                // Token doesn't match series value. Delete all logins for this user and throw
-                // an exception to warn them.
-                tokenRepository.removeUserTokens(token.getCcd(), token.getUsername());
-    
-                cancelCookie(request, response);
-                logger.debug(messages.getMessage("PersistentTokenBasedRememberMeServices.cookieStolen","Invalid remember-me token (Series/token) mismatch. Implies previous cookie theft attack."));
-                //throw new CookieTheftException(messages.getMessage("PersistentTokenBasedRememberMeServices.cookieStolen","Invalid remember-me token (Series/token) mismatch. Implies previous cookie theft attack."));
-            } 
-            
-            if (token.getDate().getTime() + getTokenValiditySeconds() * 1000L < System.currentTimeMillis()) {
-                cancelCookie(request, response);
-                logger.debug("Remember-me login has expired");
-                //throw new RememberMeAuthenticationException("Remember-me login has expired");
-            }
-            
-            // Token also matches, so login is valid. Update the token value, keeping the
-            // *same* series number.
+            logger.debug(messages.getMessage("PersistentTokenBasedRememberMeServices.cookieStolen","Invalid remember-me token (Series/token) mismatch. Implies previous cookie theft attack."));
+            //throw new CookieTheftException(messages.getMessage("PersistentTokenBasedRememberMeServices.cookieStolen","Invalid remember-me token (Series/token) mismatch. Implies previous cookie theft attack."));
+        }
+
+        if (token.getDate().getTime() + getTokenValiditySeconds() * 1000L < System.currentTimeMillis()) {
+            cancelCookie(request, response);
+            logger.debug("Remember-me login has expired");
+            //throw new RememberMeAuthenticationException("Remember-me login has expired");
+        }
+
+        // Token also matches, so login is valid. Update the token value, keeping the
+        // *same* series number.
+        if (logger.isDebugEnabled()) {
+            logger.debug("Refreshing persistent login token for user '" + token.getUsername() + "', series '" + token.getSeries() + "', ccd '" + token.getCcd() + "'");
+        }
+
+        CustomPersistentRememberMeToken newToken = new CustomPersistentRememberMeToken(token.getCcd(), token.getUsername(), token.getSeries(), generateTokenData(), new Date());
+
+        try {
+            addCookie(newToken, request, response);
+            tokenRepository.updateToken(newToken.getSeries(), newToken.getTokenValue(), newToken.getDate());
             if (logger.isDebugEnabled()) {
-                logger.debug("Refreshing persistent login token for user '" + token.getUsername() + "', series '" + token.getSeries() + "', ccd '" + token.getCcd() + "'");
+                logger.debug("Refreshing persistent login token(New) for user '" + newToken.getUsername() + "', series '" + newToken.getSeries() + "', token '" + newToken.getTokenValue() + "', ccd '" + newToken.getCcd() + "'");
             }
 
-            CustomPersistentRememberMeToken newToken = new CustomPersistentRememberMeToken(token.getCcd(), token.getUsername(), token.getSeries(), generateTokenData(), new Date());
-    
-            try {
-                addCookie(newToken, request, response);
-                tokenRepository.updateToken(newToken.getSeries(), newToken.getTokenValue(), newToken.getDate());
-                if (logger.isDebugEnabled()) {
-                    logger.debug("Refreshing persistent login token(New) for user '" + newToken.getUsername() + "', series '" + newToken.getSeries() + "', token '" + newToken.getTokenValue() + "', ccd '" + newToken.getCcd() + "'");
-                }
-                
-            }
-            catch (Exception e) {
-                logger.error("Failed to update token: ", e);
-                throw new RememberMeAuthenticationException("Autologin failed due to data access problem");
-            }
+        }
+        catch (Exception e) {
+            logger.error("Failed to update token: ", e);
+            throw new RememberMeAuthenticationException("Autologin failed due to data access problem");
         }
 
         return getUserDetailsService().loadUserByUsername(token.getCcd()+"■"+token.getUsername());

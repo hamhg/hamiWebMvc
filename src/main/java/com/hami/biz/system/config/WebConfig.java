@@ -97,6 +97,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public DataSourceInterceptor dataSourceInterceptor(){
         return new DataSourceInterceptor();
     }
+
     @Bean
     public BeanNameAutoProxyCreator beanNameAutoProxyCreator(){
         BeanNameAutoProxyCreator beanNameAutoProxyCreator = new DataSourceBeanNameAutoProxyCreator();
@@ -176,7 +177,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         InternalResourceViewResolver vr01 = new InternalResourceViewResolver();
         vr01.setPrefix("/WEB-INF/views/jsp/");
         vr01.setContentType("text/html; cherset=UTF-8");
-        //vr1.setSuffix("*.jsp");
+        //vr01.setSuffix("*.jsp");
         vr01.setViewClass(JstlView.class); 
         resolvers.add(vr01);
 

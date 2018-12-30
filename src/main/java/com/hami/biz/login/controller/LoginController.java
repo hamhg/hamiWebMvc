@@ -115,6 +115,7 @@ public class LoginController {
         if (auth != null){
             Cookie cookie = new Cookie("remember-me", null);
             cookie.setMaxAge(0);
+            response.addCookie(cookie);
 
             persistentTokenRepository().removeUserTokens(SecurityUtils.getUser().getCcd(), auth.getName());
             
