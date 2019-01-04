@@ -50,7 +50,7 @@
 	        '#E91E63',
 	        '#9E9E9E',
 	        '#E040FB',
-	        '#00BCD4',
+	        '#00BCD4'
 	    ];
 	
 	    var BACKGROUNDS = [
@@ -62,7 +62,7 @@
 	        'img/common/bgs/6.jpg',
 	        'img/common/bgs/7.jpg',
 	        'img/common/bgs/8.jpg',
-	        'img/common/bgs/9.jpg',
+	        'img/common/bgs/9.jpg'
 	    ];
 	
 	    var THEMES = [
@@ -92,7 +92,7 @@
 	            offcanvas_nav: '0',
 	            rtl:           '0',
 	            footer:        'bottom',
-	            theme:         THEMES[6],
+	            theme:         THEMES[6]
 	        };
 	
 	        var cookie = ';' + document.cookie + ';';
@@ -612,6 +612,10 @@
 	            //console.log(responseText);
 	            //console.log(textStatus);
 	            //console.log(XMLHttpRequest);
+				if (XMLHttpRequest.responseText.trim().startsWith("<html id='LOGIN'")) {
+					console.log("redirect to login page");
+					window.location.href = "/";
+				}
 	            if(XMLHttpRequest.status != '200'){
 	                var msg = '프로그램 Load 오류' ;//XMLHttpRequest.responseText
 	                var title = '';

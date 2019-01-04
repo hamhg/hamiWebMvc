@@ -6,18 +6,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hami.sys.exception.BizException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hami.biz.common.model.CommonResponseBody;
-import com.hami.biz.common.model.GridResponseBody;
 import com.hami.biz.common.service.MenuService;
 import com.hami.biz.login.model.User;
 import com.hami.biz.system.utils.SecurityUtils;
@@ -34,10 +31,11 @@ import com.hami.sys.util.StringUtils;
  */
 @Controller
 public class ProgramController {
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     MenuService menuService;
-    
+
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @RequestMapping(value = "/pgm/{pgmId}", method = RequestMethod.GET)
     public ModelAndView pgm(@PathVariable String pgmId, HttpServletRequest request) throws Exception {
@@ -73,7 +71,7 @@ public class ProgramController {
     }
     
     @RequestMapping(value = "/treeGridInit", method = RequestMethod.GET)
-    public ModelAndView treeGridInit() throws Exception {
+    public ModelAndView treeGridInit() {
         ModelAndView mav = new ModelAndView();
         
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -82,23 +80,10 @@ public class ProgramController {
         
         return mav;
     }
-    
-    @RequestMapping(value = "/gridCfg", method = RequestMethod.GET)
-    public ResponseEntity<GridResponseBody>  gridCfg(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        GridResponseBody result = new GridResponseBody();
-        if(!paramMap.isEmpty()){
-            result.setCode(HttpStatus.OK);
-            result.setMsg("");
-            Map<String, Object> gridCfg = new HashMap<String, Object>();
-            
-            
-            result.setResult(gridCfg);
-        } else {
-            result.setCode(HttpStatus.BAD_REQUEST);
-            result.setMsg("Parameter needed");
-        }
-        
-        return new ResponseEntity<GridResponseBody>(result, result.getCode());
-    }
 
+    @RequestMapping(value = "/error_403", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void error403() throws BizException{
+        throw new BizException("세션 만료로 화면을 갱신 바랍니다.");
+    }
 }

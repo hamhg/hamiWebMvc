@@ -102,13 +102,14 @@ function GridInit(layout, target, data){
                 }, 
                 target 
             );
-	        $(target+" .TSToolbarRow .TSSpaceWidthInner").html("");
     		Grids[target].DateStrings = 'yyyyMMdd';
     		Grids[target].Source.Upload.Format = "JSON";
 	        if(!gridData){
 	        	$(target+" .TSNoDataRow .TSSpaceWidthInner").attr("style", $(target+" .TSNoDataRow .TSSpaceWidthInner").attr("style")+" text-align:center;height:100px;vertical-align:middle");
 	        }
-	
+
+            $("#"+target+" .TSToolbarRow .TSSpaceWidthInner span").html("");
+
 	        // -----------------------------------------------------------------------------------------
 	        // Custom event for searching
 	        // Searches in orders with specified items
@@ -157,43 +158,129 @@ function GridInit(layout, target, data){
 	            G.SetAttribute(G.Rows.Group,"WinLabelRight","Tip",tip,1);
 	        }
 	        // -----------------------------------------------------------------------------------------
+
         }
     });
 }
 
-function GridSearch(target, param){
+function GridSearch(target, schParam){
 	require(['jquery'], function($) {
         $.ajax({
             type: "POST",
             contentType: "application/json",
             url: "/doExcute",
-            data: JSON.stringify(param),
+            data: JSON.stringify(schParam),
             dataType: 'json',
             timeout: 100000,
-            beforeSend: function (xhr) {
+            beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
             },
-            success: function (data) {
-                if(data.resultData.ds_result.length){
-                	console.log("gridData Load OK: "+target);
-                    var gridData = [];
-                    gridData[0] = data.resultData.ds_result;
-                    Grids[target].Source.Data.Data.Body = gridData;
-                } else {
-                	console.log("gridData No Data: "+target);
-                    Grids[target].Source.Data.Data = [];
-                }
+            success: function(data) {
+            	if(data.messageHeader.MSG_PRCS_RSLT_CD == "-1"){
+					var msg = data.messageHeader.MSG_DATA_SUB[0].MSG_TXT;
+	            	toastr['info'](msg, '', {positionClass: 'toast-bottom-full-width'});
+				} else {
+					if(data.resultData.ds_result.length){
+						//console.log("gridData Load OK: "+target);
+						var gridData = [];
+						gridData[0] = data.resultData.ds_result;
+						Grids[target].Source.Data.Data.Body = gridData;
+					} else {
+						//console.log("gridData No Data: "+target);
+						Grids[target].Source.Data.Data = [];
+					}
+				}
                 Grids[target].ReloadBody();
             },
-            error: function (e) {
+            error: function(e) {
             	//console.log("ERROR: ", e);
 	            var msg = '조회 중 오류가 발생하였습니다! 시스템 운영자에게 문의 바랍니다.';
 	            var title = '';
 	            toastr['info'](msg, title, {positionClass: 'toast-bottom-full-width'});
             },
-            done: function (e) {
+            done: function(e) {
                 console.log("DONE");
             }
         });
+    });
+}
+
+function GridSave(target, saveParam){
+	require(['jquery'], function($) {
+        var grid = Grids[target];
+        if(grid.HasChanges()){
+            var chgData = JSON.parse(grid.GetXmlData());
+            var saveData = [];
+            var exColArr = ["tagName","nodeName","Expanded","Kind","Visible","Calculated","State","HasIndex","No","cLC","wA","_ConstWidth","Spanned","Selected","Hidden","Deleted","Changed","Added"];
+            var dateCols = [];
+            $.each(grid.Cols, function(key, item) {
+                if(item.Type == "Date"){
+                    dateCols.push(key);
+                }
+            });
+            $.each(chgData.Changes, function(idx, item) {
+                var rowData = {};
+                $.each(grid.Rows[item.id], function(key, val) {
+                    if(!exColArr.includes(key)){
+                        if(typeof val === "string" || typeof val ==="number"){
+                            var col = val;
+                            if(dateCols.includes(key) && col != ""){
+                                col = new Date(col);
+                                col = col.getFullYear().toString()+gfn_lPad((col.getMonth()+1),'0',2)+gfn_lPad(col.getDate(),'0',2);
+                            }
+                            rowData[key] = col.toString();
+                        }
+                    }
+                });
+
+                if (item.Changed){
+                    rowData["_CUD"] = "U";
+                } else if (item.Added){
+                    rowData["_CUD"] = "C";
+                } else if (item.Deleted){
+                    rowData["_CUD"] = "D";
+                }
+                saveData.push(rowData);
+            });
+
+            var param = {
+                serviceInfo: saveParam,
+                ds_save: saveData
+            };
+
+            require(['jquery'], function($) {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/doExcute",
+                    data: JSON.stringify(param),
+                    dataType: 'json',
+                    timeout: 100000,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-TOKEN", $("#csrf").val());
+                    },
+                    success: function (data) {
+                        if(data.messageHeader.MSG_PRCS_RSLT_CD == "-1"){
+                            var msg = data.messageHeader.MSG_DATA_SUB[0].MSG_TXT;
+                            toastr['info'](msg, '', {positionClass: 'toast-bottom-full-width'});
+                        } else {
+                            Grids[target].AcceptChanges();
+                        }
+                    },
+                    error: function (e) {
+                        //console.log("ERROR: ", e);
+                        var msg = '저장 중 오류가 발생하였습니다! 시스템 운영자에게 문의 바랍니다.';
+                        var title = '';
+                        toastr['info'](msg, title, {positionClass: 'toast-bottom-full-width'});
+                    },
+                    done: function (e) {
+                        console.log("DONE");
+                    }
+                });
+            });
+
+        } else {
+            toastr['info']('데이터 변경내역이 없습니다.', '', {positionClass: 'toast-bottom-full-width'});
+        }
     });
 }

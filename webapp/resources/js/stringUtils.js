@@ -50,7 +50,19 @@
 gfn_isString = function(value) 
 {
 	return typeof value === 'string';
-}
+};
+
+/************************************************************************
+ * 함 수 명 : gfn_nvl
+ * 기    능 : 입력값이 null에 해당되면 val2(대체문자열)로 반환한다.
+ * 인    자 : val : 체크할 문자열( 예 : null 또는 undefined 또는 "" 또는 "abc" )
+ * 리 턴 값 : N/A,  val값이 null에 해당하는 경우 val2값으로 대체 반환
+ ************************************************************************/
+gfn_nvl = function(val,val2)
+{
+    var rtnVal = (gfn_isNull(val)) ? val2 : val;
+    return rtnVal;
+};
 
 /************************************************************************
 * 함 수 명 : gfn_split
@@ -80,7 +92,7 @@ gfn_split = function(strString, strChar)
 	}
 	
 	return rtnArr;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_replace
@@ -106,7 +118,7 @@ gfn_replace = function(Val, strOld, strNew)
 
 	varRtnValue = arrArgument[0].toString().replace(arrArgument[1], arrArgument[2]);
 	return varRtnValue;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_quote
@@ -124,7 +136,7 @@ gfn_quote = function()
 	}
 
 	return retVal;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_toString
@@ -139,7 +151,7 @@ gfn_toString = function(Val)
 		return new String();
 	}
 	return new String(Val);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_subStr
@@ -161,7 +173,7 @@ gfn_subStr = function(sVal, nStart, nLength)
 	}
 
 	return retVal;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_length
@@ -196,7 +208,7 @@ gfn_length = function(Val)
  	else {
 		return Val.toString().length;//string, number인 경우
  	}
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_lengthByte
@@ -230,7 +242,7 @@ gfn_lengthByte = function(sVal)
 	}
 
 	return lengthByte;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_lengthByteUtf8
@@ -261,7 +273,7 @@ gfn_lengthByteUtf8 = function(sValue)
         }
     }
 	return v_cnt;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_right
@@ -277,7 +289,7 @@ gfn_right = function(Val, nSize)
 	var rtnVal = Val.substring(nStart, nEnd);
 
 	return rtnVal;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_left
@@ -289,7 +301,7 @@ gfn_right = function(Val, nSize)
 gfn_left = function(Val, nSize)
 {
 	return gfn_toString(Val).substr(0, nSize);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_indexOf
@@ -306,7 +318,7 @@ gfn_indexOf = function(Val, strOld, index)
 		index = 0;
 	}
 	return gfn_toString(Val).indexOf(strOld, index);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_trim
@@ -326,7 +338,7 @@ gfn_trim = function(sOrg, sTrim)
 	rtnVal = gfn_lTrim(rtnVal, sTrim);
 
 	return rtnVal;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_lTrim
@@ -359,7 +371,7 @@ gfn_lTrim = function(sOrg, sTrim)
 	}
 
 	return sOrg.substr(pos);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_rTrim
@@ -392,7 +404,7 @@ gfn_rTrim = function(sOrg, sTrim)
 	}
 
 	return sOrg.substr(0, pos + sTrim.length);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_lPad
@@ -429,7 +441,7 @@ gfn_lPad = function(sOrg, sPad, nCnt)
 	nLength = gfn_length(sOrg) > nCnt ? gfn_length(sOrg) : nCnt;
 
 	return gfn_right(sRet,nLength);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_rPad
@@ -466,7 +478,7 @@ gfn_rPad = function(sOrg, sPad, nCnt)
 	nLength = gfn_length(sOrg) > nCnt ? gfn_length(sOrg) : nCnt;
 	
 	return gfn_left(sRet,nLength);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_strToArr
@@ -484,7 +496,7 @@ gfn_strToArr = function (strParam, strDelimiter)
 	var splitArr = strParam.split(strDelimiter);
 
 	return splitArr;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_arrToStr
@@ -504,7 +516,7 @@ gfn_arrToStr = function (arrParam, strDelimiter)
 	}
 
 	return strParam;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_strToMap
@@ -539,7 +551,7 @@ gfn_strToMap = function (strParam, strDelimiter1, strDelimiter2)
 	strArr += "};";
 	eval(strArr);	
 	return arrParam;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_mapToStr
@@ -565,94 +577,7 @@ gfn_mapToStr = function (arrParam, strDelimiter1, strDelimiter2)
 	}
 
 	return strArrMap;
-}
-
-/************************************************************************
-* 함 수 명 : gfn_dsToStr
-* 기    능 : Dataset을 Array(map)용 String으로 전환
-* 인    자 : objDs - 목표 Dataset Object
-*            strDelimiterRow - Row 구분 문자열(default "=")
-*            strDelimiterCol - Column 구분 문자열(default "^")
-*            strDelimiterVal - key, value 구분 문자열(default "=")
-* 리 턴 값 : String "key=value^ke2=value2...||key=value^ke2=value2..."
-*************************************************************************/
-gfn_dsToStr = function (objDs, strDelimiterRow, strDelimiterCol, strDelimiterVal, sChkColId)
-{
-	if ( gfn_isNull(strDelimiterRow) ) strDelimiterRow = "|";
-	if ( gfn_isNull(strDelimiterCol) ) strDelimiterCol = "^";
-	if ( gfn_isNull(strDelimiterVal) ) strDelimiterVal = "=";
-
-	//  objDs : Dataset 콤포넌트
-	var iColCnt = objDs.colcount;
-	var iRowCnt = objDs.rowcount;
-	var i, j; 
- 
-	var sRowStr="";
-	if ( gfn_isNull(sChkColId) ) {
-		for (i=0;i<iRowCnt;i++)
-		{
-			if ( i > 0 ) sRowStr += strDelimiterRow;
-			
-			for (j=0;j<iColCnt;j++)
-			{
-				if ( j > 0 ) sRowStr += strDelimiterCol;
-				sRowStr += objDs.getColID(j) + strDelimiterVal+ objDs.getColumn(i,objDs.getColID(j));
-			}
-		}
-	} else {
-		var nCnt = 0;
-		var sChkVal = "";
-		for (i=0;i<iRowCnt;i++)
-		{
-			sChkVal = objDs.getColumn(i,sChkColId);
-			if ( sChkVal == "1" ) {
-				if ( nCnt > 0 ) sRowStr += strDelimiterRow;
-				
-				for (j=0;j<iColCnt;j++)
-				{
-					if ( j > 0 ) sRowStr += strDelimiterCol;
-					sRowStr += objDs.getColID(j) + strDelimiterVal+ objDs.getColumn(i,objDs.getColID(j));
-				}
-				nCnt++;
-			}
-		}
-	}
-
-	return sRowStr;
-}
-
-/************************************************************************
-* 함 수 명 : gfn_dsRowToStr
-* 기    능 : Dataset을 Array(map)용 String으로 전환(Row선택)
-* 인    자 : objDs - 목표 Dataset Object
-*            nRow - 선택Row
-*            strDelimiterCol - Column 구분 문자열(default "^")
-*            strDelimiterVal - key, value 구분 문자열(default "=")
-* 리 턴 값 : String "key=value^ke2=value2...||key=value^ke2=value2..."
-*************************************************************************/
-gfn_dsRowToStr = function (objDs, nRow, strDelimiterCol, strDelimiterVal)
-{
-	if ( gfn_isNull(strDelimiterCol) ) strDelimiterCol = "^";
-	if ( gfn_isNull(strDelimiterVal) ) strDelimiterVal = "=";
-
-	//  objDs : Dataset 콤포넌트
-	var iColCnt = objDs.colcount;
- 
-	var sRowStr="";
-	var sRowVal="";
-	for (i=0;i<iColCnt;i++)
-	{
-		if ( i > 0 ) sRowStr += strDelimiterCol;
-		sRowVal = objDs.getColumn(nRow,objDs.getColID(i));
-		if ( gfn_isNull(sRowVal) ) {
-			sRowStr += objDs.getColID(i) + strDelimiterVal;
-		} else {
-			sRowStr += objDs.getColID(i) + strDelimiterVal+ objDs.getColumn(nRow,objDs.getColID(i));
-		}
-	}
-
-	return sRowStr;
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_pos
@@ -674,7 +599,7 @@ gfn_pos = function(sOrg, sFind, nStart)
 	}
 
 	return sOrg.indexOf(sFind, nStart);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_posCase
@@ -696,7 +621,7 @@ gfn_posCase = function(sOrg, sFind, nStart)
 	}
 
 	return sOrg.toLowerCase().indexOf(sFind.toLowerCase(), nStart);
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_posReverse
@@ -728,9 +653,8 @@ gfn_posReverse = function(sOrg, sFind, nStart)
 	}
 
 	return pos;
-}
+};
 
-   
 /************************************************************************
 * 함 수 명 : gfn_mid
 * 기    능 : 입력된 문자열에서 가운데 부분을 주어진 길이만큼 Return
@@ -746,7 +670,7 @@ gfn_mid = function(strString, nIndex, nSize)
     var rtnVal = strString.substr(nStart, nEnd);               
  
     return String(rtnVal);                                     
-}
+};
 
 /************************************************************************
 * 함 수 명 : gfn_midString
@@ -805,7 +729,7 @@ gfn_midString = function(sOrg, sStart, sEnd, nStart)
 	}
 
 	return sOrg.substring(pos_start + sStart.length, pos_end);
-}
+};
 
 function delChar(str, ch) {
 	/*
@@ -880,102 +804,6 @@ function trim(str) {
 	} else {
 		return (lTrim(rTrim(str)));
 	}
-}
-
-// 오른쪽에 ch 문자 채우기
-
-function rPadString(str, ch, len) {
-	/*
-	 * ********************************************************************************************************
-	 * 함수설명 : 문자열을 정해진 길이만큼 오른쪽을 특정 문자로 채운다. str : 문자열 len : 총길이
-	 * **********************************************************************************************************
-	 */
-	var strlen = trim(str).length;
-	var ret = "";
-	var alen = len - strlen;
-	var astr = "";
-
-	// 부족한 숫자만큼 len 크기로 ch 문자로 채우기
-	for (i = 0; i < alen; ++i) {
-		astr = astr + ch;
-	}
-
-	ret = trim(str) + astr; // 뒤에서 채우기
-	return ret;
-}
-
-function lPadString(str, ch, len) {
-	/*
-	 * ********************************************************************************************************
-	 * 함수설명 : 문자열을 정해진 길이만큼 왼쪽을 특정 문자로 채운다. str : 문자열 len : 총길이
-	 * **********************************************************************************************************
-	 */
-	var strlen = trim(str).length;
-	var ret = "";
-	var alen = len - strlen;
-	var astr = "";
-
-	// 부족한 숫자만큼 len 크기로 ch 문자로 채우기
-	for (i = 0; i < alen; ++i) {
-		astr = astr + ch;
-	}
-
-	ret = astr + trim(str); // 앞에서 채우기
-	return ret;
-}
-
-function formatComma(argStr) {
-	/*
-	 * ********************************************************************************************************
-	 * 함수설명 : 숫자를 세자리마다 컴마를 찍은 형식으로 바꾸어 준다. argStr : argument
-	 * **********************************************************************************************************
-	 */
-	if (argStr == null)
-		return;
-	var argStr = argStr + ""; // 숫자인 경우 문자열로 변환
-	var rule = /[^0-9-.]/g; // 숫자, 부호 및 소수점 이외의 데이터 제거
-
-	argStr = getFilledCommaStr(argStr.replace(rule, ""));
-	return argStr;
-}
-
-function getFilledCommaStr(argNumber) {
-	/*
-	 * ********************************************************************************************************
-	 * 함수설명 : 숫자에 천단위로 ','를 붙여서 반환 argNumber : 숫자
-	 * **********************************************************************************************************
-	 */
-	argNumber = argNumber.toString();
-
-	if (isEmpty(argNumber))
-		return argNumber;
-
-	// 숫자 항목에서 부호(-), 소수점(.) 체크
-	var sourceStr = trim(argNumber);
-	var signStr = ""
-	var dotStr = "";
-
-	if (sourceStr.substring(0, 1) == "-") {
-		signStr = "-";
-		sourceStr = sourceStr.substring(1, sourceStr.length);
-	}
-	if (sourceStr.indexOf(".") >= 0) {
-		dotStr = sourceStr.substring(sourceStr.indexOf("."), sourceStr.length);
-		sourceStr = sourceStr.substring(0, sourceStr.indexOf("."));
-	}
-
-	var sourceLen = sourceStr.length;
-	var filledStr = "";
-	var checkIdx = 0;
-
-	for (var idx = sourceLen - 1; idx >= 0; idx--) {
-		if (checkIdx++ % 3 == 0 && idx != sourceLen - 1) {
-			filledStr = "," + filledStr;
-			checkIdx = 1;
-		}
-		filledStr = sourceStr.substring(idx, idx + 1) + filledStr;
-	}
-	return signStr + filledStr + dotStr;
 }
 
 function isEmpty(str) {

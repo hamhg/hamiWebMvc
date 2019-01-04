@@ -38,8 +38,7 @@ import java.util.List;
  *
  * @author HHG
  */
-public class CustomUserDetailsManager extends CustomUserDetailsService implements UserDetailsManager,
-        GroupManager {
+public class CustomUserDetailsManager extends CustomUserDetailsService implements UserDetailsManager, GroupManager {
     
     // ~ Instance fields
     // ================================================================================================

@@ -1,5 +1,6 @@
 package com.hami.biz.common.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,7 @@ public class CommonResponseBody {
     @JsonView(JsonView.class)
     Map<String, Object> messageHeader;
     @JsonView(JsonView.class)
+    @JsonFormat(locale = "Ko", shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     Map<String, Object> resultData;
 
     @Override

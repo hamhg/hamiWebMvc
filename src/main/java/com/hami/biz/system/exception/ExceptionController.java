@@ -2,14 +2,23 @@ package com.hami.biz.system.exception;
 
 import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.hami.sys.exception.BizException;
+import com.hami.biz.common.model.CommonResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hami.sys.util.ContextUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -44,6 +53,13 @@ public class ExceptionController {
     public String handleAllException(Exception e) {
         log.debug("A unknow Exception Ocurred: " + e);
         return "unknowExceptionPage";
+    }
+
+    @ExceptionHandler(value = BizException.class)
+    @ResponseStatus(value = HttpStatus.OK)
+    public ModelAndView handleAllException(HttpServletRequest request, HttpServletResponse response, Exception exception) {
+        log.debug("Biz Exception Ocurred: " + exception);
+        return makeError(request, response, exception);
     }
 
     @ExceptionHandler(Throwable.class)
@@ -100,26 +116,36 @@ public class ExceptionController {
     public ModelAndView makeError(HttpServletRequest request, HttpServletResponse response, Exception exception) {
         String contentType = request.getHeader("Content-Type");
         ModelAndView model=null;
-        String reason = HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase();;
-        int statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
- 
+        int statusCode = HttpStatus.OK.value();
+
+        Map<String, Object> messageHeader = new HashMap<String, Object>();
+        List<Map<String, String>> subMsgList = new ArrayList<Map<String, String>>();
+        Map<String, String> msgMap = new HashMap<String, String>();
+
+        msgMap.put("MSG_CD", "403");
+        msgMap.put("MSG_TXT", exception.getMessage());
+        msgMap.put("MSG_INDC_CD", "0");							//메시지표시구분코드 : 0(일반메시지창),1(상태바),g(출력안함)
+        subMsgList.add(msgMap);
+
+        messageHeader.put("MSG_PRCS_RSLT_CD", "-1");			//메세지정상처리여부 : 0(정상) , -1 이하(에러)
+        messageHeader.put("MSG_DATA_SUB_RPTT_CNT", 1);
+        messageHeader.put("MSG_DATA_SUB", subMsgList);
+
         // Content-Type 확인, json 만 View를 따로 처리함.
         if(contentType != null && MediaType.APPLICATION_JSON_VALUE.equals(contentType)){
             model = new ModelAndView("jsonView");
             ResponseStatus annotation = exception.getClass().getAnnotation(ResponseStatus.class);
  
             if(annotation!=null){
-                reason = annotation.reason();
                 statusCode = annotation.value().value();
             }
         } else {
-            reason = "Database Error";
             model = new ModelAndView("/com/exception/500.html");
         }
  
-        model.addObject("reason",reason);
-        model.addObject("statusCode",statusCode);
+        model.addObject("messageHeader",messageHeader);
         response.setStatus(statusCode);
         return model;
     }
+
 }
